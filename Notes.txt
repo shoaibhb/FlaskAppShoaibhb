@@ -1,0 +1,55 @@
+FOR Horizontal Menu change padding from 32 to 22
+
+.horizontal-menu .bottom-navbar .page-navigation > .nav-item > .nav-link {
+  color: #000000;
+  padding: 17px 22px;
+  line-height: 1;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+for page render (pip pdfkit)
+
+
+
+<script>
+
+$(document).ready(function() {
+
+    domtoimage.toPng(document.getElementById('content2'))
+        .then(function (blob) {
+            var pdf = new jsPDF('l', 'pt', [$('#content2').width(), $('#content2').height()]);
+
+            pdf.addImage(blob, 'WEBP', 0, 0, $('#content2').width(), $('#content2').height(),'someAlias', 'MEDIUM');
+
+            pdf.save("test.pdf");
+
+            that.options.api.optionsChanged();
+        });
+});
+</script>
+
+***for remote desktop without signout
+mstsc /console
+
+****** Session Query Example *****************
+
+    # pm = reversed(db.session.query(Tbl_pm).order_by(Tbl_pm.pm_id.asc()).limit(70).all())
+    # pm = Tbl_pm.query.filter_by(pm_train='602').all()
+
+    # pm=db.session.query(Tbl_pm).filter(Tbl_pm.pm_train.ilike('6%')).all()
+    # pm=db.session.query(Tbl_pm).filter(Tbl_pm.pm_train.ilike('4%') | Tbl_pm.pm_train.ilike('6%')).all()
+    # udate2=db.session.query(Tbl_pm).order_by(Tbl_pm.pm_date.asc())[-1]
+
+     # for instance in Tbl_pm.query(Tbl_pm).order_by(Tbl_pm.pm_date.asc()).limit(1).all():
+
+* If you need a case insensitive comparison, use ilike:
+
+* A generic piece of code that will work for multiple columns. This can also be used if there is a need to conditionally implement search functionality in the application. *
+search_key = "abc"
+search_args = [col.ilike('%%%s%%' % search_key) for col in ['col1', 'col2', 'col3']]
+query = Query(table).filter(or_(*search_args))
+session.execute(query).fetchall()
+
+*******************************
