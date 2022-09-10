@@ -1,0 +1,412 @@
+{% extends 'pages/navl5.html' %}
+  {% block siripye %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+
+    <style>
+
+<!--      RADIO Button CSS-->
+
+<!--      @import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap-grid.css")-->
+      html, body {
+      height: 100%;
+      display: grid;
+        }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  color: #222;
+}
+
+.cntr {
+  margin: right;
+}
+
+.btn-radio {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.btn-radio:not(:first-child) {
+  margin-left: 20px;
+}
+@media screen and (max-width: 480px) {
+  .btn-radio {
+    display: block;
+    float: none;
+  }
+  .btn-radio:not(:first-child) {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+}
+.btn-radio svg {
+  fill: none;
+  vertical-align: middle;
+}
+.btn-radio svg circle {
+  stroke-width: 2;
+  stroke: #C8CCD4;
+}
+.btn-radio svg path {
+  stroke: #008FFF;
+}
+.btn-radio svg path.inner {
+  stroke-width: 6;
+  stroke-dasharray: 19;
+  stroke-dashoffset: 19;
+}
+.btn-radio svg path.outer {
+  stroke-width: 2;
+  stroke-dasharray: 57;
+  stroke-dashoffset: 57;
+}
+.btn-radio input {
+  display: none;
+}
+.btn-radio input:checked + svg path {
+  transition: all 0.4s ease;
+}
+.btn-radio input:checked + svg path.inner {
+  stroke-dashoffset: 38;
+  transition-delay: 0.3s;
+}
+.btn-radio input:checked + svg path.outer {
+  stroke-dashoffset: 0;
+}
+.btn-radio span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+      </style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Availability KPIs</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+<!--    <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/rst_img/favicon.png"/>
+
+
+<!--      Google Font  -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+      <style>
+body {
+  font-family: "Poppins", sans-serif;
+  //font-size: 48px;
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+<!--</head>-->
+<!--<body>-->
+<div class="container-scroller">
+
+    <!-- partial:partials/_horizontal-navbar.html -->
+
+    <!-- partial -->
+
+
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+            <div class="content-wrapper">
+
+                <div class="row mt-0">
+
+                    <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card shadow">
+                                <div class="card-header bg-light text-black px-2 p-1 d-flex justify-content-between align-items-center">
+                                    <h4 class="mt-2 fw-bold">Availability KPIs</h4>
+                                    <h6 class="mt-2 small"><kbd class="mt-1 small">Updated On: {{udate[0][0]}}</kbd></h6>
+<!--                                    <h6 class="mt-1 small">Download <i class="fas fa-file-excel"></i></h6>-->
+                                    <!--                                    <h6 class="mt-1 small"><kbd class="mt-1 small">Download <i class="fas fa-file-excel"></i></kbd></h6>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    <style>
+                        .top-buffer { margin-top:-28px; }
+                    </style>
+
+						<div class="col-lg-12 top-buffer grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightgrey2">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">Line 5 Availability</h4>
+<!--										<h4 class="text-primary font-weight-bold">Grand Total<span class="text-dark ml-3">50</span></h4>-->
+									</div>
+                                    <div class="chart-container" style="position: relative; width:1800; height:27vh">
+									<canvas id="l5kpiChart"></canvas>
+<!--                                        <canvas id="l4kpiChart" width="1800" height="280"></canvas>-->
+                                    </div>
+								</div>
+							</div>
+						</div>
+
+                    </div>
+
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="footer-wrap">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+                    </div>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+
+
+    <!-- base:js -->
+    <script src="../static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+    <!-- plugin js for this page -->
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+<!--        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>-->
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+
+
+<script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+
+    });
+  </script>
+
+
+<script>
+
+  demo = {
+
+  initDashboardPageCharts: function() {
+
+    chartColor = "#12EA08";
+    chartColorTotal = "#87CEEB";
+    chartColorTarget = "#EC5800";
+
+
+    var ctx = document.getElementById('l5kpiChart').getContext("2d");
+
+
+    ctx.canvas.width = 1800;
+    ctx.canvas.height = 280;
+
+
+    var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(31, 249, 21,0.2)');
+    gradientStroke.addColorStop(0.5, 'rgba(31, 249, 21,0.0)');
+    gradientStroke.addColorStop(0, 'rgba(31, 249, 21,0.3)');
+
+
+    var months = {{kpil4date|safe}};
+    var l5ava_data = {{l5ava|safe}};
+    var l5target_data = {{l5target|safe}};
+    var l5total_data = {{l5total|safe}};
+
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: months,
+        //labels: ["FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG"],
+        datasets: [{
+          label: "Availability",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#1e3d60",
+          pointHoverBackgroundColor: "#1e3d60",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          //pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 2,
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderWidth: 3,
+          //data: [0, 31.3, 32.6, 37.3, 38.6, 29.0]
+          data: l5ava_data
+        },{
+          label: "Total",
+          //backgroundColor: 'transparent',
+          borderColor: chartColorTotal,
+          pointBorderColor: chartColorTotal,
+          pointBackgroundColor: "#1e3d60",
+          pointHoverBackgroundColor: "#1e3d60",
+          pointHoverBorderColor: chartColorTotal,
+          pointBorderWidth: 1,
+          //pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 0,
+          fill: false,
+          backgroundColor: chartColorTotal,
+          borderWidth: 2,
+          //data: [0, 31.3, 42.6, 57.3, 48.6, 60.0]
+          data: l5total_data
+        },{
+          label: "Target",
+          //backgroundColor: 'transparent',
+          borderColor: chartColorTarget,
+          pointBorderColor: chartColorTarget,
+          pointBackgroundColor: "#1e3d60",
+          pointHoverBackgroundColor: "#1e3d60",
+          pointHoverBorderColor: chartColorTarget,
+          pointBorderWidth: 1,
+          //pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 0,
+          fill: false,
+          backgroundColor: chartColorTarget,
+          borderWidth: 2,
+          //data: [0, 31.3, 42.6, 57.3, 48.6, 60.0]
+          data: l5target_data
+          }
+        ]
+      },
+      options: {
+        layout: {
+          padding: {
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom: 0
+          }
+        },
+        //responsive: true,
+        //maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: '#f5f5f5',
+          titleFontColor: '#333',
+          bodyFontColor: '#666',
+          bodySpacing: 4,
+          xPadding: 12,
+          mode: "nearest",
+          intersect: 0,
+          position: "nearest"
+
+        },
+        legend: {
+          position: "bottom",
+          fillStyle: "#FFF",
+          display: true
+        },
+
+         plugins: {
+         datalabels: {
+            align: 'end',
+            display: 'auto',
+            anchor: 'start',
+
+             formatter: function (value, ctx) {
+                 //let percentage = value + "%";
+                 let percentage = value;
+                 return percentage;
+             },
+             font: {
+                 size: 0,
+                 weight: "normal"
+             },
+             color: "#000000"
+
+         }
+     },
+
+        scales: {
+          yAxes: [{
+          display: true,
+            ticks: {
+              //suggestedMin: 0,
+              //suggestedMax: 100,
+              //fontColor: "rgba(255,255,255,0.7)",
+              fontSize: 10,
+              fontStyle: "normal",
+              //beginAtZero: true,
+              scaleStepWidth : 100,
+              //maxTicksLimit: 5,
+              padding: 10
+            },
+            gridLines: {
+                //display: true,
+                //drawBorder: true,
+                drawOnChartArea: false,
+                lineWidth: 1,
+                color: 'rgba(52,52,52,1)',
+                zeroLineColor: "transparent",
+            }
+
+          }],
+          xAxes: [{
+            display: true,
+            //barPercentage: 1.6,
+          gridLines: {
+            //drawBorder: false,
+            lineWidth: 0.5,
+            drawOnChartArea: false,
+            color: 'rgba(52,52,52,1)',
+            zeroLineColor: "transparent",
+          },
+            ticks: {
+              display: true,
+              autoSkip: true,
+              maxTicksLimit: 9,
+              padding: 10,
+              fontColor: "rgba(52,52,52,0.9)",
+              fontSize: 10,
+              fontStyle: "normal"
+            }
+          }]
+        }
+      }
+    });
+  },
+
+
+};
+
+</script>
+
+
+
+
+<!--</body>-->
+<!--</html>-->
+{% endblock %}

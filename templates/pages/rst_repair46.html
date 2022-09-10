@@ -1,0 +1,540 @@
+{% extends 'pages/navl46.html' %}
+    {% block siripye %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+
+
+      <style>
+
+      table{
+        margin: 0 auto;
+        width: 100%;
+        clear: both;
+        border-collapse: collapse;
+        table-layout: fixed; // ***********add this
+        word-wrap:break-word; // ***********and this
+            }
+
+          tr { font-size: 14px; }
+          td { font-size: 12px; }
+
+<!--          tr { font-color: 'red'; }-->
+
+          #example td { font-size: 14px; }
+          #example tr { font-size: 14px; }
+
+          table.dataTable thead th.ui-state-default {
+          background: #CAD0A1;
+            }
+          table.dataTable tfoot th.ui-state-default {
+          background: #CAD0A1;
+            }
+      </style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Dashboard</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+<!--    <link rel="stylesheet" href="../rst_vendors/base/vendor.bundle.base.css">-->
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/rst_img/favicon.png"/>
+            <!-- plugin Datatable css for this page -->
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.jqueryui.min.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+<!--      Google Font  -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+
+      <style>
+body {
+  font-family: "Poppins", sans-serif;
+  //font-size: 48px;
+}
+</style>
+<!--  </head>-->
+<!--  <body>-->
+{% endblock %}
+    {% block content %}
+    <div class="container-scroller">
+
+        <!-- partial:partials/_horizontal-navbar.html -->
+
+        <!-- partial -->
+
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+<!--                    <small>Last Updated On: {{udate[0]}}</small>-->
+
+                    <div class="row mt-2">
+
+                        <div class="col-sm-12 grid-margin grid-margin-md-0 stretch-card">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <!--                                    <h4 class="card-title">Return Material Authorization (RMA)</h4>-->
+                                    <div class="card-header text-black px-2 p-1 d-flex justify-content-between align-items-center">
+                                        <h4 class="mt-2 fw-bold">Return Material Authorization (RMA)</h4>
+                                        <h6 class="mt-2 small"><kbd class="mt-1 small">Updated On: {{udate[0]}}</kbd>
+                                        </h6>
+                                        <!--                                    <h6 class="mt-1 small">Download <i class="fas fa-file-excel"></i></h6>-->
+                                        <!--                                    <h6 class="mt-1 small"><kbd class="mt-1 small">Download <i class="fas fa-file-excel"></i></kbd></h6>-->
+                                    </div>
+                                    <table id="example" class="display" style="width:100%">
+                                        <thead>
+                                        <tr>
+                                            <th>Reference</th>
+                                            <th>Description</th>
+                                            <th>SN</th>
+                                            <th>RMA</th>
+                                            <th>Supplier</th>
+                                            <th>Date of Shipment</th>
+                                            <th>Status</th>
+                                            <!--                <th>Progress</th>-->
+                                        </tr>
+
+                                        </thead>
+                                        <tbody>
+                                        {%for i in range(0, rma|length)%}
+                                        <tr>
+                                            <!--                  <td><a href="/getfile/${data402[i][2]}.pdf" target="_blank">${data402[i][2]}</td></a>-->
+
+                                            <td>{{rma[i][0]}}</td>
+                                            <td>{{rma[i][1]}}</td>
+                                            <td>{{rma[i][2]}}</td>
+                                            <td>{{rma[i][3]}}</td>
+                                            <td>{{rma[i][4]}}</td>
+                                            <td>{{rma[i][5]}}</td>
+                                            {% if rma[i][6]=="Open" %}
+                                            <td><span class="badge badge-success">{{rma[i][7]}} </span></td>
+                                            {% else %}
+                                            <td><span class="badge badge-dark">{{rma[i][6]}} </span></td>
+                                            {% endif %}
+                                            <!--                <td>{{rma[i][7]}}</td>-->
+                                        </tr>
+                                        {%endfor%}
+
+
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Reference</th>
+                                            <th>Description</th>
+                                            <th>SN</th>
+                                            <th>RMA</th>
+                                            <th>Supplier</th>
+                                            <th>Date of Shipment</th>
+                                            <th>Status</th>
+                                            <!--                <th>Progress</th>-->
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+          <div class="footer-wrap">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+            </div>
+          </div>
+        </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+    </div>
+		<!-- container-scroller -->
+
+
+        <!-- base:js -->
+    <script src="../static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+
+        <!-- plugin js for this page -->
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+
+            <!-- Datatable js for this page -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.jqueryui.min.js"></script>
+
+
+
+  <script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+
+    "order": [[ 0, 'desc' ]],
+    "columnDefs": [
+      { "width": "100px", "targets": 0 },
+<!--      { "width": "50px", "targets": 1 },-->
+      { "width": "200px", "targets": 2 },
+      { "width": "120px", "targets": 3 },
+<!--      { "width": "155px", "targets": 4 },-->
+<!--      { "width": "85px", "targets": 5 },-->
+<!--      { "width": "85px", "targets": 6 },-->
+
+          {"className": "dt-center", "targets": "_all"},
+      ],
+
+        "aLengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
+        "iDisplayLength": -1,
+
+        initComplete: function () {
+            //this.api().columns().every( function () {
+            this.api().columns([]).every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    //.appendTo( $(column.footer()).empty() )
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    //select.append( '<option value="'+d+'">'+d+'</option>' )
+                    select.append('<option value="' + d + '">' + d.substr(0,10) + '</option>')
+                } );
+            } );
+        }
+    } );
+} );
+</script>
+
+  <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbl_cs= {{lbl_cs|safe}};
+		var CustomerSpareData = {
+			//labels: ["Unknown", "No RFQ", "RFQ Done", "PO Placed", "Under Shipment", "Under RMA"],
+			labels: lbl_cs,
+			datasets: [{
+				label: 'NB IOS',
+				//data: [32, 13, 11, 25, 10, 16],
+				data: [{% for i in count_cs %} {{ i }}, {% endfor %}],
+				backgroundColor: ['#92B8B8','#89B9BA','#81B9BA','#7AB9BA','#6CB8B9','#60B6B8','#4AB4B5','#32B2B4'],
+				borderColor: ['#92B8B8','#89B9BA','#81B9BA','#7AB9BA','#6CB8B9','#60B6B8','#4AB4B5','#32B2B4'],
+
+				borderWidth: 2,
+				fill: false
+			}],
+		};
+		var CustomerSpareOptions = {
+		      	responive: true,
+				maintainAspectRatio: true,
+		    animation: {
+                duration : 3000,
+            },
+
+			scales: {
+				xAxes: [{
+					position: 'bottom',
+					display: false,
+					gridLines: {
+							display: false,
+							drawBorder: true,
+					},
+					ticks: {
+							display: false ,//this will remove only the label
+							beginAtZero: true
+					}
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						drawBorder: true,
+						display: false,
+					},
+					ticks: {
+					    fontSize: 10,
+						beginAtZero: true
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				show: false,
+				backgroundColor: 'rgba(119,119,119,0.9)',
+			},
+			plugins: {
+			datalabels: {
+					display: true,
+					align: 'end',
+					color: 'black',
+				}
+			}
+
+		};
+		if ($("#CustomerSpare").length) {
+			var barChartCanvas = $("#CustomerSpare").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'horizontalBar',
+				data: CustomerSpareData,
+				options: CustomerSpareOptions,
+
+			});
+		}
+
+
+        //var lbl_cs= {{lbl_cs|safe}};
+		var CustomerSparePieData = {
+			datasets: [{
+				//data: [32, 13, 11, 25, 10, 16],
+				data: [{% for i in count_cs %} {{ i }}, {% endfor %}],
+				backgroundColor: ['#ee5b5b','#fcd53b','#0bdbb8','#464dee','#0ad7f7','#990033','#009966','#FF99FF'],
+				borderColor: ['#ee5b5b','#fcd53b','#0bdbb8','#464dee','#0ad7f7','#990033','#009966','#FF99FF'],
+			}],
+			// These labels appear in the legend and in the tooltips when hovering different arcs
+			//labels: ["Unknown", "No RFQ", "RFQ Done", "PO Placed", "Under Shipment", "Under RMA"],
+			labels: lbl_cs,
+
+		};
+		var CustomerSparePieOptions = {
+			responsive: true,
+			cutoutPercentage: 15,
+			legend: {
+					display: true,
+					position: 'left',
+			    "labels": {
+                    "fontSize": 9,
+                	usePointStyle: true,
+					boxWidth: 4,
+                        }
+			},
+			animation: {
+					animateScale: true,
+					animateRotate: true
+			},
+			plugins: {
+
+				datalabels: {
+					 display: true,
+					 color: "white",
+					 align: 'center',
+					 anchor: 'center'
+				}
+			}
+
+		};
+		if ($("#CustomerSparePie").length) {
+			var pieChartCanvas = $("#CustomerSparePie").get(0).getContext("2d");
+			var pieChart = new Chart(pieChartCanvas, {
+				type: 'doughnut',
+				data: CustomerSparePieData,
+				options: CustomerSparePieOptions
+			});
+		}
+
+
+
+	});
+})(jQuery);
+
+  </script>
+
+  <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbl_ncr= {{lbl_ncr|safe}};
+		var NbUniqueData = {
+			//labels: ["Unknown", "No PO", "PO Placed", "RFQ Done", "Stock Verification", "Under Shipment", "Under Repair", "Delivered"],
+			labels: lbl_ncr,
+			datasets: [{
+				label: 'NB Unique',
+				//data: [7, 12, 4, 2, 1, 2, 10, 1, 1],
+				data: [{% for i in count_ncr %} {{ i }}, {% endfor %}],
+				backgroundColor: ['#F3F8E7','#E8F1D0','#DCEAB8','#D1E4A0','#C5DD88','#B9D671','#AECF59','#A2C841','#A1C83C'],
+				borderColor: ['#F3F8E7','#E8F1D0','#DCEAB8','#D1E4A0','#C5DD88','#B9D671','#AECF59','#A2C841','#A1C83C'],
+<!--				backgroundColor: ['#A3ECF6','#8EEAF6','#79E7F6','#5EE3F4','#4CE0F4','#3DDEF4','#21DAF3','#07D7F3','#07D7F3',07D7F3],-->
+
+<!--						'#ACD9F4',-->
+<!--						'#A5D6F3',-->
+<!--						'#A1D5F3',-->
+<!--						'#97D0F1',-->
+<!--						'#8FCCF0',-->
+<!--						'#87C9EF',-->
+<!--						'#7AC3EE',-->
+<!--						'#6EC0EF',-->
+
+
+				borderWidth: 2,
+				fill: false
+			}],
+		};
+		var NbUniqueOptions = {
+
+		    animation: {
+                duration : 3000,
+            },
+
+			scales: {
+				xAxes: [{
+					position: 'bottom',
+					display: false,
+					gridLines: {
+							display: false,
+							drawBorder: true,
+					},
+					ticks: {
+							display: false ,//this will remove only the label
+							beginAtZero: true
+					}
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						drawBorder: true,
+						display: false,
+					},
+					ticks: {
+					    fontSize: 10,
+						beginAtZero: true
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				show: false,
+				backgroundColor: 'rgba(119,119,119,0.9)',
+			},
+			plugins: {
+			datalabels: {
+					display: true,
+					align: 'end',
+					color: '#555555',
+				}
+			}
+
+		};
+		if ($("#NbUnique").length) {
+			var barChartCanvas = $("#NbUnique").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'horizontalBar',
+				data: NbUniqueData,
+				options: NbUniqueOptions,
+
+			});
+		}
+
+
+		var Pie2Data = {
+			datasets: [{
+				//data: [7, 12, 4, 2, 1, 2, 10, 1, 1],
+				data: [{% for i in count_ncr %} {{ i }}, {% endfor %}],
+				backgroundColor: ['#ee5b5b','#fcd53b','#0bdbb8','#464dee','#0ad7f7','#990033','#009966','#FF99FF', '#78697C'],
+				borderColor: ['#ee5b5b','#fcd53b','#0bdbb8','#464dee','#0ad7f7','#990033','#009966','#FF99FF','#78697C'],
+			}],
+			// These labels appear in the legend and in the tooltips when hovering different arcs
+			labels: ["Unknown", "No PO", "PO Placed", "RFQ Done", "Stock Verification", "Under Shipment", "Under Repair", "Delivered"],
+			labels: lbl_ncr,
+
+		};
+		var Pie2Options = {
+			responsive: true,
+			cutoutPercentage: 15,
+			legend: {
+					display: true,
+					position: 'left',
+			    "labels": {
+                    "fontSize": 9,
+                	usePointStyle: true,
+					boxWidth: 4,
+                        }
+			},
+			animation: {
+					animateScale: true,
+					animateRotate: true
+			},
+			plugins: {
+
+				datalabels: {
+					 display: true,
+					 color: "white",
+					 align: 'center',
+					 anchor: 'center'
+				}
+			}
+
+		};
+		if ($("#Pie2").length) {
+			var pieChartCanvas = $("#Pie2").get(0).getContext("2d");
+			var pieChart = new Chart(pieChartCanvas, {
+				type: 'doughnut',
+				data: Pie2Data,
+				options: Pie2Options
+			});
+		}
+
+
+
+	});
+
+})(jQuery);
+
+  </script>
+
+
+  <script>
+    $('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+</script>
+
+
+<!--  </body>-->
+<!--</html>-->
+{% endblock %}

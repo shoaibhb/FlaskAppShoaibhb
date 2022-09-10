@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>PM Record Entry (ADMIN)</title>
+
+
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+
+
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.js"></script>
+<script type="text/javascript" language="javascript">
+$(document).ready(function(){
+    var dataTable = $('#sample_data').DataTable();
+    $('#sample_data').editable({
+        container:'body',
+        selector:'td.datex',
+        url:'/updateemployee',
+        title:'Name',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+
+    $('#sample_data').editable({
+        container:'body',
+        selector:'td.trainx',
+        url:'/updatepm',
+        title:'Train ID',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+
+    $('#sample_data').editable({
+        container:'body',
+        selector:'td.mileagex',
+        url:'/updateemployee',
+        title:'Email',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+
+
+
+    $('#sample_data').editable({
+        container:'body',
+        selector:'td.docx',
+        url:'/updateemployee',
+        title:'Phone',
+        type:'POST',
+        validate:function(value){
+            if($.trim(value) == '')
+            {
+                return 'This field is required';
+            }
+        }
+    });
+});
+function del(ID, title){
+    if (confirm("Are you sure you want to delete PM of Train ID '" + title + "'")){
+        window.location.href = '/delete/' + ID;
+    }
+}
+</script>
+    </head>
+    <body>
+        <div class="container">
+            <h3 align="center">Preventive Maintenance Data Entry (Admin)</h3>
+            <br />
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Add New Record
+                </button>
+                    <br />
+                    <br />
+                    <form action="http://10.228.146.92:5000/uploaderpm" method="POST" enctype="multipart/form-data">
+                        <!--      <form action = "http://localhost:5000/uploader" method = "POST"-->
+
+                        <input type="file" class="btn btn-warning" name="file" multiple/>
+                        <input type="hidden" id="path" name="path" value="data/rst_files_repo/pm/">
+                        <input type="submit"/>
+                    </form>
+                </div>
+
+
+
+
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table id="sample_data" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Train ID</th>
+                                    <th>Doc Reference</th>
+                                    <th>Mileage</th>
+                                    <th>2 Weekly</th>
+                                    <th>1 Month</th>
+                                    <th>2 Month</th>
+                                    <th>3 Month</th>
+                                    <th>6 Month</th>
+                                    <th>9 Month</th>
+                                    <th>1 Year</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in pm %}
+                                <tr>
+                                    <td data-name="date" class="date" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_date}}</td>
+                                    <td data-name="train" class="train" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_train}}</td>
+                                    <td data-name="doc" class="doc" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_doc}}</td>
+                                    <td data-name="mileage" class="mileage" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_mileage}}</td>
+                                    <td data-name="w2" class="w2" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_2w}}</td>
+                                    <td data-name="m1" class="m1" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_1m}}</td>
+                                    <td data-name="m2" class="m2" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_2m}}</td>
+                                    <td data-name="m3" class="m3" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_3m}}</td>
+                                    <td data-name="m6" class="m6" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_6m}}</td>
+                                    <td data-name="m9" class="m9" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_9m}}</td>
+                                    <td data-name="y1" class="y1" data-type="text" data-pk="{{row.pm_id}}">{{row.pm_1y}}</td>
+                                    <td><a href="javascript:del('{{row.pm_id}}','{{row.pm_train}}')" class="btn btn-primary">Delete</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New PM Record</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <form role="form-group row" method="post" action="/pmadd" style="padding: 10px">
+<!--          <div class="form-group">-->
+
+            <label class="col-form-label">Date:
+              <input type="text" class="datepicker" id="datepicker" name="txtdate" readonly="readonly" style="width: 120px;">
+            </label>
+
+
+            <label class="col-form-label">Train ID:
+            <select id="txttrain" name="txttrain" class="form-control" style="width: 90px;">
+                <option selected="selected">401</option>
+                <option label="402" value='402'>402</option>
+                <option>403</option>
+                <option>404</option>
+                <option>405</option>
+                <option>406</option>
+                <option>407</option>
+                <option>408</option>
+                <option>409</option>
+                <option>410</option>
+                <option>411</option>
+                <option>412</option>
+                <option>413</option>
+                <option>414</option>
+                <option>415</option>
+                <option>416</option>
+                <option>417</option>
+                <option>418</option>
+                <option>419</option>
+                <option>420</option>
+                <option>421</option>
+                <option>422</option>
+                <option>423</option>
+                <option>424</option>
+                <option>501</option>
+                <option>502</option>
+                <option>503</option>
+                <option>504</option>
+                <option>505</option>
+                <option>506</option>
+                <option>507</option>
+                <option>508</option>
+                <option>509</option>
+                <option>510</option>
+                <option>511</option>
+                <option>512</option>
+                <option>513</option>
+                <option>514</option>
+                <option>515</option>
+                <option>516</option>
+                <option>517</option>
+                <option>518</option>
+                <option>519</option>
+                <option>601</option>
+                <option>602</option>
+                <option>603</option>
+                <option>604</option>
+                <option>605</option>
+                <option>606</option>
+                <option>607</option>
+                <option>608</option>
+                <option>609</option>
+                <option>610</option>
+                <option>611</option>
+                <option>612</option>
+                <option>613</option>
+                <option>614</option>
+                <option>615</option>
+                <option>616</option>
+                <option>617</option>
+                <option>618</option>
+                <option>619</option>
+                <option>620</option>
+                <option>621</option>
+                <option>622</option>
+                <option>623</option>
+                <option>624</option>
+                <option>625</option>
+                <option>626</option>
+            </select>
+            </label>
+              <label class="col-form-label">Doc Ref:
+            <input type="text" class="form-control text-uppercase" id="txtdoc" name="txtdoc" style="width: 130px;">
+                  </label>
+            <label class="col-form-label">Mileage:
+            <input type="number" class="form-control" id="txtmileage" min="0" name="txtmileage" style="width: 130px;">
+                </label>
+
+<!--          </div>-->
+          <div class="form-group row" style="padding: 20px">
+            <label class="col-sm-2">2 Week
+            <label class="col-sm-2 checkbox-inline">
+            <input id="w2" name="w2" type="checkbox" value="Done">Done</label>
+                <input name="w2" type="hidden" value=""></label>
+            </label>
+            <label class="col-sm-2">1 Month
+            <label class="col-sm-2 checkbox-inline">
+            <input id="m1" name="m1" type="checkbox" value="Done">Done</label>
+                <input name="m1" type="hidden" value=""></label>
+            </label>
+            <label class="col-sm-2">2 Month
+            <label class="col-sm-2 checkbox-inline">
+            <input id="m2" name="m2" type="checkbox" value="Done">Done</label>
+                <input name="m2" type="hidden" value=""></label>
+            </label>
+            <label class="col-sm-2">3 Month
+            <label class="col-sm-2 checkbox-inline">
+            <input id="m3" name="m3" type="checkbox" value="Done">Done</label>
+                <input name="m3" type="hidden" value=""></label>
+            </label>
+            <label class="col-sm-2">6 Month
+            <label class="col-sm-2 checkbox-inline">
+            <input id="m6" name="m6" type="checkbox" value="Done">Done</label>
+                <input name="m6" type="hidden" value=""></label>
+            </label>
+            <label class="col-sm-2">9 Month
+            <label class="col-sm-2 checkbox-inline">
+            <input id="m9" name="m9" type="checkbox" value="Done">Done</label>
+                <input name="m9" type="hidden" value=""></label>
+            </label>
+            <label class="col-sm-2">1 Year
+            <label class="col-sm-2 checkbox-inline">
+            <input id="y1" name="y1" type="checkbox" value="Done">Done</label>
+            <input name="y1" type="hidden" value=""></label>
+            </label>
+          </div>
+
+<!--          <div class="form-group">-->
+<!--            <label class="col-form-label">Document Reference:</label>-->
+<!--            <input type="text" class="form-control" id="txtdocX" name="txtdoc">-->
+<!--            <label class="col-form-label">Mileage:</label>-->
+<!--            <input type="text" class="form-control" id="txtmileageX" name="txtmileage">-->
+<!--          </div>-->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input name="cmdsubmit" class="btn btn-primary" type="submit" value="Submit" />
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+        <br />
+        <br />
+
+
+
+
+        <script>
+$('.datepicker').datepicker({
+    format: 'dd-M-yy',
+    autoclose: true,
+    keyboardNavigation : true,
+    //startDate: '-3d'
+})
+
+</script>
+
+    </body>
+</html>

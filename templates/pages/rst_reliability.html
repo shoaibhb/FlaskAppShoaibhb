@@ -1,0 +1,1210 @@
+{% extends 'pages/navl46.html' %}
+  {% block siripye %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+
+
+      <style>
+      table{
+        margin: 0 auto;
+        width: 100%;
+        clear: both;
+        border-collapse: collapse;
+        table-layout: fixed; // ***********add this
+        word-wrap:break-word; // ***********and this
+            }
+
+
+          td { font-size: 13px; }
+          tr { font-size: 15px; }
+          td { color: black; }
+
+          table.dataTable thead th.ui-state-default {
+          background: #52969E;
+          color: white;
+            }
+          table.dataTable tfoot th.ui-state-default {
+          background: #52969E;
+          color: white;
+            }
+      </style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Dashboard</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+<!--    <link rel="stylesheet" href="../static/modules/rst_vendors/base/vendor.bundle.base.css">-->
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/rst_img/favicon.png"/>
+
+            <!-- plugin Datatable css for this page -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.jqueryui.min.css">
+
+
+<!--      Google Font  -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+      <style>
+body {
+  font-family: "Poppins", sans-serif;
+  //font-size: 48px;
+}
+</style>
+
+<!--  </head>-->
+<!--  <body>-->
+  {% endblock %}
+
+{% block content %}
+    <div class="container-scroller">
+
+    <!-- partial:partials/_horizontal-navbar.html -->
+
+    <!-- partial -->
+
+
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+                    <div class="row mt-0">
+
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card shadow">
+                                <div class="card-header bg-light text-black px-2 p-1 d-flex justify-content-between align-items-center">
+                                    <h4 class="mt-2 fw-bold">Incorrect Operational Status (IOS)</h4>
+                                    <h6 class="mt-2 small"><kbd class="mt-1 small">Updated On: {{udate[0]}}</kbd></h6>
+<!--                                    <h6 class="mt-1 small">Download <i class="fas fa-file-excel"></i></h6>-->
+                                    <!--                                    <h6 class="mt-1 small"><kbd class="mt-1 small">Download <i class="fas fa-file-excel"></i></kbd></h6>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    <style>
+                        .top-buffer { margin-top:-28px; }
+                    </style>
+
+						<div class="col-lg-4 top-buffer grid-margin stretch-card">
+							<div class="card shadow card-gradlightgrey2">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+<!--										<h4 class="card-title">Total IOS on Fleet ({{udatemy[0]}})</h4>-->
+										<h4 class="card-title">Total IOS on Fleet ({{udatemy[0]}})</h4>
+										<h5 class="text-primary font-weight-bold">Total<span class="text-dark ml-3">{{total_ios | sum}}</span></h5>
+									</div>
+									<div class="row">
+										<div class="col-lg-12">
+											<canvas id="NbIosFleet"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-lg-4 top-buffer grid-margin stretch-card">
+							<div class="card shadow card-gradlightgrey2">
+								<div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">Unique IOS on Fleet ({{udatemy[0]}})</h4>
+										<h5 class="text-primary font-weight-bold">Total<span class="text-dark ml-3">{{ unique_ios | sum }}</span></h5>
+									</div>
+									<div class="row">
+										<div class="col-lg-12">
+											<canvas id="NbUnique"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-lg-4 top-buffer grid-margin stretch-card">
+							<div class="card shadow card-gradlightgrey2">
+								<div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">IOS Impacting Availability ({{udatemy[0]}})</h4>
+										<h5 class="text-primary font-weight-bold">Total<span class="text-dark ml-3">{{ impact_ios | sum }}</span></h5>
+									</div>
+									<div class="row">
+                                        <div class="col-lg-12">
+											<canvas id="IosStatus"></canvas>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-12 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightgrey2">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">Unique IOS 12 Months Running</h4>
+<!--										<h4 class="text-primary font-weight-bold">Grand Total<span class="text-dark ml-3"></span></h4>-->
+									</div>
+									<div id="support-tracker-legend2" class="support-tracker-legend"></div>
+                                    <div class="chart-container" style="position: relative; height:30vh">
+									<canvas id="UniqIOS"></canvas>
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+                    <div class="row mt-4">
+						<div class="col-sm-12 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightgrey2">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">Critical IOS Evolution History</h4>
+<!--										<h4 class="text-primary font-weight-bold">Grand Total<span class="text-dark ml-3"></span></h4>-->
+									</div>
+
+									<div id="support-tracker-legend" class="support-tracker-legend"></div>
+                                     <div class="chart-container" style="position: relative; height:35vh">
+									<canvas id="IosTracker"></canvas>
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+                    <div class="row mt-4">
+						<div class="col-sm-12 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightgrey2">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">NB IOS per Train</h4>
+<!--										<h4 class="text-primary font-weight-bold">Grand Total<span class="text-dark ml-3"></span></h4>-->
+									</div>
+
+									<div id="support-tracker-legend3" class="support-tracker-legend"></div>
+                                     <div class="chart-container" style="position: relative; height:35vh">
+									<canvas id="IosTrain"></canvas>
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+                    <div class="row mt-4">
+
+						<div class="col-sm-12 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow">
+								<div class="card-body">
+                                    <h4 class="card-title">Open IOS Details</h4>
+
+                                    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>IOS Category</th>
+                <th>Number of Trains Impacted</th>
+                <th>IOS Description</th>
+                <th>Responsible</th>
+                <th>Progress</th>
+                <th>Comments</th>
+            </tr>
+
+        </thead>
+        <tbody>
+        {%for i in range(0, lenlist)%}
+        <tr>
+<!--                  <td><a href="/getfile/${data402[i][2]}.pdf" target="_blank">${data402[i][2]}</td></a>-->
+                {% if ioslist[i][0]=="RESCUE" %}
+                    <td><span class="badge badge-danger">{{ioslist[i][0]}}</span></td>
+                {% else %}
+                    <td><span class="badge badge-warning">{{ioslist[i][0]}}</span></td>
+                {% endif %}
+
+                <td>{{ioslist[i][1]}}</td>
+                <td>{{ioslist[i][2]}}</td>
+                <td>{{ioslist[i][3]}}</td>
+                <td>{{ioslist[i][4]}}</td>
+                <td>{{ioslist[i][5]}}</td>
+            </tr>
+        {%endfor%}
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>IOS Category</th>
+                <th>Number of Trains Impacted</th>
+                <th>IOS Description</th>
+                <th>Responsible</th>
+                <th>Progress</th>
+                <th>Comments</th>
+            </tr>
+        </tfoot>
+    </table>
+
+                                </div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+          <div class="footer-wrap">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+            </div>
+          </div>
+        </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+    </div>
+		<!-- container-scroller -->
+    <!-- base:js -->
+    <script src="../static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+    <!-- plugin js for this page -->
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+
+
+            <!-- Datatable js for this page -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.jqueryui.min.js"></script>
+
+
+
+
+
+  <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbls_all= {{lbl_all|safe}};
+
+		var NbIosFleetData = {
+			//labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CRL)", "TCMS (VPF)", "DOORS (KN)", "PAPIS (STEE)", "RST (Riyadh)", "SLV (Riyadh)"],
+			labels: lbls_all,
+			datasets: [{
+				label: 'NB IOS',
+				//data: [42, 98, 111, 25, 160, 166, 33, 185, 16, 22, 12],
+				data: [{% for i in total_ios %} {{ i }}, {% endfor %}],
+				//backgroundColor: ['#AED581','#AED581','#AED581','#AED581','#AED581','#9CCC65','#8BC34A','#7CB342', '#689F38', '#558B2F', '#33691E'],
+				backgroundColor: ['#92B8B8','#89B9BA','#81B9BA','#7AB9BA','#6CB8B9','#60B6B8','#4AB4B5','#32B2B4', '#32B2B4', '#32B2B4', '#32B2B4'],
+				//borderColor: ['#92B8B8','#89B9BA','#81B9BA','#7AB9BA','#6CB8B9','#60B6B8','#4AB4B5','#32B2B4', '#32B2B4', '#32B2B4', '#32B2B4'],
+				borderWidth: 1,
+				fill: false
+			}],
+		};
+		var NbIosFleetOptions = {
+			scales: {
+				xAxes: [{
+					position: 'bottom',
+					display: false,
+					gridLines: {
+							display: false,
+							drawBorder: true,
+					},
+					ticks: {
+							display: false ,//this will remove only the label
+							beginAtZero: true
+					}
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						drawBorder: true,
+						display: false,
+					},
+					ticks: {
+					    fontSize: 9,
+						beginAtZero: true
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				show: false,
+				backgroundColor: 'rgba(119,119,119,0.9)',
+			},
+			plugins: {
+			datalabels: {
+					display: true,
+					align: 'end',
+					fontSize: 9,
+					color: 'white',
+				}
+			}
+
+		};
+		if ($("#NbIosFleet").length) {
+			var barChartCanvas = $("#NbIosFleet").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'horizontalBar',
+				data: NbIosFleetData,
+				options: NbIosFleetOptions,
+
+			});
+		}
+
+
+
+	});
+})(jQuery);
+
+  </script>
+  <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbls_all= {{lbl_all|safe}};
+
+		var NbUniqueData = {
+		    //labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CRL)", "TCMS (VPF)", "DOORS(KN)", "PAPIS (STEE)", "RST (Riyadh)"],
+		    labels: lbls_all,
+			datasets: [{
+				label: 'NB Unique',
+				//data: [7, 26, 4, 2, 1, 2, 10, 1],
+				data: [{% for i in unique_ios %} {{ i }}, {% endfor %}],
+				backgroundColor: ['#A3ECF6','#8EEAF6','#79E7F6','#5EE3F4','#4CE0F4','#3DDEF4','#21DAF3','#07D7F3', '#07D7F3', '#07D7F3', '#07D7F3'],
+				borderColor: ['#A3ECF6','#8EEAF6','#79E7F6','#5EE3F4','#4CE0F4','#3DDEF4','#21DAF3','#07D7F3', '#07D7F3', '#07D7F3', '#07D7F3'],
+
+				borderWidth: 2,
+				fill: false
+			}],
+		};
+		var NbUniqueOptions = {
+
+		    animation: {
+                duration : 3000,
+            },
+
+			scales: {
+				xAxes: [{
+					position: 'bottom',
+					display: false,
+					gridLines: {
+							display: false,
+							drawBorder: true,
+					},
+					ticks: {
+							display: false ,//this will remove only the label
+							beginAtZero: true
+					}
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						drawBorder: true,
+						display: false,
+					},
+					ticks: {
+					    fontSize: 9,
+						beginAtZero: true
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				show: false,
+				backgroundColor: 'rgba(119,119,119,0.9)',
+			},
+			plugins: {
+			datalabels: {
+					display: true,
+					align: 'end',
+					fontSize: 10,
+					color: '#555555',
+					//color: 'white'
+				}
+			}
+
+		};
+		if ($("#NbUnique").length) {
+			var barChartCanvas = $("#NbUnique").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'horizontalBar',
+				data: NbUniqueData,
+				options: NbUniqueOptions,
+
+			});
+		}
+
+
+	});
+
+})(jQuery);
+
+  </script>
+  <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbls_all= {{lbl_all|safe}};
+		var IosStatusData = {
+			//labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CRL)", "TCMS (VPF)", "DOORS (KN)", "PAPIS (STEE)", "RST (Riyadh)", "SLV (Riyadh)"],
+			labels: lbls_all,
+			datasets: [{
+				label: 'IOS Status',
+				//data: [13, 3, 10, 12, 28, 4, 3, 10, 8],
+				data: [{% for i in impact_ios %} {{ i }}, {% endfor %}],
+				backgroundColor: ['#9caefa','#839af9','#6a85f8','#5171f7','#395df5','#5951F1', '#2048f4', '#3E34EE', '#2217EC', '#2217EC', '#2217EC'],
+				borderColor: ['#9caefa','#839af9','#6a85f8','#5171f7','#395df5','#5951F1', '#2048f4', '#3E34EE', '#2217EC', '#2217EC', '#2217EC'],
+				borderWidth: 2,
+				fill: false
+			}],
+		};
+		var IosStatusOptions = {
+
+			animation: {
+                duration : 3000,
+            },
+
+			scales: {
+				xAxes: [{
+					position: 'bottom',
+					display: false,
+					gridLines: {
+							display: false,
+							drawBorder: true,
+					},
+					ticks: {
+							display: false ,//this will remove only the label
+							beginAtZero: true
+					}
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						drawBorder: true,
+						display: false,
+					},
+					ticks: {
+					    fontSize: 9,
+						beginAtZero: true
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				show: false,
+				backgroundColor: 'rgba(119,119,119,0.9)',
+			},
+			plugins: {
+			datalabels: {
+					display: true,
+					align: 'end',
+					fontSize: 9,
+					color: 'white',
+				}
+			}
+
+		};
+		if ($("#IosStatus").length) {
+			var barChartCanvas = $("#IosStatus").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'horizontalBar',
+				data: IosStatusData,
+				options: IosStatusOptions,
+
+			});
+		}
+
+	});
+})(jQuery);
+
+  </script>
+
+
+ <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbl_months= {{his_mon|safe}};
+		var IosHisData = {
+			//labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CJB)", "TCMS (VPF)", "DOORS (KN)", "PAPIS (VBN/STEE)", "NETWORK (VBN)", "RST (Riyadh)", "SLV (Riyadh)"],
+			labels: lbl_months,
+			datasets: [{
+				label: 'Brake(FT)',
+				//data: [5, 1, 0, 0, 8, 0, 1, 0, 14, 1],
+				data: [{% for i in his_brake %} {{ i }}, {% endfor %}],
+				backgroundColor: 'RGBA(255, 37, 37,0.9)',
+				borderColor: [
+					'#FF2525', '#FF2525', '#FF2525', '#FF2525',  '#FF2525', '#FF2525', '#FF2525', '#FF2525', '#FF2525', '#FF2525', '#FF2525'
+				],
+				borderWidth: 1,
+				fill: false
+			},
+						{
+					label: 'HVAC(FT)',
+					//data: [2, 0, 0, 6, 0, 2, 1, 1],
+					data: [{% for i in his_hvac %} {{ i }}, {% endfor %}],
+					backgroundColor: 'RGBA(0, 19, 221,0.9)',
+					borderColor: [
+						'#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD'
+					],
+					borderWidth: 0.5,
+					fill: false
+			},
+									{
+					label: 'CVS(CRL)',
+					//data: [2, 0, 0, 3, 0, 2, 1, 1],
+					data: [{% for i in his_cvs %} {{ i }}, {% endfor %}],
+					backgroundColor: 'RGBA(254, 166, 22, 0.9)',
+					borderColor: [
+						'#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'Traction(CJB)',
+					//data: [2, 0, 0, 6, 0, 2, 1, 1, 4],
+					data: [{% for i in his_trac %} {{ i }}, {% endfor %}],
+					backgroundColor: 'RGBA(0, 229, 255, 0.9)',
+					borderColor: [
+					'#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+			{
+					label: 'TCMS(VPF)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in his_tcms %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(165, 0, 175,0.9)',
+					borderColor: [
+						'#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF'
+					],
+					borderWidth: 0.5,
+					fill: false
+			},
+						{
+					label: 'DOORS(KN)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in his_doors %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(50, 130, 0,0.9)',
+					borderColor: [
+						'#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+									{
+					label: 'PAPIS(VBN/STEE)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in his_papis %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(236, 243, 0,0.9)',
+					borderColor: [
+						'#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'NETWORK(VBN)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in his_nw %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(196, 108, 2,0.9)',
+					borderColor: [
+						'#C46C02', '#C46C02', '#C46C02', '#C46C02', '#C46C02', '#C46C02', '#C46C02', '#C46C02','#C46C02','#C46C02','#C46C02'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'RST(Riyadh)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in his_rst %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(255, 0, 202 ,0.9)',
+					borderColor: [
+						'#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA','#FF00CA','#FF00CA'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'SLV(Riyadh)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in his_slv %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(0, 131, 143,0.9)',
+					borderColor: [
+						'#00838F', '#00838F', '#00838F', '#00838F', '#00838F', '#00838F', '#00838F', '#00838F','#00838F','#00838F','#00838F'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'To Be Defined',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in his_tbd %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(189, 189, 189,0.9)',
+					borderColor: [
+						'#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD','#BDBDBD','#BDBDBD'
+					],
+					borderWidth: 0.5,
+					fill: false
+			},
+
+			]
+		};
+		var IosHisOptions = {
+				   // responsive:false,
+            maintainAspectRatio: false,
+			scales: {
+				xAxes: [{
+				stacked: true,
+				barPercentage: 0.9,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: true,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					fontSize: 14,
+					stepSize: 300,
+					beginAtZero: true
+				}
+				}],
+				yAxes: [{
+					stacked: true,
+					display: true,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+<!--					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');-->
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].borderColor[i] + ';"></span><span class="legend-label text-dark small">');
+
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+			    deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+					    font: {
+                            size: 10,
+                            weight: "normal"
+                              },
+                    color: "#444444",
+					display: false,
+					align: 'center',
+					anchor: 'center'
+				}
+			}
+		};
+		if ($("#UniqIOS").length) {
+			var barChartCanvas = $("#UniqIOS").get(0).getContext("2d");
+			    //barChartCanvas.canvas.width = 1100;
+                //barChartCanvas.canvas.height = 60;
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: IosHisData,
+				options: IosHisOptions
+			});
+			document.getElementById('support-tracker-legend2').innerHTML = barChart.generateLegend();
+		}
+
+	});
+})(jQuery);
+
+  </script>
+<script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbl_months= {{imp_mon|safe}};
+		var IosHisData = {
+			//labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CJB)", "TCMS (VPF)", "DOORS (KN)", "PAPIS (VBN/STEE)", "NETWORK (VBN)", "RST (Riyadh)", "SLV (Riyadh)"],
+			labels: lbl_months,
+			datasets: [{
+				label: 'Brake(FT)',
+				//data: [5, 1, 0, 0, 8, 0, 1, 0, 14, 1],
+				data: [{% for i in imp_brake %} {{ i }}, {% endfor %}],
+				backgroundColor: 'RGBA(255, 37, 37,0.9)',
+				borderColor: [
+					'#FF2525', '#FF2525', '#FF2525', '#FF2525',  '#FF2525', '#FF2525', '#FF2525', '#FF2525', '#FF2525', '#FF2525', '#FF2525'
+				],
+				borderWidth: 1,
+				fill: false
+			},
+						{
+					label: 'HVAC(FT)',
+					//data: [2, 0, 0, 6, 0, 2, 1, 1],
+					data: [{% for i in imp_hvac %} {{ i }}, {% endfor %}],
+					backgroundColor: 'RGBA(0, 19, 221,0.9)',
+					borderColor: [
+						'#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD', '#0013DD'
+					],
+					borderWidth: 0.5,
+					fill: false
+			},
+									{
+					label: 'CVS(CRL)',
+					//data: [2, 0, 0, 3, 0, 2, 1, 1],
+					data: [{% for i in imp_cvs %} {{ i }}, {% endfor %}],
+					backgroundColor: 'RGBA(254, 166, 22, 0.9)',
+					borderColor: [
+						'#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616', '#FEA616'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'Traction(CJB)',
+					//data: [2, 0, 0, 6, 0, 2, 1, 1, 4],
+					data: [{% for i in imp_trac %} {{ i }}, {% endfor %}],
+					backgroundColor: 'RGBA(0, 229, 255, 0.9)',
+					borderColor: [
+					'#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF', '#00E5FF'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+			{
+					label: 'TCMS(VPF)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in imp_tcms %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(165, 0, 175,0.9)',
+					borderColor: [
+						'#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF', '#A500AF'
+					],
+					borderWidth: 0.5,
+					fill: false
+			},
+						{
+					label: 'DOORS(KN)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in imp_doors %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(50, 130, 0,0.9)',
+					borderColor: [
+						'#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200', '#328200'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+									{
+					label: 'PAPIS(VBN/STEE)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in imp_papis %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(236, 243, 0,0.9)',
+					borderColor: [
+						'#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300', '#ECF300'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'NETWORK(VBN)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in imp_nw %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(196, 108, 2,0.9)',
+					borderColor: [
+						'#C46C02', '#C46C02', '#C46C02', '#C46C02', '#C46C02', '#C46C02', '#C46C02', '#C46C02','#C46C02','#C46C02','#C46C02'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'RST(Riyadh)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in imp_rst %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(255, 0, 202 ,0.9)',
+					borderColor: [
+						'#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA', '#FF00CA','#FF00CA','#FF00CA'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'SLV(Riyadh)',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in imp_slv %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(0, 131, 143,0.9)',
+					borderColor: [
+						'#00838F', '#00838F', '#00838F', '#00838F', '#00838F', '#00838F', '#00838F', '#00838F','#00838F','#00838F','#00838F'
+					],
+					borderWidth: 1,
+					fill: false
+			},
+												{
+					label: 'To Be Defined',
+					//data: [0, 4, 6, 5, 6, 0, 0, 0],
+					data: [{% for i in imp_tbd %} {{ i }}, {% endfor %}],
+					backgroundColor:  'rgba(189, 189, 189,0.9)',
+					borderColor: [
+						'#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD', '#BDBDBD','#BDBDBD','#BDBDBD'
+					],
+					borderWidth: 0.5,
+					fill: false
+			},
+
+			]
+		};
+		var IosHisOptions = {
+				   // responsive:false,
+            maintainAspectRatio: false,
+			scales: {
+				xAxes: [{
+				stacked: true,
+				barPercentage: 0.9,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: true,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					fontSize: 14,
+					stepSize: 300,
+					beginAtZero: true
+				}
+				}],
+				yAxes: [{
+					stacked: true,
+					display: true,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+<!--					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');-->
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].borderColor[i] + ';"></span><span class="legend-label text-dark small">');
+
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+			    deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+					    font: {
+                            size: 10,
+                            weight: "normal"
+                              },
+                        display: function(context) {
+							return context.dataset.data[context.dataIndex] > 0;
+						},
+                    color: "#000000",
+					//display: true,
+					align: 'center',
+					anchor: 'center'
+				}
+			},
+			animation: {
+              duration : 2500,
+            }
+		};
+		if ($("#IosTracker").length) {
+			var barChartCanvas = $("#IosTracker").get(0).getContext("2d");
+			    //barChartCanvas.canvas.width = 1100;
+                //barChartCanvas.canvas.height = 60;
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: IosHisData,
+				options: IosHisOptions
+			});
+			document.getElementById('support-tracker-legend').innerHTML = barChart.generateLegend();
+		}
+
+	});
+})(jQuery);
+
+  </script>
+<script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbl_train= {{ios_train|safe}};
+		var IosHisData = {
+			//labels: ["401", "402", "403"],
+			labels: lbl_train,
+			datasets: [{
+				label: 'Critical IOS',
+				//data: [5, 1, 0, 0, 8, 0, 1, 0, 14, 1],
+				data: [{% for i in ios_crit %} {{ i }}, {% endfor %}],
+				backgroundColor: 'RGBA(255, 152, 0,0.8)',
+				borderColor: ['#FFB74D', '#FFB74D'],
+				borderWidth: 1,
+				fill: false
+			},
+						{
+					label: 'Non-Critical IOS',
+					//data: [2, 0, 0, 6, 0, 2, 1, 1],
+					data: [{% for i in ios_ncrit %} {{ i }}, {% endfor %}],
+					backgroundColor: 'RGBA(30, 136, 229,0.8)',
+					borderColor: ['#1E88E5', '#1E88E5'],
+					borderWidth: 0.5,
+					fill: false
+			},
+
+			]
+		};
+		var IosHisOptions = {
+				   // responsive:false,
+            maintainAspectRatio: false,
+			scales: {
+				xAxes: [{
+				stacked: true,
+				barPercentage: 0.9,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: true,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					fontSize: 10,
+					stepSize: 300,
+					beginAtZero: true
+				}
+				}],
+				yAxes: [{
+					stacked: true,
+					display: true,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor + ';"></span><span class="legend-label text-dark">');
+<!--					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].borderColor[i] + ';"></span><span class="legend-label text-dark">');-->
+
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+			    deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+					    font: {
+                            size: 10,
+                            weight: "normal"
+                              },
+                        display: function(context) {
+							return context.dataset.data[context.dataIndex] > 0;
+						},
+                    color: "#000000",
+					//display: true,
+					align: 'center',
+					anchor: 'center'
+				}
+			},
+			animation: {
+              duration : 2500,
+            }
+		};
+		if ($("#IosTrain").length) {
+			var barChartCanvas = $("#IosTrain").get(0).getContext("2d");
+			    //barChartCanvas.canvas.width = 1100;
+                //barChartCanvas.canvas.height = 60;
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: IosHisData,
+				options: IosHisOptions
+			});
+			document.getElementById('support-tracker-legend3').innerHTML = barChart.generateLegend();
+		}
+
+	});
+})(jQuery);
+
+  </script>
+
+
+
+  <script>
+    $('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+</script>
+
+
+  <script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+
+    "order": [[ 0, 'desc' ]],
+    "columnDefs": [
+      { "width": "50px", "targets": 0 },
+      { "width": "50px", "targets": 1 },
+      { "width": "130px", "targets": 2 },
+      { "width": "70px", "targets": 3 },
+      { "width": "60px", "targets": 4 },
+      { "width": "130px", "targets": 5 },
+
+      {"className": "dt-center", "targets": "_all"},
+
+      ],
+
+        "aLengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
+        "iDisplayLength": -1,
+
+        initComplete: function () {
+            //this.api().columns().every( function () {
+            this.api().columns([3]).every( function () {
+                var column = this;
+                var select = $('<select style="font-size:13px;"><option value=""></option></select>')
+                    //.appendTo( $(column.footer()).empty() )
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    //select.append( '<option value="'+d+'">'+d+'</option>' )
+                    select.append('<option value="' + d + '">' + d.substr(0,14) + '</option>')
+                } );
+            } );
+        }
+    } );
+} );
+</script>
+
+{% endblock %}
+<!--  </body>-->
+<!--</html>-->

@@ -1,0 +1,1923 @@
+{% extends 'pages/navl46.html' %}
+  {% block siripye %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+
+    <style>
+        .tile-progress {
+background-color: #303641;
+color: #fff;
+}
+.tile-progress {
+background: #00a65b;
+color: #fff;
+margin-bottom: 20px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+-webkit-background-clip: padding-box;
+-moz-background-clip: padding;
+background-clip: padding-box;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+.tile-progress .tile-header {
+padding: 15px 20px;
+padding-bottom: 15px;
+}
+.tile-progress .tile-progressbar {
+height: 2px;
+background: rgba(0,0,0,0.18);
+margin: 0;
+}
+.tile-progress .tile-progressbar span {
+background: #fff;
+}
+.tile-progress .tile-progressbar span {
+display: block;
+background: #fff;
+width: 0;
+height: 100%;
+-webkit-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
+-moz-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
+-o-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
+transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
+}
+.tile-progress .tile-footer {
+padding: 10px;
+text-align: right;
+background: rgba(0,0,0,0.1);
+-webkit-border-radius: 0 0 3px 3px;
+-webkit-background-clip: padding-box;
+-moz-border-radius: 0 0 3px 3px;
+-moz-background-clip: padding;
+border-radius: 0 0 3px 3px;
+background-clip: padding-box;
+-webkit-border-radius: 0 0 3px 3px;
+-moz-border-radius: 0 0 3px 3px;
+border-radius: 0 0 3px 3px;
+}
+.tile-progress.tile-red {
+background-color: #f56954;
+color: #fff;
+}
+.tile-progress {
+background-color: #303641;
+color: #fff;
+}
+.tile-progress.tile-blue {
+background-color: #0073b7;
+color: #fff;
+}
+.tile-progress.tile-aqua {
+background-color: #00c0ef;
+color: #fff;
+}
+.tile-progress.tile-green {
+background-color: #00a65a;
+color: #fff;
+}
+.tile-progress.tile-cyan {
+background-color: #00b29e;
+color: #fff;
+}
+.tile-progress.tile-purple {
+background-color: #ba79cb;
+color: #fff;
+}
+.tile-progress.tile-pink {
+background-color: #ec3b83;
+color: #fff;
+}
+    </style>
+<!-- **** Scroller ***** -->
+    <style>
+
+        .custom-scrollbar-js,
+.custom-scrollbar-css {
+  height: 200px;
+}
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+  overflow-y: scroll;
+}
+
+/* scrollbar width */
+.custom-scrollbar-css::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-css::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #00d2ff;
+  background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+}
+
+
+
+    </style>
+
+    <style>
+
+body {
+  --color-white: #fff;
+  --color-black: #333;
+  --color-red: #A91808;
+  --color-gray: #75787b;
+  --color-gray-light: #bbb;
+  --color-gray-disabled: #e8e8e8;
+  --color-green: #585B57;
+  --color-green-dark: #383;
+  --font-size-small: .75rem;
+  --font-size-default: .750rem;
+  box-sizing: border-box;
+  margin: 2rem;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--color-black);
+}
+
+h2s {
+  color: var(--color-gray);
+  font-size: var(--font-size-small);
+  line-height: 1.5;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+section {
+  margin-bottom: 2rem;
+}
+
+.progress-bar1 {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+.progress-bar1 li {
+  flex: 2;
+  position: relative;
+  padding: 0 0 10px 0;
+  font-size: var(--font-size-default);
+  line-height: 1.5;
+  color: var(--color-green);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: visible;
+  min-width: 0;
+  text-align: center;
+  border-bottom: 6px solid var(--color-gray-disabled);
+}
+.progress-bar1 li:first-child,
+.progress-bar1 li:last-child {
+  flex: 1;
+}
+.progress-bar1 li:last-child {
+  text-align: right;
+}
+.progress-bar1 li:before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-gray-disabled);
+  border-radius: 50%;
+  border: 2px solid var(--color-white);
+  position: absolute;
+  left: calc(50% - 6px);
+  bottom: -7px;
+  z-index: 3;
+  transition: all .2s ease-in-out;
+}
+.progress-bar1 li:first-child:before {
+  left: 0;
+}
+.progress-bar1 li:last-child:before {
+  right: 0;
+  left: auto;
+}
+.progress-bar1 span {
+  transition: opacity .3s ease-in-out;
+}
+.progress-bar1 li:not(.is-active1) span {
+  opacity: 0;
+}
+.progress-bar1 .is-complete:not(:first-child):after,
+.progress-bar1 .is-active1:not(:first-child):after {
+  content: "";
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: -4px;
+  left: -50%;
+  z-index: 1;
+
+  border-bottom: 2px solid var(--color-green);
+}
+.progress-bar1 li:last-child span {
+  width: 200%;
+  display: inline-block;
+  position: absolute;
+  left: -100%;
+}
+
+.progress-bar1 .is-complete:last-child:after,
+.progress-bar1 .is-active1:last-child:after {
+  width: 200%;
+  left: -100%;
+}
+
+.progress-bar1 .is-complete:before {
+  background-color: var(--color-green);
+}
+
+.progress-bar1 .is-active1:before,
+.progress-bar1 li:hover:before,
+.progress-bar1 .is-hovered:before {
+  background-color: var(--color-white);
+  border-color: var(--color-black);
+}
+.progress-bar1 li:hover:before,
+.progress-bar1 .is-hovered:before {
+  transform: scale(1.33);
+}
+
+.progress-bar1 li:hover span,
+.progress-bar1 li.is-hovered span {
+  opacity: 1;
+}
+
+.progress-bar1:hover li:not(:hover) span {
+  opacity: 1;
+}
+
+.x-ray .progress-bar1,
+.x-ray .progress-bar1 li {
+  border: 1px dashed red;
+}
+
+.progress-bar1 .has-NOK {
+  opacity: 1 !important;
+}
+.progress-bar1 .has-NOK:before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: calc(47% - 6px);
+  bottom: -24px;
+  //background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cpath%20fill%3D%22%23ed1c24%22%20d%3D%22M4%200l4%208H0z%22%2F%3E%3C%2Fsvg%3E');
+  background-image: url('static/img/rst_img/circle_close1.png');
+}
+
+.progress-bar1 .has-RESTRICT {
+  opacity: 1 !important;
+}
+.progress-bar1 .has-RESTRICT:before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: calc(47% - 6px);
+  bottom: -24px;
+  //background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cpath%20fill%3D%22%23ed1c24%22%20d%3D%22M4%200l4%208H0z%22%2F%3E%3C%2Fsvg%3E');
+  background-image: url('static/img/rst_img/icon_test.png');
+}
+
+.progress-bar1 .has-UPDATE {
+  opacity: 1 !important;
+}
+.progress-bar1 .has-UPDATE:before {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: calc(47% - 6px);
+  bottom: -24px;
+  //background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cpath%20fill%3D%22%23ed1c24%22%20d%3D%22M4%200l4%208H0z%22%2F%3E%3C%2Fsvg%3E');
+  background-image: url('static/img/rst_img/icon_update.png');
+}
+
+
+.progress-bar1 .has-OK{
+  opacity: 1 !important;
+}
+.progress-bar1 .has-OK:before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: calc(47% - 6px);
+  bottom: -24px;
+  //background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%208%208%22%3E%3Cpath%20fill%3D%22%23ed1c24%22%20d%3D%22M4%200l4%208H0z%22%2F%3E%3C%2Fsvg%3E');
+  background-image: url('static/img/rst_img/ok_icon.png');
+}
+
+
+    </style>
+
+    <style>
+
+<!--      RADIO Button CSS-->
+
+<!--      @import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap-grid.css")-->
+      html, body {
+      height: 100%;
+      display: grid;
+        }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  color: #222;
+}
+
+.cntr {
+  margin: right;
+}
+
+.btn-radio {
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.btn-radio:not(:first-child) {
+  margin-left: 20px;
+}
+@media screen and (max-width: 480px) {
+  .btn-radio {
+    display: block;
+    float: none;
+  }
+  .btn-radio:not(:first-child) {
+    margin-left: 0;
+    margin-top: 15px;
+  }
+}
+.btn-radio svg {
+  fill: none;
+  vertical-align: middle;
+}
+.btn-radio svg circle {
+  stroke-width: 2;
+  stroke: #C8CCD4;
+}
+.btn-radio svg path {
+  stroke: #008FFF;
+}
+.btn-radio svg path.inner {
+  stroke-width: 6;
+  stroke-dasharray: 19;
+  stroke-dashoffset: 19;
+}
+.btn-radio svg path.outer {
+  stroke-width: 2;
+  stroke-dasharray: 57;
+  stroke-dashoffset: 57;
+}
+.btn-radio input {
+  display: none;
+}
+.btn-radio input:checked + svg path {
+  transition: all 0.4s ease;
+}
+.btn-radio input:checked + svg path.inner {
+  stroke-dashoffset: 38;
+  transition-delay: 0.3s;
+}
+.btn-radio input:checked + svg path.outer {
+  stroke-dashoffset: 0;
+}
+.btn-radio span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+      </style>
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Configuration</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+<!--    <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/rst_img/favicon.png"/>
+
+
+<!--      Google Font  -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+      <style>
+body {
+  font-family: "Poppins", sans-serif;
+  //font-size: 48px;
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+<!--</head>-->
+<!--<body>-->
+<div class="container-scroller">
+
+    <!-- partial:partials/_horizontal-navbar.html -->
+
+    <!-- partial -->
+
+
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+            <div class="content-wrapper">
+
+                <div class="row mt-2">
+
+                    <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card shadow">
+                                <div class="card-header bg-light text-black px-2 p-1 d-flex justify-content-between align-items-center">
+                                    <h4 class="mt-2 fw-bold">Configuration Status Line-4</h4>
+                                    <h6 class="mt-2 small"><kbd class="mt-1 small">Updated On: {{udate[0]}}</kbd></h6>
+<!--                                    <h6 class="mt-1 small">Download <i class="fas fa-file-excel"></i></h6>-->
+                                    <!--                                    <h6 class="mt-1 small"><kbd class="mt-1 small">Download <i class="fas fa-file-excel"></i></kbd></h6>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    <style>
+                        .top-buffer { margin-top:-28px; }
+                    </style>
+
+                    <div class="col-lg-1 top-buffer grid-margin stretch-card">
+
+
+                        <div class="d-flex flex-column align-self-center py-0" style="height: 270px;">
+
+                            <div class="card h-100 card-border-green shadow card-gradGreen mb-3 "
+                                 style=" margin-left: -1px; margin-right: -1px;">
+                                <div class="card-body px-2 p-4">
+                                    <h4 class="text-dark mb-2 font-weight-bold">{{(statusl4[0][0])|int}} <img
+                                            src="../static/img/rst_img/train.png" width="16" height="16"></h4>
+                                    <small class="text-dark" style="font-size:11px;">Configuration Healthy</small>
+                                </div>
+                            </div>
+                            <div class="card h-100 card-border-yellow shadow card-gradYellow"
+                                 style=" margin-left: -1px; margin-right: -1px;">
+                                <div class="card-body px-2 p-4">
+                                    <h4 class="text-dark mb-2 font-weight-bold">{{(statusl4[1][0])|int}} <img
+                                            src="../static/img/rst_img/train.png" width="16" height="16"></h4>
+                                    <small class="text-dark" style="font-size:11px;">Configuration Restricted</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-9 top-buffer grid-margin stretch-card">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <div class="d-flex align-items-left">
+                                    <!--										<h4 class="card-title">Line-Wise Retrofit Status</h4>-->
+
+                                    <label for="rdo-1" class="btn-radio">
+                                        <input type="radio" id="rdo-1" name="radio-grp" checked="true">
+                                        <svg width="17px" height="17px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z"
+                                                  class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z"
+                                                  class="outer"></path>
+                                        </svg>
+                                        <span class="text-dark">Mileage <img src="../static/img/rst_img/speed.png"/></span>
+<!--                                            src="https://img.icons8.com/color/26/000000/speed.png"/></span>-->
+
+                                    </label>
+                                    <label for="rdo-2" class="btn-radio">
+                                        <input type="radio" id="rdo-2" name="radio-grp">
+                                        <svg width="17px" height="17px" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="9"></circle>
+                                            <path d="M10,7 C8.34314575,7 7,8.34314575 7,10 C7,11.6568542 8.34314575,13 10,13 C11.6568542,13 13,11.6568542 13,10 C13,8.34314575 11.6568542,7 10,7 Z"
+                                                  class="inner"></path>
+                                            <path d="M10,1 L10,1 L10,1 C14.9705627,1 19,5.02943725 19,10 L19,10 L19,10 C19,14.9705627 14.9705627,19 10,19 L10,19 L10,19 C5.02943725,19 1,14.9705627 1,10 L1,10 L1,10 C1,5.02943725 5.02943725,1 10,1 L10,1 Z"
+                                                  class="outer"></path>
+                                        </svg>
+                                        <span class="text-dark">Power-On <img src="../static/img/rst_img/car-charger.png"/></span>
+                                    </label>
+                                </div>
+<!--                                <h4 class="card-title">Line 4 Train Mileage (km) <img src="https://img.icons8.com/color/30/000000/speed.png"/></h4>-->
+
+                                <!--                                <canvas id="AllTrainMileage" style="margin: 0;"></canvas>-->
+                                <div class="chart-container" style="position: relative; height:25vh">
+                                <canvas id="AllTrainMileage"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 top-buffer grid-margin stretch-card">
+
+                    <div class="d-flex flex-column align-self-center mb-2" style="height: 265px;">
+
+                        <div class="tile-progress tile-black">
+                                    <div class="tile-header">
+                                        <small style="font-size:12px;">Line 4 Total Mileage (km)</small><h4 class="count">{{(statusl4[5][0])|int}}</h4>
+                                        <!--                    <h2 class="card-title mb-2">19</h2>-->
+                                        <!--    				<span>so far in our blog, and our website.</span>-->
+                                    </div>
+
+                                    <div class="tile-footer">
+                                        <h4>
+                                            <span class="count">{{(statusl4[6][0])|int}}</span> <small style="font-size:12px;"> Average Mileage</small>
+                                        </h4>
+                                    </div>
+                                </div>
+                        <div class="tile-progress tile-blue">
+                                    <div class="tile-header">
+                                        <small style="font-size:12px;">Line 4 Total Power-On  (Hr) </small><h4 class="count">{{(statusl4[3][0])|int}}</h4>
+                                    </div>
+
+                                    <div class="tile-footer">
+                                        <h4>
+                                            <span class="count">{{(statusl4[4][0])|int}}</span><small style="font-size:12px;"> Average Power-On</small>
+                                        </h4>
+                                    </div>
+                                </div>
+
+
+                    </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">Train Software Configuration</h4>
+                                <section class="py-4">
+                                        <!--  Software Basline -->
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:Orange; font-size:17px;"><span>Baseline</span></li>
+                                            <li class="is-active1" style="color:blue; font-size: 10px;"><span>TCMS <br> {{bll4[0]}}</span></li>
+                                            <li class="is-active1" style="color:blue; font-size: 10px;"><span>PAPIS <br> {{bll4[1]}}</span></li>
+                                            <li class="is-active1" style="color:blue; font-size: 10px;"><span>OBCN <br> {{bll4[2]}}</span></li>
+                                            <li class="is-active1" style="color:blue; font-size: 10px;"><span>EVR <br> {{bll4[3]}}</span></li>
+                                            <li class="is-active1" style="color:blue; font-size: 10px;"><span>CVS <br> {{bll4[4]}}</span></li>
+                                            <li class="is-active1" style="color:blue; font-size: 10px;"><span>Traction <br> {{bll4[5]}}</span></li>
+                                            <li class="is-active1" style="color:blue; font-size: 10px;"><span>Brake <br> {{bll4[6]}}</span></li>
+                                            <li class="is-active1" style="color:blue; font-size: 10px;"><span>DOOR <br> {{bll4[7]}}</span></li>
+                                            <li class="is-active1" style="color:blue; font-size: 10px;"><span>HVAC <br> {{bll4[8]}}</span></li>
+                                            <li class="is-active1" style="color:#F900C7; font-size: 10px;"><span>ATC <br> {{bll4[9]}}</span></li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section>
+                                <div class="template-demo">
+                                    <section>
+                                        <!--  <h2s>TS 401</h2s>-->
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 401</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[0][0]}}"> {{swl4[0][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[0][1]}}"> {{swl4[0][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[0][2]}}"> {{swl4[0][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[0][3]}}"> {{swl4[0][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[0][4]}}"> {{swl4[0][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[0][5]}}"> {{swl4[0][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[0][6]}}"> {{swl4[0][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[0][7]}}"> {{swl4[0][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[0][8]}}"> {{swl4[0][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[0][9]}}"> {{swl4[0][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 402</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[1][0]}}"> {{swl4[1][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[1][1]}}"> {{swl4[1][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[1][2]}}"> {{swl4[1][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[1][3]}}"> {{swl4[1][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[1][4]}}"> {{swl4[1][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[1][5]}}"> {{swl4[1][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[1][6]}}"> {{swl4[1][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[1][7]}}"> {{swl4[1][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[1][8]}}"> {{swl4[1][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[1][9]}}"> {{swl4[1][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 403</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[2][0]}}"> {{swl4[2][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[2][1]}}"> {{swl4[2][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[2][2]}}"> {{swl4[2][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[2][3]}}"> {{swl4[2][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[2][4]}}"> {{swl4[2][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[2][5]}}"> {{swl4[2][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[2][6]}}"> {{swl4[2][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[2][7]}}"> {{swl4[2][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[2][8]}}"> {{swl4[2][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[2][9]}}"> {{swl4[2][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 404</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[3][0]}}"> {{swl4[3][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[3][1]}}"> {{swl4[3][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[3][2]}}"> {{swl4[3][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[3][3]}}"> {{swl4[3][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[3][4]}}"> {{swl4[3][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[3][5]}}"> {{swl4[3][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[3][6]}}"> {{swl4[3][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[3][7]}}"> {{swl4[3][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[3][8]}}"> {{swl4[3][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[3][9]}}"> {{swl4[3][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 405</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[4][0]}}"> {{swl4[4][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[4][1]}}"> {{swl4[4][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[4][2]}}"> {{swl4[4][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[4][3]}}"> {{swl4[4][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[4][4]}}"> {{swl4[4][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[4][5]}}"> {{swl4[4][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[4][6]}}"> {{swl4[4][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[4][7]}}"> {{swl4[4][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[4][8]}}"> {{swl4[4][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[4][9]}}"> {{swl4[4][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 406</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[5][0]}}"> {{swl4[5][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[5][1]}}"> {{swl4[5][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[5][2]}}"> {{swl4[5][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[5][3]}}"> {{swl4[5][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[5][4]}}"> {{swl4[5][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[5][5]}}"> {{swl4[5][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[5][6]}}"> {{swl4[5][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[5][7]}}"> {{swl4[5][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[5][8]}}"> {{swl4[5][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[5][9]}}"> {{swl4[5][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 407</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[6][0]}}"> {{swl4[6][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[6][1]}}"> {{swl4[6][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[6][2]}}"> {{swl4[6][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[6][3]}}"> {{swl4[6][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[6][4]}}"> {{swl4[6][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[6][5]}}"> {{swl4[6][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[6][6]}}"> {{swl4[6][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[6][7]}}"> {{swl4[6][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[6][8]}}"> {{swl4[6][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[6][9]}}"> {{swl4[6][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 408</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[7][0]}}"> {{swl4[7][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[7][1]}}"> {{swl4[7][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[7][2]}}"> {{swl4[7][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[7][3]}}"> {{swl4[7][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[7][4]}}"> {{swl4[7][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[7][5]}}"> {{swl4[7][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[7][6]}}"> {{swl4[7][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[7][7]}}"> {{swl4[7][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[7][8]}}"> {{swl4[7][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[7][9]}}"> {{swl4[7][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 409</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[8][0]}}"> {{swl4[8][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[8][1]}}"> {{swl4[8][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[8][2]}}"> {{swl4[8][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[8][3]}}"> {{swl4[8][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[8][4]}}"> {{swl4[8][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[8][5]}}"> {{swl4[8][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[8][6]}}"> {{swl4[8][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[8][7]}}"> {{swl4[8][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[8][8]}}"> {{swl4[8][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[8][9]}}"> {{swl4[8][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 410</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[9][0]}}"> {{swl4[9][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[9][1]}}"> {{swl4[9][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[9][2]}}"> {{swl4[9][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[9][3]}}"> {{swl4[9][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[9][4]}}"> {{swl4[9][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[9][5]}}"> {{swl4[9][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[9][6]}}"> {{swl4[9][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[9][7]}}"> {{swl4[9][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[9][8]}}"> {{swl4[9][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[9][9]}}"> {{swl4[9][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 411</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[10][0]}}"> {{swl4[10][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[10][1]}}"> {{swl4[10][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[10][2]}}"> {{swl4[10][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[10][3]}}"> {{swl4[10][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[10][4]}}"> {{swl4[10][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[10][5]}}"> {{swl4[10][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[10][6]}}"> {{swl4[10][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[10][7]}}"> {{swl4[10][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[10][8]}}"> {{swl4[10][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[10][9]}}"> {{swl4[10][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 412</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[11][0]}}"> {{swl4[11][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[11][1]}}"> {{swl4[11][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[11][2]}}"> {{swl4[11][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[11][3]}}"> {{swl4[11][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[11][4]}}"> {{swl4[11][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[11][5]}}"> {{swl4[11][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[11][6]}}"> {{swl4[11][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[11][7]}}"> {{swl4[11][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[11][8]}}"> {{swl4[11][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[11][9]}}"> {{swl4[11][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 413</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[12][0]}}"> {{swl4[12][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[12][1]}}"> {{swl4[12][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[12][2]}}"> {{swl4[12][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[12][3]}}"> {{swl4[12][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[12][4]}}"> {{swl4[12][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[12][5]}}"> {{swl4[12][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[12][6]}}"> {{swl4[12][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[12][7]}}"> {{swl4[12][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[12][8]}}"> {{swl4[12][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[12][9]}}"> {{swl4[12][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 414</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[13][0]}}"> {{swl4[13][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[13][1]}}"> {{swl4[13][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[13][2]}}"> {{swl4[13][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[13][3]}}"> {{swl4[13][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[13][4]}}"> {{swl4[13][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[13][5]}}"> {{swl4[13][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[13][6]}}"> {{swl4[13][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[13][7]}}"> {{swl4[13][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[13][8]}}"> {{swl4[13][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[13][9]}}"> {{swl4[13][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 415</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[14][0]}}"> {{swl4[14][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[14][1]}}"> {{swl4[14][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[14][2]}}"> {{swl4[14][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[14][3]}}"> {{swl4[14][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[14][4]}}"> {{swl4[14][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[14][5]}}"> {{swl4[14][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[14][6]}}"> {{swl4[14][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[14][7]}}"> {{swl4[14][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[14][8]}}"> {{swl4[14][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[14][9]}}"> {{swl4[14][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 416</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[15][0]}}"> {{swl4[15][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[15][1]}}"> {{swl4[15][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[15][2]}}"> {{swl4[15][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[15][3]}}"> {{swl4[15][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[15][4]}}"> {{swl4[15][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[15][5]}}"> {{swl4[15][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[15][6]}}"> {{swl4[15][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[15][7]}}"> {{swl4[15][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[15][8]}}"> {{swl4[15][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[15][9]}}"> {{swl4[15][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 417</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[16][0]}}"> {{swl4[16][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[16][1]}}"> {{swl4[16][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[16][2]}}"> {{swl4[16][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[16][3]}}"> {{swl4[16][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[16][4]}}"> {{swl4[16][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[16][5]}}"> {{swl4[16][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[16][6]}}"> {{swl4[16][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[16][7]}}"> {{swl4[16][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[16][8]}}"> {{swl4[16][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[16][9]}}"> {{swl4[16][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 418</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[17][0]}}"> {{swl4[17][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[17][1]}}"> {{swl4[17][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[17][2]}}"> {{swl4[17][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[17][3]}}"> {{swl4[17][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[17][4]}}"> {{swl4[17][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[17][5]}}"> {{swl4[17][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[17][6]}}"> {{swl4[17][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[17][7]}}"> {{swl4[17][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[17][8]}}"> {{swl4[17][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[17][9]}}"> {{swl4[17][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 419</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[18][0]}}"> {{swl4[18][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[18][1]}}"> {{swl4[18][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[18][2]}}"> {{swl4[18][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[18][3]}}"> {{swl4[18][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[18][4]}}"> {{swl4[18][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[18][5]}}"> {{swl4[18][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[18][6]}}"> {{swl4[18][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[18][7]}}"> {{swl4[18][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[18][8]}}"> {{swl4[18][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[18][9]}}"> {{swl4[18][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 420</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[19][0]}}"> {{swl4[19][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[19][1]}}"> {{swl4[19][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[19][2]}}"> {{swl4[19][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[19][3]}}"> {{swl4[19][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[19][4]}}"> {{swl4[19][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[19][5]}}"> {{swl4[19][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[19][6]}}"> {{swl4[19][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[19][7]}}"> {{swl4[19][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[19][8]}}"> {{swl4[19][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[19][9]}}"> {{swl4[19][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 421</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[20][0]}}"> {{swl4[20][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[20][1]}}"> {{swl4[20][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[20][2]}}"> {{swl4[20][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[20][3]}}"> {{swl4[20][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[20][4]}}"> {{swl4[20][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[20][5]}}"> {{swl4[20][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[20][6]}}"> {{swl4[20][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[20][7]}}"> {{swl4[20][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[20][8]}}"> {{swl4[20][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[20][9]}}"> {{swl4[20][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 422</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[21][0]}}"> {{swl4[21][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[21][1]}}"> {{swl4[21][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[21][2]}}"> {{swl4[21][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[21][3]}}"> {{swl4[21][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[21][4]}}"> {{swl4[21][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[21][5]}}"> {{swl4[21][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[21][6]}}"> {{swl4[21][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[21][7]}}"> {{swl4[21][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[21][8]}}"> {{swl4[21][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[21][9]}}"> {{swl4[21][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 423</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[22][0]}}"> {{swl4[22][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[22][1]}}"> {{swl4[22][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[22][2]}}"> {{swl4[22][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[22][3]}}"> {{swl4[22][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[22][4]}}"> {{swl4[22][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[22][5]}}"> {{swl4[22][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[22][6]}}"> {{swl4[22][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[22][7]}}"> {{swl4[22][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[22][8]}}"> {{swl4[22][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[22][9]}}"> {{swl4[22][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                    <h6><section>
+                                        <ol class="progress-bar1">
+                                            <li class="is-active1"
+                                                style="color:black; font-size:14px;"><span class="mdi mdi-subway icon-sm"> TS 424</span></li>
+                                            </li>
+                                            <li class="is-active1"><span>TCMS</span>
+                                                <div class="{{swsl4[23][0]}}"> {{swl4[23][0]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>PAPIS</span>
+                                                <div class="{{swsl4[23][1]}}"> {{swl4[23][1]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>OBCN</span>
+                                                <div class="{{swsl4[23][2]}}"> {{swl4[23][2]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>EVR</span>
+                                                <div class="{{swsl4[23][3]}}"> {{swl4[23][3]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>CVS</span>
+                                                <div class="{{swsl4[23][4]}}"> {{swl4[23][4]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Traction</span>
+                                                <div class="{{swsl4[23][5]}}"> {{swl4[23][5]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>Brake</span>
+                                                <div class="{{swsl4[23][6]}}"> {{swl4[23][6]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>DOOR</span>
+                                                <div class="{{swsl4[23][7]}}"> {{swl4[23][7]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>HVAC</span>
+                                                <div class="{{swsl4[23][8]}}"> {{swl4[23][8]}}</div>
+                                            </li>
+                                            <li class="is-active1"><span>ATC</span>
+                                                <div class="{{swsl4[23][9]}}"> {{swl4[23][9]}}</div>
+                                            </li>
+
+                                            <li class="is-active1"></li>
+                                        </ol>
+                                    </section></h6>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="card text-center">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <h4 class="card-title">Train Hardware Configuration</h4>
+                                <p class="card-description">Click on the button to open specific Train configuration
+                                    file</p>
+                                <div class="template-demo">
+<!--                                    <button type="button" class="btn btn-outline-warning btn-fw">TS 401</button>-->
+                                    <a href="/getfile/401_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 401 </a>
+                                    <a href="/getfile/402_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 402 </a>
+                                    <a href="/getfile/403_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 403 </a>
+                                    <a href="/getfile/404_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 404 </a>
+                                    <a href="/getfile/405_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 405 </a>
+                                    <a href="/getfile/406_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 406 </a>
+                                    <a href="/getfile/407_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 407 </a>
+                                    <a href="/getfile/408_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 408 </a>
+                                    <a href="/getfile/409_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 409 </a>
+                                    <a href="/getfile/410_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 410 </a>
+                                    <a href="/getfile/411_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 411 </a>
+                                    <a href="/getfile/412_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 412 </a>
+                                    <a href="/getfile/413_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 413 </a>
+                                    <a href="/getfile/414_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 414 </a>
+                                    <a href="/getfile/415_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 415 </a>
+                                    <a href="/getfile/416_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 416 </a>
+                                    <a href="/getfile/417_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 417 </a>
+                                    <a href="/getfile/418_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 418 </a>
+                                    <a href="/getfile/419_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 419 </a>
+                                    <a href="/getfile/420_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 420 </a>
+                                    <a href="/getfile/421_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 421 </a>
+                                    <a href="/getfile/422_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 422 </a>
+                                    <a href="/getfile/423_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 423 </a>
+                                    <a href="/getfile/424_Configuration.xlsx" target="_blank" class="btn btn-outline-warning btn-fw">TS 424 </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="footer-wrap">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+                    </div>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+
+
+    <!-- base:js -->
+    <script src="../static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+    <!-- plugin js for this page -->
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+<!--        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>-->
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+    $('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 2000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now).toLocaleString('en'));
+        }
+    });
+});
+</script>
+
+<script>
+
+    $(function() {
+  /* Rounded Dots Dark */
+  $("#content-1").mCustomScrollbar({
+    theme: "rounded-dots-dark"
+  });
+
+  /* Rounded Dark */
+  $("#content-2").mCustomScrollbar({
+    theme: "rounded-dark"
+  });
+
+  /* Inset Dark */
+  $("#content-3").mCustomScrollbar({
+    theme: "inset-3-dark"
+  });
+
+  /* 3d Dark */
+  $("#content-4").mCustomScrollbar({
+    theme: "3d-dark"
+  });
+
+  /* Dark Thin */
+  $("#content-5").mCustomScrollbar({
+    theme: "dark-thin"
+  });
+});
+
+</script>
+
+<script>
+        gs_labelsFix = ["401", "402", "403","404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414",
+                "415", "416", "417", "418", "419", "420", "421", "422", "423", "424"];
+        gs_labels = {{tmid|safe}};
+        gs_data = {{tml4|safe}};
+        gs_data2 = {{pol4|safe}};
+    	var ctx = document.getElementById('AllTrainMileage').getContext('2d');
+
+        ctx.canvas.width = 1100;
+        ctx.canvas.height = 160;
+
+        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+        var gradientStroke2 = ctx.createLinearGradient(0, 230, 0, 50);
+
+        gradientStroke.addColorStop(0.8, 'rgba(242, 253, 3,1)');
+        //gradientStroke.addColorStop(0.1, 'rgba(0,153,0,0.0)');
+        gradientStroke.addColorStop(0.1, 'rgba(51,0,102,1)');
+
+<!--        gradientStroke2.addColorStop(0.8, 'rgba(0, 193, 255,0)'); //blue colors-->
+        gradientStroke2.addColorStop(0.8, 'rgba(2, 141, 185,1)');
+        gradientStroke2.addColorStop(0.1, 'rgba(51,0,102,1)');
+
+
+		var config = {
+			type: 'bar',
+			data: {
+				labels: gs_labels,
+            datasets: [{
+				label: 'Mileage',
+				data: gs_data,
+				fill: false,
+          backgroundColor: gradientStroke,
+          //hoverBackgroundColor: gradientStroke,
+          borderColor: 'rgba(0,102,0,0.3)',
+          borderWidth: 1,
+          borderDash: [],
+          borderDashOffset: 0.0,
+			},
+<!--						{-->
+<!--					label: 'Done',-->
+<!--					data: gs_data2,-->
+<!--					//data: [98, 14, 14, 0, 80, 17, 10, 69, 36, 69],-->
+<!--                    backgroundColor: 'rgba(0,255,153,0.6)', //Aqua-->
+<!--                    //borderColor: 'rgba(0,255,153,1)',-->
+<!--					//borderWidth: 1,-->
+<!--					fill: false-->
+<!--			},-->
+
+
+			{
+		  label: "Not Ok",
+          type: "scatter",
+          fill: true,
+          pointRadius: 5,
+          showLine: false,
+		  backgroundColor: "rgba(204,0,51,1)",
+		  data: [{% for i in tsl4nok %} {{ i }}, {% endfor %}],
+<!--	      data: [, 0, 0, , , , , , , , , ,0, , , , , , ,0, , , ],-->
+          xAxisID: 'x-axis-1'
+	    },
+
+        {
+		  label: "Partial Ok",
+          type: "scatter",
+          fill: true,
+          pointRadius: 4,
+          showLine: false,
+		  backgroundColor: "rgba(255,153,0,1)",
+		  data: [{% for i in tsl4pok %} {{ i }}, {% endfor %}],
+<!--	      data: [ , , , , , 0, 0, 0, , , , , , , , , , , , , 0, 0, ],-->
+          xAxisID: 'x-axis-1',
+	    },
+
+	    {
+		  label: "Ok",
+          type: "scatter",
+          fill: true,
+          pointRadius: 4,
+          showLine: false,
+		  backgroundColor: "rgba(0,204,0,0.9)",
+		  data: [{% for i in tsl4ok %} {{ i }}, {% endfor %}],
+<!--	      data: [ 0, , , 0, 0, , , , 0, 0, 0, 0, , 0, 0, 0, 0, 0, 0, , , , ],-->
+          xAxisID: 'x-axis-1',
+	    },
+
+			]
+		},
+			options: {
+		responsive: true,
+		maintainAspectRatio: false,
+
+		    animation: {
+              duration : 2500,
+            },
+
+			legend: {
+				display: false
+			},
+
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+
+			plugins: {
+				datalabels: {
+				             display: function(context) {
+							return context.dataset.data[context.dataIndex] > 500;
+						},
+
+				    font: {
+                        size: 10,
+                        weight: "normal"
+                           },
+					//color: "#91F9F2",
+					 color: function(ctx) {
+					        if (ctx.dataset.label=="Mileage") {
+					        return "black";
+					        }
+					        else{
+					        return "#91F9F2";
+					        }
+					        //if ctx.dataset.borderColor
+                            // use the same color as the border label: 'Mileage'
+                            //return ctx.dataset.borderColor
+                       },
+
+
+
+					align: 'center',
+					anchor: 'center'
+				},
+			},
+
+            			scales: {
+				xAxes: [{
+				    id: 'x-axis-1',
+				    //stacked: true,
+				    barPercentage: 0.6,
+                    //categoryPercentage: 1,
+                    barThickness : 35,
+				    //barPercentage: 0.6,
+				    position: 'bottom',
+				    display: true,
+				gridLines: {
+					display: false,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					fontSize: 11
+				}
+				}],
+				yAxes: [{
+					//stacked: true,
+					display: false,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+
+			}
+
+		};
+
+    var gsChartData = new Chart(ctx, config);
+
+    $("#rdo-1").click(function() {
+      var gs_data = {{tml4|safe}};
+
+      var data = gsChartData.config.data;
+
+      data.datasets[0].data = gs_data;
+
+      //data.datasets[0].backgroundColor= 'rgba(255,255,0,0.7)',
+      data.datasets[0].backgroundColor= gradientStroke,
+      //data.datasets[0].backgroundColor= (0.8, 'rgba(3, 231, 57,1)'),
+      data.datasets[0].label= 'Mileage',
+
+
+      data.labels = gs_labels;
+      gsChartData.update();
+    });
+    $("#rdo-2").click(function() {
+      var gs_data = {{pol4|safe}};
+
+      var data = gsChartData.config.data;
+      data.datasets[0].data = gs_data;
+
+      //data.datasets[0].backgroundColor= 'rgba(0,153,0,0.5)',
+      data.datasets[0].backgroundColor= gradientStroke2,
+      //data.datasets[0].backgroundColor= (0.8, 'rgba(0, 115, 183,1)'),
+      data.datasets[0].label= 'Power-On',
+
+      //data.labels = gs_labelsFix;
+      data.labels = gs_labels;
+      gsChartData.update();
+    });
+
+</script>
+
+
+<!--</body>-->
+<!--</html>-->
+{% endblock %}

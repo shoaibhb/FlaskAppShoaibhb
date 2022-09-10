@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Alstom T&C Dashboard &mdash;</title>
+
+    <link rel="stylesheet" href="../static/css/new-gcard.css">
+  <link rel="stylesheet" href="../static/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../static/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+  <link rel="stylesheet" href="../static/modules/summernote/summernote-lite.css">
+  <link rel="stylesheet" href="../static/modules/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="../static/css/demo.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/atlantis.min.css">
+
+<script src="../static/js/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+</head>
+
+<body>
+
+<div id="app">
+    <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+
+        <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="ion ion-search"></i></a></li>
+          </ul>
+</form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"></a></li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown">
+            <div class="d-sm-none"> &nbsp;</div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right"> <a href="profile.html" class="dropdown-item has-icon"> <i class="ion ion-android-person"></i> Profile </a> <a href="#" class="dropdown-item has-icon"> <i class="ion ion-log-out"></i> Logout </a> </div>
+          </li>
+        </ul>
+      </nav>
+
+        <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+          <a href="#"><img src="../static/img/alstom.jpg" width="134" height="27" alt=""/></a>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-user-picture">
+              <img alt="image" src="../static/img/avatar/avatar-1.jpg">
+            </div>
+            <div class="sidebar-user-details">
+              <div class="user-name">{{name}}</div>
+              <div class="user-role">{{email}}</div>
+            </div>
+          </div>
+          <ul class="sidebar-menu">
+            <li class="menu-header">Dashboards</li>
+            <li class="active">
+              <a href="/dashboard01"><i class="ion ion-stats-bars"></i><span>System TR & TP</span></a>
+            </li>
+            <li><a href="/dashboard02"><i class="ion ion-speedometer"></i><span>TSY Anomaly Status</span></a>
+            <li><a href="/dashboardLines"><i class="fas fa-chart-line"></i></i><span>T&C Activity Progress</span></a>
+                        <ul class="menu-dropdown">
+                            <li style="margin=30px;"><a href="/dashboardLine4"><i class="fas fa-subway"></i>Line 4</a></li>
+                            <li><a href="/dashboardLine5"><i class="fas fa-subway"></i></i>Line 5</a></li>
+                            <li><a href="/dashboardLine6"><i class="fas fa-subway"></i></i>Line 6</a></li>
+                        </ul>
+
+            <li class="menu-header">Data</li>
+            <li>
+              <a href="/reports"><i class="ion ion-ios-copy-outline"></i><span>T&C Reports</span></a>
+            </li>
+            <li>
+              <a href="#"><i class="ion ion-ios-information-outline"></i><span>Notification</span></a>
+            </li>
+			<li class="text-danger">
+              <a href="/logout"><i class="ion ion-log-out"></i><span>Logout</span></a>
+            </li>
+       </ul>
+
+        </aside>
+      </div>
+
+        <div class="main-content">
+            <section class="section">
+
+                <h1 class="section-header">
+            <div> TSY T&C Test Procedures and Reports <small class="text-muted"> Last Updated On: {{dataDT}}</small></div>
+
+                </h1>
+
+
+ <!-- Start of Content-->
+<!--                    <h5 class="m-b-20 fw-bold">Test Report Progress </h5>-->
+<!--                    <p></p>-->
+                    <div class="row mt--2">
+
+<!-- Start Non-PTR Progress -->
+
+             <div class="col-sm-12">
+                            <div class="card bg-g-lightgrey2">
+                                <div class="card-body">
+                                    <h6 class="m-b-20 fw-bold">Test Report Progress</h6>
+
+
+                                    <div class="row py-1">
+
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-1">
+                                            <div class="px-0 pb-1 pb-sm text-center">
+
+<!--                                                 <div id="TRProgressChart" style="margin:5px; height:100px; width:160px; position:relative; top: 16px; left: 5px;"></div>-->
+                                                <canvas id="TRProgressChart" width="1100" height="160"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+     </div>
+
+					<div class="row mt--2">
+ <!-- Start 1st Chart TP-->
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-title">Test Procedure Statistics</div>
+									<div class="row py-1">
+										<div class="col-md-4 d-flex flex-column justify-content-around col-lg-3">
+											<div>
+                                                <h6 class="fw-bold text-uppercase text-info op-7">Planned</h6>
+                                                <h3 class="fw-bold">{{f_data1[0]}}</h3>
+                                            </div>
+											<div>
+                                                <h6 class="fw-bold text-uppercase text-warning op-7">Actual</h6>
+												<h3 class="fw-bold">{{f_data1[1]}}</h3>
+											</div>
+										</div>
+									<div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-4">
+                                          <div class="px-0 pb-1 pb-sm text-center">
+
+<!--                                            <div id="circles-1"></div>-->
+                                            <div id="containerTP" style="margin:-1px; height:100px; width:100px; position:relative;"></div>
+                                              <p></p>
+                                        <h6 class="fw-bold mt-0 mb-0">Completion</h6>
+                                          </div>
+                                        </div>
+                                      <div class="col-md-4 col-lg-4 offset-lg-0">
+												<canvas id="myChartA1" width="185" height="160"></canvas>
+                                      </div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+ <!-- Start 2nd Chart TP-->
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-title">Test Reports Statistics</div>
+									<div class="row py-1">
+										<div class="col-md-4 d-flex flex-column justify-content-around col-lg-3">
+											<div>
+                                                <h6 class="fw-bold text-uppercase text-info op-7">Planned</h6>
+												<h3 class="fw-bold">{{f_data2[0]}}</h3>
+											</div>
+											<div>
+                                                <h6 class="fw-bold text-uppercase text-warning op-7">Actual</h6>
+												<h3 class="fw-bold">{{f_data2[1]}}</h3>
+
+
+											</div>
+										</div>
+
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-4">
+                                          <div class="px-0 pb-1 pb-sm text-center">
+
+                                             <div id="containerTR" style="margin:-1px; height:100px; width:100px; position:relative;"></div>
+                                              <p></p>
+                                        <h6 class="fw-bold mt-0 mb-0">Completion</h6>
+                                          </div>
+                                        </div>
+                                      <div class="col-md-4 col-lg-4 offset-lg-0">
+												<canvas id="myChartA2" width="185" height="160"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+                        <div class="col-md-4">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-title">Test Witness Statistics</div>
+									<div class="row py-1">
+										<div class="col-md-4 d-flex flex-column justify-content-around col-lg-3">
+											<div>
+												<h6 class="fw-bold text-uppercase text-info op-7">TWP</h6>
+												<h3 class="fw-bold">43</h3>
+											</div>
+											<div>
+                                                <h6 class="fw-bold text-uppercase text-success op-7">Signed Off</h6>
+												<h3 class="fw-bold">43</h3>
+											</div>
+										</div>
+									<div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-4">
+										<div class="px-2 pb-1 pb-md text-center">
+                                             <div id="containerTW" style="margin:-1px; height:100px; width:100px; position:relative;"></div>
+                                              <p></p>
+											<h6 class="fw-bold mt-0 mb-0">Completion</h6>
+										</div>
+
+                                    </div>
+                                      <div class="col-md-4 col-lg-4 offset-lg-0">
+												<canvas id="myChartA3" width="165" height="160"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+                    </div>
+
+                    <div class="row mt--2">
+ <!-- Start Sub-system Test Procedure -->
+					<div class="col-md-6">
+							<div class="card bg-g-lightgrey">
+								<div class="card-body">
+									<div class="card-title">Test Procedure Completion by Sub-System</div>
+									<div class="row py-3">
+
+                                      <div class="col-md-10 offset-lg-1">
+												<canvas id="myChartB2"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+ <!-- Start Bar Chart Sub-system -->
+                    <div class="col-md-6">
+							<div class="card bg-g-lightgrey">
+								<div class="card-body">
+									<div class="card-title">Test Reports Completion by Sub-System</div>
+									<div class="row py-3">
+
+                                      <div class="col-md-10 offset-lg-1">
+												<canvas id="myChartB1"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+<!-- Start Tables -->
+					<div class="row">
+
+					<div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Sub-System Status Detail (Test Procedures)</div>
+                  </div>
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-striped table-hover table-head-bg-success">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th></th>
+                    <th>Planned</th>
+                    <th>Actual</th>
+                    <th>Code-A</th>
+                    <th>%</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">RST</th>
+                    <td>{{(data1[0][1])|int}}</td>
+                    <td>{{(data1[0][2])|int}}</td>
+                    <td>{{(data1[0][3])|int}}</td>
+                    <td>{{(data1[0][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SLV</th>
+                    <td>{{(data1[1][1])|int}}</td>
+                    <td>{{(data1[1][2])|int}}</td>
+                    <td>{{(data1[1][3])|int}}</td>
+                    <td>{{(data1[1][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DEQ</th>
+                    <td>{{(data1[2][1])|int}}</td>
+                    <td>{{(data1[2][2])|int}}</td>
+                    <td>{{(data1[2][3])|int}}</td>
+                    <td>{{(data1[2][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">POS</th>
+                    <td>{{(data1[3][1])|int}}</td>
+                    <td>{{(data1[3][2])|int}}</td>
+                    <td>{{(data1[3][3])|int}}</td>
+                    <td>{{(data1[3][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SYS</th>
+                    <td>{{(data1[4][1])|int}}</td>
+                    <td>{{(data1[4][2])|int}}</td>
+                    <td>{{(data1[4][3])|int}}</td>
+                    <td>{{(data1[4][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">PSD</th>
+                    <td>{{(data1[5][1])|int}}</td>
+                    <td>{{(data1[5][2])|int}}</td>
+                    <td>{{(data1[5][3])|int}}</td>
+                    <td>{{(data1[5][5]*100)|round(1)}}</td>
+                  </tr>
+
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+
+                    <div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Sub-System Status Detail (Test Reports)</div>
+                  </div>
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-striped table-hover table-head-bg-success">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th></th>
+                    <th>Planned</th>
+                    <th>Actual</th>
+                    <th>Code-A</th>
+                    <th>%</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">RST</th>
+                    <td>{{(data2[0][1])|int}}</td>
+                    <td>{{(data2[0][2])|int}}</td>
+                    <td>{{(data2[0][3])|int}}</td>
+                    <td>{{(data2[0][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SLV</th>
+                    <td>{{(data2[1][1])|int}}</td>
+                    <td>{{(data2[1][2])|int}}</td>
+                    <td>{{(data2[1][3])|int}}</td>
+                    <td>{{(data2[1][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DEQ</th>
+                    <td>{{(data2[2][1])|int}}</td>
+                    <td>{{(data2[2][2])|int}}</td>
+                    <td>{{(data2[2][3])|int}}</td>
+                    <td>{{(data2[2][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">POS</th>
+                    <td>{{(data2[3][1])|int}}</td>
+                    <td>{{(data2[3][2])|int}}</td>
+                    <td>{{(data2[3][3])|int}}</td>
+                    <td>{{(data2[3][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SYS</th>
+                    <td>{{(data2[4][1])|int}}</td>
+                    <td>{{(data2[4][2])|int}}</td>
+                    <td>{{(data2[4][3])|int}}</td>
+                    <td>{{(data2[4][5]*100)|round(1)}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">PSD</th>
+                    <td>{{(data2[5][1])|int}}</td>
+                    <td>{{(data2[5][2])|int}}</td>
+                    <td>{{(data2[5][3])|int}}</td>
+                    <td>{{(data2[5][5]*100)|round(1)}}</td>
+                  </tr>
+
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+        </div>
+
+					</div>
+
+<!-- End of Tables -->
+
+
+<!-- Start Feed Activity -->
+
+<!-- Start Table -->
+
+
+            </section>
+        </div>
+
+             <footer class="main-footer">
+        <div class="footer-left">
+          <div class="bullet"></div>Developed By RAO Kamran (Riyadh Metro System T&amp;C)</a>
+        </div>
+        <div class="footer-right"></div>
+      </footer>
+
+    </div>
+</div>
+
+  <script src="../static/modules/jquery.min.js"></script>
+  <script src="../static/modules/popper.js"></script>
+  <script src="../static/modules/tooltip.js"></script>
+  <script src="../static/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="../static/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+  <script src="../static/modules/chart.min.js"></script>
+  <script src="../static/modules/chartjs-plugin-datalabels.min.js"></script>
+
+  <script src="../static/modules/summernote/summernote-lite.js"></script>
+
+  <script src="../static/js/sa-functions.js"></script>
+<!--  <script src="../static/js/circles.min.js"></script>-->
+  <script src="../static/js/progressbar.js"></script>
+<script src="../static/js/chartjs-plugin-deferred.min.js"></script>
+
+
+
+    <script>
+
+var bar = new ProgressBar.Circle(containerTP, {
+  color: '#aaa',
+  // This has to be the same size as the maximum width to
+  // prevent clipping
+  strokeWidth: 6,
+  trailWidth: 1,
+  easing: 'easeInOut',
+  duration: 2000,
+  text: {
+    autoStyleContainer: false
+  },
+  from: { color: '#990033', width: 1 },
+  to: { color: '#009966', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = Math.round(circle.value() * 100)+ '%';
+    if (value === 0) {
+      circle.setText('');
+    } else {
+      circle.setText(value);
+
+    }
+
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.5rem';
+
+bar.animate({{f_data1[1]/f_data1[0]}});
+
+
+<!--********TR Circle*************-->
+<!--************************************-->
+
+var bar = new ProgressBar.Circle(containerTR, {
+  color: '#aaa',
+  // This has to be the same size as the maximum width to
+  // prevent clipping
+  strokeWidth: 6,
+  trailWidth: 1,
+  easing: 'easeInOut',
+  duration: 2000,
+  text: {
+    autoStyleContainer: false
+  },
+  from: { color: '#FF0033', width: 5 },
+  to: { color: '#009966', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = Math.round(circle.value() * 100)+ '%';
+    if (value === 0) {
+      circle.setText('');
+    } else {
+      circle.setText(value);
+
+    }
+
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.5rem';
+
+bar.animate({{f_data2[1]/f_data2[0]}});
+
+
+<!--********Test Witness*************-->
+<!--************************************-->
+
+var bar = new ProgressBar.Circle(containerTW, {
+  color: '#aaa',
+  // This has to be the same size as the maximum width to
+  // prevent clipping
+  strokeWidth: 6,
+  trailWidth: 1,
+  easing: 'easeInOut',
+  duration: 2000,
+  text: {
+    autoStyleContainer: false
+  },
+  from: { color: '#FF0033', width: 1 },
+  to: { color: '#009966', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = Math.round(circle.value() * 100)+ '%';
+    if (value === 0) {
+      circle.setText('');
+    } else {
+      circle.setText(value);
+
+    }
+
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.5rem';
+
+bar.animate(1.0);
+
+</script>
+
+    <script>
+
+  <!-- Charts -->
+
+Chart.defaults.global.plugins.datalabels.anchor = 'end';
+Chart.defaults.global.plugins.datalabels.align = 'bottom';
+
+
+    // ***Test Procedure Chart
+    var ctx = document.getElementById("myChartA1").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Planned", "Actual","Code A"],
+        datasets: [{
+          label: '',
+          data: [{{f_data1[0]}}, {{f_data1[1]}}, {{f_data1[2]}}],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255,204,0,0.6)',
+            'rgba(75, 160, 44, 0.7)',
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 160, 44, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+
+
+
+    //***Test Report Chart
+    var ctx = document.getElementById("myChartA2").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Planned", "Actual", "Code A"],
+        datasets: [{
+          label: '',
+          data: [{{f_data2[0]}}, {{f_data2[1]}}, {{f_data2[2]}}],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255,204,0,0.6)',
+            'rgba(75, 160, 44, 0.7)',
+
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 160, 44, 1)',
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+        }]
+      },
+      options: {
+      responsive: false,
+      maintainAspectRatio: false,
+
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true,
+            },
+            gridLines: {
+              display: false,
+            }
+          }]
+        },
+            animation: {
+              duration : 3000,
+            }
+
+      }
+    });
+
+
+
+
+    //*******************
+    //***Test Witness Plan
+    //*******************
+    var ctx = document.getElementById("myChartA3").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["TWP", "Signed Off"],
+        datasets: [{
+          label: 'TWP',
+          data: [43, 43],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(75, 160, 44, 0.7)',
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(75, 160, 44, 1)',
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+        }]
+      },
+      options: {
+      responsive: false,
+      maintainAspectRatio: false,
+
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+            animation: {
+              duration : 3000,
+            }
+      }
+    });
+
+ //**** Test Report at Sub-System Level
+    // Line
+    var ctx = document.getElementById("myChartB1").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["RST", "SLV", "DEQ", "POS", "SYS", "PSD"],
+        datasets: [{
+          label: 'Actual ',
+          data: {{f_data2[3]}},
+          backgroundColor: [
+            'rgba(102,255,255,0.6)',
+            'rgba(102,255,255,0.6)',
+            'rgba(102,255,255,0.6)',
+            'rgba(102,255,255,0.6)',
+            'rgba(102,255,255,0.6)',
+            'rgba(102,255,255,0.6)'
+          ],
+          borderColor: [
+            'rgba(75, 192, 192, 0.9)',
+            'rgba(75, 192, 192, 0.9)',
+            'rgba(75, 192, 192, 0.9)',
+            'rgba(75, 192, 192, 0.9)',
+            'rgba(75, 192, 192, 0.9)',
+            'rgba(75, 192, 192, 0.9)'
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+        },
+
+        {
+          label: 'Code A ',
+          data: {{f_data2[4]}},
+          backgroundColor: [
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)'
+          ],
+          borderColor: [
+            'rgba(75, 160, 44,0.8)',
+            'rgba(75, 160, 44, 0.9)',
+            'rgba(75, 160, 44, 0.9)',
+            'rgba(75, 160, 44, 0.9)',
+            'rgba(75, 160, 44, 0.7)',
+            'rgba(75, 160, 44, 0.5)'
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+        }
+        ]
+
+      },
+
+      options: {
+        legend: {
+          position: 'bottom',
+        },
+
+     plugins: {
+         datalabels: {
+             formatter: function (value, ctx) {
+                 let percentage = value + "%";
+                 return percentage;
+             },
+             font: {
+                 size: 9,
+                 weight: "normal"
+             },
+             color: "#2f4f4f"
+         }
+     },
+
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              //stepSize: 150
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+
+             animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+//**** Test Procedure at Sub-System Level
+    // Line
+    var ctx = document.getElementById("myChartB2").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["RST", "SLV", "DEQ", "POS", "SYS", "PSD"],
+        datasets: [{
+          label: 'Actual ',
+          data: {{f_data1[3]}},
+          backgroundColor: [
+            'rgba(153,255,204,0.7)',
+            'rgba(153,255,204,0.7)',
+            'rgba(153,255,204,0.7)',
+            'rgba(153,255,204,0.7)',
+            'rgba(153,255,204,0.7)',
+            'rgba(153,255,204,0.7)'
+          ],
+          borderColor: [
+            'rgba(0,102,0,0.3)',
+            'rgba(0,102,0,0.3)',
+            'rgba(0,102,0,0.3)',
+            'rgba(0,102,0,0.3)',
+            'rgba(0,102,0,0.3)',
+            'rgba(0,102,0,0.3)'
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+                },
+
+        {
+          label: 'Code-A ',
+          data: {{f_data1[4]}},
+          backgroundColor: [
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)',
+            'rgba(75, 160, 44, 0.6)'
+          ],
+          borderColor: [
+            'rgba(75, 160, 44,0.8)',
+            'rgba(75, 160, 44, 0.9)',
+            'rgba(75, 160, 44, 0.9)',
+            'rgba(75, 160, 44, 0.9)',
+            'rgba(75, 160, 44, 0.7)',
+            'rgba(75, 160, 44, 0.5)'
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+        }
+        ]
+      },
+      options: {
+        legend: {
+//          display: false
+          position: 'bottom',
+        },
+
+             plugins: {
+         datalabels: {
+             formatter: function (value, ctx) {
+                 let percentage = value + "%";
+                 return percentage;
+             },
+             font: {
+                 size: 9,
+                 weight: "normal"
+             },
+             color: "#2f4f4f"
+         }
+     },
+
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              //stepSize: 150
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+
+           animation: {
+             duration : 3000,
+            }
+      }
+    });
+
+
+
+
+  </script>
+
+<script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+<script>
+
+  demo = {
+
+  initDashboardPageCharts: function() {
+
+    chartColor = "#000000";
+
+    var ctx = document.getElementById('TRProgressChart').getContext("2d");
+
+    var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(0,0,0,0.1)');
+    gradientStroke.addColorStop(0.1, 'rgba(0,0,0,0.1)'); //yellow colors
+    gradientStroke.addColorStop(0, 'rgba(255,255,0,0.2)');
+
+    var months= {{trMonth|safe}}
+    var progress_data ={{trMonth_data|safe}}
+
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: months,
+        //labels: ["FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG"],
+        datasets: [{
+          label: "Data",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#1e3d60",
+          pointHoverBackgroundColor: "#1e3d60",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderWidth: 3,
+          //data: [0, 31.3, 32.6, 37.3, 38.6, 26.8,27.2]
+          data: progress_data
+        }]
+      },
+      options: {
+        layout: {
+          padding: {
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom: 0
+          }
+        },
+        maintainAspectRatio: false,
+        tooltips: {
+            backgroundColor: '#f5f5f5',
+            titleFontColor: '#333',
+             bodyFontColor: '#666',
+          bodySpacing: 4,
+          xPadding: 12,
+          mode: "nearest",
+          intersect: 0,
+          position: "nearest"
+        },
+        legend: {
+          position: "bottom",
+          fillStyle: "#FFF",
+          display: false
+        },
+
+                plugins: {
+         datalabels: {
+             formatter: function (value, ctx) {
+                 let percentage = value + "%";
+                 return percentage;
+             },
+             font: {
+                 size: 11,
+                 weight: "normal"
+             },
+             color: "#000000"
+         }
+     },
+
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+              suggestedMax: 100,
+              //fontColor: "rgba(255,255,255,0.4)",
+              fontColor: "rgba(0,0,0,0.5)",
+              fontStyle: "normal",
+              beginAtZero: true,
+              maxTicksLimit: 5,
+              padding: 20
+            },
+            gridLines: {
+            drawBorder: false,
+            color: 'rgba(29,140,248,0.0)',
+            zeroLineColor: "transparent",
+            }
+
+          }],
+          xAxes: [{
+            barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(225,78,202,0.1)',
+            zeroLineColor: "transparent",
+          },
+            ticks: {
+              padding: 10,
+              //fontColor: "#9a9a9a",
+              fontColor: "rgba(0,0,0,0.9)",
+              fontStyle: "normal"
+            }
+          }]
+        }
+      }
+    });
+  },
+
+
+};
+
+</script>
+
+    <script src="../static/js/scripts.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <script src="../static/js/demo.js"></script>
+
+
+</body>
+
+</html>

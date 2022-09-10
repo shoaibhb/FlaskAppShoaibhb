@@ -1,0 +1,5433 @@
+{% extends 'pages/nav.html' %}
+{% block siripye %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+
+      <style>
+      .animate__animated.animate__backInRight {
+        --animate-duration: 3s;
+        }
+      .animate__animated.animate__flipInX {
+        --animate-duration: 5s;
+        }
+      .animate__animated.animate__fadeInDown {
+        --animate-duration: 2s;
+        }
+
+      </style>
+
+      <style>
+
+//#tblheadl4 thead tr:nth-child(1) th{
+//   background: #F9FD83;
+//   position: sticky;
+//   top: 0;
+//   z-index: 10;
+//}
+
+
+.thead-yellow tr:nth-child(1) th{
+   background: #F9FD83;
+   font-weight: bold;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+   }
+
+
+.thead-green tr:nth-child(1) th{
+   background: #D1FFD1;
+   font-weight: bold;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+   }
+
+
+.thead-purple tr:nth-child(1) th{
+   background: #F5C8FF;
+   font-weight: bold;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+   }
+
+      //.table-responsive{
+       //height:300px;
+       //overflow:scroll;
+       //}
+
+//thead tr:nth-child(1) th{
+//    background: #fafac3;
+//    position: sticky;
+//    top: 0;
+//   z-index: 10;
+//  }
+
+
+      </style>
+
+      <style>
+          body,html {
+    height: 100%;
+}
+
+/* when not active use specificity to override the !important on border-(color) */
+.nav-tabs .nav-link:not(.active) {
+    border-color: transparent !important;
+}
+      </style>
+
+      <style>
+
+        .custom-scrollbar-js,
+.custom-scrollbar-css {
+  height: 400px;
+}
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+  overflow-y: scroll;
+}
+
+/* scrollbar width */
+.custom-scrollbar-css::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-css::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #00d2ff;
+  background-image: linear-gradient(to top, #00d2ff 0%, #3a7bd5 100%);
+}
+
+
+
+    </style>
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Dashboard</title>
+    <!-- base:css -->
+      <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<!--    <link rel="stylesheet" href="../vendors/base/vendor.bundle.base.css">-->
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/rst_img/favicon.png"/>
+
+<!--  </head>-->
+<!--  <body>-->
+{% endblock %}
+{% block content %}
+    <div class="container-scroller">
+
+    <!-- partial:partials/_horizontal-navbar.html -->
+
+    <!-- partial -->
+
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+                    <small>Last Updated On: {{udate[0]}}</small>
+                    <div class="row mt-4">
+                        <div class="col-lg-12 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightgrey2">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title animate__animated animate__backInRight" >2-Weekly 20/21</h4>
+<!--										<h4 class="text-success font-weight-bold">Achievement<span class="text-dark ml-3">44%</span></h4>-->
+									</div>
+<!--                                    <div class="chart-container" style="position: relative; height:20vh">-->
+									<div id="support-tracker-legend1" class="support-tracker-legend"></div>
+									<canvas id="BiWeekly" height="30px"></canvas>
+<!--                                    </div>-->
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+                    <div class="row mt-4">
+                        <div class="col-lg-5 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightblue1">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title animate__animated animate__backInRight">Monthly 20/21</h4>
+<!--										<h4 class="text-success font-weight-bold">Achievement<span class="text-dark ml-3">44%</span></h4>-->
+									</div>
+<!--                                    <div class="chart-container" style="position: relative; height:20vh">-->
+									<div id="support-tracker-legendM" class="support-tracker-legend"></div>
+									<canvas id="MonthlyPM" height="72px"></canvas>
+<!--                                    </div>-->
+								</div>
+							</div>
+						</div>
+                        <div class="col-lg-4 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightblue1">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title animate__animated animate__backInRight">2-Monthly 20/21</h4>
+<!--										<h4 class="text-success font-weight-bold">Achievement<span class="text-dark ml-3">44%</span></h4>-->
+									</div>
+<!--                                    <div class="chart-container" style="position: relative; height:20vh">-->
+									<div id="support-tracker-legendBiM" class="support-tracker-legend"></div>
+									<canvas id="BiMonthlyPM" height="95px"></canvas>
+<!--                                    </div>-->
+								</div>
+							</div>
+						</div>
+                        <div class="col-lg-3 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightblue1">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title animate__animated animate__backInRight">Quarterly 20/21</h4>
+<!--										<h4 class="text-success font-weight-bold">Achievement<span class="text-dark ml-3">44%</span></h4>-->
+									</div>
+<!--                                    <div class="chart-container" style="position: relative; height:20vh">-->
+									<div id="support-tracker-legendQ" class="support-tracker-legend"></div>
+									<canvas id="QuartlyPM" height="140px"></canvas>
+<!--                                    </div>-->
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+                    <!--*********** Line 4 Tab *********-->
+
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div class="card mt-3 tab-card">
+
+                                <div class="card-header tab-card-header">
+                                    <ul class="nav nav-tabs card-header-tabs justify-content-center" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning active" id="1-tab" data-toggle="tab" href="#ts401" role="tab"
+                                               aria-controls="One" aria-selected="true">TS 401</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="2-tab" data-toggle="tab" href="#ts402" role="tab"
+                                               aria-controls="Two" aria-selected="false">TS 402</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="3-tab" data-toggle="tab" href="#ts403"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 403</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="4-tab" data-toggle="tab" href="#ts404"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 404</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="5-tab" data-toggle="tab" href="#ts405"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 405</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="6-tab" data-toggle="tab" href="#ts406"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 406</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="7-tab" data-toggle="tab" href="#ts407"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 407</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="8-tab" data-toggle="tab" href="#ts408"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 408</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="9-tab" data-toggle="tab" href="#ts409"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 409</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="10-tab" data-toggle="tab" href="#ts410"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 410</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="11-tab" data-toggle="tab" href="#ts411"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 411</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="12-tab" data-toggle="tab" href="#ts412"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 412</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="13-tab" data-toggle="tab" href="#ts413"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 413</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="14-tab" data-toggle="tab" href="#ts414"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 414</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="15-tab" data-toggle="tab" href="#ts415"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 415</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="16-tab" data-toggle="tab" href="#ts416"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 416</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="17-tab" data-toggle="tab" href="#ts417"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 417</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="18-tab" data-toggle="tab" href="#ts418"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 418</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="19-tab" data-toggle="tab" href="#ts419"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 419</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="20-tab" data-toggle="tab" href="#ts420"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 420</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="21-tab" data-toggle="tab" href="#ts421"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 421</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="22-tab" data-toggle="tab" href="#ts422"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 422</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="23-tab" data-toggle="tab" href="#ts423"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 423</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-warning" id="24-tab" data-toggle="tab" href="#ts424"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 424</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="ts401" role="tabpanel"
+                                         aria-labelledby="1-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_401"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts402" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_402"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts403" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_403"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts404" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_404"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts405" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_405"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts406" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_406"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts407" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_407"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts408" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_408"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts409" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_409"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts410" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_410"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts411" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_411"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts412" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_412"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts413" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_413"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts414" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_414"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts415" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_415"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts416" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_416"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts417" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_417"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts418" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_418"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts419" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_419"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts420" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_420"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts421" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_421"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts422" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_422"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts423" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_423"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts424" role="tabpanel" aria-labelledby="2-tab">
+                                        <div class="thead-yellow custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_424"></div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+<!--                    *********** Line 5 Tab *********-->
+
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div class="card mt-3 tab-card">
+
+                                <div class="card-header tab-card-header">
+                                    <ul class="nav nav-tabs card-header-tabs justify-content-center" id="myTab2" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success active" id="1-tab2" data-toggle="tab" href="#ts501" role="tab"
+                                               aria-controls="One" aria-selected="true">TS 501</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="2-tab2" data-toggle="tab" href="#ts502" role="tab"
+                                               aria-controls="Two" aria-selected="false">TS 502</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="3-tab2" data-toggle="tab" href="#ts503"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 503</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="4-tab2" data-toggle="tab" href="#ts504"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 504</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="5-tab2" data-toggle="tab" href="#ts505"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 505</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="6-tab2" data-toggle="tab" href="#ts506"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 506</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="7-tab2" data-toggle="tab" href="#ts507"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 507</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="8-tab2" data-toggle="tab" href="#ts508"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 508</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="9-tab2" data-toggle="tab" href="#ts509"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 509</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="10-tab2" data-toggle="tab" href="#ts510"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 510</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="11-tab2" data-toggle="tab" href="#ts511"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 511</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="12-tab2" data-toggle="tab" href="#ts512"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 512</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="13-tab2" data-toggle="tab" href="#ts513"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 513</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="14-tab2" data-toggle="tab" href="#ts514"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 514</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="15-tab2" data-toggle="tab" href="#ts515"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 515</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="16-tab2" data-toggle="tab" href="#ts516"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 516</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="17-tab2" data-toggle="tab" href="#ts517"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 517</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="18-tab2" data-toggle="tab" href="#ts518"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 518</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-success" id="19-tab2" data-toggle="tab" href="#ts519"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 519</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="tab-content" id="myTabContent2">
+                                    <div class="tab-pane fade show active" id="ts501" role="tabpanel"
+                                         aria-labelledby="1-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_501"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="ts502" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_502"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts503" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_503"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts504" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_504"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts505" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_505"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="ts506" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_506"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts507" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_507"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts508" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_508"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts509" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_509"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts510" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_510"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts511" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_511"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts512" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_512"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts513" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_513"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts514" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_514"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts515" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_515"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts516" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_516"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts517" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_517"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts518" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_518"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="ts519" role="tabpanel" aria-labelledby="2-tab2">
+                                        <div class="thead-green custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_519"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- *********** Line 6 Tab *********-->
+
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div class="card mt-3 tab-card">
+
+                                <div class="card-header tab-card-header">
+                                    <ul class="nav nav-tabs card-header-tabs justify-content-center" id="myTab3" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple active" id="1-tab3" data-toggle="tab" href="#TS601" role="tab"
+                                               aria-controls="One" aria-selected="true">TS 601</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="2-tab3" data-toggle="tab" href="#TS602" role="tab"
+                                               aria-controls="Two" aria-selected="false">TS 602</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="3-tab3" data-toggle="tab" href="#TS603"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 603</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="4-tab3" data-toggle="tab" href="#TS604"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 604</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="5-tab3" data-toggle="tab" href="#TS605"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 605</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="6-tab3" data-toggle="tab" href="#TS606"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 606</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="7-tab3" data-toggle="tab" href="#TS607"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 607</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="8-tab3" data-toggle="tab" href="#TS608"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 608</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="9-tab3" data-toggle="tab" href="#TS609"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 609</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="10-tab3" data-toggle="tab" href="#TS610"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 610</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="11-tab3" data-toggle="tab" href="#TS611"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 611</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="12-tab3" data-toggle="tab" href="#TS612"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 612</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="13-tab3" data-toggle="tab" href="#TS613"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 613</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="14-tab3" data-toggle="tab" href="#TS614"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 614</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="15-tab3" data-toggle="tab" href="#TS615"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 615</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="16-tab3" data-toggle="tab" href="#TS616"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 616</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="17-tab3" data-toggle="tab" href="#TS617"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 617</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="18-tab3" data-toggle="tab" href="#TS618"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 618</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="19-tab3" data-toggle="tab" href="#TS619"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 619</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="20-tab3" data-toggle="tab" href="#TS620"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 620</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="21-tab3" data-toggle="tab" href="#TS621"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 621</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="22-tab3" data-toggle="tab" href="#TS622"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 622</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="23-tab3" data-toggle="tab" href="#TS623"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 623</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="24-tab3" data-toggle="tab" href="#TS624"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 624</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="25-tab3" data-toggle="tab" href="#TS625"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 625</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link border border-purple" id="26-tab3" data-toggle="tab" href="#TS626"
+                                               role="tab" aria-controls="Three" aria-selected="false">TS 626</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="tab-content" id="myTabContent3">
+                                    <div class="tab-pane fade show active" id="TS601" role="tabpanel"
+                                         aria-labelledby="1-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_601"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="TS602" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple">
+                                            <div id="PMDataTable_602"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS603" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_603"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS604" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_604"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS605" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_605"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="tab-pane fade" id="TS606" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_606"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS607" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_607"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS608" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_608"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS609" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_609"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS610" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_610"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS611" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_611"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS612" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_612"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS613" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_613"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS614" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_614"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS615" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_615"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS616" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_616"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS617" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_617"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS618" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_618"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS619" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_619"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS620" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_620"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS621" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_621"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS622" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_622"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS623" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_623"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS624" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_624"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS625" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_625"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="TS626" role="tabpanel" aria-labelledby="2-tab3">
+                                        <div class="thead-purple custom-scrollbar-css p-0">
+                                            <div id="PMDataTable_626"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+          <div class="footer-wrap">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+            </div>
+          </div>
+        </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+    </div>
+		<!-- container-scroller -->
+
+
+
+        <!-- base:js -->
+    <script src="../static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+    <!-- plugin js for this page -->
+    <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+
+
+
+<!--    -->
+<!--    &lt;!&ndash; base:js &ndash;&gt;-->
+<!--    <script src="../rst_vendors/base/vendor.bundle.base.js"></script>-->
+<!--    &lt;!&ndash; endinject &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Plugin js for this page&ndash;&gt;-->
+
+<!--    <script src="../rst_vendors/chart.js/Chart.min.js"></script>-->
+<!--&lt;!&ndash;    <script src="vendors/progressbar.js/progressbar.min.js"></script>&ndash;&gt;-->
+<!--    <script src="../rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>-->
+<!--&lt;!&ndash;    <script src="vendors/justgage/raphael-2.1.4.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="vendors/justgage/justgage.js"></script>&ndash;&gt;-->
+<!--    &lt;!&ndash; Custom js for this page&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="js/dashboard.js"></script>&ndash;&gt;-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
+<!--    <script src="https://cdn3.devexpress.com/jslib/17.1.6/js/dx.all.js"></script>-->
+<!--    &lt;!&ndash; End custom js for this page&ndash;&gt;-->
+
+
+
+    <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+
+		var BiWeeklyData = {
+
+		        labels: {{pm2week[0]|safe}},
+<!--			labels: ["W35/36", "W37/38", "W39/40", "W41/42", "W43/44", "W45/46", "W47/48", "W49/50", "W51/52",-->
+<!--			         "W1/2", "W3/4", "W5/6", "W7/8", "W9/10", "W11/12", "W13/14", "W15/16", "W17/18", "W19/20",-->
+<!--			         "W21/22", "W23/24", "W25/26", "W27/28", "W29/30", "W31/32", "W33/34"],-->
+			datasets: [{
+				label: 'Target',
+				data: [69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69],
+				backgroundColor: [
+					'#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF',
+					 '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF'
+					 , '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF'
+				],
+				borderColor: [
+					'#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF',  '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF',
+					 '#80DBFF', '#80DBFF' ,'#80DBFF' ,'#80DBFF' ,'#80DBFF' ,'#80DBFF' ,'#80DBFF', '#80DBFF', '#80DBFF'
+					 , '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF',
+				],
+				borderWidth: 0.2,
+				fill: false
+			},
+						{
+					label: 'Done',
+					data: {{pm2week[1]|safe}},
+<!--					data: [19, 69, 62, 55, 60, 57, 69, 50, 69, 48, 69, 42, 53, 69, 40, 69, 59, 57, 63, 69, 68, 69, 56, 59, 66],-->
+					backgroundColor: [
+						'#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C',
+						'#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C',
+						'#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C'],
+					borderColor: [],
+					borderWidth: 0.2,
+					fill: false
+			},
+<!--
+			]
+		};
+		var BiWeeklyOptions = {
+
+		responsive: true,
+		maintainAspectRatio: true,
+
+		    animation: {
+              duration : 1700,
+            },
+
+			scales: {
+				xAxes: [{
+				stacked: false,
+				barPercentage: 1,
+				categoryPercentage: 0.7,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: false,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					stepSize: 300,
+					fontSize: 10
+				}
+				}],
+				yAxes: [{
+					stacked: false,
+					display: false,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						fontSize: 10,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+				deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+				    font: {
+                        size: 10,
+                        weight: "normal"
+                           },
+					color: "#444444",
+					display: true,
+					align: 'center',
+					anchor: 'center'
+				},
+			}
+		};
+		if ($("#BiWeekly").length) {
+			var barChartCanvas = $("#BiWeekly").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: BiWeeklyData,
+				options: BiWeeklyOptions
+			});
+			document.getElementById('support-tracker-legend1').innerHTML = barChart.generateLegend();
+		}
+
+
+
+		var MonthlyPMData = {
+		    labels: {{pmmonth[0]|safe}},
+<!--			labels: ["M9", "M10", "M11", "M12", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8"],-->
+			datasets: [{
+				label: 'Target',
+				data: [69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69, 69],
+				backgroundColor: [
+					'#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF',
+					 '#80DBFF', '#80DBFF', '#80DBFF'
+				],
+				borderColor: [
+					'#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF',  '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF',
+					 '#80DBFF', '#80DBFF' ,'#80DBFF'
+				],
+				borderWidth: 0.2,
+				fill: false
+			},
+						{
+					label: 'Done',
+					data: {{pmmonth[1]|safe}},
+<!--					data: [19, 69, 62, 55, 60, 57, 69, 50, 59, 69, 58],-->
+					backgroundColor: [
+						'#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C',
+						'#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C'
+					],
+					borderColor: [],
+					borderWidth: 0.2,
+					fill: false
+			},
+<!--
+			]
+		};
+		var MonthlyPMOptions = {
+
+		responsive: true,
+		maintainAspectRatio: true,
+
+		    animation: {
+              duration : 2500,
+            },
+
+			scales: {
+				xAxes: [{
+				stacked: false,
+				barPercentage: 1,
+				categoryPercentage: 0.7,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: false,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					stepSize: 300,
+					fontSize: 10
+				}
+				}],
+				yAxes: [{
+					stacked: false,
+					display: false,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						fontSize: 9,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+				deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 600      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+				    font: {
+                        size: 10,
+                        weight: "normal"
+                           },
+					color: "#444444",
+					display: true,
+					align: 'center',
+					anchor: 'center'
+				},
+			}
+		};
+		if ($("#MonthlyPM").length) {
+			var barChartCanvas = $("#MonthlyPM").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: MonthlyPMData,
+				options: MonthlyPMOptions
+			});
+			document.getElementById('support-tracker-legendM').innerHTML = barChart.generateLegend();
+		}
+
+// Add from here new Chart
+
+		var BiMonthlyPMData = {
+		    labels: {{pm2month[0]|safe}},
+<!--			labels: ["M9/10", "M11/12", "M1/2", "M3/4", "M5/6", "M7/8"],-->
+			datasets: [{
+				label: 'Target',
+				data: [69, 69, 69, 69, 69, 69],
+				backgroundColor: [
+					'#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF'],
+				borderColor: [
+					'#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF',  '#80DBFF', '#80DBFF'],
+				borderWidth: 0.2,
+				fill: false
+			},
+						{
+					label: 'Done',
+					data: {{pm2month[1]|safe}},
+<!--					data: [19, 69, 62, 55, 60],-->
+					backgroundColor: [
+						'#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C'],
+					borderColor: [],
+					borderWidth: 0.2,
+					fill: false
+			},
+<!--
+			]
+		};
+		var BiMonthlyPMOptions = {
+
+		responsive: true,
+		maintainAspectRatio: true,
+
+		    animation: {
+              duration : 2500,
+            },
+
+			scales: {
+				xAxes: [{
+				stacked: false,
+				barPercentage: 1,
+				categoryPercentage: 0.7,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: false,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					stepSize: 300,
+					fontSize: 10
+				}
+				}],
+				yAxes: [{
+					stacked: false,
+					display: false,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+				deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 800      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+				    font: {
+                        size: 10,
+                        weight: "normal"
+                           },
+					color: "#444444",
+					display: true,
+					align: 'center',
+					anchor: 'center'
+				},
+			}
+		};
+		if ($("#BiMonthlyPM").length) {
+			var barChartCanvas = $("#BiMonthlyPM").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: BiMonthlyPMData,
+				options: BiMonthlyPMOptions
+			});
+			document.getElementById('support-tracker-legendBiM').innerHTML = barChart.generateLegend();
+		}
+
+// New Chart from here
+
+
+		var QuartlyPMData = {
+		    labels: {{pmquart[0]|safe}},
+			//labels: ["Q4", "Q1", "Q2", "Q3"],
+			datasets: [{
+				label: 'Target',
+				data: [69, 69, 69, 69],
+				backgroundColor: [
+					'#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF'],
+				borderColor: [
+					'#80DBFF', '#80DBFF', '#80DBFF', '#80DBFF'],
+				borderWidth: 0.2,
+				fill: false
+			},
+						{
+					label: 'Done',
+					data: {{pmquart[1]|safe}},
+					//data: [19, 69, 62, 55],
+					backgroundColor: [
+						'#C7F67C', '#C7F67C', '#C7F67C', '#C7F67C'],
+					borderColor: [],
+					borderWidth: 0.2,
+					fill: false
+			},
+<!--
+			]
+		};
+		var QuartlyPMOptions = {
+
+		responsive: true,
+		maintainAspectRatio: true,
+
+		    animation: {
+              duration : 2500,
+            },
+
+			scales: {
+				xAxes: [{
+				stacked: false,
+				barPercentage: 1,
+				categoryPercentage: 0.7,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: false,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					stepSize: 300,
+					fontSize: 10
+				}
+				}],
+				yAxes: [{
+					stacked: false,
+					display: false,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+				deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+				    font: {
+                        size: 10,
+                        weight: "normal"
+                           },
+					color: "#444444",
+					display: true,
+					align: 'center',
+					anchor: 'center'
+				},
+			}
+		};
+		if ($("#QuartlyPM").length) {
+			var barChartCanvas = $("#QuartlyPM").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: QuartlyPMData,
+				options: QuartlyPMOptions
+			});
+			document.getElementById('support-tracker-legendQ').innerHTML = barChart.generateLegend();
+		}
+
+
+
+
+
+		// Remove pro banner on close
+    document.querySelector('#bannerClose').addEventListener('click',function() {
+			$('#pro-banner').slideUp();
+    });
+	});
+})(jQuery);
+
+
+  </script>
+
+
+
+<!--    Line 4 Table-->
+    <script>
+
+let tableData401 = document.getElementById("PMDataTable_401");
+let data401 = ({{pm401|tojson}});
+<!--let data401 = ({{pm401|tojson}});-->
+<!--let data401 = [["26-Feb-21", 24788, 'Done', 'Done', 'Done', 'Done'],["7-Mar-21",35708, '', 'Done', 'Done', '', 'Done'],-->
+<!--["18-Mar-21",14700, '', 'Done', 'Done', 'Done', 'Done'], ["1-Mar-21",14700, '', 'Done', 'Done', 'Done', 'Done'],-->
+<!--["1-Mar-21",14700, '', 'Done', 'Done', 'Done', 'Done']] ;-->
+
+//set header of table
+let table401 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data401.length; i++){
+    table401 = table401 +
+    `<tr key={key}>
+
+      <td>${data401[i][0]}</td>
+      <td>${data401[i][1]}</td>
+      <td><a href="/getfile/${data401[i][2]}.pdf" target="_blank">${data401[i][2]}</td></a>
+      <td>${data401[i][3]}</td>
+      <td><label class="badge badge-success">${data401[i][4]}</td>
+      <td><label class="badge badge-success">${data401[i][5]}</td>
+      <td><label class="badge badge-success">${data401[i][6]}</td>
+      <td><label class="badge badge-success">${data401[i][7]}</td>
+      <td><label class="badge badge-success">${data401[i][8]}</td>
+      <td><label class="badge badge-success">${data401[i][9]}</td>
+      <td><label class="badge badge-success">${data401[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table401 = table401 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData401.innerHTML = table401;
+
+
+
+  </script>
+
+    <script>
+
+let tableData402 = document.getElementById("PMDataTable_402");
+let data402 = ({{pm402|tojson}});
+
+//set header of table
+let table402 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data402.length; i++){
+    table402 = table402 +
+    `<tr key={key}>
+
+      <td>${data402[i][0]}</td>
+      <td>${data402[i][1]}</td>
+      <td><a href="/getfile/${data402[i][2]}.pdf" target="_blank">${data402[i][2]}</td></a>
+      <td>${data402[i][3]}</td>
+      <td><label class="badge badge-success">${data402[i][4]}</td>
+      <td><label class="badge badge-success">${data402[i][5]}</td>
+      <td><label class="badge badge-success">${data402[i][6]}</td>
+      <td><label class="badge badge-success">${data402[i][7]}</td>
+      <td><label class="badge badge-success">${data402[i][8]}</td>
+      <td><label class="badge badge-success">${data402[i][9]}</td>
+      <td><label class="badge badge-success">${data402[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table402 = table402 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData402.innerHTML = table402;
+
+
+
+  </script>
+
+    <script>
+
+let tableData403 = document.getElementById("PMDataTable_403");
+let data403 = ({{pm403|tojson}});
+
+//set header of table
+let table403 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data403.length; i++){
+    table403 = table403 +
+    `<tr key={key}>
+
+      <td>${data403[i][0]}</td>
+      <td>${data403[i][1]}</td>
+      <td><a href="/getfile/${data403[i][2]}.pdf" target="_blank">${data403[i][2]}</td></a>
+      <td>${data403[i][3]}</td>
+      <td><label class="badge badge-success">${data403[i][4]}</td>
+      <td><label class="badge badge-success">${data403[i][5]}</td>
+      <td><label class="badge badge-success">${data403[i][6]}</td>
+      <td><label class="badge badge-success">${data403[i][7]}</td>
+      <td><label class="badge badge-success">${data403[i][8]}</td>
+      <td><label class="badge badge-success">${data403[i][9]}</td>
+      <td><label class="badge badge-success">${data403[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table403 = table403 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData403.innerHTML = table403;
+
+
+
+  </script>
+
+    <script>
+
+let tableData404 = document.getElementById("PMDataTable_404");
+let data404 = ({{pm404|tojson}});
+
+//set header of table
+let table404 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data404.length; i++){
+    table404 = table404 +
+    `<tr key={key}>
+
+      <td>${data404[i][0]}</td>
+      <td>${data404[i][1]}</td>
+      <td><a href="/getfile/${data404[i][2]}.pdf" target="_blank">${data404[i][2]}</td></a>
+      <td>${data404[i][3]}</td>
+      <td><label class="badge badge-success">${data404[i][4]}</td>
+      <td><label class="badge badge-success">${data404[i][5]}</td>
+      <td><label class="badge badge-success">${data404[i][6]}</td>
+      <td><label class="badge badge-success">${data404[i][7]}</td>
+      <td><label class="badge badge-success">${data404[i][8]}</td>
+      <td><label class="badge badge-success">${data404[i][9]}</td>
+      <td><label class="badge badge-success">${data404[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table404 = table404 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData404.innerHTML = table404;
+
+
+
+  </script>
+
+    <!--    Line 405 Table-->
+
+    <script>
+
+let tableData405 = document.getElementById("PMDataTable_405");
+let data405 = ({{pm405|tojson}});
+
+//set header of table
+let table405 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data405.length; i++){
+    table405 = table405 +
+    `<tr key={key}>
+
+      <td>${data405[i][0]}</td>
+      <td>${data405[i][1]}</td>
+      <td><a href="/getfile/${data405[i][2]}.pdf" target="_blank">${data405[i][2]}</td></a>
+      <td>${data405[i][3]}</td>
+      <td><label class="badge badge-success">${data405[i][4]}</td>
+      <td><label class="badge badge-success">${data405[i][5]}</td>
+      <td><label class="badge badge-success">${data405[i][6]}</td>
+      <td><label class="badge badge-success">${data405[i][7]}</td>
+      <td><label class="badge badge-success">${data405[i][8]}</td>
+      <td><label class="badge badge-success">${data405[i][9]}</td>
+      <td><label class="badge badge-success">${data405[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table405 = table405 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData405.innerHTML = table405;
+
+
+
+  </script>
+
+    <script>
+
+let tableData406 = document.getElementById("PMDataTable_406");
+let data406 = ({{pm406|tojson}});
+
+//set header of table
+let table406 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data406.length; i++){
+    table406 = table406 +
+    `<tr key={key}>
+
+      <td>${data406[i][0]}</td>
+      <td>${data406[i][1]}</td>
+      <td><a href="/getfile/${data406[i][2]}.pdf" target="_blank">${data406[i][2]}</td></a>
+      <td>${data406[i][3]}</td>
+      <td><label class="badge badge-success">${data406[i][4]}</td>
+      <td><label class="badge badge-success">${data406[i][5]}</td>
+      <td><label class="badge badge-success">${data406[i][6]}</td>
+      <td><label class="badge badge-success">${data406[i][7]}</td>
+      <td><label class="badge badge-success">${data406[i][8]}</td>
+      <td><label class="badge badge-success">${data406[i][9]}</td>
+      <td><label class="badge badge-success">${data406[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table406 = table406 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData406.innerHTML = table406;
+
+
+
+  </script>
+
+    <script>
+
+let tableData407 = document.getElementById("PMDataTable_407");
+let data407 = ({{pm407|tojson}});
+
+//set header of table
+let table407 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data407.length; i++){
+    table407 = table407 +
+    `<tr key={key}>
+
+      <td>${data407[i][0]}</td>
+      <td>${data407[i][1]}</td>
+      <td><a href="/getfile/${data407[i][2]}.pdf" target="_blank">${data407[i][2]}</td></a>
+      <td>${data407[i][3]}</td>
+      <td><label class="badge badge-success">${data407[i][4]}</td>
+      <td><label class="badge badge-success">${data407[i][5]}</td>
+      <td><label class="badge badge-success">${data407[i][6]}</td>
+      <td><label class="badge badge-success">${data407[i][7]}</td>
+      <td><label class="badge badge-success">${data407[i][8]}</td>
+      <td><label class="badge badge-success">${data407[i][9]}</td>
+      <td><label class="badge badge-success">${data407[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table407 = table407 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData407.innerHTML = table407;
+
+
+
+  </script>
+
+    <script>
+
+let tableData408 = document.getElementById("PMDataTable_408");
+let data408 = ({{pm408|tojson}});
+
+//set header of table
+let table408 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data408.length; i++){
+    table408 = table408 +
+    `<tr key={key}>
+
+      <td>${data408[i][0]}</td>
+      <td>${data408[i][1]}</td>
+      <td><a href="/getfile/${data408[i][2]}.pdf" target="_blank">${data408[i][2]}</td></a>
+      <td>${data408[i][3]}</td>
+      <td><label class="badge badge-success">${data408[i][4]}</td>
+      <td><label class="badge badge-success">${data408[i][5]}</td>
+      <td><label class="badge badge-success">${data408[i][6]}</td>
+      <td><label class="badge badge-success">${data408[i][7]}</td>
+      <td><label class="badge badge-success">${data408[i][8]}</td>
+      <td><label class="badge badge-success">${data408[i][9]}</td>
+      <td><label class="badge badge-success">${data408[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table408 = table408 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData408.innerHTML = table408;
+
+
+
+  </script>
+
+    <script>
+
+let tableData409 = document.getElementById("PMDataTable_409");
+let data409 = ({{pm409|tojson}});
+
+//set header of table
+let table409 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data409.length; i++){
+    table409 = table409 +
+    `<tr key={key}>
+
+      <td>${data409[i][0]}</td>
+      <td>${data409[i][1]}</td>
+      <td><a href="/getfile/${data409[i][2]}.pdf" target="_blank">${data409[i][2]}</td></a>
+      <td>${data409[i][3]}</td>
+      <td><label class="badge badge-success">${data409[i][4]}</td>
+      <td><label class="badge badge-success">${data409[i][5]}</td>
+      <td><label class="badge badge-success">${data409[i][6]}</td>
+      <td><label class="badge badge-success">${data409[i][7]}</td>
+      <td><label class="badge badge-success">${data409[i][8]}</td>
+      <td><label class="badge badge-success">${data409[i][9]}</td>
+      <td><label class="badge badge-success">${data409[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table409 = table409 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData409.innerHTML = table409;
+
+
+
+  </script>
+
+    <script>
+
+let tableData410 = document.getElementById("PMDataTable_410");
+let data410 = ({{pm410|tojson}});
+
+//set header of table
+let table410 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data410.length; i++){
+    table410 = table410 +
+    `<tr key={key}>
+
+      <td>${data410[i][0]}</td>
+      <td>${data410[i][1]}</td>
+      <td><a href="/getfile/${data410[i][2]}.pdf" target="_blank">${data410[i][2]}</td></a>
+      <td>${data410[i][3]}</td>
+      <td><label class="badge badge-success">${data410[i][4]}</td>
+      <td><label class="badge badge-success">${data410[i][5]}</td>
+      <td><label class="badge badge-success">${data410[i][6]}</td>
+      <td><label class="badge badge-success">${data410[i][7]}</td>
+      <td><label class="badge badge-success">${data410[i][8]}</td>
+      <td><label class="badge badge-success">${data410[i][9]}</td>
+      <td><label class="badge badge-success">${data410[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table410 = table410 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData410.innerHTML = table410;
+
+
+
+  </script>
+
+    <!--Table 411-->
+
+    <script>
+
+let tableData411 = document.getElementById("PMDataTable_411");
+let data411 = ({{pm411|tojson}});
+
+//set header of table
+let table411 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data411.length; i++){
+    table411 = table411 +
+    `<tr key={key}>
+
+      <td>${data411[i][0]}</td>
+      <td>${data411[i][1]}</td>
+      <td><a href="/getfile/${data411[i][2]}.pdf" target="_blank">${data411[i][2]}</td></a>
+      <td>${data411[i][3]}</td>
+      <td><label class="badge badge-success">${data411[i][4]}</td>
+      <td><label class="badge badge-success">${data411[i][5]}</td>
+      <td><label class="badge badge-success">${data411[i][6]}</td>
+      <td><label class="badge badge-success">${data411[i][7]}</td>
+      <td><label class="badge badge-success">${data411[i][8]}</td>
+      <td><label class="badge badge-success">${data411[i][9]}</td>
+      <td><label class="badge badge-success">${data411[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table411 = table411 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData411.innerHTML = table411;
+
+
+
+  </script>
+
+    <script>
+
+let tableData412 = document.getElementById("PMDataTable_412");
+let data412 = ({{pm412|tojson}});
+
+//set header of table
+let table412 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data412.length; i++){
+    table412 = table412 +
+    `<tr key={key}>
+
+      <td>${data412[i][0]}</td>
+      <td>${data412[i][1]}</td>
+      <td><a href="/getfile/${data412[i][2]}.pdf" target="_blank">${data412[i][2]}</td></a>
+      <td>${data412[i][3]}</td>
+      <td><label class="badge badge-success">${data412[i][4]}</td>
+      <td><label class="badge badge-success">${data412[i][5]}</td>
+      <td><label class="badge badge-success">${data412[i][6]}</td>
+      <td><label class="badge badge-success">${data412[i][7]}</td>
+      <td><label class="badge badge-success">${data412[i][8]}</td>
+      <td><label class="badge badge-success">${data412[i][9]}</td>
+      <td><label class="badge badge-success">${data412[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table412 = table412 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData412.innerHTML = table412;
+
+
+
+  </script>
+
+    <script>
+
+let tableData413 = document.getElementById("PMDataTable_413");
+let data413 = ({{pm413|tojson}});
+
+//set header of table
+let table413 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data413.length; i++){
+    table413 = table413 +
+    `<tr key={key}>
+
+      <td>${data413[i][0]}</td>
+      <td>${data413[i][1]}</td>
+      <td><a href="/getfile/${data413[i][2]}.pdf" target="_blank">${data413[i][2]}</td></a>
+      <td>${data413[i][3]}</td>
+      <td><label class="badge badge-success">${data413[i][4]}</td>
+      <td><label class="badge badge-success">${data413[i][5]}</td>
+      <td><label class="badge badge-success">${data413[i][6]}</td>
+      <td><label class="badge badge-success">${data413[i][7]}</td>
+      <td><label class="badge badge-success">${data413[i][8]}</td>
+      <td><label class="badge badge-success">${data413[i][9]}</td>
+      <td><label class="badge badge-success">${data413[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table413 = table413 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData413.innerHTML = table413;
+
+
+
+  </script>
+
+    <script>
+
+let tableData414 = document.getElementById("PMDataTable_414");
+let data414 = ({{pm414|tojson}});
+
+//set header of table
+let table414 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data414.length; i++){
+    table414 = table414 +
+    `<tr key={key}>
+
+      <td>${data414[i][0]}</td>
+      <td>${data414[i][1]}</td>
+      <td><a href="/getfile/${data414[i][2]}.pdf" target="_blank">${data414[i][2]}</td></a>
+      <td>${data414[i][3]}</td>
+      <td><label class="badge badge-success">${data414[i][4]}</td>
+      <td><label class="badge badge-success">${data414[i][5]}</td>
+      <td><label class="badge badge-success">${data414[i][6]}</td>
+      <td><label class="badge badge-success">${data414[i][7]}</td>
+      <td><label class="badge badge-success">${data414[i][8]}</td>
+      <td><label class="badge badge-success">${data414[i][9]}</td>
+      <td><label class="badge badge-success">${data414[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table414 = table414 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData414.innerHTML = table414;
+
+
+
+  </script>
+
+    <script>
+
+let tableData415 = document.getElementById("PMDataTable_415");
+let data415 = ({{pm415|tojson}});
+
+//set header of table
+let table415 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data415.length; i++){
+    table415 = table415 +
+    `<tr key={key}>
+
+      <td>${data415[i][0]}</td>
+      <td>${data415[i][1]}</td>
+      <td><a href="/getfile/${data415[i][2]}.pdf" target="_blank">${data415[i][2]}</td></a>
+      <td>${data415[i][3]}</td>
+      <td><label class="badge badge-success">${data415[i][4]}</td>
+      <td><label class="badge badge-success">${data415[i][5]}</td>
+      <td><label class="badge badge-success">${data415[i][6]}</td>
+      <td><label class="badge badge-success">${data415[i][7]}</td>
+      <td><label class="badge badge-success">${data415[i][8]}</td>
+      <td><label class="badge badge-success">${data415[i][9]}</td>
+      <td><label class="badge badge-success">${data415[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table415 = table415 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData415.innerHTML = table415;
+
+
+
+  </script>
+
+    <!--Table 416-->
+
+    <script>
+
+let tableData416 = document.getElementById("PMDataTable_416");
+let data416 = ({{pm416|tojson}});
+
+//set header of table
+let table416 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data416.length; i++){
+    table416 = table416 +
+    `<tr key={key}>
+
+      <td>${data416[i][0]}</td>
+      <td>${data416[i][1]}</td>
+      <td><a href="/getfile/${data416[i][2]}.pdf" target="_blank">${data416[i][2]}</td></a>
+      <td>${data416[i][3]}</td>
+      <td><label class="badge badge-success">${data416[i][4]}</td>
+      <td><label class="badge badge-success">${data416[i][5]}</td>
+      <td><label class="badge badge-success">${data416[i][6]}</td>
+      <td><label class="badge badge-success">${data416[i][7]}</td>
+      <td><label class="badge badge-success">${data416[i][8]}</td>
+      <td><label class="badge badge-success">${data416[i][9]}</td>
+      <td><label class="badge badge-success">${data416[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table416 = table416 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData416.innerHTML = table416;
+
+
+
+  </script>
+
+    <script>
+
+let tableData417 = document.getElementById("PMDataTable_417");
+let data417 = ({{pm417|tojson}});
+
+//set header of table
+let table417 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data417.length; i++){
+    table417 = table417 +
+    `<tr key={key}>
+
+      <td>${data417[i][0]}</td>
+      <td>${data417[i][1]}</td>
+      <td><a href="/getfile/${data417[i][2]}.pdf" target="_blank">${data417[i][2]}</td></a>
+      <td>${data417[i][3]}</td>
+      <td><label class="badge badge-success">${data417[i][4]}</td>
+      <td><label class="badge badge-success">${data417[i][5]}</td>
+      <td><label class="badge badge-success">${data417[i][6]}</td>
+      <td><label class="badge badge-success">${data417[i][7]}</td>
+      <td><label class="badge badge-success">${data417[i][8]}</td>
+      <td><label class="badge badge-success">${data417[i][9]}</td>
+      <td><label class="badge badge-success">${data417[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table417 = table417 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData417.innerHTML = table417;
+
+
+
+  </script>
+
+<!--Table 418-->
+
+    <script>
+
+let tableData418 = document.getElementById("PMDataTable_418");
+let data418 = ({{pm418|tojson}});
+
+//set header of table
+let table418 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data418.length; i++){
+    table418 = table418 +
+    `<tr key={key}>
+
+      <td>${data418[i][0]}</td>
+      <td>${data418[i][1]}</td>
+      <td><a href="/getfile/${data418[i][2]}.pdf" target="_blank">${data418[i][2]}</td></a>
+      <td>${data418[i][3]}</td>
+      <td><label class="badge badge-success">${data418[i][4]}</td>
+      <td><label class="badge badge-success">${data418[i][5]}</td>
+      <td><label class="badge badge-success">${data418[i][6]}</td>
+      <td><label class="badge badge-success">${data418[i][7]}</td>
+      <td><label class="badge badge-success">${data418[i][8]}</td>
+      <td><label class="badge badge-success">${data418[i][9]}</td>
+      <td><label class="badge badge-success">${data418[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table418 = table418 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData418.innerHTML = table418;
+
+
+
+  </script>
+
+    <script>
+
+let tableData419 = document.getElementById("PMDataTable_419");
+let data419 = ({{pm419|tojson}});
+
+//set header of table
+let table419 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data419.length; i++){
+    table419 = table419 +
+    `<tr key={key}>
+
+      <td>${data419[i][0]}</td>
+      <td>${data419[i][1]}</td>
+      <td><a href="/getfile/${data419[i][2]}.pdf" target="_blank">${data419[i][2]}</td></a>
+      <td>${data419[i][3]}</td>
+      <td><label class="badge badge-success">${data419[i][4]}</td>
+      <td><label class="badge badge-success">${data419[i][5]}</td>
+      <td><label class="badge badge-success">${data419[i][6]}</td>
+      <td><label class="badge badge-success">${data419[i][7]}</td>
+      <td><label class="badge badge-success">${data419[i][8]}</td>
+      <td><label class="badge badge-success">${data419[i][9]}</td>
+      <td><label class="badge badge-success">${data419[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table419 = table419 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData419.innerHTML = table419;
+
+
+
+  </script>
+
+    <script>
+
+let tableData420 = document.getElementById("PMDataTable_420");
+let data420 = ({{pm420|tojson}});
+
+//set header of table
+let table420 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data420.length; i++){
+    table420 = table420 +
+    `<tr key={key}>
+
+      <td>${data420[i][0]}</td>
+      <td>${data420[i][1]}</td>
+      <td><a href="/getfile/${data420[i][2]}.pdf" target="_blank">${data420[i][2]}</td></a>
+      <td>${data420[i][3]}</td>
+      <td><label class="badge badge-success">${data420[i][4]}</td>
+      <td><label class="badge badge-success">${data420[i][5]}</td>
+      <td><label class="badge badge-success">${data420[i][6]}</td>
+      <td><label class="badge badge-success">${data420[i][7]}</td>
+      <td><label class="badge badge-success">${data420[i][8]}</td>
+      <td><label class="badge badge-success">${data420[i][9]}</td>
+      <td><label class="badge badge-success">${data420[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table420 = table420 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData420.innerHTML = table420;
+
+
+
+  </script>
+
+    <script>
+
+let tableData421 = document.getElementById("PMDataTable_421");
+let data421 = ({{pm421|tojson}});
+
+//set header of table
+let table421 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data421.length; i++){
+    table421 = table421 +
+    `<tr key={key}>
+
+      <td>${data421[i][0]}</td>
+      <td>${data421[i][1]}</td>
+      <td><a href="/getfile/${data421[i][2]}.pdf" target="_blank">${data421[i][2]}</td></a>
+      <td>${data421[i][3]}</td>
+      <td><label class="badge badge-success">${data421[i][4]}</td>
+      <td><label class="badge badge-success">${data421[i][5]}</td>
+      <td><label class="badge badge-success">${data421[i][6]}</td>
+      <td><label class="badge badge-success">${data421[i][7]}</td>
+      <td><label class="badge badge-success">${data421[i][8]}</td>
+      <td><label class="badge badge-success">${data421[i][9]}</td>
+      <td><label class="badge badge-success">${data421[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table421 = table421 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData421.innerHTML = table421;
+
+
+
+  </script>
+
+    <script>
+
+let tableData422 = document.getElementById("PMDataTable_422");
+let data422 = ({{pm422|tojson}});
+
+//set header of table
+let table422 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data422.length; i++){
+    table422 = table422 +
+    `<tr key={key}>
+
+      <td>${data422[i][0]}</td>
+      <td>${data422[i][1]}</td>
+      <td><a href="/getfile/${data422[i][2]}.pdf" target="_blank">${data422[i][2]}</td></a>
+      <td>${data422[i][3]}</td>
+      <td><label class="badge badge-success">${data422[i][4]}</td>
+      <td><label class="badge badge-success">${data422[i][5]}</td>
+      <td><label class="badge badge-success">${data422[i][6]}</td>
+      <td><label class="badge badge-success">${data422[i][7]}</td>
+      <td><label class="badge badge-success">${data422[i][8]}</td>
+      <td><label class="badge badge-success">${data422[i][9]}</td>
+      <td><label class="badge badge-success">${data422[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table422 = table422 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData422.innerHTML = table422;
+
+
+
+  </script>
+
+    <script>
+
+let tableData423 = document.getElementById("PMDataTable_423");
+let data423 = ({{pm423|tojson}});
+
+//set header of table
+let table423 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data423.length; i++){
+    table423 = table423 +
+    `<tr key={key}>
+
+      <td>${data423[i][0]}</td>
+      <td>${data423[i][1]}</td>
+      <td><a href="/getfile/${data423[i][2]}.pdf" target="_blank">${data423[i][2]}</td></a>
+      <td>${data423[i][3]}</td>
+      <td><label class="badge badge-success">${data423[i][4]}</td>
+      <td><label class="badge badge-success">${data423[i][5]}</td>
+      <td><label class="badge badge-success">${data423[i][6]}</td>
+      <td><label class="badge badge-success">${data423[i][7]}</td>
+      <td><label class="badge badge-success">${data423[i][8]}</td>
+      <td><label class="badge badge-success">${data423[i][9]}</td>
+      <td><label class="badge badge-success">${data423[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table423 = table423 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData423.innerHTML = table423;
+
+
+
+  </script>
+
+    <script>
+
+let tableData424 = document.getElementById("PMDataTable_424");
+let data424 = ({{pm424|tojson}});
+
+//set header of table
+let table424 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data424.length; i++){
+    table424 = table424 +
+    `<tr key={key}>
+
+      <td>${data424[i][0]}</td>
+      <td>${data424[i][1]}</td>
+      <td><a href="/getfile/${data424[i][2]}.pdf" target="_blank">${data424[i][2]}</td></a>
+      <td>${data424[i][3]}</td>
+      <td><label class="badge badge-success">${data424[i][4]}</td>
+      <td><label class="badge badge-success">${data424[i][5]}</td>
+      <td><label class="badge badge-success">${data424[i][6]}</td>
+      <td><label class="badge badge-success">${data424[i][7]}</td>
+      <td><label class="badge badge-success">${data424[i][8]}</td>
+      <td><label class="badge badge-success">${data424[i][9]}</td>
+      <td><label class="badge badge-success">${data424[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table424 = table424 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData424.innerHTML = table424;
+
+
+
+  </script>
+
+
+  <!--    Line 5 Table-->
+    
+    <script>
+
+let tableData501 = document.getElementById("PMDataTable_501");
+let data501 = ({{pm501|tojson}});
+
+//set header of table
+let table501 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data501.length; i++){
+    table501 = table501 +
+    `<tr key={key}>
+
+      <td>${data501[i][0]}</td>
+      <td>${data501[i][1]}</td>
+      <td><a href="/getfile/${data501[i][2]}.pdf" target="_blank">${data501[i][2]}</td></a>
+      <td>${data501[i][3]}</td>
+      <td><label class="badge badge-success">${data501[i][4]}</td>
+      <td><label class="badge badge-success">${data501[i][5]}</td>
+      <td><label class="badge badge-success">${data501[i][6]}</td>
+      <td><label class="badge badge-success">${data501[i][7]}</td>
+      <td><label class="badge badge-success">${data501[i][8]}</td>
+      <td><label class="badge badge-success">${data501[i][9]}</td>
+      <td><label class="badge badge-success">${data501[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table501 = table501 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData501.innerHTML = table501;
+
+
+
+  </script>
+    <script>
+
+let tableData502 = document.getElementById("PMDataTable_502");
+let data502 = ({{pm502|tojson}});
+
+//set header of table
+let table502 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data502.length; i++){
+    table502 = table502 +
+    `<tr key={key}>
+
+      <td>${data502[i][0]}</td>
+      <td>${data502[i][1]}</td>
+      <td><a href="/getfile/${data502[i][2]}.pdf" target="_blank">${data502[i][2]}</td></a>
+      <td>${data502[i][3]}</td>
+      <td><label class="badge badge-success">${data502[i][4]}</td>
+      <td><label class="badge badge-success">${data502[i][5]}</td>
+      <td><label class="badge badge-success">${data502[i][6]}</td>
+      <td><label class="badge badge-success">${data502[i][7]}</td>
+      <td><label class="badge badge-success">${data502[i][8]}</td>
+      <td><label class="badge badge-success">${data502[i][9]}</td>
+      <td><label class="badge badge-success">${data502[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table502 = table502 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData502.innerHTML = table502;
+
+
+
+  </script>
+    <script>
+
+let tableData503 = document.getElementById("PMDataTable_503");
+let data503 = ({{pm503|tojson}});
+
+//set header of table
+let table503 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data503.length; i++){
+    table503 = table503 +
+    `<tr key={key}>
+
+      <td>${data503[i][0]}</td>
+      <td>${data503[i][1]}</td>
+      <td><a href="/getfile/${data503[i][2]}.pdf" target="_blank">${data503[i][2]}</td></a>
+      <td>${data503[i][3]}</td>
+      <td><label class="badge badge-success">${data503[i][4]}</td>
+      <td><label class="badge badge-success">${data503[i][5]}</td>
+      <td><label class="badge badge-success">${data503[i][6]}</td>
+      <td><label class="badge badge-success">${data503[i][7]}</td>
+      <td><label class="badge badge-success">${data503[i][8]}</td>
+      <td><label class="badge badge-success">${data503[i][9]}</td>
+      <td><label class="badge badge-success">${data503[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table503 = table503 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData503.innerHTML = table503;
+
+
+
+  </script>
+    <script>
+
+let tableData504 = document.getElementById("PMDataTable_504");
+let data504 = ({{pm504|tojson}});
+
+//set header of table
+let table504 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data504.length; i++){
+    table504 = table504 +
+    `<tr key={key}>
+
+      <td>${data504[i][0]}</td>
+      <td>${data504[i][1]}</td>
+      <td><a href="/getfile/${data504[i][2]}.pdf" target="_blank">${data504[i][2]}</td></a>
+      <td>${data504[i][3]}</td>
+      <td><label class="badge badge-success">${data504[i][4]}</td>
+      <td><label class="badge badge-success">${data504[i][5]}</td>
+      <td><label class="badge badge-success">${data504[i][6]}</td>
+      <td><label class="badge badge-success">${data504[i][7]}</td>
+      <td><label class="badge badge-success">${data504[i][8]}</td>
+      <td><label class="badge badge-success">${data504[i][9]}</td>
+      <td><label class="badge badge-success">${data504[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table504 = table504 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData504.innerHTML = table504;
+
+
+
+  </script>
+    <script>
+
+let tableData505 = document.getElementById("PMDataTable_505");
+let data505 = ({{pm505|tojson}});
+
+//set header of table
+let table505 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data505.length; i++){
+    table505 = table505 +
+    `<tr key={key}>
+
+      <td>${data505[i][0]}</td>
+      <td>${data505[i][1]}</td>
+      <td><a href="/getfile/${data505[i][2]}.pdf" target="_blank">${data505[i][2]}</td></a>
+      <td>${data505[i][3]}</td>
+      <td><label class="badge badge-success">${data505[i][4]}</td>
+      <td><label class="badge badge-success">${data505[i][5]}</td>
+      <td><label class="badge badge-success">${data505[i][6]}</td>
+      <td><label class="badge badge-success">${data505[i][7]}</td>
+      <td><label class="badge badge-success">${data505[i][8]}</td>
+      <td><label class="badge badge-success">${data505[i][9]}</td>
+      <td><label class="badge badge-success">${data505[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table505 = table505 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData505.innerHTML = table505;
+
+
+
+  </script>
+    <!--    Line 506 Table-->
+    <script>
+
+let tableData506 = document.getElementById("PMDataTable_506");
+let data506 = ({{pm506|tojson}});
+
+//set header of table
+let table506 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data506.length; i++){
+    table506 = table506 +
+    `<tr key={key}>
+
+      <td>${data506[i][0]}</td>
+      <td>${data506[i][1]}</td>
+      <td><a href="/getfile/${data506[i][2]}.pdf" target="_blank">${data506[i][2]}</td></a>
+      <td>${data506[i][3]}</td>
+      <td><label class="badge badge-success">${data506[i][4]}</td>
+      <td><label class="badge badge-success">${data506[i][5]}</td>
+      <td><label class="badge badge-success">${data506[i][6]}</td>
+      <td><label class="badge badge-success">${data506[i][7]}</td>
+      <td><label class="badge badge-success">${data506[i][8]}</td>
+      <td><label class="badge badge-success">${data506[i][9]}</td>
+      <td><label class="badge badge-success">${data506[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table506 = table506 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData506.innerHTML = table506;
+
+
+
+  </script>
+    <script>
+
+let tableData507 = document.getElementById("PMDataTable_507");
+let data507 = ({{pm507|tojson}});
+
+//set header of table
+let table507 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data507.length; i++){
+    table507 = table507 +
+    `<tr key={key}>
+
+      <td>${data507[i][0]}</td>
+      <td>${data507[i][1]}</td>
+      <td><a href="/getfile/${data507[i][2]}.pdf" target="_blank">${data507[i][2]}</td></a>
+      <td>${data507[i][3]}</td>
+      <td><label class="badge badge-success">${data507[i][4]}</td>
+      <td><label class="badge badge-success">${data507[i][5]}</td>
+      <td><label class="badge badge-success">${data507[i][6]}</td>
+      <td><label class="badge badge-success">${data507[i][7]}</td>
+      <td><label class="badge badge-success">${data507[i][8]}</td>
+      <td><label class="badge badge-success">${data507[i][9]}</td>
+      <td><label class="badge badge-success">${data507[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table507 = table507 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData507.innerHTML = table507;
+
+
+
+  </script>
+    <script>
+
+let tableData508 = document.getElementById("PMDataTable_508");
+let data508 = ({{pm508|tojson}});
+
+//set header of table
+let table508 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data508.length; i++){
+    table508 = table508 +
+    `<tr key={key}>
+
+      <td>${data508[i][0]}</td>
+      <td>${data508[i][1]}</td>
+      <td><a href="/getfile/${data508[i][2]}.pdf" target="_blank">${data508[i][2]}</td></a>
+      <td>${data508[i][3]}</td>
+      <td><label class="badge badge-success">${data508[i][4]}</td>
+      <td><label class="badge badge-success">${data508[i][5]}</td>
+      <td><label class="badge badge-success">${data508[i][6]}</td>
+      <td><label class="badge badge-success">${data508[i][7]}</td>
+      <td><label class="badge badge-success">${data508[i][8]}</td>
+      <td><label class="badge badge-success">${data508[i][9]}</td>
+      <td><label class="badge badge-success">${data508[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table508 = table508 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData508.innerHTML = table508;
+
+
+
+  </script>
+    <script>
+
+let tableData509 = document.getElementById("PMDataTable_509");
+let data509 = ({{pm509|tojson}});
+
+//set header of table
+let table509 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data509.length; i++){
+    table509 = table509 +
+    `<tr key={key}>
+
+      <td>${data509[i][0]}</td>
+      <td>${data509[i][1]}</td>
+      <td><a href="/getfile/${data509[i][2]}.pdf" target="_blank">${data509[i][2]}</td></a>
+      <td>${data509[i][3]}</td>
+      <td><label class="badge badge-success">${data509[i][4]}</td>
+      <td><label class="badge badge-success">${data509[i][5]}</td>
+      <td><label class="badge badge-success">${data509[i][6]}</td>
+      <td><label class="badge badge-success">${data509[i][7]}</td>
+      <td><label class="badge badge-success">${data509[i][8]}</td>
+      <td><label class="badge badge-success">${data509[i][9]}</td>
+      <td><label class="badge badge-success">${data509[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table509 = table509 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData509.innerHTML = table509;
+
+
+
+  </script>
+    <script>
+
+let tableData510 = document.getElementById("PMDataTable_510");
+let data510 = ({{pm510|tojson}});
+
+//set header of table
+let table510 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data510.length; i++){
+    table510 = table510 +
+    `<tr key={key}>
+
+      <td>${data510[i][0]}</td>
+      <td>${data510[i][1]}</td>
+      <td><a href="/getfile/${data510[i][2]}.pdf" target="_blank">${data510[i][2]}</td></a>
+      <td>${data510[i][3]}</td>
+      <td><label class="badge badge-success">${data510[i][4]}</td>
+      <td><label class="badge badge-success">${data510[i][5]}</td>
+      <td><label class="badge badge-success">${data510[i][6]}</td>
+      <td><label class="badge badge-success">${data510[i][7]}</td>
+      <td><label class="badge badge-success">${data510[i][8]}</td>
+      <td><label class="badge badge-success">${data510[i][9]}</td>
+      <td><label class="badge badge-success">${data510[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table510 = table510 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData510.innerHTML = table510;
+
+
+
+  </script>
+    <script>
+
+let tableData511 = document.getElementById("PMDataTable_511");
+let data511 = ({{pm511|tojson}});
+
+//set header of table
+let table511 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data511.length; i++){
+    table511 = table511 +
+    `<tr key={key}>
+
+      <td>${data511[i][0]}</td>
+      <td>${data511[i][1]}</td>
+      <td><a href="/getfile/${data511[i][2]}.pdf" target="_blank">${data511[i][2]}</td></a>
+      <td>${data511[i][3]}</td>
+      <td><label class="badge badge-success">${data511[i][4]}</td>
+      <td><label class="badge badge-success">${data511[i][5]}</td>
+      <td><label class="badge badge-success">${data511[i][6]}</td>
+      <td><label class="badge badge-success">${data511[i][7]}</td>
+      <td><label class="badge badge-success">${data511[i][8]}</td>
+      <td><label class="badge badge-success">${data511[i][9]}</td>
+      <td><label class="badge badge-success">${data511[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table511 = table511 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData511.innerHTML = table511;
+
+
+
+  </script>
+    <script>
+
+let tableData512 = document.getElementById("PMDataTable_512");
+let data512 = ({{pm512|tojson}});
+
+//set header of table
+let table512 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data512.length; i++){
+    table512 = table512 +
+    `<tr key={key}>
+
+      <td>${data512[i][0]}</td>
+      <td>${data512[i][1]}</td>
+      <td><a href="/getfile/${data512[i][2]}.pdf" target="_blank">${data512[i][2]}</td></a>
+      <td>${data512[i][3]}</td>
+      <td><label class="badge badge-success">${data512[i][4]}</td>
+      <td><label class="badge badge-success">${data512[i][5]}</td>
+      <td><label class="badge badge-success">${data512[i][6]}</td>
+      <td><label class="badge badge-success">${data512[i][7]}</td>
+      <td><label class="badge badge-success">${data512[i][8]}</td>
+      <td><label class="badge badge-success">${data512[i][9]}</td>
+      <td><label class="badge badge-success">${data512[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table512 = table512 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData512.innerHTML = table512;
+
+
+
+  </script>
+    <!--    Line 513 Table-->
+    <script>
+
+let tableData513 = document.getElementById("PMDataTable_513");
+let data513 = ({{pm513|tojson}});
+
+//set header of table
+let table513 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data513.length; i++){
+    table513 = table513 +
+    `<tr key={key}>
+
+      <td>${data513[i][0]}</td>
+      <td>${data513[i][1]}</td>
+      <td><a href="/getfile/${data513[i][2]}.pdf" target="_blank">${data513[i][2]}</td></a>
+      <td>${data513[i][3]}</td>
+      <td><label class="badge badge-success">${data513[i][4]}</td>
+      <td><label class="badge badge-success">${data513[i][5]}</td>
+      <td><label class="badge badge-success">${data513[i][6]}</td>
+      <td><label class="badge badge-success">${data513[i][7]}</td>
+      <td><label class="badge badge-success">${data513[i][8]}</td>
+      <td><label class="badge badge-success">${data513[i][9]}</td>
+      <td><label class="badge badge-success">${data513[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table513 = table513 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData513.innerHTML = table513;
+
+
+
+  </script>
+    <script>
+
+let tableData514 = document.getElementById("PMDataTable_514");
+let data514 = ({{pm514|tojson}});
+
+//set header of table
+let table514 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data514.length; i++){
+    table514 = table514 +
+    `<tr key={key}>
+
+      <td>${data514[i][0]}</td>
+      <td>${data514[i][1]}</td>
+      <td><a href="/getfile/${data514[i][2]}.pdf" target="_blank">${data514[i][2]}</td></a>
+      <td>${data514[i][3]}</td>
+      <td><label class="badge badge-success">${data514[i][4]}</td>
+      <td><label class="badge badge-success">${data514[i][5]}</td>
+      <td><label class="badge badge-success">${data514[i][6]}</td>
+      <td><label class="badge badge-success">${data514[i][7]}</td>
+      <td><label class="badge badge-success">${data514[i][8]}</td>
+      <td><label class="badge badge-success">${data514[i][9]}</td>
+      <td><label class="badge badge-success">${data514[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table514 = table514 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData514.innerHTML = table514;
+
+
+
+  </script>
+    <script>
+
+let tableData515 = document.getElementById("PMDataTable_515");
+let data515 = ({{pm515|tojson}});
+
+//set header of table
+let table515 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data515.length; i++){
+    table515 = table515 +
+    `<tr key={key}>
+
+      <td>${data515[i][0]}</td>
+      <td>${data515[i][1]}</td>
+      <td><a href="/getfile/${data515[i][2]}.pdf" target="_blank">${data515[i][2]}</td></a>
+      <td>${data515[i][3]}</td>
+      <td><label class="badge badge-success">${data515[i][4]}</td>
+      <td><label class="badge badge-success">${data515[i][5]}</td>
+      <td><label class="badge badge-success">${data515[i][6]}</td>
+      <td><label class="badge badge-success">${data515[i][7]}</td>
+      <td><label class="badge badge-success">${data515[i][8]}</td>
+      <td><label class="badge badge-success">${data515[i][9]}</td>
+      <td><label class="badge badge-success">${data515[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table515 = table515 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData515.innerHTML = table515;
+
+
+
+  </script>
+    <script>
+
+let tableData516 = document.getElementById("PMDataTable_516");
+let data516 = ({{pm516|tojson}});
+
+//set header of table
+let table516 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data516.length; i++){
+    table516 = table516 +
+    `<tr key={key}>
+
+      <td>${data516[i][0]}</td>
+      <td>${data516[i][1]}</td>
+      <td><a href="/getfile/${data516[i][2]}.pdf" target="_blank">${data516[i][2]}</td></a>
+      <td>${data516[i][3]}</td>
+      <td><label class="badge badge-success">${data516[i][4]}</td>
+      <td><label class="badge badge-success">${data516[i][5]}</td>
+      <td><label class="badge badge-success">${data516[i][6]}</td>
+      <td><label class="badge badge-success">${data516[i][7]}</td>
+      <td><label class="badge badge-success">${data516[i][8]}</td>
+      <td><label class="badge badge-success">${data516[i][9]}</td>
+      <td><label class="badge badge-success">${data516[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table516 = table516 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData516.innerHTML = table516;
+
+
+
+  </script>
+    <script>
+
+let tableData517 = document.getElementById("PMDataTable_517");
+let data517 = ({{pm517|tojson}});
+
+//set header of table
+let table517 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data517.length; i++){
+    table517 = table517 +
+    `<tr key={key}>
+
+      <td>${data517[i][0]}</td>
+      <td>${data517[i][1]}</td>
+      <td><a href="/getfile/${data517[i][2]}.pdf" target="_blank">${data517[i][2]}</td></a>
+      <td>${data517[i][3]}</td>
+      <td><label class="badge badge-success">${data517[i][4]}</td>
+      <td><label class="badge badge-success">${data517[i][5]}</td>
+      <td><label class="badge badge-success">${data517[i][6]}</td>
+      <td><label class="badge badge-success">${data517[i][7]}</td>
+      <td><label class="badge badge-success">${data517[i][8]}</td>
+      <td><label class="badge badge-success">${data517[i][9]}</td>
+      <td><label class="badge badge-success">${data517[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table517 = table517 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData517.innerHTML = table517;
+
+
+
+  </script>
+    <script>
+
+let tableData518 = document.getElementById("PMDataTable_518");
+let data518 = ({{pm518|tojson}});
+
+//set header of table
+let table518 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data518.length; i++){
+    table518 = table518 +
+    `<tr key={key}>
+
+      <td>${data518[i][0]}</td>
+      <td>${data518[i][1]}</td>
+      <td><a href="/getfile/${data518[i][2]}.pdf" target="_blank">${data518[i][2]}</td></a>
+      <td>${data518[i][3]}</td>
+      <td><label class="badge badge-success">${data518[i][4]}</td>
+      <td><label class="badge badge-success">${data518[i][5]}</td>
+      <td><label class="badge badge-success">${data518[i][6]}</td>
+      <td><label class="badge badge-success">${data518[i][7]}</td>
+      <td><label class="badge badge-success">${data518[i][8]}</td>
+      <td><label class="badge badge-success">${data518[i][9]}</td>
+      <td><label class="badge badge-success">${data518[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table518 = table518 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData518.innerHTML = table518;
+
+
+
+  </script>
+    <script>
+
+let tableData519 = document.getElementById("PMDataTable_519");
+let data519 = ({{pm519|tojson}});
+
+//set header of table
+let table519 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data519.length; i++){
+    table519 = table519 +
+    `<tr key={key}>
+
+      <td>${data519[i][0]}</td>
+      <td>${data519[i][1]}</td>
+      <td><a href="/getfile/${data519[i][2]}.pdf" target="_blank">${data519[i][2]}</td></a>
+      <td>${data519[i][3]}</td>
+      <td><label class="badge badge-success">${data519[i][4]}</td>
+      <td><label class="badge badge-success">${data519[i][5]}</td>
+      <td><label class="badge badge-success">${data519[i][6]}</td>
+      <td><label class="badge badge-success">${data519[i][7]}</td>
+      <td><label class="badge badge-success">${data519[i][8]}</td>
+      <td><label class="badge badge-success">${data519[i][9]}</td>
+      <td><label class="badge badge-success">${data519[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table519 = table519 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData519.innerHTML = table519;
+
+
+
+  </script>
+
+
+
+    <!--    Line 6 Table-->
+
+    <script>
+
+let tableData601 = document.getElementById("PMDataTable_601");
+let data601 = ({{pm601|tojson}});
+
+//set header of table
+let table601 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data601.length; i++){
+    table601 = table601 +
+    `<tr key={key}>
+
+      <td>${data601[i][0]}</td>
+      <td>${data601[i][1]}</td>
+      <td><a href="/getfile/${data601[i][2]}.pdf" target="_blank">${data601[i][2]}</td></a>
+      <td>${data601[i][3]}</td>
+      <td><label class="badge badge-success">${data601[i][4]}</td>
+      <td><label class="badge badge-success">${data601[i][5]}</td>
+      <td><label class="badge badge-success">${data601[i][6]}</td>
+      <td><label class="badge badge-success">${data601[i][7]}</td>
+      <td><label class="badge badge-success">${data601[i][8]}</td>
+      <td><label class="badge badge-success">${data601[i][9]}</td>
+      <td><label class="badge badge-success">${data601[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table601 = table601 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData601.innerHTML = table601;
+
+
+
+  </script>
+
+    <script>
+
+let tableData602 = document.getElementById("PMDataTable_602");
+let data602 = ({{pm602|tojson}});
+
+//set header of table
+let table602 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data602.length; i++){
+    table602 = table602 +
+    `<tr key={key}>
+
+      <td>${data602[i][0]}</td>
+      <td>${data602[i][1]}</td>
+      <td><a href="/getfile/${data602[i][2]}.pdf" target="_blank">${data602[i][2]}</td></a>
+      <td>${data602[i][3]}</td>
+      <td><label class="badge badge-success">${data602[i][4]}</td>
+      <td><label class="badge badge-success">${data602[i][5]}</td>
+      <td><label class="badge badge-success">${data602[i][6]}</td>
+      <td><label class="badge badge-success">${data602[i][7]}</td>
+      <td><label class="badge badge-success">${data602[i][8]}</td>
+      <td><label class="badge badge-success">${data602[i][9]}</td>
+      <td><label class="badge badge-success">${data602[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table602 = table602 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData602.innerHTML = table602;
+
+
+
+  </script>
+
+    <script>
+
+let tableData603 = document.getElementById("PMDataTable_603");
+let data603 = ({{pm603|tojson}});
+
+//set header of table
+let table603 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data603.length; i++){
+    table603 = table603 +
+    `<tr key={key}>
+
+      <td>${data603[i][0]}</td>
+      <td>${data603[i][1]}</td>
+      <td><a href="/getfile/${data603[i][2]}.pdf" target="_blank">${data603[i][2]}</td></a>
+      <td>${data603[i][3]}</td>
+      <td><label class="badge badge-success">${data603[i][4]}</td>
+      <td><label class="badge badge-success">${data603[i][5]}</td>
+      <td><label class="badge badge-success">${data603[i][6]}</td>
+      <td><label class="badge badge-success">${data603[i][7]}</td>
+      <td><label class="badge badge-success">${data603[i][8]}</td>
+      <td><label class="badge badge-success">${data603[i][9]}</td>
+      <td><label class="badge badge-success">${data603[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table603 = table603 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData603.innerHTML = table603;
+
+
+
+  </script>
+
+    <script>
+
+let tableData604 = document.getElementById("PMDataTable_604");
+let data604 = ({{pm604|tojson}});
+
+//set header of table
+let table604 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data604.length; i++){
+    table604 = table604 +
+    `<tr key={key}>
+
+      <td>${data604[i][0]}</td>
+      <td>${data604[i][1]}</td>
+      <td><a href="/getfile/${data604[i][2]}.pdf" target="_blank">${data604[i][2]}</td></a>
+      <td>${data604[i][3]}</td>
+      <td><label class="badge badge-success">${data604[i][4]}</td>
+      <td><label class="badge badge-success">${data604[i][5]}</td>
+      <td><label class="badge badge-success">${data604[i][6]}</td>
+      <td><label class="badge badge-success">${data604[i][7]}</td>
+      <td><label class="badge badge-success">${data604[i][8]}</td>
+      <td><label class="badge badge-success">${data604[i][9]}</td>
+      <td><label class="badge badge-success">${data604[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table604 = table604 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData604.innerHTML = table604;
+
+
+
+  </script>
+
+    <!--    Line 605 Table-->
+
+    <script>
+
+let tableData605 = document.getElementById("PMDataTable_605");
+let data605 = ({{pm605|tojson}});
+
+//set header of table
+let table605 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data605.length; i++){
+    table605 = table605 +
+    `<tr key={key}>
+
+      <td>${data605[i][0]}</td>
+      <td>${data605[i][1]}</td>
+      <td><a href="/getfile/${data605[i][2]}.pdf" target="_blank">${data605[i][2]}</td></a>
+      <td>${data605[i][3]}</td>
+      <td><label class="badge badge-success">${data605[i][4]}</td>
+      <td><label class="badge badge-success">${data605[i][5]}</td>
+      <td><label class="badge badge-success">${data605[i][6]}</td>
+      <td><label class="badge badge-success">${data605[i][7]}</td>
+      <td><label class="badge badge-success">${data605[i][8]}</td>
+      <td><label class="badge badge-success">${data605[i][9]}</td>
+      <td><label class="badge badge-success">${data605[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table605 = table605 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData605.innerHTML = table605;
+
+
+
+  </script>
+
+    <script>
+
+let tableData606 = document.getElementById("PMDataTable_606");
+let data606 = ({{pm606|tojson}});
+
+//set header of table
+let table606 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data606.length; i++){
+    table606 = table606 +
+    `<tr key={key}>
+
+      <td>${data606[i][0]}</td>
+      <td>${data606[i][1]}</td>
+      <td><a href="/getfile/${data606[i][2]}.pdf" target="_blank">${data606[i][2]}</td></a>
+      <td>${data606[i][3]}</td>
+      <td><label class="badge badge-success">${data606[i][4]}</td>
+      <td><label class="badge badge-success">${data606[i][5]}</td>
+      <td><label class="badge badge-success">${data606[i][6]}</td>
+      <td><label class="badge badge-success">${data606[i][7]}</td>
+      <td><label class="badge badge-success">${data606[i][8]}</td>
+      <td><label class="badge badge-success">${data606[i][9]}</td>
+      <td><label class="badge badge-success">${data606[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table606 = table606 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData606.innerHTML = table606;
+
+
+
+  </script>
+
+    <script>
+
+let tableData607 = document.getElementById("PMDataTable_607");
+let data607 = ({{pm607|tojson}});
+
+//set header of table
+let table607 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data607.length; i++){
+    table607 = table607 +
+    `<tr key={key}>
+
+      <td>${data607[i][0]}</td>
+      <td>${data607[i][1]}</td>
+      <td><a href="/getfile/${data607[i][2]}.pdf" target="_blank">${data607[i][2]}</td></a>
+      <td>${data607[i][3]}</td>
+      <td><label class="badge badge-success">${data607[i][4]}</td>
+      <td><label class="badge badge-success">${data607[i][5]}</td>
+      <td><label class="badge badge-success">${data607[i][6]}</td>
+      <td><label class="badge badge-success">${data607[i][7]}</td>
+      <td><label class="badge badge-success">${data607[i][8]}</td>
+      <td><label class="badge badge-success">${data607[i][9]}</td>
+      <td><label class="badge badge-success">${data607[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table607 = table607 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData607.innerHTML = table607;
+
+
+
+  </script>
+
+    <script>
+
+let tableData608 = document.getElementById("PMDataTable_608");
+let data608 = ({{pm608|tojson}});
+
+//set header of table
+let table608 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data608.length; i++){
+    table608 = table608 +
+    `<tr key={key}>
+
+      <td>${data608[i][0]}</td>
+      <td>${data608[i][1]}</td>
+      <td><a href="/getfile/${data608[i][2]}.pdf" target="_blank">${data608[i][2]}</td></a>
+      <td>${data608[i][3]}</td>
+      <td><label class="badge badge-success">${data608[i][4]}</td>
+      <td><label class="badge badge-success">${data608[i][5]}</td>
+      <td><label class="badge badge-success">${data608[i][6]}</td>
+      <td><label class="badge badge-success">${data608[i][7]}</td>
+      <td><label class="badge badge-success">${data608[i][8]}</td>
+      <td><label class="badge badge-success">${data608[i][9]}</td>
+      <td><label class="badge badge-success">${data608[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table608 = table608 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData608.innerHTML = table608;
+
+
+
+  </script>
+
+    <script>
+
+let tableData609 = document.getElementById("PMDataTable_609");
+let data609 = ({{pm609|tojson}});
+
+//set header of table
+let table609 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data609.length; i++){
+    table609 = table609 +
+    `<tr key={key}>
+
+      <td>${data609[i][0]}</td>
+      <td>${data609[i][1]}</td>
+      <td><a href="/getfile/${data609[i][2]}.pdf" target="_blank">${data609[i][2]}</td></a>
+      <td>${data609[i][3]}</td>
+      <td><label class="badge badge-success">${data609[i][4]}</td>
+      <td><label class="badge badge-success">${data609[i][5]}</td>
+      <td><label class="badge badge-success">${data609[i][6]}</td>
+      <td><label class="badge badge-success">${data609[i][7]}</td>
+      <td><label class="badge badge-success">${data609[i][8]}</td>
+      <td><label class="badge badge-success">${data609[i][9]}</td>
+      <td><label class="badge badge-success">${data609[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table609 = table609 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData609.innerHTML = table609;
+
+
+
+  </script>
+
+    <script>
+
+let tableData610 = document.getElementById("PMDataTable_610");
+let data610 = ({{pm610|tojson}});
+
+//set header of table
+let table610 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data610.length; i++){
+    table610 = table610 +
+    `<tr key={key}>
+
+      <td>${data610[i][0]}</td>
+      <td>${data610[i][1]}</td>
+      <td><a href="/getfile/${data610[i][2]}.pdf" target="_blank">${data610[i][2]}</td></a>
+      <td>${data610[i][3]}</td>
+      <td><label class="badge badge-success">${data610[i][4]}</td>
+      <td><label class="badge badge-success">${data610[i][5]}</td>
+      <td><label class="badge badge-success">${data610[i][6]}</td>
+      <td><label class="badge badge-success">${data610[i][7]}</td>
+      <td><label class="badge badge-success">${data610[i][8]}</td>
+      <td><label class="badge badge-success">${data610[i][9]}</td>
+      <td><label class="badge badge-success">${data610[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table610 = table610 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData610.innerHTML = table610;
+
+
+
+  </script>
+
+    <!--Table 611-->
+
+    <script>
+
+let tableData611 = document.getElementById("PMDataTable_611");
+let data611 = ({{pm611|tojson}});
+
+//set header of table
+let table611 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data611.length; i++){
+    table611 = table611 +
+    `<tr key={key}>
+
+      <td>${data611[i][0]}</td>
+      <td>${data611[i][1]}</td>
+      <td><a href="/getfile/${data611[i][2]}.pdf" target="_blank">${data611[i][2]}</td></a>
+      <td>${data611[i][3]}</td>
+      <td><label class="badge badge-success">${data611[i][4]}</td>
+      <td><label class="badge badge-success">${data611[i][5]}</td>
+      <td><label class="badge badge-success">${data611[i][6]}</td>
+      <td><label class="badge badge-success">${data611[i][7]}</td>
+      <td><label class="badge badge-success">${data611[i][8]}</td>
+      <td><label class="badge badge-success">${data611[i][9]}</td>
+      <td><label class="badge badge-success">${data611[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table611 = table611 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData611.innerHTML = table611;
+
+
+
+  </script>
+
+    <script>
+
+let tableData612 = document.getElementById("PMDataTable_612");
+let data612 = ({{pm612|tojson}});
+
+//set header of table
+let table612 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data612.length; i++){
+    table612 = table612 +
+    `<tr key={key}>
+
+      <td>${data612[i][0]}</td>
+      <td>${data612[i][1]}</td>
+      <td><a href="/getfile/${data612[i][2]}.pdf" target="_blank">${data612[i][2]}</td></a>
+      <td>${data612[i][3]}</td>
+      <td><label class="badge badge-success">${data612[i][4]}</td>
+      <td><label class="badge badge-success">${data612[i][5]}</td>
+      <td><label class="badge badge-success">${data612[i][6]}</td>
+      <td><label class="badge badge-success">${data612[i][7]}</td>
+      <td><label class="badge badge-success">${data612[i][8]}</td>
+      <td><label class="badge badge-success">${data612[i][9]}</td>
+      <td><label class="badge badge-success">${data612[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table612 = table612 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData612.innerHTML = table612;
+
+
+
+  </script>
+
+    <script>
+
+let tableData613 = document.getElementById("PMDataTable_613");
+let data613 = ({{pm613|tojson}});
+
+//set header of table
+let table613 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data613.length; i++){
+    table613 = table613 +
+    `<tr key={key}>
+
+      <td>${data613[i][0]}</td>
+      <td>${data613[i][1]}</td>
+      <td><a href="/getfile/${data613[i][2]}.pdf" target="_blank">${data613[i][2]}</td></a>
+      <td>${data613[i][3]}</td>
+      <td><label class="badge badge-success">${data613[i][4]}</td>
+      <td><label class="badge badge-success">${data613[i][5]}</td>
+      <td><label class="badge badge-success">${data613[i][6]}</td>
+      <td><label class="badge badge-success">${data613[i][7]}</td>
+      <td><label class="badge badge-success">${data613[i][8]}</td>
+      <td><label class="badge badge-success">${data613[i][9]}</td>
+      <td><label class="badge badge-success">${data613[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table613 = table613 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData613.innerHTML = table613;
+
+
+
+  </script>
+
+    <script>
+
+let tableData614 = document.getElementById("PMDataTable_614");
+let data614 = ({{pm614|tojson}});
+
+//set header of table
+let table614 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data614.length; i++){
+    table614 = table614 +
+    `<tr key={key}>
+
+      <td>${data614[i][0]}</td>
+      <td>${data614[i][1]}</td>
+      <td><a href="/getfile/${data614[i][2]}.pdf" target="_blank">${data614[i][2]}</td></a>
+      <td>${data614[i][3]}</td>
+      <td><label class="badge badge-success">${data614[i][4]}</td>
+      <td><label class="badge badge-success">${data614[i][5]}</td>
+      <td><label class="badge badge-success">${data614[i][6]}</td>
+      <td><label class="badge badge-success">${data614[i][7]}</td>
+      <td><label class="badge badge-success">${data614[i][8]}</td>
+      <td><label class="badge badge-success">${data614[i][9]}</td>
+      <td><label class="badge badge-success">${data614[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table614 = table614 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData614.innerHTML = table614;
+
+
+
+  </script>
+    
+    <script>
+
+let tableData615 = document.getElementById("PMDataTable_615");
+let data615 = ({{pm615|tojson}});
+
+//set header of table
+let table615 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data615.length; i++){
+    table615 = table615 +
+    `<tr key={key}>
+
+      <td>${data615[i][0]}</td>
+      <td>${data615[i][1]}</td>
+      <td><a href="/getfile/${data615[i][2]}.pdf" target="_blank">${data615[i][2]}</td></a>
+      <td>${data615[i][3]}</td>
+      <td><label class="badge badge-success">${data615[i][4]}</td>
+      <td><label class="badge badge-success">${data615[i][5]}</td>
+      <td><label class="badge badge-success">${data615[i][6]}</td>
+      <td><label class="badge badge-success">${data615[i][7]}</td>
+      <td><label class="badge badge-success">${data615[i][8]}</td>
+      <td><label class="badge badge-success">${data615[i][9]}</td>
+      <td><label class="badge badge-success">${data615[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table615 = table615 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData615.innerHTML = table615;
+
+
+
+  </script>
+
+    <!--Table 616-->
+    
+    <script>
+
+let tableData616 = document.getElementById("PMDataTable_616");
+let data616 = ({{pm616|tojson}});
+
+//set header of table
+let table616 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data616.length; i++){
+    table616 = table616 +
+    `<tr key={key}>
+
+      <td>${data616[i][0]}</td>
+      <td>${data616[i][1]}</td>
+      <td><a href="/getfile/${data616[i][2]}.pdf" target="_blank">${data616[i][2]}</td></a>
+      <td>${data616[i][3]}</td>
+      <td><label class="badge badge-success">${data616[i][4]}</td>
+      <td><label class="badge badge-success">${data616[i][5]}</td>
+      <td><label class="badge badge-success">${data616[i][6]}</td>
+      <td><label class="badge badge-success">${data616[i][7]}</td>
+      <td><label class="badge badge-success">${data616[i][8]}</td>
+      <td><label class="badge badge-success">${data616[i][9]}</td>
+      <td><label class="badge badge-success">${data616[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table616 = table616 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData616.innerHTML = table616;
+
+
+
+  </script>
+
+    <script>
+
+let tableData617 = document.getElementById("PMDataTable_617");
+let data617 = ({{pm617|tojson}});
+
+//set header of table
+let table617 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data617.length; i++){
+    table617 = table617 +
+    `<tr key={key}>
+
+      <td>${data617[i][0]}</td>
+      <td>${data617[i][1]}</td>
+      <td><a href="/getfile/${data617[i][2]}.pdf" target="_blank">${data617[i][2]}</td></a>
+      <td>${data617[i][3]}</td>
+      <td><label class="badge badge-success">${data617[i][4]}</td>
+      <td><label class="badge badge-success">${data617[i][5]}</td>
+      <td><label class="badge badge-success">${data617[i][6]}</td>
+      <td><label class="badge badge-success">${data617[i][7]}</td>
+      <td><label class="badge badge-success">${data617[i][8]}</td>
+      <td><label class="badge badge-success">${data617[i][9]}</td>
+      <td><label class="badge badge-success">${data617[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table617 = table617 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData617.innerHTML = table617;
+
+
+
+  </script>
+
+<!--Table 618-->
+
+    <script>
+
+let tableData618 = document.getElementById("PMDataTable_618");
+let data618 = ({{pm618|tojson}});
+
+//set header of table
+let table618 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data618.length; i++){
+    table618 = table618 +
+    `<tr key={key}>
+
+      <td>${data618[i][0]}</td>
+      <td>${data618[i][1]}</td>
+      <td><a href="/getfile/${data618[i][2]}.pdf" target="_blank">${data618[i][2]}</td></a>
+      <td>${data618[i][3]}</td>
+      <td><label class="badge badge-success">${data618[i][4]}</td>
+      <td><label class="badge badge-success">${data618[i][5]}</td>
+      <td><label class="badge badge-success">${data618[i][6]}</td>
+      <td><label class="badge badge-success">${data618[i][7]}</td>
+      <td><label class="badge badge-success">${data618[i][8]}</td>
+      <td><label class="badge badge-success">${data618[i][9]}</td>
+      <td><label class="badge badge-success">${data618[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table618 = table618 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData618.innerHTML = table618;
+
+
+
+  </script>
+
+    <script>
+
+let tableData619 = document.getElementById("PMDataTable_619");
+let data619 = ({{pm619|tojson}});
+
+//set header of table
+let table619 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data619.length; i++){
+    table619 = table619 +
+    `<tr key={key}>
+
+      <td>${data619[i][0]}</td>
+      <td>${data619[i][1]}</td>
+      <td><a href="/getfile/${data619[i][2]}.pdf" target="_blank">${data619[i][2]}</td></a>
+      <td>${data619[i][3]}</td>
+      <td><label class="badge badge-success">${data619[i][4]}</td>
+      <td><label class="badge badge-success">${data619[i][5]}</td>
+      <td><label class="badge badge-success">${data619[i][6]}</td>
+      <td><label class="badge badge-success">${data619[i][7]}</td>
+      <td><label class="badge badge-success">${data619[i][8]}</td>
+      <td><label class="badge badge-success">${data619[i][9]}</td>
+      <td><label class="badge badge-success">${data619[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table619 = table619 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData619.innerHTML = table619;
+
+
+
+  </script>
+
+    <script>
+
+let tableData620 = document.getElementById("PMDataTable_620");
+let data620 = ({{pm620|tojson}});
+
+//set header of table
+let table620 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data620.length; i++){
+    table620 = table620 +
+    `<tr key={key}>
+
+      <td>${data620[i][0]}</td>
+      <td>${data620[i][1]}</td>
+      <td><a href="/getfile/${data620[i][2]}.pdf" target="_blank">${data620[i][2]}</td></a>
+      <td>${data620[i][3]}</td>
+      <td><label class="badge badge-success">${data620[i][4]}</td>
+      <td><label class="badge badge-success">${data620[i][5]}</td>
+      <td><label class="badge badge-success">${data620[i][6]}</td>
+      <td><label class="badge badge-success">${data620[i][7]}</td>
+      <td><label class="badge badge-success">${data620[i][8]}</td>
+      <td><label class="badge badge-success">${data620[i][9]}</td>
+      <td><label class="badge badge-success">${data620[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table620 = table620 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData620.innerHTML = table620;
+
+
+
+  </script>
+
+  <!--Table 621-->
+
+    <script>
+
+let tableData621 = document.getElementById("PMDataTable_621");
+let data621 = ({{pm621|tojson}});
+
+//set header of table
+let table621 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data621.length; i++){
+    table621 = table621 +
+    `<tr key={key}>
+
+      <td>${data621[i][0]}</td>
+      <td>${data621[i][1]}</td>
+      <td><a href="/getfile/${data621[i][2]}.pdf" target="_blank">${data621[i][2]}</td></a>
+      <td>${data621[i][3]}</td>
+      <td><label class="badge badge-success">${data621[i][4]}</td>
+      <td><label class="badge badge-success">${data621[i][5]}</td>
+      <td><label class="badge badge-success">${data621[i][6]}</td>
+      <td><label class="badge badge-success">${data621[i][7]}</td>
+      <td><label class="badge badge-success">${data621[i][8]}</td>
+      <td><label class="badge badge-success">${data621[i][9]}</td>
+      <td><label class="badge badge-success">${data621[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table621 = table621 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData621.innerHTML = table621;
+
+
+
+  </script>
+
+    <script>
+
+let tableData622 = document.getElementById("PMDataTable_622");
+let data622 = ({{pm622|tojson}});
+
+//set header of table
+let table622 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data622.length; i++){
+    table622 = table622 +
+    `<tr key={key}>
+
+      <td>${data622[i][0]}</td>
+      <td>${data622[i][1]}</td>
+      <td><a href="/getfile/${data622[i][2]}.pdf" target="_blank">${data622[i][2]}</td></a>
+      <td>${data622[i][3]}</td>
+      <td><label class="badge badge-success">${data622[i][4]}</td>
+      <td><label class="badge badge-success">${data622[i][5]}</td>
+      <td><label class="badge badge-success">${data622[i][6]}</td>
+      <td><label class="badge badge-success">${data622[i][7]}</td>
+      <td><label class="badge badge-success">${data622[i][8]}</td>
+      <td><label class="badge badge-success">${data622[i][9]}</td>
+      <td><label class="badge badge-success">${data622[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table622 = table622 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData622.innerHTML = table622;
+
+
+
+  </script>
+
+    <script>
+
+let tableData623 = document.getElementById("PMDataTable_623");
+let data623 = ({{pm623|tojson}});
+
+//set header of table
+let table623 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data623.length; i++){
+    table623 = table623 +
+    `<tr key={key}>
+
+      <td>${data623[i][0]}</td>
+      <td>${data623[i][1]}</td>
+      <td><a href="/getfile/${data623[i][2]}.pdf" target="_blank">${data623[i][2]}</td></a>
+      <td>${data623[i][3]}</td>
+      <td><label class="badge badge-success">${data623[i][4]}</td>
+      <td><label class="badge badge-success">${data623[i][5]}</td>
+      <td><label class="badge badge-success">${data623[i][6]}</td>
+      <td><label class="badge badge-success">${data623[i][7]}</td>
+      <td><label class="badge badge-success">${data623[i][8]}</td>
+      <td><label class="badge badge-success">${data623[i][9]}</td>
+      <td><label class="badge badge-success">${data623[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table623 = table623 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData623.innerHTML = table623;
+
+
+
+  </script>
+
+    <script>
+
+let tableData624 = document.getElementById("PMDataTable_624");
+let data624 = ({{pm624|tojson}});
+
+//set header of table
+let table624 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data624.length; i++){
+    table624 = table624 +
+    `<tr key={key}>
+
+      <td>${data624[i][0]}</td>
+      <td>${data624[i][1]}</td>
+      <td><a href="/getfile/${data624[i][2]}.pdf" target="_blank">${data624[i][2]}</td></a>
+      <td>${data624[i][3]}</td>
+      <td><label class="badge badge-success">${data624[i][4]}</td>
+      <td><label class="badge badge-success">${data624[i][5]}</td>
+      <td><label class="badge badge-success">${data624[i][6]}</td>
+      <td><label class="badge badge-success">${data624[i][7]}</td>
+      <td><label class="badge badge-success">${data624[i][8]}</td>
+      <td><label class="badge badge-success">${data624[i][9]}</td>
+      <td><label class="badge badge-success">${data624[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table624 = table624 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData624.innerHTML = table624;
+
+
+
+  </script>
+  
+    <script>
+
+let tableData625 = document.getElementById("PMDataTable_625");
+let data625 = ({{pm625|tojson}});
+
+//set header of table
+let table625 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data625.length; i++){
+    table625 = table625 +
+    `<tr key={key}>
+
+      <td>${data625[i][0]}</td>
+      <td>${data625[i][1]}</td>
+      <td><a href="/getfile/${data625[i][2]}.pdf" target="_blank">${data625[i][2]}</td></a>
+      <td>${data625[i][3]}</td>
+      <td><label class="badge badge-success">${data625[i][4]}</td>
+      <td><label class="badge badge-success">${data625[i][5]}</td>
+      <td><label class="badge badge-success">${data625[i][6]}</td>
+      <td><label class="badge badge-success">${data625[i][7]}</td>
+      <td><label class="badge badge-success">${data625[i][8]}</td>
+      <td><label class="badge badge-success">${data625[i][9]}</td>
+      <td><label class="badge badge-success">${data625[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table625 = table625 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData625.innerHTML = table625;
+
+
+
+  </script>
+  
+    <script>
+
+let tableData626 = document.getElementById("PMDataTable_626");
+let data626 = ({{pm626|tojson}});
+
+//set header of table
+let table626 = `
+<table class="table table-hover table-striped" id = "job-table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Date</th>
+      <th scope="col">Train</th>
+      <th scope="col">Doc Ref.</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">2-Weekly</th>
+      <th scope="col">Monthly</th>
+      <th scope="col">2-Monthly</th>
+      <th scope="col">3-Months</th>
+      <th scope="col">6-Months</th>
+      <th scope="col">9-Months</th>
+      <th scope="col">Yearly</th>
+    </tr>
+  </thead>
+
+  <tbody class="text-center tableBody">
+  `;
+  //create//append rows
+for(i = 0; i < data626.length; i++){
+    table626 = table626 +
+    `<tr key={key}>
+
+      <td>${data626[i][0]}</td>
+      <td>${data626[i][1]}</td>
+      <td><a href="/getfile/${data626[i][2]}.pdf" target="_blank">${data626[i][2]}</td></a>
+      <td>${data626[i][3]}</td>
+      <td><label class="badge badge-success">${data626[i][4]}</td>
+      <td><label class="badge badge-success">${data626[i][5]}</td>
+      <td><label class="badge badge-success">${data626[i][6]}</td>
+      <td><label class="badge badge-success">${data626[i][7]}</td>
+      <td><label class="badge badge-success">${data626[i][8]}</td>
+      <td><label class="badge badge-success">${data626[i][9]}</td>
+      <td><label class="badge badge-success">${data626[i][10]}</td>
+
+    </tr>`
+}
+//close off table
+table626 = table626 +
+  `</tbody>
+  </table>`
+  ;
+
+tableData626.innerHTML = table626;
+
+
+
+  </script>
+
+
+
+<!--  </body>-->
+<!--</html>-->
+{% endblock %}

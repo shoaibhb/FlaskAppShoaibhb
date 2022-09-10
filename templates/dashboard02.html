@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <style>
+
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+body {
+  background: #332f35;
+  font-family: roboto;
+}
+
+input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+label {
+  color: #9a929e;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  //padding: 3px 8px;
+  padding: 3px 11px;
+}
+
+input[type=radio]:checked + label {
+  color: #ccc8ce;
+  background: #c1c9c6;
+}
+
+label + input[type=radio] + label {
+  border-left: solid 1px #675f6b;
+}
+
+.radio-group {
+  border: solid 1px #675f6b;
+  display: inline-block;
+  margin: 2px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+  </style>
+
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Alstom T&C Dashboard &mdash;</title>
+
+    <link rel="stylesheet" href="../static/css/new-gcard.css">
+  <link rel="stylesheet" href="../static/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../static/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../static/modules/summernote/summernote-lite.css">
+  <link rel="stylesheet" href="../static/modules/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="../static/css/demo.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/atlantis.min.css">
+
+
+
+<script src="../static/js/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+</head>
+
+
+<div id="app">
+    <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+
+        <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="ion ion-search"></i></a></li>
+          </ul>
+</form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"></a></li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown">
+            <div class="d-sm-none"> &nbsp;</div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right"> <a href="profile.html" class="dropdown-item has-icon"> <i class="ion ion-android-person"></i> Profile </a> <a href="#" class="dropdown-item has-icon"> <i class="ion ion-log-out"></i> Logout </a> </div>
+          </li>
+        </ul>
+      </nav>
+
+        <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+          <a href="index.html"><img src="../static/img/alstom.jpg" width="134" height="27" alt=""/></a>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-user-picture">
+              <img alt="image" src="../static/img/avatar/avatar-1.jpg">
+            </div>
+            <div class="sidebar-user-details">
+              <div class="user-name">{{name}}</div>
+              <div class="user-role">{{email}}</div>
+            </div>
+          </div>
+          <ul class="sidebar-menu">
+                    <li class="menu-header">Dashboards</li>
+                    <li><a href="/dashboard01"><i class="ion ion-stats-bars"></i><span>System TR & TP</span></a></li>
+                    <li class="active"><a href="/dashboard02"><i class="ion ion-speedometer"></i><span>TSY Anomaly Status</span></a>
+                    <li><a href="/dashboardLines"><i class="fas fa-chart-line"></i></i><span>T&C Activity Progress</span></a>
+                        <ul class="menu-dropdown">
+                            <li style="margin=30px;"><a href="/dashboardLine4"><i class="fas fa-subway"></i>Line 4</a></li>
+                            <li><a href="/dashboardLine5"><i class="fas fa-subway"></i></i>Line 5</a></li>
+                            <li><a href="/dashboardLine6"><i class="fas fa-subway"></i></i>Line 6</a></li>
+                        </ul>
+
+                    <li class="menu-header">Data</li>
+                    <li>
+                        <a href="/reports"><i class="ion ion-ios-copy-outline"></i><span>T&C Reports</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ion ion-ios-information-outline"></i><span>Notification</span></a>
+                    </li>
+                    <li class="text-danger">
+                        <a href="/logout"><i class="ion ion-log-out"></i><span>Logout</span></a>
+                    </li>
+                </ul>
+
+        </aside>
+      </div>
+
+        <div class="main-content">
+            <section class="section">
+                          <h1 class="section-header">
+            <div>System T&C Anomalies <small class="text-muted"> Last Updated On: {{dataDT}}</small></div>
+          </h1>
+
+              <div class="row mt--2">
+ <!-- Start 1st Chart TP-->
+						<div class="col-md-4">
+							<div class="card full-height bg-g-lightgrey">
+								<div class="card-body">
+									<div class="card-title">T&C Anomaly Statistics</div>
+									<div class="row py-3">
+										<div class="col-md-4 d-flex flex-column justify-content-around col-lg-3">
+											<div>
+												<h6 class="fw-bold text-uppercase text-danger op-7">Opened</h6>
+												<h3 class="fw-bold">{{ chart1_data[13][2]|int }}</h3>
+											</div>
+											<div>
+												<h6 class="fw-bold text-uppercase text-success op-7">Closed</h6>
+												<h3 class="fw-bold">{{ chart1_data[13][3]|int }}</h3>
+											</div>
+										</div>
+									<div class="d-flex flex-wrap justify-content-around pb-2 pt-1">
+
+											<canvas id="doughnutChart" width="260" height="160"></canvas>
+
+                                    </div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+ <!-- Start 2nd Chart TP-->
+						<div class="col-md-8">
+							<div class="card full-height bg-g-seagreen">
+								<div class="card-body">
+									<div class="row py-3">
+
+										<div class="col-md-12">
+												<canvas id="multipleBarChart"  width="270" height="200"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+                    </div>
+
+<!--        Checking        -->
+<!--                <div style="width:300px; margin:0 auto;">-->
+                <div class="d-flex justify-content-center">
+                    <div class="radio-group btn-group-toggle" >
+                         <input type="radio" id="option-one" name="selector"><label for="option-one" id="0">Line 4</label>
+                         <input type="radio" id="option-two" name="selector"><label for="option-two" id="1">Line 5</label><input type="radio" id="option-four" name="selector"><label for="option-four" id="2">Line 6</label><input type="radio" id="option-three" name="selector"><label for="option-three" id="3">Line 4/6</label>
+
+                     </div>
+                </div>
+
+					<div class="row mt--2 py-3">
+ <!-- Start 1st Chart TP-->
+						<div class="col-md-6">
+							<div class="card full-height bg-g-lightgrey">
+								<div class="card-body">
+									<div class="card-title">Global Status</div>
+									<div class="row py-3">
+
+										<div class="col-md-12">
+											<div id="chart-container">
+												<canvas id="globalstatusChart"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="card full-height bg-g-lightgrey">
+								<div class="card-body">
+									<div class="card-title">Types of Issues</div>
+									<div class="row py-3">
+
+										<div class="col-md-12">
+											<div id="chart-container2">
+												<canvas id="issuesChart"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="card full-height bg-g-lightgrey">
+								<div class="card-body">
+									<div class="card-title">Severity Status</div>
+									<div class="row py-3">
+
+										<div class="col-md-12">
+											<div id="chart-container3">
+												<canvas id="severityChart"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+ <!-- Start 2nd Chart TP-->
+
+
+                    </div>
+
+<!-- Start Table -->
+					<div class="row">
+					<div class="col-md-10 mb-4">
+
+          <!--Card-->
+          <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Global Status</div>
+                  </div>
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-striped table-hover table-head-bg-success">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th></th>
+                    <th>Draft</th>
+                    <th>Assigned</th>
+                    <th>Corrected</th>
+                    <th>Monitored</th>
+                    <th>Validated</th>
+                    <th>Canceled</th>
+                    <th>Closed</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">Line 4</th>
+                    <td>{{c_gb_data[0][0]|int}}</td>
+                    <td>{{c_gb_data[0][1]|int}}</td>
+                    <td>{{c_gb_data[0][2]|int}}</td>
+                    <td>{{c_gb_data[0][3]|int}}</td>
+                    <td>{{c_gb_data[0][4]|int}}</td>
+                    <td>{{c_gb_data[0][5]|int}}</td>
+                    <td>{{c_gb_data[0][6]|int}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Line 5</th>
+                    <td>{{c_gb_data[1][0]|int}}</td>
+                    <td>{{c_gb_data[1][1]|int}}</td>
+                    <td>{{c_gb_data[1][2]|int}}</td>
+                    <td>{{c_gb_data[1][3]|int}}</td>
+                    <td>{{c_gb_data[1][4]|int}}</td>
+                    <td>{{c_gb_data[1][5]|int}}</td>
+                    <td>{{c_gb_data[1][6]|int}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Line 6</th>
+                    <td>{{c_gb_data[2][0]|int}}</td>
+                    <td>{{c_gb_data[2][1]|int}}</td>
+                    <td>{{c_gb_data[2][2]|int}}</td>
+                    <td>{{c_gb_data[2][3]|int}}</td>
+                    <td>{{c_gb_data[2][4]|int}}</td>
+                    <td>{{c_gb_data[2][5]|int}}</td>
+                    <td>{{c_gb_data[2][6]|int}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Line 4/6</th>
+                    <td>{{c_gb_data[3][0]|int}}</td>
+                    <td>{{c_gb_data[3][1]|int}}</td>
+                    <td>{{c_gb_data[3][2]|int}}</td>
+                    <td>{{c_gb_data[3][3]|int}}</td>
+                    <td>{{c_gb_data[3][4]|int}}</td>
+                    <td>{{c_gb_data[3][5]|int}}</td>
+                    <td>{{c_gb_data[3][6]|int}}</td>
+                  </tr>
+
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+
+                    <div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Types of Issues</div>
+                  </div>
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-striped table-hover table-head-bg-success">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th></th>
+                    <th>Document</th>
+                    <th>Hardware</th>
+                    <th>Software</th>
+                    <th>Unknown</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">Line 4</th>
+                    <td>{{c_tip_data[0][0]|int}}</td>
+                    <td>{{c_tip_data[0][1]|int}}</td>
+                    <td>{{c_tip_data[0][2]|int}}</td>
+                    <td>{{c_tip_data[0][3]|int}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Line 5</th>
+                    <td>{{c_tip_data[1][0]|int}}</td>
+                    <td>{{c_tip_data[1][1]|int}}</td>
+                    <td>{{c_tip_data[1][2]|int}}</td>
+                    <td>{{c_tip_data[1][3]|int}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Line 6</th>
+                    <td>{{c_tip_data[2][0]|int}}</td>
+                    <td>{{c_tip_data[2][1]|int}}</td>
+                    <td>{{c_tip_data[2][2]|int}}</td>
+                    <td>{{c_tip_data[2][3]|int}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Line 4/6</th>
+                    <td>{{c_tip_data[3][0]|int}}</td>
+                    <td>{{c_tip_data[3][1]|int}}</td>
+                    <td>{{c_tip_data[3][2]|int}}</td>
+                    <td>{{c_tip_data[3][3]|int}}</td>
+                  </tr>
+
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+
+					<div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Severity Status</div>
+                  </div>
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-striped table-hover table-head-bg-success">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th></th>
+                    <th>Blocking</th>
+                    <th>Major</th>
+                    <th>Minor</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">Line 4</th>
+                    <td>{{c_ss_data[0][0]|int}}</td>
+                    <td>{{c_ss_data[0][1]|int}}</td>
+                    <td>{{c_ss_data[0][2]|int}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Line 5</th>
+                    <td>{{c_ss_data[1][0]|int}}</td>
+                    <td>{{c_ss_data[1][1]|int}}</td>
+                    <td>{{c_ss_data[1][2]|int}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Line 6</th>
+                    <td>{{c_ss_data[2][0]|int}}</td>
+                    <td>{{c_ss_data[2][1]|int}}</td>
+                    <td>{{c_ss_data[2][2]|int}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Line 4/6</th>
+                    <td>{{c_ss_data[3][0]|int}}</td>
+                    <td>{{c_ss_data[3][1]|int}}</td>
+                    <td>{{c_ss_data[3][2]|int}}</td>
+                  </tr>
+
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+
+					</div>
+
+            </section>
+        </div>
+
+             <footer class="main-footer">
+        <div class="footer-left">
+          <div class="bullet"></div>Developed By RAO Kamran (Riyadh Metro System T&amp;C)</a>
+        </div>
+        <div class="footer-right"></div>
+      </footer>
+
+    </div>
+</div>
+
+  <script src="../static/modules/jquery.min.js"></script>
+  <script src="../static/modules/popper.js"></script>
+  <script src="../static/modules/tooltip.js"></script>
+  <script src="../static/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="../static/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+  <script src="../static/modules/chart.min.js"></script>
+<script src="../static/modules/chartjs-plugin-datalabels.min.js"></script>
+  <script src="../static/modules/summernote/summernote-lite.js"></script>
+
+  <script src="../static/js/sa-functions.js"></script>
+
+
+
+<script>
+    var ctxD = document.getElementById("doughnutChart").getContext('2d');
+    var myLineChart = new Chart(ctxD, {
+      type: 'doughnut',
+      data: {
+        labels: ["Opened", "Closed"],
+        datasets: [{
+          data: [Math.round({{chart1_data[13][2]}}),Math.round({{chart1_data[13][3]}})],
+          backgroundColor: [
+        'rgba(255, 99, 132, 0.8)',
+        'rgba(75, 192, 192, 0.7)'
+      ],
+          hoverBackgroundColor: ["#fd3387", "#83e102"]
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+       legend : {
+		position: 'bottom'
+				},
+
+			animation: {
+                duration : 2000,
+            }
+      }
+
+    });
+
+</script>
+
+<script>
+Chart.defaults.global.plugins.datalabels.anchor = 'end';
+Chart.defaults.global.plugins.datalabels.align = 'top';
+//Chart.defaults.global.plugins.datalabels.disply = 'auto';
+
+        multipleBarChart = document.getElementById('multipleBarChart').getContext('2d');
+
+		var myMultipleBarChart = new Chart(multipleBarChart, {
+			type: 'bar',
+			data: {
+			    labels: ['{{chart1_data[0][0]}}', '{{chart1_data[1][0]}}', '{{chart1_data[2][0]}}',
+			    '{{chart1_data[3][0]}}', '{{chart1_data[4][0]}}', '{{chart1_data[5][0]}}',
+			    '{{chart1_data[6][0]}}', '{{chart1_data[7][0]}}', '{{chart1_data[8][0]}}',
+			    '{{chart1_data[9][0]}}', '{{chart1_data[10][0]}}', '{{chart1_data[11][0]}}', '{{chart1_data[12][0]}}'],
+
+				//labels: ["SYS", "SIG", "LVE", "RST", "PSD", "SCADA", "DEQ", "POS", "TBD", "SLV", "CJV", "TJV"],
+				datasets : [{
+					label: "Opened",
+					backgroundColor: 'rgba(255, 99, 132, 0.8)',
+					borderColor: '#59d05d',
+					data: [{{chart1_data[0][2]}}, {{chart1_data[1][2]}}, {{chart1_data[2][2]}}, {{chart1_data[3][2]}},
+					 {{chart1_data[4][2]}}, {{chart1_data[5][2]}}, {{chart1_data[6][2]}}, {{chart1_data[7][2]}},
+					 {{chart1_data[8][2]}}, {{chart1_data[9][2]}}, {{chart1_data[10][2]}}, {{chart1_data[11][2]}},
+					 {{chart1_data[12][2]}}],
+				},{
+					label: "Closed",
+					backgroundColor: 'rgba(75, 192, 192, 0.7)',
+					borderColor: '#fdaf4b',
+					data: [{{chart1_data[0][3]}}, {{chart1_data[1][3]}}, {{chart1_data[2][3]}}, {{chart1_data[3][3]}},
+					 {{chart1_data[4][3]}}, {{chart1_data[5][3]}}, {{chart1_data[6][3]}}, {{chart1_data[7][3]}},
+					 {{chart1_data[8][3]}}, {{chart1_data[9][3]}}, {{chart1_data[10][3]}}, {{chart1_data[11][3]}},
+					 {{chart1_data[12][3]}}],
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+
+				 plugins: {
+            // Change options for ALL labels of THIS CHART
+                    datalabels: {
+                    color: 'black',
+                    anchor: 'end',
+                    align: 'start',
+                    clamp: 'true',
+                    display: 'auto',
+                    offset: 0,
+                    display: function(context) {
+							return context.dataset.data[context.dataIndex] > 5;
+						},
+				    font: {
+                        size: 10,
+                        weight: "normal"
+                     },
+                    }
+                },
+
+				legend: {
+				    display: false,
+					position : 'bottom'
+				},
+
+				animation: {
+                duration : 3000,
+                },
+
+				title: {
+					display: false,
+					text: 'Traffic Stats'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				responsive: true,
+				scales: {
+					xAxes: [{
+						stacked: true,
+					}],
+					yAxes: [{
+						stacked: true,
+						ticks: {
+						min: 0,
+						display: false,
+						}
+					}]
+
+				}
+			}
+		});
+</script>
+
+<script>
+        gs_labels = ["Draft", "Assigned", "Corrected", "Monitored", "Validated", "Cancelled", "Closed"];
+        //gs_data = [9,1,9,5,4,6,4];
+        gs_data= {{c_gb_data[0]}};
+    	var ctx = document.getElementById('globalstatusChart').getContext('2d');
+
+		var config = {
+			type: 'bar',
+			data: {
+				labels: gs_labels,
+				datasets : [{
+					label: "Global Status",
+					backgroundColor: 'rgba(255,204,0,0.7)',
+					borderColor: 'rgb(23, 125, 255)',
+					data: gs_data,
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+
+				plugins: {
+            // Change options for ALL labels of THIS CHART
+                    datalabels: {
+                    color: 'black',
+                    anchor: 'end',
+                    align: 'top',
+                    clamp: 'true',
+                    offset: -5,
+                    }
+                },
+
+				scales: {
+					yAxes: [{
+						ticks: {
+						    min: 0,
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				},
+			}
+		};
+
+    var gsChartData = new Chart(ctx, config);
+
+    $("#0").click(function() {
+      var data = gsChartData.config.data;
+      data.datasets[0].data = gs_data;
+      data.datasets[0].backgroundColor= 'rgba(255,204,0,0.7)',
+      data.labels = gs_labels;
+      gsChartData.update();
+    });
+    $("#1").click(function() {
+      var gs_data = {{c_gb_data[1]}};
+      var data = gsChartData.config.data;
+      data.datasets[0].data = gs_data;
+      data.datasets[0].backgroundColor= 'rgba(0,153,0,0.5)',
+      data.labels = gs_labels;
+      gsChartData.update();
+    });
+
+    $("#2").click(function() {
+      var gs_data = {{c_gb_data[2]}};
+      var data = gsChartData.config.data;
+      data.datasets[0].data = gs_data;
+      data.datasets[0].backgroundColor= 'rgba(204, 0, 204, 0.5)',
+      data.labels = gs_labels;
+      gsChartData.update();
+    });
+
+      $("#3").click(function() {
+      var gs_data = {{c_gb_data[3]}};
+      var data = gsChartData.config.data;
+      data.datasets[0].data = gs_data;
+      data.datasets[0].backgroundColor= 'rgba(85, 85, 85, 0.5)',
+      data.labels = gs_labels;
+      gsChartData.update();
+    });
+
+</script>
+
+<script>
+
+   <!-- Charts -->
+
+        toi_labels = ["Doc.", "H/W", "S/W", "Unkown"];
+        //toi_data = [20, 44, 146, 30];
+        toi_data= {{c_tip_data[0]}};
+ 		var ctx2 = document.getElementById('issuesChart').getContext('2d');
+
+		var config =  {
+			type: 'bar',
+			data: {
+				labels: toi_labels,
+				datasets : [{
+					label: "Issues",
+					backgroundColor: 'rgba(255,204,0,0.7)',
+					borderColor: 'rgb(23, 125, 255)',
+					data: toi_data,
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+
+				plugins: {
+            // Change options for ALL labels of THIS CHART
+                    datalabels: {
+                    color: 'black',
+                    anchor: 'end',
+                    align: 'top',
+                    clamp: 'true',
+                    offset: -7,
+                    }
+                },
+
+				scales: {
+					yAxes: [{
+						ticks: {
+							min: 0,
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				},
+			}
+		};
+
+    var toiChartData = new Chart(ctx2, config);
+
+    $("#0").click(function() {
+      var data2 = toiChartData.config.data;
+      data2.datasets[0].data = toi_data;
+      data2.datasets[0].backgroundColor= 'rgba(255,204,0,0.7)',
+      data2.labels = toi_labels;
+      toiChartData.update();
+    });
+    $("#1").click(function() {
+      var toi_data = {{c_tip_data[1]}};
+      var data2 = toiChartData.config.data;
+      data2.datasets[0].data = toi_data;
+      data2.datasets[0].backgroundColor= 'rgba(0,153,0,0.5)',
+      data2.labels = toi_labels;
+      toiChartData.update();
+    });
+
+    $("#2").click(function() {
+      var toi_data = {{c_tip_data[2]}};
+      var data2 = toiChartData.config.data;
+      data2.datasets[0].data = toi_data;
+      data2.datasets[0].backgroundColor= 'rgba(204, 0, 204, 0.5)',
+      data2.labels = toi_labels;
+      toiChartData.update();
+    });
+
+      $("#3").click(function() {
+      var toi_data = {{c_tip_data[3]}};
+      var data2 = toiChartData.config.data;
+      data2.datasets[0].data = toi_data;
+      data2.datasets[0].backgroundColor= 'rgba(85, 85, 85, 0.5)',
+      data2.labels = toi_labels;
+      toiChartData.update();
+    });
+
+</script>
+
+<script>
+ 		ss_labels = ["Blocking", "Major", "Minor"];
+ 		ss_data = {{c_ss_data[0]}};
+ 		var ctx3 = document.getElementById('severityChart').getContext('2d');
+
+		var config = {
+			type: 'bar',
+			data: {
+				labels: ss_labels,
+				datasets : [{
+					label: "Severity Status",
+					backgroundColor: 'rgba(255,204,0,0.7)',
+					borderColor: 'rgb(23, 125, 255)',
+					data: ss_data,
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+
+				plugins: {
+            // Change options for ALL labels of THIS CHART
+                    datalabels: {
+                    color: 'black',
+                    anchor: 'end',
+                    align: 'top',
+                    clamp: 'true',
+                    offset: -5,
+                    }
+                },
+
+				scales: {
+					yAxes: [{
+						ticks: {
+						    min: 0,
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				},
+			}
+		};
+
+var ssChartData = new Chart(ctx3, config);
+
+    $("#0").click(function() {
+      var data3 = ssChartData.config.data;
+      data3.datasets[0].data = ss_data;
+      data3.datasets[0].backgroundColor= 'rgba(255,204,0,0.7)',
+      data3.labels = ss_labels;
+      ssChartData.update();
+    });
+    $("#1").click(function() {
+      var ss_data = {{c_ss_data[1]}};
+      var data3 = ssChartData.config.data;
+      data3.datasets[0].data = ss_data;
+      data3.datasets[0].backgroundColor= 'rgba(0,153,0,0.5)',
+      data3.labels = ss_labels;
+      ssChartData.update();
+    });
+
+    $("#2").click(function() {
+      var ss_data = {{c_ss_data[2]}};
+      var data3 = ssChartData.config.data;
+      data3.datasets[0].data = ss_data;
+      data3.datasets[0].backgroundColor= 'rgba(204, 0, 204, 0.5)',
+      data3.labels = ss_labels;
+      ssChartData.update();
+    });
+
+      $("#3").click(function() {
+      var ss_data = {{c_ss_data[3]}};
+      var data3 = ssChartData.config.data;
+      data3.datasets[0].data = ss_data;
+      data3.datasets[0].backgroundColor= 'rgba(85, 85, 85, 0.5)',
+      data3.labels = ss_labels;
+      ssChartData.update();
+    });
+
+  </script>
+
+
+
+
+  <script src="../static/js/scripts.js"></script>
+  <script src="../static/js/custom.js"></script>
+  <script src="../static/js/demo.js"></script>
+
+</body>
+</html>

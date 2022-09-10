@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+{% block siripye %}{% endblock %}
+    </head>
+    <body>
+        <div class="horizontal-menu">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FBFDFD;">
+             <a class="navbar-brand d-lg-none" href="#"></a>
+            <img src="../static/img/alstom.jpg" width="80" height="16"/>
+             <div class="collapse navbar-collapse">
+                 <ul class="navbar-nav mx-auto">
+
+                     <object data=''>
+                         <img src='../static/img/rst_img/logo_a.png'>
+                         <img src='../static/img/rst_img/logo_b.png' width="160" height="35">
+                     </object>
+
+                 </ul>
+             </div>
+          <img src="../static/img/rst_img/riyadhmetro.png" width="91" height="50"/>
+         </nav>
+
+    </div>
+        {% block content %}{% endblock %}
+    </body>
+</html>

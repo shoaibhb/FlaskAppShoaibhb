@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Alstom T&C Dashboard &mdash;</title>
+
+  <link rel="stylesheet" href="../static/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../static/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+<!--  <link rel="stylesheet" href="../static/modules/summernote/summernote-lite.css">-->
+<!--  <link rel="stylesheet" href="../static/modules/flag-icon-css/css/flag-icon.min.css">-->
+  <link rel="stylesheet" href="../static/css/demo.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/atlantis.min.css">
+  <link rel="stylesheet" href="../static/css/new-gcard.css">
+
+
+<script src="../static/js/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+</head>
+
+<body>
+
+<div id="app">
+    <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+
+        <nav class="navbar navbar-expand-lg main-navbar">
+
+                <ul class="navbar-nav mr-3">
+                    <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i><h3 class="m-b-20">Line 4 Progress</h3></a></li>
+
+                </ul>
+
+        </nav>
+
+        <div class="main-sidebar">
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand">
+                    <a href="#"><img src="../static/img/alstom.jpg" width="134" height="27" alt=""/></a>
+                </div>
+                <div class="sidebar-user">
+                    <div class="sidebar-user-picture">
+                        <img alt="image" src="../static/img/avatar/avatar-1.jpg">
+                    </div>
+                    <div class="sidebar-user-details">
+                        <div class="user-name">{{name}}</div>
+                        <div class="user-role">{{email}}</div>
+                    </div>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="menu-header">Dashboards</li>
+                    <li><a href="/dashboard01"><i class="ion ion-stats-bars"></i><span>System TR & TP</span></a></li>
+                    <li><a href="/dashboard02"><i class="ion ion-speedometer"></i><span>TSY Anomaly Status</span></a>
+                    <li class="active"><a href="#" class="has-dropdown"><i class="fas fa-chart-line"></i></i><span>T&C Activity Progress</span></a>
+                        <ul class="menu-dropdown">
+                            <li class="active" style="margin=30px;"><a href="gene.html"><i class="fas fa-subway"></i>Line 4</a></li>
+                            <li><a href="components.html"><i class="fas fa-subway"></i></i>Line 5</a></li>
+                            <li><a href="buttons.html"><i class="fas fa-subway"></i></i>Line 6</a></li>
+                        </ul>
+
+                    <li class="menu-header">Data</li>
+                    <li>
+                        <a href="/reports"><i class="ion ion-ios-copy-outline"></i><span>T&C Reports</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ion ion-ios-information-outline"></i><span>Notification</span></a>
+                    </li>
+                    <li class="text-danger">
+                        <a href="/logout"><i class="ion ion-log-out"></i><span>Logout</span></a>
+                    </li>
+                </ul>
+
+            </aside>
+        </div>
+
+        <div class="main-content">
+            <section class="section">
+
+                <div class="card bg-g-black order-card">
+                      <div class="panel-header panel-header-lg">
+                         <canvas id="bigDashboardChart" height="200"></canvas>
+                     </div>
+                 </div>
+
+<!--                <div class="col-sm-12">-->
+<!--                    <div class="card bg-g-grey order-card">-->
+<!--                        <div class="card-body">-->
+<!--                            <div class="row py-0">-->
+
+<!--                                <canvas id="bigDashboardChart"></canvas>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <!-- Start of Content-->
+
+    <div class="row mt--1">
+                    <!-- Start 1st Chart -->
+                        <div class="col-sm-4">
+                            <div class="card bg-g-lightgrey">
+                                <div class="card-body">
+                                    <h6 class="m-b-20 fw-bold">System Integration Test (SCADA)</h6>
+
+                                    <div class="row py-1">
+
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-1">
+                                            <div class="px-0 pb-1 pb-sm text-center">
+
+                                                 <div id="arc_scada" style="margin:1px; height:100px; width:140px; position:relative;"></div>
+
+                                                <h6 class="fw-bold mt-0 mb-0 text-body">Completion</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-lg-4 offset-lg-0">
+                                            <canvas id="SITscadaBar" width="220" height="160"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Start 2nd Chart Non-Scada-->
+                        <div class="col-sm-3">
+                            <div class="card bg-g-lightgrey">
+                                <div class="card-body">
+                                    <h6 class="m-b-20 fw-bold">System Integration Test (Non-SCADA)</h6>
+
+                                    <div class="row py-1">
+
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-1">
+                                            <div class="px-0 pb-1 pb-sm text-center">
+
+                                                 <div id="arc_non_scada" style="margin:1px; height:100px; width:140px; position:relative;"></div>
+                                                <h6 class="fw-bold mt-0 mb-0 text-body">Completion</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 offset-lg-0">
+                                            <canvas id="SITnonscadaBar" width="135" height="160"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Start 3rd Card-->
+
+                        <div class="col-sm-3">
+                            <div class="card bg-g-lightgrey">
+                                <div class="card-body">
+                                    <h6 class="m-b-20 fw-bold">Functional/Interface/Operational Test</h6>
+
+                                    <div class="row py-1">
+
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-1">
+                                            <div class="px-0 pb-1 pb-sm text-center">
+
+                                                 <div id="arc_sysfio" style="margin:1px; height:100px; width:140px; position:relative;"></div>
+                                                <h6 class="fw-bold mt-0 mb-0 text-body">Completion</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 offset-lg-0">
+                                            <canvas id="SysFIO_Bar" width="135" height="160"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Start 4th Card checking height-->
+
+                        <div class="col-sm-2">
+                            <div class="card bg-g-lightblue">
+                                <div class="card-body">
+                                    <h6 class="m-b-20 fw-bold">iTPS Progress</h6>
+                                        <div class="row py-1">
+                                            </div>
+                <p style="font-size:80%; font-weight: bold; margin-bottom: 1px; font-family: Lucida Grande, sans-serif">iTPS 4.1</p>
+                <div class="progress" style="height: 15px; background-color: #c0c0c0;">
+                  <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%">80%</div>
+                </div>
+
+
+                <p style="font-size:80%; font-weight: bold; margin-bottom: 1px; margin-top: 5px; font-family: Lucida Grande, sans-serif">iTPS 4.2</p>
+                <div class="progress" style="height: 15px; background-color: #c0c0c0;">
+                  <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 60%">60%</div>
+                </div>
+
+                <p style="font-size:80%; font-weight: bold; margin-bottom: 1px; margin-top: 5px; font-family: Lucida Grande, sans-serif">iTPS 4.3</p>
+
+                <div class="progress" style="height: 15px; background-color: #c0c0c0;">
+                  <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">75%</div>
+                </div>
+
+                <p style="font-size:80%; font-weight: bold; margin-bottom: 1px; margin-top: 5px; font-family: Lucida Grande, sans-serif">iTPS 4.4</p>
+
+                <div class="progress" style="height: 15px; background-color: #c0c0c0;">
+                  <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 30%">30%</div>
+                </div>
+
+
+<!-- <p class="card-text">iTPS 4.1</p>-->
+<!--<div class="progress" style="height: 5px;">-->
+<!--  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">25%</div>-->
+<!--</div>-->
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+     <div class="row mt--2">
+
+<!-- Start Station Progress -->
+
+             <div class="col-md-5">
+							<div class="card bg-g-lightgrey">
+								<div class="card-body">
+<!--									<div class="card-title">Test Procedure Statistics</div>-->
+                                    <h6 class="m-b-20 fw-bold">Line-4 Station Progress</h6>
+									<div class="row py-1">
+										<div class="col-md-4 d-flex flex-column justify-content-around col-lg-3">
+											<div>
+                                                <h6 class="fw-bold text-uppercase text-warning op-7">SCADA</h6>
+                                                <h3 class="fw-bold">60%</h3>
+                                            </div>
+											<div>
+                                                <h6 class="fw-bold text-uppercase text-warning op-7">Non-SCADA</h6>
+												<h3 class="fw-bold">80%</h3>
+											</div>
+										</div>
+									<div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-4">
+                                        </div>
+                                      <div class="col-md-4 col-lg-4 offset-lg-0">
+												<canvas id="StationPro_Bar" width="320" height="160"></canvas>
+                                      </div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+             <div class="col-md-5">
+							<div class="card bg-g-lightgrey">
+								<div class="card-body">
+<!--									<div class="card-title">Test Procedure Statistics</div>-->
+                                    <h6 class="m-b-20 fw-bold">Line-4 CommLots Progress</h6>
+									<div class="row py-1">
+										<div class="col-md-2 d-flex flex-column justify-content-around col-lg-3">
+											<div>
+                                                <h6 class="fw-bold text-uppercase text-warning op-7">Main Line</h6>
+                                                <h3 class="fw-bold">60%</h3>
+                                            </div>
+											<div>
+                                                <h6 class="fw-bold text-uppercase text-warning op-7">Depot</h6>
+												<h3 class="fw-bold">80%</h3>
+											</div>
+										</div>
+
+                                      <div class="col-md-5 col-lg-5 offset-lg-0">
+												<canvas id="CommlotsPro_Bar" width="350" height="160"></canvas>
+                                      </div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+             <div class="col-md-2">
+							<div class="card bg-g-lightblue">
+								<div class="card-body">
+									 <h6 class="m-b-20 fw-bold">PnR Progress</h6>
+									<div class="row py-2">
+										<div class="col-md-4 d-flex flex-column justify-content-around col-lg-3">
+										</div>
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-4">
+                                          <div class="px-0 pb-1 pb-sm text-center">
+                                             <div id="cir_PR" style="margin:-1px; height:100px; width:100px; position:relative;"></div>
+
+
+                                          </div>
+                                        </div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+<!--             <div class="col-sm-2">-->
+<!--                            <div class="card bg-g-lightgrey">-->
+<!--                                <div class="card-body">-->
+<!--                                    <h6 class="m-b-20 fw-bold">Park & Ride Progress</h6>-->
+<!--  -->
+<!--                                        <div id="cir_PR" style="margin:1px; height:100px; width:140px; position:relative;"></div>-->
+
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+     </div>
+
+     <div class="row mt--2">
+
+<!-- Start Station Progress -->
+
+             <div class="col-md-7">
+							<div class="card bg-g-lightgrey">
+								<div class="card-body">
+<!--									<div class="card-title">Test Procedure Statistics</div>-->
+                                    <h6 class="m-b-20 fw-bold">System Functional / Interface / Operational Test Progress</h6>
+									<div class="row py-2">
+									</div>
+
+                <p style="font-size:85%; font-weight: normal; margin-bottom: 1.5px; font-family: Lucida Grande, sans-serif">Push Rescue  With Automatic Coupling System Tests</p>
+                <div class="progress" style="height: 15px; background-color: #dcdcdc;">
+                  <div class="progress-bar bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 7%">7%</div>
+                </div>
+
+
+                <p style="font-size:85%; font-weight: normal; margin-top:9px; margin-bottom: 1px; font-family: Lucida Grande, sans-serif">Train washing system tests (Sys-2)</p>
+                <div class="progress" style="height: 15px; background-color: #c0c0c0;">
+                  <div class="progress-bar progressbar bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+                </div>
+
+                <p style="font-size:85%; font-weight: normal; margin-top:9px; margin-bottom: 1px; font-family: Lucida Grande, sans-serif">Evacuation System Tests</p>
+                <div class="progress" style="height: 15px; background-color: #c0c0c0;">
+                  <div class="progress-bar progressbar bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 20%">20%</div>
+                </div>
+
+                <p style="font-size:85%; font-weight: normal; margin-top:9px; margin-bottom: 1px; font-family: Lucida Grande, sans-serif">Passenger Exchange System Tests</p>
+                <div class="progress" style="height: 15px; background-color: #c0c0c0;">
+                  <div class="progress-bar progressbar bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 40%">40%</div>
+                </div>
+
+                <p style="font-size:85%; font-weight: normal; margin-top:9px; margin-bottom: 1px; font-family: Lucida Grande, sans-serif">Emergency Stopping Tests</p>
+                <div class="progress" style="height: 15px; background-color: #c0c0c0;">
+                  <div class="progress-bar progressbar bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+                </div>
+
+								</div>
+							</div>
+						</div>
+
+     </div>
+
+            </section>
+        </div>
+
+        <footer class="main-footer">
+            <div class="footer-left">
+                <div class="bullet"></div>Design By Riyadh System T&C</a>
+            </div>
+            <div class="footer-right"></div>
+        </footer>
+
+    </div>
+</div>
+
+<script src="../static/modules/jquery.min.js"></script>
+<script src="../static/modules/popper.js"></script>
+<script src="../static/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/modules/chart.min.js"></script>
+
+
+<script src="../static/modules/tooltip.js"></script>
+
+<script src="../static/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="../static/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+
+<script src="../static/modules/chartjs-plugin-datalabels.min.js"></script>
+
+<script src="../static/modules/summernote/summernote-lite.js"></script>
+
+<!--  <script src="../static/js/circles.min.js"></script>-->
+<script src="../static/js/progressbar.js"></script>
+<script src="../static/js/scripts.js"></script>
+<script src="../static/js/custom.js"></script>
+<script src="../static/js/demo.js"></script>
+
+
+<script>
+
+var bar = new ProgressBar.Circle(cir_PR, {
+  color: '#aaa',
+  // This has to be the same size as the maximum width to
+  // prevent clipping
+  strokeWidth: 10,
+  trailWidth: 7,
+  easing: 'bounce',
+  duration: 2000,
+  text: {
+    autoStyleContainer: false
+  },
+  from: { color: '#990033', width: 3 },
+  to: { color: '#009966', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+    circle.path.setAttribute('stroke-width', state.width);
+
+    var value = Math.round(circle.value() * 100)+ '%';
+    if (value === 0) {
+      circle.setText('');
+    } else {
+      circle.setText(value);
+
+    }
+
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.8rem';
+
+bar.animate(0.4);
+
+
+<!--********Non-Scada ARC*************-->
+<!--************************************-->
+
+var bar = new ProgressBar.SemiCircle(arc_scada, {
+  strokeWidth: 4,
+  color: '#FFEA82',
+  trailColor: '#c0c0c0',
+  trailWidth: 2,
+  easing: 'easeInOut',
+  duration: 1400,
+  svgStyle: null,
+  text: {
+    value: '',
+    alignToBottom: true
+  },
+  from: {color: '#FFEA82'},
+  to: {color: '##008000'},
+  // Set default step function for all animate calls
+  step: (state, bar) => {
+    bar.path.setAttribute('stroke', state.color);
+    var value = Math.round(bar.value() * 100) + '%';
+    if (value === 0) {
+      bar.setText('');
+    } else {
+      bar.setText(value);
+    }
+
+    bar.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.8rem';
+
+bar.animate(.7);  // Number from 0.0 to 1.0
+
+
+<!--********Non-Scada ARC*************-->
+<!--************************************-->
+
+var bar = new ProgressBar.SemiCircle(arc_non_scada, {
+  strokeWidth: 4,
+  color: '#FFEA82',
+  trailColor: '#c0c0c0',
+  trailWidth: 2,
+  easing: 'easeInOut',
+  duration: 1400,
+  svgStyle: null,
+  text: {
+    value: '',
+    alignToBottom: true
+  },
+  from: {color: '#FFEA82'},
+  to: {color: '##008000'},
+  // Set default step function for all animate calls
+  step: (state, bar) => {
+    bar.path.setAttribute('stroke', state.color);
+    var value = Math.round(bar.value() * 100) + '%';
+    if (value === 0) {
+      bar.setText('');
+    } else {
+      bar.setText(value);
+    }
+
+    bar.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.8rem';
+
+bar.animate(.7);  // Number from 0.0 to 1.0
+
+
+<!--********sysFIO ARC*************-->
+<!--************************************-->
+
+var bar = new ProgressBar.SemiCircle(arc_sysfio, {
+  strokeWidth: 4,
+  color: '#FFEA82',
+  trailColor: '#c0c0c0',
+  trailWidth: 2,
+  easing: 'easeInOut',
+  duration: 1400,
+  svgStyle: null,
+  text: {
+    value: '',
+    alignToBottom: true
+  },
+  from: {color: '#FFEA82'},
+  to: {color: '##008000'},
+  // Set default step function for all animate calls
+  step: (state, bar) => {
+    bar.path.setAttribute('stroke', state.color);
+    var value = Math.round(bar.value() * 100) + '%';
+    if (value === 0) {
+      bar.setText('');
+    } else {
+      bar.setText(value);
+    }
+
+    bar.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.8rem';
+
+bar.animate(.6);  // Number from 0.0 to 1.0
+
+
+</script>
+
+
+<script>
+
+  <!-- Charts -->
+
+Chart.defaults.global.plugins.datalabels.anchor = 'end';
+Chart.defaults.global.plugins.datalabels.align = 'bottom';
+
+
+    // ***SITscada Chart
+    var ctx = document.getElementById("SITscadaBar").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Stations", "P&R", "ITPS", "Depot"],
+        datasets: [{
+          label: '',
+          data: [50, 70, 50, 20],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255,204,0,0.6)',
+            'rgba(75, 160, 44, 0.7)',
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 160, 44, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+
+
+ // ******SIT Non-Scada Chart********
+
+    var ctx = document.getElementById("SITnonscadaBar").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Stations", "Depot"],
+        datasets: [{
+          label: '',
+          data: [50, 20],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+//            'rgba(255,204,0,0.6)',
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+//            'rgba(255, 206, 86, 1)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+
+
+// ******SIT Non-Scada Chart********
+
+    var ctx = document.getElementById("SysFIO_Bar").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["M-Line", "Depot"],
+        datasets: [{
+          label: '',
+          data: [30, 60],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+//            'rgba(255,204,0,0.6)',
+//            'rgba(75, 160, 44, 0.7)',
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+//            'rgba(255, 206, 86, 1)',
+//            'rgba(75, 160, 44, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+// ******Station Progress Chart********
+
+    var ctx = document.getElementById("StationPro_Bar").getContext('2d');
+
+    var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+    gradientStroke.addColorStop(0.3, 'rgba(29,140,248,0.0)');
+    gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["4A1", "4B1", "4C1", "4C2", "4D1", "4E1", "4E2", "4G1"],
+        datasets: [{
+          label: '',
+          data: [15, 60, 40, 70, 50, 20, 80, 90],
+          fill: true,
+          backgroundColor: gradientStroke,
+          hoverBackgroundColor: gradientStroke,
+          borderColor: '#1f8ef1',
+          borderWidth: 1.5,
+          borderDash: [],
+          borderDashOffset: 0.0,
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+
+// ******CommLots Progress Chart********
+
+    var ctx = document.getElementById("CommlotsPro_Bar").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["4001", "4002", "4003", "4004", "4005", "4101", "4102", "4202", "4202", "4601"],
+        datasets: [{
+          label: '',
+          data: [15, 60, 40, 70, 50, 20, 80, 90, 12, 40],
+          backgroundColor: [
+            'rgba(204,204,204,0.7)',
+            'rgba(204,204,204,0.7)',
+            'rgba(204,204,204,0.7)',
+            'rgba(204,204,204,0.7)',
+            'rgba(204,204,204,0.7)',
+            'rgba(0,255,153,0.8)',
+            'rgba(0,255,153,0.8)',
+            'rgba(0,255,153,0.8)',
+            'rgba(0,255,153,0.8)',
+            'rgba(0,255,153,0.8)',
+//            'rgba(0,255,153,0.8)',
+          ],
+          borderColor: [
+            'rgba(204,204,204,1)',
+            'rgba(204,204,204,1)',
+            'rgba(204,204,204,1)',
+            'rgba(204,204,204,1)',
+            'rgba(204,204,204,1)',
+            'rgba(0,255,153,1)',
+            'rgba(0,255,153,1)',
+            'rgba(0,255,153,1)',
+            'rgba(0,255,153,1)',
+
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+
+
+
+  </script>
+
+<script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+
+<script>
+
+  demo = {
+
+  initDashboardPageCharts: function() {
+
+    chartColor = "#00FF99";
+
+    var ctx = document.getElementById('bigDashboardChart').getContext("2d");
+
+    var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(66,134,121,0.15)');
+    gradientStroke.addColorStop(0.1, 'rgba(66,134,121,0.0)'); //green colors
+    gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
+
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        //labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+        labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN"],
+        datasets: [{
+          label: "Data",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#1e3d60",
+          pointHoverBackgroundColor: "#1e3d60",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 5,
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderWidth: 2,
+          data: [30, 50, 55, 60, 65, 68]
+        }]
+      },
+      options: {
+        layout: {
+          padding: {
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom: 0
+          }
+        },
+        maintainAspectRatio: false,
+        tooltips: {
+            backgroundColor: '#f5f5f5',
+            titleFontColor: '#333',
+             bodyFontColor: '#666',
+          bodySpacing: 4,
+          xPadding: 12,
+          mode: "nearest",
+          intersect: 0,
+          position: "nearest"
+        },
+        legend: {
+          position: "bottom",
+          fillStyle: "#FFF",
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+              suggestedMax: 100,
+              fontColor: "rgba(255,255,255,0.4)",
+              fontStyle: "normal",
+              beginAtZero: true,
+              maxTicksLimit: 5,
+              padding: 20
+            },
+            gridLines: {
+            drawBorder: false,
+            color: 'rgba(29,140,248,0.0)',
+            zeroLineColor: "transparent",
+            }
+
+          }],
+          xAxes: [{
+            barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(225,78,202,0.1)',
+            zeroLineColor: "transparent",
+          },
+            ticks: {
+              padding: 10,
+              fontColor: "#9a9a9a",
+              fontStyle: "normal"
+            }
+          }]
+        }
+      }
+    });
+  },
+
+
+};
+
+</script>
+
+<script>
+
+
+
+</script>
+
+
+</body>
+
+
+
+</html>

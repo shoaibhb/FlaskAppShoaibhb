@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Dashboard</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../static/modules/rst_vendors/base/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+  </head>
+  <body>
+    <div class="container-scroller">
+
+		<!-- partial:partials/_horizontal-navbar.html -->
+
+    <div class="horizontal-menu">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FBFDFD;">
+             <a class="navbar-brand d-lg-none" href="#"><img
+                     src="images/logo2.png"></a>
+             <div class="collapse navbar-collapse">
+                 <ul class="navbar-nav mx-auto">
+
+<!--                     <a class="d-none d-lg-block" href="#"><img src="images/logo2.png" width="350" height="40"></a>-->
+                         <a class="d-none d-lg-block" href="#">
+
+                             <object data='image.svg'>
+                                 <img src='../images/logo_a.png'>
+                                 <img src='../images/logo_b.png' width="160" height="35">
+                             </object>
+
+                         </a>
+                 </ul>
+             </div>
+         </nav>
+
+      <nav class="bottom-navbar">
+        <div class="container">
+            <ul class="nav page-navigation">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="mdi mdi-chart-bar menu-icon"></i>
+                  <span class="menu-title">Reliability</span>
+                     <i class="menu-arrow"></i>
+                </a>
+                   <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="../pages/rst_reliability.html">IOS Tracker</a></li>
+<!--                          <li class="nav-item"><a class="nav-link" href="../pages/ios.html">IOS Follow-Up</a></li>-->
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-codepen menu-icon"></i>
+                    <span class="menu-title">Configuration</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="../pages/rst_config_sum.html">Summary</a></li>
+                          <li class="nav-item"><a class="nav-link" href="../pages/rst_line4_config.html">Line 4</a></li>
+                          <li class="nav-item"><a class="nav-link" href="../pages/rst_line5_config.html">Line 5</a></li>
+                          <li class="nav-item"><a class="nav-link" href="../pages/rst_line6_config.html">Line 6</a></li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a href="../pages/rst_pm.html" class="nav-link">
+                    <i class="mdi mdi-wrench menu-icon"></i>
+                    <span class="menu-title">Preventive Maintenance</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-engine-outline menu-icon"></i>
+                    <span class="menu-title">Retrofit</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="../pages/rst_retrofit.html">Retrofit Status</a></li>
+<!--                          <li class="nav-item"><a class="nav-link" href="../pages/i.html">Repair Cycle</a></li>-->
+                      </ul>
+                  </div>
+
+              </li>
+              <li class="nav-item">
+                  <a href="../pages/rst_materials.html" class="nav-link">
+                    <i class="mdi mdi-magnet-on menu-icon"></i>
+                    <span class="menu-title">Materials</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-marker-check menu-icon"></i>
+                    <span class="menu-title">Quality</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul class="submenu-item">
+                          <li class="nav-item"><a class="nav-link" href="pages/rst_ncr.html">NCR</a></li>
+                          <li class="nav-item"><a class="nav-link" href="pages/rst_8d.html">8D</a></li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a href="../docs/documentation.htm" class="nav-link">
+                    <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+                    <span class="menu-title">SharePoint Links</span></a>
+              </li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+
+
+                    <div class="row mt-4">
+						<div class="col-lg-4 grid-margin stretch-card">
+							<div class="card shadow">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-12">
+											<h4 class="card-title">NB IOS on Fleet</h4>
+											<canvas id="NbIosFleet"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-lg-4 grid-margin stretch-card">
+							<div class="card shadow">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-12">
+											<h4 class="card-title">NB Unique IOS</h4>
+											<canvas id="NbUnique"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-lg-4 grid-margin stretch-card">
+							<div class="card shadow">
+								<div class="card-body">
+									<div class="row">
+                                        <div class="col-lg-12">
+											<h4 class="card-title">IOS Status</h4>
+											<canvas id="IosStatus"></canvas>
+
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+                    <div class="row">
+						<div class="col-sm-12 flex-column d-flex stretch-card">
+							<div class="row">
+								<div class="col-lg-4 d-flex grid-margin stretch-card">
+
+									<div class="card card-border-teal card-bg1 shadow">
+										<div class="card-body">
+											<h2 class="text-dark mb-2 font-weight-bold count">811</h2>
+											<h4 class="card-title mb-2">NB IOS On Fleet</h4>
+											<small class="text-muted">2 June 2021</small>
+										</div>
+									</div>
+
+								</div>
+								<div class="col-lg-4 d-flex grid-margin stretch-card">
+
+									<div class="card card-border-aqua card-bg2 shadow">
+										<div class="card-body">
+											<h2 class="text-dark mb-2 font-weight-bold count">53</h2>
+											<h4 class="card-title mb-2">NB Unique IOS</h4>
+											<small class="text-muted">2 June 2021</small>
+										</div>
+									</div>
+
+								</div>
+                                <div class="col-lg-4 d-flex grid-margin stretch-card">
+                                    <div class="card card-border-blue card-bg3 shadow">
+										<div class="card-body">
+											<h2 class="text-dark mb-2 font-weight-bold count">70</h2>
+											<h4 class="card-title mb-2">IOS Status</h4>
+											<small class="text-muted">2 June 2021</small>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-sm-8 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow" style="height: 440px;">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">IOS Tracker</h4>
+										<h4 class="text-primary font-weight-bold">Grand Total<span class="text-dark ml-3">50</span></h4>
+									</div>
+									<div id="support-tracker-legend" class="support-tracker-legend"></div>
+									<canvas id="IosTracker" width="330" height="100"></canvas>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4 flex-column d-flex stretch-card">
+							<div class="row flex-grow mt-0">
+								<div class="col-sm-12 grid-margin stretch-card">
+									<div class="card shadow" style="height: 115px;">
+										<div class="card-body pt-0">
+											<div class="row pt-0 mt-md-0">
+												<div class="col">
+													<div class="d-flex align-items-center">
+                                                     <div id="circleProgressUI" style="margin:0px; height:80px; width:80px; position:relative;" class="mt-4"></div>
+                                                   <p class="font-weight-bold text-dark text-small mt-1">UI</p>
+                                                    </div>
+
+												</div>
+												<div class="col">
+													<div class="d-flex align-items-center">
+                                                     <div id="circleProgressMajor" style="margin:0px; height:80px; width:80px; position:relative;" class="mt-4"></div>
+                                                   <p class="font-weight-bold text-dark text-small mt-1">Major</p>
+                                                    </div>
+												</div>
+
+                                                <div class="col">
+													<div class="d-flex align-items-center">
+                                                     <div id="circleProgressMinor" style="margin:0px; height:80px; width:80px; position:relative;" class="mt-4"></div>
+                                                   <p class="font-weight-bold text-dark text-small mt-1">Minor</p>
+                                                    </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-12 grid-margin stretch-card">
+									<div class="card shadow">
+										<div class="card-body">
+											<div class="row flex-grow">
+												<div class="col-sm-12">
+													<div class="d-flex align-items-center justify-content-between">
+														<h4 class="card-title mb-2">IOS Tracker Per Month</h4>
+
+													</div>
+													<canvas id="iosHistory"></canvas>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+          <div class="footer-wrap">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+            </div>
+          </div>
+        </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+    </div>
+		<!-- container-scroller -->
+    <!-- base:js -->
+    <script src="./static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+    <!-- plugin js for this page -->
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+
+
+
+
+
+  <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+		var NbIosFleetData = {
+			labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CRL)", "TCMS (VPF)", "DOORS (KN)", "PAPIS (STEE)", "RST (Riyadh)"],
+			datasets: [{
+				label: 'NB IOS',
+				data: [42, 98, 111, 25, 160, 166, 33, 185],
+				backgroundColor: ['#92B8B8','#89B9BA','#81B9BA','#7AB9BA','#6CB8B9','#60B6B8','#4AB4B5','#32B2B4'],
+				borderColor: ['#92B8B8','#89B9BA','#81B9BA','#7AB9BA','#6CB8B9','#60B6B8','#4AB4B5','#32B2B4'],
+				borderWidth: 2,
+				fill: false
+			}],
+		};
+		var NbIosFleetOptions = {
+		    animation: {
+                duration : 3000,
+            },
+
+			scales: {
+				xAxes: [{
+					position: 'bottom',
+					display: false,
+					gridLines: {
+							display: false,
+							drawBorder: true,
+					},
+					ticks: {
+							display: false ,//this will remove only the label
+							beginAtZero: true
+					}
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						drawBorder: true,
+						display: false,
+					},
+					ticks: {
+					fontSize: 11,
+						beginAtZero: true
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				show: false,
+				backgroundColor: 'rgba(119,119,119,0.9)',
+			},
+			plugins: {
+			datalabels: {
+					display: true,
+					align: 'end',
+					color: 'white',
+				}
+			}
+
+		};
+		if ($("#NbIosFleet").length) {
+			var barChartCanvas = $("#NbIosFleet").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'horizontalBar',
+				data: NbIosFleetData,
+				options: NbIosFleetOptions,
+
+			});
+		}
+
+
+		var IosTrackerData = {
+			labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CRL)", "TCMS (VPF)", "DOORS (KN)", "PAPIS (STEE)", "RST (Riyadh)"],
+			datasets: [{
+				label: 'Under Investigation',
+				data: [0, 0, 1, 8, 0, 0, 0, 0],
+				backgroundColor: 'RGBA(250,66,74,0.69)',
+				borderColor: [
+					'#fa424a', '#fa424a', '#fa424a', '#fa424a',  '#fa424a', '#fa424a', '#fa424a', '#fa424a',
+				],
+				borderWidth: 1,
+				fill: false
+			},
+						{
+					label: 'Major [Detected]',
+					data: [2, 0, 0, 6, 0, 2, 1, 1],
+					backgroundColor: 'RGBA(255, 178, 3, 0.7)',
+<!--					[	'#85d6ff', '#0aadfe', '#0aadfe', '#0aadfe', '#0aadfe', '#0aadfe', '#0aadfe', '#0aadfe',],-->
+					borderColor: [
+						'#FFB203', '#FFB203', '#FFB203', '#FFB203', '#FFB203', '#FFB203', '#FFB203', '#FFB203',
+					],
+					borderWidth: 1,
+					fill: false
+			},
+			{
+					label: 'Minor [Detected]',
+					data: [0, 4, 6, 10, 9, 0, 0, 0],
+					backgroundColor:  'rgba(102,204,204,0.6)',
+					borderColor: [
+						'#66CCCC', '#66CCCC', '#66CCCC', '#66CCCC', '#66CCCC', '#66CCCC', '#66CCCC', '#66CCCC',
+					],
+					borderWidth: 1,
+					fill: false
+			}
+			]
+		};
+		var IosTrackerOptions = {
+			scales: {
+				xAxes: [{
+				//stacked: true,
+				barPercentage: 0.9,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: true,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					stepSize: 300,
+				}
+				}],
+				yAxes: [{
+					//stacked: true,
+					display: true,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+<!--					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');-->
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].borderColor[i] + ';"></span><span class="legend-label text-dark">');
+
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+			    deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+					    font: {
+                            size: 10,
+                            weight: "normal"
+                              },
+                    color: "#444444",
+					display: false,
+					align: 'center',
+					anchor: 'center'
+				}
+			}
+		};
+		if ($("#IosTracker").length) {
+			var barChartCanvas = $("#IosTracker").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: IosTrackerData,
+				options: IosTrackerOptions
+			});
+			document.getElementById('support-tracker-legend').innerHTML = barChart.generateLegend();
+		}
+
+	});
+})(jQuery);
+
+  </script>
+  <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+		var NbUniqueData = {
+		    labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CRL)", "TCMS (VPF)", "DOORS(KN)", "PAPIS (STEE)", "RST (Riyadh)"],
+			datasets: [{
+				label: 'NB Unique',
+				data: [7, 26, 4, 2, 1, 2, 10, 1],
+				backgroundColor: ['#A3ECF6','#8EEAF6','#79E7F6','#5EE3F4','#4CE0F4','#3DDEF4','#21DAF3','#07D7F3'],
+				borderColor: ['#A3ECF6','#8EEAF6','#79E7F6','#5EE3F4','#4CE0F4','#3DDEF4','#21DAF3','#07D7F3'],
+
+				borderWidth: 2,
+				fill: false
+			}],
+		};
+		var NbUniqueOptions = {
+
+		    animation: {
+                duration : 3000,
+            },
+
+			scales: {
+				xAxes: [{
+					position: 'bottom',
+					display: false,
+					gridLines: {
+							display: false,
+							drawBorder: true,
+					},
+					ticks: {
+							display: false ,//this will remove only the label
+							beginAtZero: true
+					}
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						drawBorder: true,
+						display: false,
+					},
+					ticks: {
+					    fontSize: 11,
+						beginAtZero: true
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				show: false,
+				backgroundColor: 'rgba(119,119,119,0.9)',
+			},
+			plugins: {
+			datalabels: {
+					display: true,
+					align: 'end',
+					color: '#555555',
+				}
+			}
+
+		};
+		if ($("#NbUnique").length) {
+			var barChartCanvas = $("#NbUnique").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'horizontalBar',
+				data: NbUniqueData,
+				options: NbUniqueOptions,
+
+			});
+		}
+		if ($('#circleProgressMinor').length) {
+			var bar = new ProgressBar.Circle(circleProgressMinor, {
+				color: '#60E0E2',
+				strokeWidth: 10,
+				trailWidth: 10,
+				easing: 'easeInOut',
+				duration: 1400,
+				width: 42,
+
+    text: {
+    autoStyleContainer: false
+    },
+  from: { color: '#990033', width: 1 },
+  to: { color: '#009966', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+//    circle.path.setAttribute('stroke', state.color);
+//    circle.path.setAttribute('stroke-width', state.width);
+    var value = Math.round(circle.value() * 100)+ '%';
+    if (value === 0) {
+      circle.setText('');
+    } else {
+      circle.setText(value);
+    }
+  }
+			});
+			bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+            bar.text.style.fontSize = '1.2rem';
+			bar.animate(.18); // Number from 0.0 to 1.0
+		}
+
+
+
+		if ($('#circleProgressMajor').length) {
+			var bar = new ProgressBar.Circle(circleProgressMajor, {
+				color: '#FFB203',
+				strokeWidth: 10,
+				trailWidth: 10,
+				easing: 'easeInOut',
+				duration: 1400,
+				width: 22,
+
+    text: {
+    autoStyleContainer: false
+    },
+  from: { color: '#990033', width: 1 },
+  to: { color: '#009966', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+//    circle.path.setAttribute('stroke', state.color);
+//    circle.path.setAttribute('stroke-width', state.width);
+    var value = Math.round(circle.value() * 100)+ '%';
+    if (value === 0) {
+      circle.setText('');
+    } else {
+      circle.setText(value);
+    }
+  }
+
+			});
+			bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+            bar.text.style.fontSize = '1.2rem';
+			bar.animate(.36); // Number from 0.0 to 1.0
+
+		}
+
+
+		if ($('#circleProgressUI').length) {
+			var bar = new ProgressBar.Circle(circleProgressUI, {
+				color: '#F36161',
+				strokeWidth: 10,
+				trailWidth: 10,
+				easing: 'easeInOut',
+				duration: 1400,
+				width: 22,
+
+
+  text: {
+    autoStyleContainer: false
+  },
+  from: { color: '#990033', width: 1 },
+  to: { color: '#009966', width: 5 },
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+//    circle.path.setAttribute('stroke', state.color);
+//    circle.path.setAttribute('stroke-width', state.width);
+    var value = Math.round(circle.value() * 100)+ '%';
+    if (value === 0) {
+      circle.setText('');
+    } else {
+      circle.setText(value);
+    }
+  }
+
+			});
+			bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+            bar.text.style.fontSize = '1.2rem';
+			bar.animate(.76); // Number from 0.0 to 1.0
+
+		}
+
+
+	});
+
+})(jQuery);
+
+  </script>
+  <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+		var IosStatusData = {
+			labels: ["Corrective Plan Impl.", "Corrective plan received", "Root Cause Identified", "Under Investigation", "Major (Detected)", "Minor (Detected)", "Test Related"],
+			datasets: [{
+				label: 'IOS Status',
+				data: [13, 3, 10, 12, 28, 4, 3],
+				backgroundColor: ['#9caefa','#839af9','#6a85f8','#5171f7','#395df5','#2048f4', '#0044D1'],
+				borderColor: ['#9caefa','#839af9','#6a85f8','#5171f7','#395df5','#2048f4', '#0044D1'],
+				borderWidth: 2,
+				fill: false
+			}],
+		};
+		var IosStatusOptions = {
+
+			animation: {
+                duration : 3000,
+            },
+
+			scales: {
+				xAxes: [{
+					position: 'bottom',
+					display: false,
+					gridLines: {
+							display: false,
+							drawBorder: true,
+					},
+					ticks: {
+							display: false ,//this will remove only the label
+							beginAtZero: true
+					}
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						drawBorder: true,
+						display: false,
+					},
+					ticks: {
+					    fontSize: 11,
+						beginAtZero: true
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				show: false,
+				backgroundColor: 'rgba(119,119,119,0.9)',
+			},
+			plugins: {
+			datalabels: {
+					display: true,
+					align: 'end',
+					color: 'white',
+				}
+			}
+
+		};
+		if ($("#IosStatus").length) {
+			var barChartCanvas = $("#IosStatus").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'horizontalBar',
+				data: IosStatusData,
+				options: IosStatusOptions,
+
+			});
+		}
+
+	});
+})(jQuery);
+
+  </script>
+  <script>
+      		var iosHistoryData = {
+			labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+			datasets: [
+				{
+				label: 'Under Investigation',
+				data: [15, 25, 20, 18, 24, 20, 16, 20],
+				backgroundColor: [
+						//'rgba(238, 91, 91, .9)',
+						'RGBA(250,66,74,0.69)',
+				],
+				borderColor: [
+						'#fa424a',
+				],
+				borderWidth: 2,
+				fill: true,
+				pointBorderWidth: 4,
+				},
+				{
+				label: 'Major',
+				data: [20, 30, 25, 23, 29, 25, 21, 25],
+				backgroundColor: [
+						//'rgba(70, 77, 238, 1)',
+						'RGBA(255, 178, 3, 0.9)',
+				],
+				borderColor: [
+						'#FFB203',
+				],
+				borderWidth: 2,
+				fill: true,
+				pointBorderWidth: 4,
+				},
+				{
+				label: 'Minor',
+				data: [25, 35, 30, 28, 33, 30, 26, 30],
+				backgroundColor: [
+						//'rgba(81, 225, 195, .9)',
+						'rgba(102,204,204,0.6)',
+				],
+				borderColor: ['#51e1c3'],
+				borderWidth: 2,
+				fill: true,
+				},
+			],
+		};
+		var iosHistoryOptions = {
+
+		     tooltips:{
+                intersect : false,
+                mode:'index'
+                },
+
+			scales: {
+				yAxes: [{
+					display: false,
+					gridLines: {
+						drawBorder: false,
+						display: false,
+					},
+				}],
+				xAxes: [{
+					position: 'bottom',
+					display: true,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f2f2f2",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: false,
+						stepSize: 200
+					}
+				}],
+			},
+			legend: {
+				display: false,
+			},
+			elements: {
+					point: {
+						radius: 0
+					},
+			},
+			plugins: {
+				datalabels: {
+					display: false,
+					align: 'center',
+					anchor: 'center'
+				}
+			}
+		};
+		if ($("#iosHistory").length) {
+			var lineChartCanvas = $("#iosHistory").get(0).getContext("2d");
+			var saleschart = new Chart(lineChartCanvas, {
+				type: 'line',
+				data: iosHistoryData,
+				options: iosHistoryOptions
+			});
+		}
+  </script>
+
+  <script>
+    $('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+</script>
+
+
+
+  </body>
+</html>

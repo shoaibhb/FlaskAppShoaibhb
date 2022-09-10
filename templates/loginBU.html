@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <style>
+          .animate__animated.animate__backInDown {
+        --animate-duration: 2.0s;
+        }
+  </style>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Alstom RST Portal &rsaquo; Login</title>
+
+  <link rel="stylesheet" href="../static/modules/bootstrap/css/bootstrap.min.css">
+  <script src="../static/modules/jquery.min.js"></script>
+  <script src="../static/modules/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="../static/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../static/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <link rel="stylesheet" href="../static/css/demo.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+
+
+</head>
+
+<!--<body background="https://1.bp.blogspot.com/-sTxAHAxirGM/WVbAe2098nI/AAAAAAABENs/_I5sYMYgLOUzaIE7FfF4qdGX-hoAkq9SgCLcBGAs/s1600/Blog_20170624_113552.jpg">-->
+<body>
+
+ <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Forgot Password</h5>
+
+      </div>
+      <div class="modal-body">
+        Please contact Rao Kamran (kamran.rao@alstomgroup.com)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+            <div class="login-brand">
+              <img src="../static/img/alstom.jpg" width="134" height="27" alt=""/>
+              <p class="animate__animated animate__backInDown"> Riyadh Metro Project</p>
+              <p class="animate__animated animate__backInDown"><b>Rolling Stock</b></p>
+
+            </div>
+
+            <div class="card card-primary">
+              <div class="card-header"><h4>Login</h4></div>
+              <div class="card-body">
+              {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                      <div class="notification is-danger">
+                        <p style="color:#FF0000";>{{ messages[0] }} </p>
+                      </div>
+              {% endif %}
+              {% endwith %}
+
+              {% if alldone %}
+                      <div class="notification is-info">
+                        <p style="font-size: 11px; font-family:verdana; color:#0BBF36;">User Registered </p>
+                      </div>
+              {% endif %}
+
+                <form method="POST" action="/login" class="needs-validation" novalidate="">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                    <div class="invalid-feedback">
+                      Please fill in your email
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="password" class="d-block">Password
+                      <div class="float-right">
+                        <a href="" data-toggle="modal" data-target="#exampleModalCenter">
+                          Forgot Password?
+                        </a>
+                      </div>
+
+                    </label>
+
+                    <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                    <div class="invalid-feedback">
+                      please fill in your password
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" tabindex="4">
+                      Login
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="mt-1 text-muted text-center">
+<!--              <p> Don't have an account? <a href="/signup"> Create One</a> </p>-->
+              <p class="animate__animated animate__backInDown" style="font-size: 12px;"> Please contact <a href="mailto:mattias.uvin-ext@alstomgroup.com?subject=RST Portal Access"> UVIN Mattias </a> or <a href="mailto:kamran.rao@alstomgroup.com?subject=RST Portal Access"> Rao Kamran </a> for access the site</p>
+<!--              <p style="margin-bottom:0;">Developed By RST (Riyadh Metro Project)&nbsp;</p>-->
+              <p class="text-info font-italic" style="margin : 0; padding-top:0; font-weight:bold;">Developed By RST (Riyadh Metro Project)</p>
+<!--              <p class="text-info font-italic" style="margin : 0; padding-top:0; font-weight:bold;">Version 6.7.81</p>-->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+
+
+  <script src="../static/modules/popper.min.js"></script>
+  <script src="../static/modules/tooltip.js"></script>
+  <script src="../static/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="../static/modules/moment.min.js"></script>
+  <script src="../static/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+  <script src="../static/js/sa-functions.js"></script>
+  
+  <script src="../static/js/scripts.js"></script>
+  <script src="../static/js/custom.js"></script>
+  <script src="../static/js/demo.js"></script>
+</body>
+</html>

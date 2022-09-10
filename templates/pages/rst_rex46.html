@@ -1,0 +1,560 @@
+{% extends 'pages/navl46.html' %}
+{% block siripye %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+
+      <style>
+
+.thead-blue tr:nth-child(1) th{
+   background: #BFEDFF;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+   }
+
+      </style>
+
+      <style>
+      table{
+  margin: 0 auto;
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+  table-layout: fixed; // ***********add this
+  word-wrap:break-word; // ***********and this
+}
+
+
+          td { font-size: 12px; }
+          tr { font-size: 13px; }
+
+          table.dataTable thead th.ui-state-default {
+          background: #84CFE6;
+            }
+          table.dataTable tfoot th.ui-state-default {
+          background: #84CFE6;
+            }
+      </style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Dashboard</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+<!--    <link rel="stylesheet" href="../rst_vendors/base/vendor.bundle.base.css">-->
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/rst_img/favicon.png"/>
+
+      <!-- plugin Datatable css for this page -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.jqueryui.min.css">
+
+
+<!--      Google Font  -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+      <style>
+body {
+  font-family: "Poppins", sans-serif;
+  //font-size: 48px;
+}
+</style>
+
+<!--  </head>-->
+<!--  <body>-->
+{% endblock %}
+{% block content %}
+    <div class="container-scroller">
+
+        <!-- partial:partials/_horizontal-navbar.html -->
+
+        <!-- partial -->
+
+
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+					<div class="row mt-2">
+
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card shadow">
+                                <div class="card-header bg-light text-black px-2 p-1 d-flex justify-content-between align-items-center">
+                                    <h4 class="mt-2 fw-bold">Return of Experience</h4>
+                                    <h6 class="mt-2 small"><kbd class="mt-1 small">Updated On: {{udate[0]}}</kbd></h6>
+                                    <!--                                    <h6 class="mt-1 small">Download <i class="fas fa-file-excel"></i></h6>-->
+                                    <!--                                    <h6 class="mt-1 small"><kbd class="mt-1 small">Download <i class="fas fa-file-excel"></i></kbd></h6>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <style>
+                        .top-buffer { margin-top:-28px; }
+                        </style>
+
+						<div class="col-lg-6 top-buffer grid-margin stretch-card">
+							<div class="card shadow">
+								<div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+											<h4 class="card-title">REX by Subsystem</h4>
+                                            <h5 class="text-primary font-weight-bold">Potential Impact<span class="text-dark ml-2">{{ valsub | sum }}</span></h5>
+                                    </div>
+                                            <div class="chart-container" style="position: relative;">
+                                                <canvas id="RexSubBar"></canvas>
+                                            </div>
+								</div>
+							</div>
+						</div>
+
+                        <div class="col-lg-3 top-buffer grid-margin stretch-card">
+							<div class="card shadow">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-12">
+											<h4 class="card-title">REX by Responsibility <span class="text-primary ml-2">({{ valres | sum }})</span></h4>
+                                            <div class="row mt-5">
+                                            <canvas id="ncrPieRes"></canvas>
+                                            </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+                        <div class="col-lg-3 top-buffer grid-margin stretch-card">
+							<div class="card shadow">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-12">
+											<h4 class="card-title">REX by Status <span class="text-primary ml-2">({{ valstatus | sum }})</span></h4>
+                                            <div class="row mt-5">
+                                            <canvas id="ncrPieStatus"></canvas>
+                                            </div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+                    <div class="row mt-2">
+
+						<div class="col-sm-12 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow">
+								<div class="card-body">
+                                    <h4 class="card-title">REX Details</h4>
+<!--                                    <div class="custom-scrollbar-css p-2">-->
+<!--                                        <div id="PMDataTable_401"></div>-->
+<!--                                    </div>-->
+
+                                    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>REX No</th>
+                <th>Date Issued</th>
+                <th>Origin of Rex</th>
+                <th>Sub-system</th>
+                <th>Description</th>
+                <th>Responsibility</th>
+                <th>Impact</th>
+                <th>Root Cause</th>
+                <th>Action Required</th>
+                <th>Target Date</th>
+                <th>Status</th>
+                <th>IR</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%for i in range(0, lenlist)%}
+        <tr>
+<!--                  <td><a href="/getfile/${data402[i][2]}.pdf" target="_blank">${data402[i][2]}</td></a>-->
+
+                <td><a href="/getfile/{{rexlist[i][0]}}.pdf" target="_blank"> {{rexlist[i][0]}} </a> </td>
+                <td>{{rexlist[i][1]}}</td>
+                <td>{{rexlist[i][2]}}</td>
+                <td>{{rexlist[i][3]}}</td>
+                <td>{{rexlist[i][4]}}</td>
+                <td>{{rexlist[i][5]}}</td>
+                <td>{{rexlist[i][6]}}</td>
+                <td>{{rexlist[i][7]}}</td>
+                <td>{{rexlist[i][8]}}</td>
+                <td>{{rexlist[i][9]}}</td>
+                <td>{{rexlist[i][10]}}</td>
+                <td><a href="/getfile/{{rexlist[i][12]}}.xlsx" target="_blank"> {{rexlist[i][12]}} </a> </td>
+                <td>{{rexlist[i][11]}}</td>
+            </tr>
+        {%endfor%}
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>REX No</th>
+                <th>Date Issued</th>
+                <th>Origin of Rex</th>
+                <th>Sub-system</th>
+                <th>Description</th>
+                <th>Responsibility</th>
+                <th>Impact</th>
+                <th>Root Cause</th>
+                <th>Action Required</th>
+                <th>Target Date</th>
+                <th>Status</th>
+                <th>IR</th>
+                <th>Comments</th>
+            </tr>
+        </tfoot>
+    </table>
+
+                                </div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+          <div class="footer-wrap">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+            </div>
+          </div>
+        </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+    </div>
+		<!-- container-scroller -->
+
+
+        <!-- base:js -->
+    <script src="../static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+
+        <!-- plugin js for this page -->
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+
+        <!-- Datatable js for this page -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.jqueryui.min.js"></script>
+
+    <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbls_sub= {{lblsub|safe}};
+	var lbls_res= {{lblres|safe}};
+
+		var NCRSubData = {
+			//labels: ["Battery", "Brakes", "CVS", "Doors", "E Wiring", "HORN", "HVAC", "PACIS", "Traction", "Windows"],
+			labels: lbls_sub,
+			datasets: [{
+				label: 'NCR',
+				//data: [32, 13, 11, 25, 10, 16, 4, 2, 1, 3, 8, 1, 3],
+				data: [{% for i in valsub %} {{ i }}, {% endfor %}],
+				//backgroundColor: ['#3BB2D7','#54BCDC','#6CC5E1','#84CFE6','#59BDDC','#75C8E2','#91D3E8', '#ACDEED',
+				//'#C8E9F3', '#E3F4F9', '#E3F4F9', '#E3F4F9'],
+				backgroundColor: ['#01C5F3','#21CCF4','#41D4F6','#60DBF7','#80E2F9','#A0E9FA','#C0F1FC', '#C0F1FC',
+				'#C0F1FC', '#C0F1FC', '#C0F1FC', '#C0F1FC'],
+				//borderColor: ['#92B8B8','#89B9BA','#81B9BA','#7AB9BA','#6CB8B9','#60B6B8','#4AB4B5','#32B2B4'],
+
+				borderWidth: 2,
+				fill: false
+			}],
+		};
+		var NCRSubOptions = {
+		      	responive: true,
+				maintainAspectRatio: true,
+		    animation: {
+                duration : 3000,
+            },
+
+			scales: {
+				xAxes: [{
+					position: 'bottom',
+					display: true,
+					gridLines: {
+							display: false,
+							drawBorder: true,
+					},
+					ticks: {
+							display: true ,//this will remove only the label
+							fontSize: 10,
+							beginAtZero: true
+					}
+				}],
+				yAxes: [{
+					display: false,
+					gridLines: {
+						drawBorder: true,
+						display: false,
+					},
+					ticks: {
+					    fontSize: 10,
+						beginAtZero: true
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			tooltips: {
+				show: false,
+				backgroundColor: 'rgba(119,119,119,0.9)',
+			},
+			plugins: {
+			datalabels: {
+					display: true,
+					align: 'end',
+					color: 'black',
+				}
+			}
+
+		};
+		if ($("#RexSubBar").length) {
+			var barChartCanvas = $("#RexSubBar").get(0).getContext("2d");
+			barChartCanvas.canvas.width = 1100;
+			barChartCanvas.canvas.height = 330;
+
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: NCRSubData,
+				options: NCRSubOptions,
+
+			});
+		}
+
+
+
+		var ncrPieResData = {
+
+			datasets: [{
+				data: [{% for i in valres %} {{ i }}, {% endfor %}],
+				//data: [20, 15, 20, 35, 10],
+				backgroundColor: ['#ee5b5b','#fcd53b','#0bdbb8','#464dee','#0ad7f7','#990033','#009966','#FF99FF'],
+				borderColor: ['#ee5b5b','#fcd53b','#0bdbb8','#464dee','#0ad7f7','#990033','#009966','#FF99FF'],
+			}],
+			// These labels appear in the legend and in the tooltips when hovering different arcs
+			//labels: ["Alstom", "CRL", "FT", "Hoppecke", "KN", "STE-VBN"],
+			labels: lbls_res,
+
+		};
+		var ncrPieResOptions = {
+			responsive: true,
+			cutoutPercentage: 11,
+			legend: {
+					display: true,
+					position: 'left',
+			    "labels": {
+                    "fontSize": 12,
+                	usePointStyle: true,
+					boxWidth: 4,
+                        }
+			},
+			animation: {
+					animateScale: true,
+					animateRotate: true
+			},
+			plugins: {
+
+				datalabels: {
+					 display: true,
+					 color: "white",
+					 align: 'center',
+					 anchor: 'center'
+				}
+			}
+
+		};
+		if ($("#ncrPieRes").length) {
+			var pieChartCanvas = $("#ncrPieRes").get(0).getContext("2d");
+			var pieChart = new Chart(pieChartCanvas, {
+				type: 'doughnut',
+				data: ncrPieResData,
+				options: ncrPieResOptions
+			});
+		}
+
+
+
+	});
+})(jQuery);
+
+  </script>
+
+    <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+        var lbl_status= {{lblstatus|safe}};
+		var rexPieStatusData = {
+			datasets: [{
+				//data: [3, 59, 37],
+				data: [{% for i in valstatus %} {{ i }}, {% endfor %}],
+				backgroundColor: ['#ee5b5b','#0bdbb8','#fcd53b','#4AC7FF','#464dee','#0ad7f7','#990033','#009966','#FF99FF', '#78697C'],
+				borderColor: ['#ee5b5b','#0bdbb8','#fcd53b','#4AC7FF','#464dee','#0ad7f7','#990033','#009966','#FF99FF', '#78697C'],
+			}],
+			// These labels appear in the legend and in the tooltips when hovering different arcs
+			//labels: ["Corrective Action Defined", "NCR Closed", "NCR Opened"],
+			labels: lbl_status,
+
+		};
+		var rexPieStatusOptions = {
+			responsive: true,
+			cutoutPercentage: 10,
+			legend: {
+					display: true,
+					position: 'left',
+			    "labels": {
+                    "fontSize": 9,
+                	usePointStyle: true,
+					boxWidth: 4,
+                        }
+			},
+			animation: {
+					animateScale: true,
+					animateRotate: true
+			},
+			plugins: {
+
+				datalabels: {
+					 display: true,
+					 color: "white",
+					 align: 'center',
+					 anchor: 'center'
+				}
+			}
+
+		};
+		if ($("#ncrPieStatus").length) {
+			var pieChartCanvas = $("#ncrPieStatus").get(0).getContext("2d");
+			var pieChart = new Chart(pieChartCanvas, {
+				type: 'doughnut',
+				data: rexPieStatusData,
+				options: rexPieStatusOptions
+			});
+		}
+
+
+
+	});
+
+})(jQuery);
+
+  </script>
+
+    <script>
+$(document).ready(function() {
+    $('#example').DataTable( {
+
+    "order": [[ 0, 'desc' ]],
+        "columnDefs": [
+      { "width": "30px", "targets": 0 },
+      { "width": "55px", "targets": 1 },
+      { "width": "50px", "targets": 2 },
+      { "width": "55px", "targets": 3 },
+      { "width": "135px", "targets": 4 },
+      { "width": "87px", "targets": 5 },
+      { "width": "55px", "targets": 6 },
+      { "width": "95px", "targets": 7 },
+      { "width": "57px", "targets": 9 },
+      {"width": "50px", "targets": 10 },
+      {"width": "35px", "targets": 11 },
+
+      {"type": "date", "targets": 1},
+
+      {"className": "dt-center", "targets": 2},
+      {"className": "dt-center", "targets": 3},
+      {"className": "dt-center", "targets": 5},
+      {"className": "dt-center", "targets": 11},
+
+      ],
+
+        "aLengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
+        "iDisplayLength": -1,
+
+        initComplete: function () {
+            //this.api().columns().every( function () {
+            this.api().columns([]).every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    //.appendTo( $(column.footer()).empty() )
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    //select.append( '<option value="'+d+'">'+d+'</option>' )
+                    select.append('<option value="' + d + '">' + d.substr(0,10) + '</option>')
+                } );
+            } );
+        }
+    } );
+} );
+</script>
+
+<!--    <script>-->
+
+<!--&lt;!&ndash;    $(document).ready(function() {&ndash;&gt;-->
+<!--&lt;!&ndash;    $('#example').DataTable();&ndash;&gt;-->
+<!--&lt;!&ndash;} );&ndash;&gt;-->
+
+
+<!--$(document).ready(function() {-->
+<!--    $('#example').dataTable({-->
+<!--        "order": [[ 0, 'desc' ]],-->
+<!--        "columnDefs": [-->
+<!--      { "width": "30px", "targets": 0 },-->
+<!--      { "width": "50px", "targets": 1 },-->
+<!--      { "width": "50px", "targets": 2 },-->
+<!--      { "width": "55px", "targets": 3 },-->
+<!--      { "width": "155px", "targets": 4 },-->
+<!--      { "width": "85px", "targets": 5 },-->
+<!--      { "width": "115px", "targets": 7 },-->
+<!--      { "width": "50px", "targets": 9 },-->
+<!--      {"width": "50px", "targets": 10 },-->
+<!--      ],-->
+
+<!--        "aLengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],-->
+<!--        "iDisplayLength": 10-->
+<!--    });-->
+<!--} );-->
+
+
+<!--</script>-->
+
+{% endblock %}
+<!--  </body>-->
+<!--</html>-->

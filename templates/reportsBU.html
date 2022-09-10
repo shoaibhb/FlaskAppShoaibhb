@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Alstom T&C &rsaquo; Reports Section</title>
+
+  <link rel="stylesheet" href="../static/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../static/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+  <script src="../static/js/webfont.min.js"></script>
+
+  <link rel="stylesheet" href="../static/css/demo.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/atlantis.min.css">
+
+  	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+</head>
+
+<body>
+  <div id="app">
+    <div class="main-wrapper">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="ion ion-search"></i></a></li>
+          </ul>
+
+        </form>
+
+      </nav>
+
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+          <a href="index.html"><img src="../static/img/alstom.jpg" width="134" height="27" alt=""/></a>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-user-picture">
+              <img alt="image" src="../static/img/avatar/avatar-1.jpg">
+            </div>
+            <div class="sidebar-user-details">
+              <div class="user-name">{{name}}</div>
+              <div class="user-role">{{email}}</div>
+            </div>
+          </div>
+           <ul class="sidebar-menu">
+                    <li class="menu-header">Dashboards</li>
+                    <li><a href="/dashboard01"><i class="ion ion-stats-bars"></i><span>System TR & TP</span></a></li>
+                    <li><a href="/dashboard02"><i class="ion ion-speedometer"></i><span>TSY Anomaly Status</span></a>
+                    <li><a href="/dashboardLines"><i class="fas fa-chart-line"></i></i><span>T&C Activity Progress</span></a>
+                        <ul class="menu-dropdown">
+                            <li style="margin=30px;"><a href="/dashboardLine4"><i class="fas fa-subway"></i>Line 4</a></li>
+                            <li><a href="/dashboardLine5"><i class="fas fa-subway"></i></i>Line 5</a></li>
+                            <li><a href="/dashboardLine6"><i class="fas fa-subway"></i></i>Line 6</a></li>
+                        </ul>
+
+                    <li class="menu-header">Data</li>
+                    <li  class="active">
+                        <a href="/reports"><i class="ion ion-ios-copy-outline"></i><span>T&C Reports</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ion ion-ios-information-outline"></i><span>Notification</span></a>
+                    </li>
+                    <li class="text-danger">
+                        <a href="/logout"><i class="ion ion-log-out"></i><span>Logout</span></a>
+                    </li>
+                </ul>
+
+        </aside>
+      </div>
+
+
+      <div class="main-content">
+        <section class="section">
+          <h1 class="section-header">
+            <div>Reports Section</div>
+          </h1>
+
+          <div class="section-body">
+
+            <h2 class="section-title">Updated T&C Reports & Documents are available for downlaod in this section</h2>
+
+     <div class="row">
+						<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-success mr-3">
+										<i class="fas fa-file-excel"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="/getfile/{{data[0]}}" target="_blank">Test Witness Plan</a></b></h5>
+										<small class="text-muted">Last Updated: <strong>{{data2[0]}}</strong></small>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-success mr-3">
+										<i class="fas fa-file-excel"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="/getfile/{{data[1]}}" target="_blank">System T&C Test Report</a></b></h5>
+										<small class="text-muted">Last Updated: <strong>{{data2[1]}}</strong></small>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-success mr-3">
+										<i class="fas fa-file-excel"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="/getfile/{{data[2]}}" target="_blank">System T&C Test Procedure</a></b></h5>
+										<small class="text-muted">Last Updated: <strong>{{data2[2]}}</strong></small>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-success mr-3">
+										<i class="fas fa-file-excel"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="/getfile/{{data[3]}}" target="_blank">Punch List</a></b></h5>
+										<small class="text-muted">Last Updated: <strong>{{data2[3]}}</strong></small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+     <div class="row">
+						<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-danger mr-3">
+										<i class="fas fa-file-pdf"></i>
+									</span>
+									<div>
+                                      <h5 class="mb-1"><b><a href="/getfile/{{data[4]}}">Contractual Requirement Trackability</a></b></h5>
+										<small class="text-muted">Last Updated: <strong>{{data2[4]}}</strong></small>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-success mr-3">
+										<i class="fas fa-file-excel"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="/getfile/{{data[5]}}" target="_blank">Safety Requirement Trackability</a></b></h5>
+										<small class="text-muted">{{data2[5]}}</small>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-success mr-3">
+										<i class="fas fa-file-excel"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="/getfile/{{data[6]}}" target="_blank">MANTIS Anomaly Status Report</a></b></h5>
+										<small class="text-muted">Last Updated: <strong>{{data2[6]}}</strong></small>
+									</div>
+								</div>
+							</div>
+						</div>
+		 				<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-primary mr-3">
+										<i class="fas fa-cloud"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="{{data[9]}}" target="_blank">TSY T&C Test Notification Tracker</a></b></h5>
+										<small class="text-muted">{{data2[9]}}</small>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+     <div class="row">
+						<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-secondary mr-3">
+										<i class="fas fa-file-word"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="/getfile/{{data[7]}}" target="_blank">PVM Matrix</a></b></h5>
+										<small class="text-muted">Last Updated: <strong>{{data2[7]}}</strong></small>
+									</div>
+								</div>
+							</div>
+						</div>
+
+                        <div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-danger mr-3">
+										<i class="fas fa-file-pdf"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="/getfile/{{data[8]}}" target="_blank">MOM's with RAMPED</a></b></h5>
+										<small class="text-muted">Last Updated: <strong>{{data2[8]}}</strong></small>
+									</div>
+								</div>
+							</div>
+						</div>
+
+		 				<div class="col-sm-6 col-lg-3">
+							<div class="card p-3">
+								<div class="d-flex align-items-center">
+									<span class="stamp stamp-md bg-primary mr-3">
+										<i class="fas fa-cloud"></i>
+									</span>
+									<div>
+										<h5 class="mb-1"><b><a href="{{data[10]}}" target="_blank">SYS T&C Master List</a></b></h5>
+										<small class="text-muted">{{data2[10]}}</small>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+           </div>
+        </section>
+      </div>
+
+
+      <footer class="main-footer">
+        <div class="footer-left">
+          <div class="bullet"></div>Developed By Riyadh System T&C</a>
+        </div>
+        <div class="footer-right"></div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="../static/modules/jquery.min.js"></script>
+  <script src="../static/modules/popper.js"></script>
+  <script src="../static/modules/tooltip.js"></script>
+  <script src="../static/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="../static/modules/scroll-up-bar/static/scroll-up-bar.min.js"></script>
+  <script src="../static/js/sa-functions.js"></script>
+  
+  <script src="../static/js/scripts.js"></script>
+  <script src="../static/js/custom.js"></script>
+  <script src="../static/js/demo.js"></script>
+</body>
+</html>

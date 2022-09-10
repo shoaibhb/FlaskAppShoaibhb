@@ -1,0 +1,583 @@
+{% extends 'pages/navl5.html' %}
+  {% block siripye %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+
+      <style>
+
+      table{
+        margin: 0 auto;
+        width: 100%;
+        clear: both;
+        border-collapse: collapse;
+        table-layout: fixed; // ***********add this
+        word-wrap:break-word; // ***********and this
+            }
+
+
+          td { font-size: 13px; }
+          tr { font-size: 14px; }
+
+          table.dataTable thead {
+          background: #007E77;
+          color: white;
+            }
+          table.dataTable tfoot th.ui-state-default {
+          background: #007E77;
+          color: white;
+            }
+
+
+          table.dataTable td:nth-child(1) {
+            font-weight: bold;
+            }
+
+}
+      </style>
+
+      <style>
+      .btn-xs{
+        margin:0 0px 2px 0;
+        width: 50px;
+        display: inline-block;
+      }
+
+      </style>
+
+      <style>
+
+          .btn-light.custom-btn {
+        	    background-color: #F764EC !important;
+	            border-color: #F764EC;
+	            //background-image: linear-gradient(to bottom, rgb(212, 86, 203, 0.5 ), #F764EC);
+	            //background-image: url('../static/img/rst_img/subway2.png');
+	            //background-position: 2px 5px;
+	            //background-repeat: no-repeat;
+	            //background-size: 16px 16px;
+	            //padding-left: 41px;
+                //color: #000;
+	        }
+	      .btn-light:hover.custom-btn {
+        	    background-color: #DF5BD5 !important;
+	            border-color: #DF5BD5;
+	            color: black;
+	        }
+	        .btn-light:focus
+	        .btn-light:focus.custom-btn {
+                background: #DF5BD5 !important;
+                outline: none;
+                box-shadow: none !important;
+            }
+            .btn-light:active:focus
+            .btn-light:active:focus.custom-btn{
+                background: #DF5BD5 !important;
+                outline: none;
+                box-shadow: none !important;
+            }
+
+}
+      </style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Dashboard</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+<!--    <link rel="stylesheet" href="../rst_vendors/base/vendor.bundle.base.css">-->
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/rst_img/favicon.png"/>
+
+      <!-- plugin Datatable css for this page -->
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.jqueryui.min.css">
+
+
+<!--      Google Font  -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+      <style>
+body {
+  font-family: "Poppins", sans-serif;
+  //font-size: 48px;
+}
+</style>
+
+<!--  </head>-->
+<!--  <body>-->
+  {% endblock %}
+
+{% block content %}
+    <div class="container-scroller">
+
+		<!-- partial:partials/_horizontal-navbar.html -->
+
+
+    <!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+                    <div class="row mt-0">
+
+                     <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card shadow">
+                                <div class="card-header bg-light text-black px-2 p-1 d-flex justify-content-between align-items-center">
+                                    <h4 class="mt-2 fw-bold">Preventive Maintenance Line 5</h4>
+                                    <h6 class="mt-2 small"><kbd class="mt-1 small">Updated On: {{udate[0]}}</kbd></h6>
+<!--                                    <h6 class="mt-1 small">Download <i class="fas fa-file-excel"></i></h6>-->
+                                    <!--                                    <h6 class="mt-1 small"><kbd class="mt-1 small">Download <i class="fas fa-file-excel"></i></kbd></h6>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    <style>
+                        .top-buffer { margin-top:-30px; }
+                    </style>
+
+                        <div class="col-lg-12 top-buffer grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightblue1">
+								<div class="card-body">
+<!--									<div class="row">-->
+<!--										<div class="col-lg-12">-->
+                                    <div class="d-flex align-items-center justify-content-between">
+											<h6 class="card-title">Preventive Maintenance Details</h6>
+<!--                                        <small>Click on TrainID to View Preventive Maintenance Details</small>-->
+                                        <br>
+                                    </div>
+                                            <div class="content mb-2">
+                                                <button id="501" type="button" class="btn btn-xs btn-success">TS 501</button>
+                                                <button id="502" type="button" class="btn btn-xs btn-success">TS 502</button>
+                                                <button id="503" type="button" class="btn btn-xs btn-success">TS 503</button>
+                                                <button id="504" type="button" class="btn btn-xs btn-success">TS 504</button>
+                                                <button id="505" type="button" class="btn btn-xs btn-success">TS 505</button>
+                                                <button id="506" type="button" class="btn btn-xs btn-success">TS 506</button>
+                                                <button id="507" type="button" class="btn btn-xs btn-success">TS 507</button>
+                                                <button id="508" type="button" class="btn btn-xs btn-success">TS 508</button>
+                                                <button id="509" type="button" class="btn btn-xs btn-success">TS 509</button>
+                                                <button id="510" type="button" class="btn btn-xs btn-success">TS 510</button>
+                                                <button id="511" type="button" class="btn btn-xs btn-success">TS 511</button>
+                                                <button id="512" type="button" class="btn btn-xs btn-success">TS 512</button>
+                                                <button id="513" type="button" class="btn btn-xs btn-success">TS 513</button>
+                                                <button id="514" type="button" class="btn btn-xs btn-success">TS 514</button>
+                                                <button id="515" type="button" class="btn btn-xs btn-success">TS 515</button>
+                                                <button id="516" type="button" class="btn btn-xs btn-success">TS 516</button>
+                                                <button id="517" type="button" class="btn btn-xs btn-success">TS 517</button>
+                                                <button id="518" type="button" class="btn btn-xs btn-success">TS 518</button>
+                                                <button id="519" type="button" class="btn btn-xs btn-success">TS 519</button>
+                                            </div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+					<div class="row mt-2">
+
+					</div>
+
+                    <div class="row mt-0">
+
+						<div class="col-sm-12 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow">
+								<div class="card-body">
+                                    <table id="datatable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Train ID</th>
+                <th>Doc Ref.</th>
+                <th>Mileage</th>
+                <th>2-Weekly</th>
+                <th>Monthly</th>
+                <th>2-Monthly</th>
+                <th>3-Monthly</th>
+                <th>6-Monthly</th>
+                <th>9-Monthly</th>
+                <th>Yearly</th>
+            </tr>
+
+        </thead>
+        <tbody>
+        {% for row in pm %}
+            <tr>
+<!--                  <td><a href="/getfile/${data402[i][2]}.pdf" target="_blank">${data402[i][2]}</td></a>-->
+                <td>{{row.pm_date}}</td>
+                <td>{{row.pm_train}}</td>
+                <td><a href="/getfile/{{row.pm_doc}}.pdf" target="_blank">{{row.pm_doc}}</a></td>
+                <td>{{row.pm_mileage}}</td>
+
+                {% if row.pm_2w=="Done" %}
+                <td><span class="badge badge-success">{{row.pm_2w}}</span>
+                {% else %}
+                <td><span class="badge badge-success">{{row.pm_2w}}</span>
+                {% endif %}
+
+                {% if row.pm_1m=="Done" %}
+                <td><span class="badge badge-success">{{row.pm_1m}}</span>
+                {% else %}
+                <td><span class="badge badge-success">{{row.pm_1m}}</span>
+                {% endif %}
+
+                {% if row.pm_2m=="Done" %}
+                <td><span class="badge badge-success">{{row.pm_2m}}</span>
+                {% else %}
+                <td><span class="badge badge-success">{{row.pm_2m}}</span>
+                {% endif %}
+
+                {% if row.pm_3m=="Done" %}
+                <td><span class="badge badge-success">{{row.pm_3m}}</span>
+                {% else %}
+                <td><span class="badge badge-success">{{row.pm_3m}}</span>
+                {% endif %}
+
+                {% if row.pm_6m=="Done" %}
+                <td><span class="badge badge-success">{{row.pm_6m}}</span>
+                {% else %}
+                <td><span class="badge badge-success">{{row.pm_6m}}</span>
+                {% endif %}
+
+                {% if row.pm_9m=="Done" %}
+                <td><span class="badge badge-success">{{row.pm_9m}}</span>
+                {% else %}
+                <td><span class="badge badge-success">{{row.pm_9m}}</span>
+                {% endif %}
+
+                {% if row.pm_1y=="Done" %}
+                <td><span class="badge badge-success">{{row.pm_1y}}</span>
+                {% else %}
+                <td><span class="badge badge-success">{{row.pm_1y}}</span>
+                {% endif %}
+
+            </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+                                </div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+          <div class="footer-wrap">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+            </div>
+          </div>
+        </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+    </div>
+		<!-- container-scroller -->
+
+
+        <!-- base:js -->
+    <script src="../static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+
+        <!-- plugin js for this page -->
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+
+
+        <!-- Datatable js for this page -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src= "https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"> </script>
+<script src= "https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"> </script>
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src= "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src= "https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script src= "https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js">   </script>
+
+
+<!--        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.jqueryui.min.js"></script>-->
+
+<!--        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>-->
+
+<!--        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>-->
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>-->
+
+
+
+
+
+    <script>
+    var dataTables = $('#datatable').DataTable({"info": false,"lengthChange": false,
+        "dom": 'Blrt',
+        buttons: [{extend:'excel', className:'btn-success' },{extend:'pdf', className:'btn-danger' }],
+
+
+
+    "columnDefs": [
+       //{"className": "dt-center", "targets": [0, 1, 2, 3, 4, 5, 6, "All"]},
+
+       {"className": "dt-center", "targets": "_all"},
+       {"type": "date", "targets": 0},
+      ],
+
+        "aLengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
+        "iDisplayLength": -1,
+
+
+        "order": [[ 0, 'desc']],
+
+});
+
+$('#401').on('click', function () {
+    dataTables.columns(1).search("401").draw();
+});
+
+$('#402').on('click', function () {
+    dataTables.columns(1).search("402" ).draw();
+});
+
+$('#403').on('click', function () {
+    dataTables.columns(1).search("403" ).draw();
+});
+$('#404').on('click', function () {
+    dataTables.columns(1).search("404" ).draw();
+});
+$('#405').on('click', function () {
+    dataTables.columns(1).search("405" ).draw();
+});
+$('#406').on('click', function () {
+    dataTables.columns(1).search("406" ).draw();
+});
+$('#407').on('click', function () {
+    dataTables.columns(1).search("407" ).draw();
+});
+$('#408').on('click', function () {
+    dataTables.columns(1).search("408" ).draw();
+});
+$('#409').on('click', function () {
+    dataTables.columns(1).search("409" ).draw();
+});
+$('#410').on('click', function () {
+    dataTables.columns(1).search("410" ).draw();
+});
+$('#411').on('click', function () {
+    dataTables.columns(1).search("411" ).draw();
+});
+$('#412').on('click', function () {
+    dataTables.columns(1).search("412" ).draw();
+});
+$('#413').on('click', function () {
+    dataTables.columns(1).search("413" ).draw();
+});
+$('#414').on('click', function () {
+    dataTables.columns(1).search("414" ).draw();
+});
+$('#415').on('click', function () {
+    dataTables.columns(1).search("415" ).draw();
+});
+$('#416').on('click', function () {
+    dataTables.columns(1).search("416" ).draw();
+});
+$('#417').on('click', function () {
+    dataTables.columns(1).search("417" ).draw();
+});
+$('#418').on('click', function () {
+    dataTables.columns(1).search("418" ).draw();
+});
+$('#419').on('click', function () {
+    dataTables.columns(1).search("419" ).draw();
+});
+$('#420').on('click', function () {
+    dataTables.columns(1).search("420" ).draw();
+});
+$('#421').on('click', function () {
+    dataTables.columns(1).search("421" ).draw();
+});
+$('#422').on('click', function () {
+    dataTables.columns(1).search("422" ).draw();
+});
+$('#423').on('click', function () {
+    dataTables.columns(1).search("423" ).draw();
+});
+$('#424').on('click', function () {
+    dataTables.columns(1).search("424" ).draw();
+});
+</script>
+
+    <script>
+
+
+$('#501').on('click', function () {
+    dataTables.columns(1).search("501" ).draw();
+});
+
+$('#502').on('click', function () {
+    dataTables.columns(1).search("502" ).draw();
+});
+
+$('#503').on('click', function () {
+    dataTables.columns(1).search("503" ).draw();
+});
+$('#504').on('click', function () {
+    dataTables.columns(1).search("504" ).draw();
+});
+$('#505').on('click', function () {
+    dataTables.columns(1).search("505" ).draw();
+});
+$('#506').on('click', function () {
+    dataTables.columns(1).search("506" ).draw();
+});
+$('#507').on('click', function () {
+    dataTables.columns(1).search("507" ).draw();
+});
+$('#508').on('click', function () {
+    dataTables.columns(1).search("508" ).draw();
+});
+$('#509').on('click', function () {
+    dataTables.columns(1).search("509" ).draw();
+});
+$('#510').on('click', function () {
+    dataTables.columns(1).search("510" ).draw();
+});
+$('#511').on('click', function () {
+    dataTables.columns(1).search("511" ).draw();
+});
+$('#512').on('click', function () {
+    dataTables.columns(1).search("512" ).draw();
+});
+$('#513').on('click', function () {
+    dataTables.columns(1).search("513" ).draw();
+});
+$('#514').on('click', function () {
+    dataTables.columns(1).search("514" ).draw();
+});
+$('#515').on('click', function () {
+    dataTables.columns(1).search("515" ).draw();
+});
+$('#516').on('click', function () {
+    dataTables.columns(1).search("516" ).draw();
+});
+$('#517').on('click', function () {
+    dataTables.columns(1).search("517" ).draw();
+});
+$('#518').on('click', function () {
+    dataTables.columns(1).search("518" ).draw();
+});
+$('#519').on('click', function () {
+    dataTables.columns(1).search("519" ).draw();
+});
+
+
+    </script>
+
+    <script>
+
+$('#601').on('click', function () {
+    dataTables.columns(1).search("601" ).draw();
+});
+
+$('#602').on('click', function () {
+    dataTables.columns(1).search("602" ).draw();
+});
+
+$('#603').on('click', function () {
+    dataTables.columns(1).search("603" ).draw();
+});
+$('#604').on('click', function () {
+    dataTables.columns(1).search("604" ).draw();
+});
+$('#605').on('click', function () {
+    dataTables.columns(1).search("605" ).draw();
+});
+$('#606').on('click', function () {
+    dataTables.columns(1).search("606" ).draw();
+});
+$('#607').on('click', function () {
+    dataTables.columns(1).search("607" ).draw();
+});
+$('#608').on('click', function () {
+    dataTables.columns(1).search("608" ).draw();
+});
+$('#609').on('click', function () {
+    dataTables.columns(1).search("609" ).draw();
+});
+$('#610').on('click', function () {
+    dataTables.columns(1).search("610" ).draw();
+});
+$('#611').on('click', function () {
+    dataTables.columns(1).search("611" ).draw();
+});
+$('#612').on('click', function () {
+    dataTables.columns(1).search("612" ).draw();
+});
+$('#613').on('click', function () {
+    dataTables.columns(1).search("613" ).draw();
+});
+$('#614').on('click', function () {
+    dataTables.columns(1).search("614" ).draw();
+});
+$('#615').on('click', function () {
+    dataTables.columns(1).search("615" ).draw();
+});
+$('#616').on('click', function () {
+    dataTables.columns(1).search("616" ).draw();
+});
+$('#617').on('click', function () {
+    dataTables.columns(1).search("617" ).draw();
+});
+$('#618').on('click', function () {
+    dataTables.columns(1).search("618" ).draw();
+});
+$('#619').on('click', function () {
+    dataTables.columns(1).search("619" ).draw();
+});
+$('#620').on('click', function () {
+    dataTables.columns(1).search("620" ).draw();
+});
+
+$('#621').on('click', function () {
+    dataTables.columns(1).search("621" ).draw();
+});
+
+$('#622').on('click', function () {
+    dataTables.columns(1).search("622" ).draw();
+});
+
+$('#623').on('click', function () {
+    dataTables.columns(1).search("623" ).draw();
+});
+
+$('#624').on('click', function () {
+    dataTables.columns(1).search("624" ).draw();
+});
+
+$('#625').on('click', function () {
+    dataTables.columns(1).search("625" ).draw();
+});
+
+$('#626').on('click', function () {
+    dataTables.columns(1).search("626" ).draw();
+});
+    </script>
+
+{% endblock %}
+<!--  </body>-->
+<!--</html>-->

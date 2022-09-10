@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Alstom T&C Dashboard &mdash;</title>
+
+  <link rel="stylesheet" href="../static/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../static/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+  <link rel="stylesheet" href="../static/modules/summernote/summernote-lite.css">
+  <link rel="stylesheet" href="../static/modules/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="../static/css/demo.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/atlantis.min.css">Test Procedure status By Sub-System
+
+
+<script src="../static/js/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="main-wrapper">
+      <div class="navbar-bg"></div>
+
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="ion ion-search"></i></a></li>
+          </ul>
+</form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"></a></li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown">
+            <div class="d-sm-none"> &nbsp;</div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right"> <a href="profile.html" class="dropdown-item has-icon"> <i class="ion ion-android-person"></i> Profile </a> <a href="#" class="dropdown-item has-icon"> <i class="ion ion-log-out"></i> Logout </a> </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+          <a href="index.html"><img src="../static/img/alstom.jpg" width="134" height="27" alt=""/></a>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-user-picture">
+              <img alt="image" src="../static/img/avatar/avatar-1.jpg">
+            </div>
+            <div class="sidebar-user-details">
+              <div class="user-name">RAO Kamran</div>
+              <div class="user-role">
+                Administrator
+              </div>
+            </div>
+          </div>
+          <ul class="sidebar-menu">
+            <li class="menu-header">Dashboards</li>
+            <li class="active">
+              <a href="index.html"><i class="ion ion-stats-bars"></i><span>System TR & TP</span></a>
+            </li>
+            <li><a href="dbanomaly.html"><i class="ion ion-speedometer"></i><span>TSY Anomaly Status</span></a>
+            <li><a href="index.html"><i class="far fa-chart-bar"></i></i><span>T&C Activity Progress</span></a>
+
+            <li class="menu-header">Data</li>
+            <li>
+              <a href="reports.html"><i class="ion ion-ios-copy-outline"></i><span>T&C Reports</span></a>
+            </li>
+             <li>
+              <a href="reports.html"><i class="ion ion-ios-information-outline"></i><span>Notification</span></a>
+            </li>
+
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-clipboard"></i><span>Tables</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="login.html"><i class="ion ion-ios-circle-outline"></i> Login</a></li>
+                <li><a href="register.html"><i class="ion ion-ios-circle-outline"></i> Register</a></li>
+                <li><a href="forgot.html"><i class="ion ion-ios-circle-outline"></i> Forgot Password</a></li>
+               </ul>
+            </li>
+
+       </ul>
+
+        </aside>
+      </div>
+
+      <div class="main-content">
+
+        <section class="section">
+          <h1 class="section-header">
+            <div>System T&C Test Reports & Procedures</div>
+          </h1>
+
+          <div class="row wow fadeIn">
+
+<!-- Start First Chart TP-->
+
+          <div class="col-md-6">
+							<div class="card full-height">
+								<div class="card-body">
+									<div class="card-title">Test Procedure Statistics</div>
+									<div class="row py-3">
+										<div class="col-md-4 d-flex flex-column justify-content-around col-lg-3">
+											<div>
+												<h6 class="fw-bold text-uppercase text-success op-7">Coded-A</h6>
+												<h3 class="fw-bold">247</h3>
+											</div>
+											<div>
+												<h6 class="fw-bold text-uppercase text-info op-7">Planned</h6>
+												<h3 class="fw-bold">214</h3>
+											</div>
+										</div>
+									<div class="d-flex flex-wrap justify-content-around pb-2 pt-1">
+										<div class="px-2 pb-1 pb-md text-center">
+											<div id="circles-1"></div>
+											<h6 class="fw-bold mt-3 mb-0">Completion</h6>
+										</div>
+
+                                    </div>
+                                      <div class="col-md-4 col-lg-4 offset-lg-1">
+												<canvas id="myChartA1"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+<!--Start 2nd Chart TR -->
+
+          <div class="col-md-6">
+							<div class="card full-height">
+								<div class="card-body">
+									<div class="card-title">Test Reports Statistics</div>
+									<div class="row py-3">
+										<div class="col-md-4 d-flex flex-column justify-content-around col-lg-3">
+											<div>
+												<h6 class="fw-bold text-uppercase text-success op-7">Coded-A</h6>
+												<h3 class="fw-bold">247</h3>
+											</div>
+											<div>
+												<h6 class="fw-bold text-uppercase text-info op-7">Planned</h6>
+												<h3 class="fw-bold">214</h3>
+											</div>
+										</div>
+									<div class="d-flex flex-wrap justify-content-around pb-2 pt-1">
+										<div class="px-2 pb-1 pb-md text-center">
+											<div id="circles-2"></div>
+											<h6 class="fw-bold mt-3 mb-0">Completion</h6>
+										</div>
+
+                                    </div>
+                                      <div class="col-md-4 col-lg-4 offset-lg-1">
+												<canvas id="myChartA2"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+<!--Start 3rd Chart TR -->
+ 
+
+          <div class="col-md-6">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-title">Test Witness Statistics</div>
+									<div class="row py-3">
+										<div class="col-md-4 d-flex flex-column justify-content-around col-lg-3">
+											<div>
+												<h6 class="fw-bold text-uppercase text-success op-7">Coded-A</h6>
+												<h3 class="fw-bold">247</h3>
+											</div>
+											<div>
+												<h6 class="fw-bold text-uppercase text-info op-7">Planned</h6>
+												<h3 class="fw-bold">214</h3>
+											</div>
+										</div>
+									<div class="d-flex flex-wrap justify-content-around pb-2 pt-1">
+										<div class="px-2 pb-1 pb-md text-center">
+											<div id="circles-3"></div>
+											<h6 class="fw-bold mt-3 mb-0">Completion</h6>
+										</div>
+
+                                    </div>
+                                      <div class="col-md-4 col-lg-4 offset-lg-1">
+												<canvas id="myChartA3"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+            <div class="col-md-6">
+							<div class="card bg-grey full-height">
+								<div class="card-body">
+									<div class="card-title">Total income & spend statistics</div>
+									<div class="row py-3">
+										<div class="col-md-2 d-flex flex-column justify-content-around">
+										</div>
+										<div class="col-md-8">
+											<div id="chart-container">
+												<canvas id="myChartB1"></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+            </div>
+
+
+          <!--/.Card-->
+<!--Ends 3rd Chart TR -->
+
+
+<!--Start of New Row  -->
+          <div class="row wow fadeIn">
+
+          <!--Start 1st Table TR-->
+            <div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+                  <div class="card-header text-white bg-info mb-3" style="max-width: 18.8rem;">
+                    <h4>TSY Test Report Status By Sub-System</h4>
+                  </div>
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-striped table-hover">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th></th>
+                    <th>Planned</th>
+                    <th>Actual</th>
+                    <th>%</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">RST</th>
+                    <td>69</td>
+                    <td>60</td>
+                    <td>87%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SLV</th>
+                    <td>905</td>
+                    <td>374</td>
+                    <td>41.2%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DEQ</th>
+                    <td>44</td>
+                    <td>24</td>
+                    <td>54.2%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">POS</th>
+                    <td>645</td>
+                    <td>282</td>
+                    <td>43.2%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SYS</th>
+                    <td>545</td>
+                    <td>66</td>
+                    <td>12.2%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">PSD</th>
+                    <td>78</td>
+                    <td>44</td>
+                    <td>56.4%</td>
+                  </tr>
+
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+<!--Start 2nd Row 1st Chart TR -->
+
+            <div class="col-md-5 mb-4 offset-lg-0 col-lg-6">
+
+          <!--Card-->
+          <div class="card mb-4">
+
+            <!--Card content-->
+            <div class="card-body col-lg-12">
+              <div class="card-header">
+                  <div class="float-right">
+                  </div>
+                  <h5>Test Procedure status By Sub-System</h5>
+              <canvas id="myChartB2"></canvas>
+
+
+              </div>
+            </div>
+          </div>
+
+          <!--/.Card-->
+
+            </div>
+<!--End 2nd Row 2nd Chart TP -->
+
+
+<!--Start 3nd Row 2nd Table TR-->
+<div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+                <div class="card-header text-white bg-info mb-3" style="max-width: 20.4rem;">
+                    <h4>TSY Test Procedure Status By Sub-System</h4>
+                  </div>
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-hover">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th>#</th>
+                    <th>Lorem</th>
+                    <th>Ipsum</th>
+                    <th>Dolor</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                    <td>Cell 3</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Cell 4</td>
+                    <td>Cell 5</td>
+                    <td>Cell 6</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Cell 7</td>
+                    <td>Cell 8</td>
+                    <td>Cell 9</td>
+                  </tr>
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+<!--End of 3nd Row 2nd Table TR-->
+
+
+
+
+        </section>
+
+      </div>
+      <footer class="main-footer">
+        <div class="footer-left">
+          <div class="bullet"></div>Design By Riyadh System T&C</a>
+        </div>
+        <div class="footer-right"></div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="../static/modules/jquery.min.js"></script>
+  <script src="../static/modules/popper.js"></script>
+  <script src="../static/modules/tooltip.js"></script>
+  <script src="../static/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="../static/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+  <script src="../static/modules/chart.min.js"></script>
+  <script src="../static/modules/summernote/summernote-lite.js"></script>
+
+  <script src="../static/js/sa-functions.js"></script>
+  <script src="../static/js/circles.min.js"></script>
+
+
+  <script>
+
+		Circles.create({
+			id:'circles-1',
+			radius:45,
+			value:60,
+			maxValue:100,
+			width:7,
+			text: 5,
+			colors:['#f1f1f1', '#FF9E27'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-2',
+			radius:45,
+			value:70,
+			maxValue:100,
+			width:7,
+			text: 36,
+			colors:['#f1f1f1', '#2BB930'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+		Circles.create({
+			id:'circles-3',
+			radius:45,
+			value:40,
+			maxValue:100,
+			width:7,
+			text: 12,
+			colors:['#f1f1f1', '#F25961'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		})
+
+  </script>
+
+  <script>
+
+   <!-- Charts -->
+
+    // ***Test Procedure Chart
+    var ctx = document.getElementById("myChartA1").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Planned", "Code-A"],
+        datasets: [{
+          label: 'Test Procedures',
+          data: [245, 214],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(75, 160, 44, 0.7)',
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(35,68,19,1)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+      			responsive: true,
+				maintainAspectRatio: false,
+      legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              //stepSize: 150
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+      }
+    });
+
+    //***Test Report Chart
+    var ctx = document.getElementById("myChartA2").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Planned", "Actual"],
+        datasets: [{
+          label: 'Test Reports',
+          data: [2286, 1335],
+          backgroundColor: [
+            'rgba(8, 18, 155, 0.86)',
+            'rgba(75, 160, 44, 0.7)',
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(35,68,19,1)',
+            'rgba(35,68,19,1)',
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+        }]
+      },
+      options: {
+      responsive: true,
+      maintainAspectRatio: false,
+
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              //stepSize: 150
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+      }
+    });
+
+    //*******************
+    //***Test Witness Plan
+    //*******************
+    var ctx = document.getElementById("myChartA3").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Planned", "Actual"],
+        datasets: [{
+          label: 'Test Reports',
+          data: [2286, 1335],
+          backgroundColor: [
+            'rgba(8, 18, 155, 0.86)',
+            'rgba(75, 160, 44, 0.7)',
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(35,68,19,1)',
+            'rgba(35,68,19,1)',
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+        }]
+      },
+      options: {
+      responsive: true,
+      maintainAspectRatio: false,
+
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              //stepSize: 150
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+      }
+    });
+
+//**** Test Report at Sub-System Level
+    // Line
+    var ctx = document.getElementById("myChartB1").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["RST", "SLV", "DEQ", "POS", "SYS", "PSD"],
+        datasets: [{
+          label: 'Test Reports',
+          data: [87, 41.3, 54.5, 43.9, 12.1, 56.4],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              //stepSize: 150
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+      }
+    });
+
+//**** Test Procedure at Sub-System Level
+    // Line
+    var ctx = document.getElementById("myChartB2").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["RST", "SLV", "DEQ", "POS", "SYS", "PSD"],
+        datasets: [{
+          label: 'Test Procedure',
+          data: [87, 41.3, 54.5, 43.9, 12.1, 56.4],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+        borderWidth: 1,
+//          backgroundColor: 'rgb(87,75,144)',
+//          borderColor: 'rgb(87,75,144)',
+//          borderWidth: 2.5,
+//          pointBackgroundColor: '#ffffff',
+//          pointRadius: 4
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              //stepSize: 150
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+      }
+    });
+
+
+
+
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      datasets: [{
+        label: 'Statistics',
+        data: [460, 458, 330, 502, 430, 610, 488],
+        borderWidth: 2,
+        backgroundColor: 'rgb(87,75,144)',
+        borderColor: 'rgb(87,75,144)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#ffffff',
+        pointRadius: 4
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            stepSize: 150
+          }
+        }],
+        xAxes: [{
+          gridLines: {
+            display: false
+          }
+        }]
+      },
+    }
+  });
+
+
+  		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+
+		var mytotalIncomeChart = new Chart(totalIncomeChart, {
+			type: 'bar',
+			data: {
+				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+				datasets : [{
+					label: "Total Income",
+					backgroundColor: '#ff9e27',
+					borderColor: 'rgb(23, 125, 255)',
+					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10],
+				}],
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false,
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				},
+			}
+		});
+
+  </script>
+
+  <script src="../static/js/scripts.js"></script>
+  <script src="../static/js/custom.js"></script>
+  <script src="../static/js/demo.js"></script>
+
+</body>
+</html>

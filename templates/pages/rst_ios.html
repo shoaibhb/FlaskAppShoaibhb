@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Dashboard</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../rst_vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../rst_vendors/base/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../images/favicon.png" />
+  </head>
+
+  <style>
+
+ .card-counter{
+    box-shadow: 2px 2px 10px #DADADA;
+    margin: 5px;
+    padding: 20px 10px;
+    background-color: #fff;
+    height: 100px;
+    border-radius: 5px;
+    transition: .3s linear all;
+  }
+
+  .card-counter:hover{
+    box-shadow: 4px 4px 20px #DADADA;
+    transition: .3s linear all;
+  }
+
+  .card-counter.primary{
+    background-color: #007bff;
+    color: #FFF;
+  }
+
+  .card-counter.danger{
+    background-color: #ef5350;
+    color: #FFF;
+  }
+
+  .card-counter.success{
+    background-color: #66bb6a;
+    color: #FFF;
+  }
+
+  .card-counter.info{
+    background-color: #26c6da;
+    color: #FFF;
+  }
+
+  .card-counter i{
+    font-size: 5em;
+    opacity: 0.2;
+  }
+
+  .card-counter .count-numbers{
+    position: absolute;
+    right: 35px;
+    top: 20px;
+    font-size: 32px;
+    display: block;
+  }
+
+  .card-counter .count-name{
+    position: absolute;
+    right: 35px;
+    top: 65px;
+    font-style: italic;
+    text-transform: capitalize;
+    opacity: 0.5;
+    display: block;
+    font-size: 18px;
+  }
+
+</style>
+
+  <body>
+    <div class="container-scroller">
+
+		<!-- partial:partials/_horizontal-navbar.html -->
+         <div class="horizontal-menu">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FBFDFD;">
+             <a class="navbar-brand d-lg-none" href="#"></a>
+            <img src="../static/img/alstom.jpg" width="80" height="16"/>
+             <div class="collapse navbar-collapse">
+                 <ul class="navbar-nav mx-auto">
+
+                     <object data=''>
+                         <img src='../static/img/rst_img/logo_a.png'>
+                         <img src='../static/img/rst_img/logo_b.png' width="160" height="35">
+                     </object>
+
+                 </ul>
+             </div>
+         </nav>
+
+      <nav class="bottom-navbar">
+        <div class="container">
+            <ul class="nav page-navigation">
+               <li class="nav-item">
+                  <a href="/availability" class="nav-link">
+                    <i class="mdi mdi-train menu-icon"></i>
+                    <span class="menu-title">Availability</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                <a href="/reliability" class="nav-link">
+                  <i class="mdi mdi-chart-bar menu-icon"></i>
+                  <span class="menu-title">Reliability</span>
+                     <i class="menu-arrow"></i>
+                </a>
+
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-codepen menu-icon"></i>
+                    <span class="menu-title">Configuration</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="/configuration_line4">Line 4</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/configuration_line5">Line 5</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/configuration_line6">Line 6</a></li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a href="/preventive_maintenance" class="nav-link">
+                    <i class="mdi mdi-wrench menu-icon"></i>
+                    <span class="menu-title">Preventive Maintenance</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-settings menu-icon"></i>
+                    <span class="menu-title text-danger">Troubleshooting</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="#">Train Issue Reports</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#">Train Retrofit List</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#">Train Software Update</a></li>
+                      </ul>
+                  </div>
+
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-engine-outline menu-icon"></i>
+                    <span class="menu-title text-danger">Corrective Maintenance</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="/retrofit">Retrofit Status</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#">Corrective Maintenance List</a></li>
+                      </ul>
+                  </div>
+
+              </li>
+              <li class="nav-item">
+                  <a href="/materials" class="nav-link">
+                    <i class="mdi mdi-magnet-on menu-icon"></i>
+                    <span class="menu-title text-danger">Materials</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-marker-check menu-icon"></i>
+                    <span class="menu-title">Quality</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul class="submenu-item">
+                          <li class="nav-item"><a class="nav-link" href="/NCR">NCR</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/REX">REX</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/8D">8D</a></li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a href="../docs/documentation.htm" class="nav-link">
+<!--                    <i class="mdi mdi-file-document-box-outline menu-icon"></i>-->
+                      <i class="mdi mdi-file-outline menu-icon"></i>
+
+                    <span class="menu-title text-danger">Documents</span></a>
+              </li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+					<div class="row mt-4">
+						<div class="col-lg-6 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">IOS Follow-up Status</h4>
+<!--										<h4 class="text-success font-weight-bold">Achievement<span class="text-dark ml-3">44%</span></h4>-->
+									</div>
+<!--									<div id="support-tracker-legend" class="support-tracker-legend"></div>-->
+                                    <div class="chart-container" style="position: relative; height:35vh">
+									<canvas id="FleetRetrofit"></canvas>
+                                    </div>
+								</div>
+							</div>
+						</div>
+                        <div class="col-lg-6 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">IOS Sub-System Status</h4>
+<!--										<h4 class="text-success font-weight-bold">Achievement<span class="text-dark ml-3">44%</span></h4>-->
+									</div>
+<!--									<div id="support-tracker-legend" class="support-tracker-legend"></div>-->
+                                    <div class="chart-container" style="position: relative; height:35vh">
+									<canvas id="IosSubSystem"></canvas>
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+                    <div class="card">
+                         <div class="row mt-0">
+                        <div class="col-md-3">
+                            <div class="card-counter success">
+                                <i class="fa fa-trash-o"></i>
+                                <span class="count-numbers count">24</span>
+                                <span class="count-name">IOS Closed</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-counter danger">
+                                <i class="fa fa-history"></i>
+                                <span class="count-numbers count">10</span>
+                                <span class="count-name">IOS Over Due</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-counter primary">
+                                <i class="fa fa-tags"></i>
+                                <span class="count-numbers count">4</span>
+                                <span class="count-name">IOS Major</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card-counter info">
+                                <i class="fa fa-dedent"></i>
+                                <span class="count-numbers count">35</span>
+                                <span class="count-name">IOS Minor</span>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+
+
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="footer-wrap">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+            </div>
+          </div>
+        </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+    </div>
+		<!-- container-scroller -->
+    <!-- base:js -->
+    <script src="../rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+
+<!--    <script src="rst_vendors/chart.js/Chart.min.js"></script>-->
+    <script src="../rst_vendors/chart.js/Chart.min(v3).js"></script>
+<!--    <script src="vendors/progressbar.js/progressbar.min.js"></script>-->
+<!--   <script src="vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels(3).js"></script>-->
+<!--   <script src="vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>-->
+   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc/dist/chartjs-plugin-datalabels.min.js"></script>
+		<script src="vendors/justgage/raphael-2.1.4.min.js"></script>
+		<script src="vendors/justgage/justgage.js"></script>
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <!-- End custom js for this page-->
+
+    <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+		var FleetRetrofitData = {
+			labels: ["Open IOS", "Correction Under Imple.", "Under Investigation", "Corrective Action Identified"],
+			datasets: [{
+				label: 'Major',
+				data: [1, 1, 3, 4],
+<!--				backgroundColor: "rgba(255,102,0,0.7)",-->
+<!--				borderColor: "rgba(255,102,0,0.7)",-->
+				backgroundColor: ['#FF9900', '#FF9900', '#FF9900', '#FF9900'],
+				borderColor: ['#FF9900', '#FF9900', '#FF9900', '#FF9900'],
+				borderWidth: 2,
+				borderRadius: 5,
+				barPercentage: 0.7,
+
+<!--			    datalabels: {-->
+<!--                    align: 'center',-->
+<!--                    anchor: 'center'-->
+<!--            },-->
+				fill: false
+			},
+						{
+					label: 'Minor',
+					data: [2, 1, 2, 6],
+					backgroundColor: ['#0099CC', '#0099CC', '#0099CC', '#0099CC'],
+					borderColor: ['#0099CC', '#0099CC', '#0099CC', '#0099CC'],
+					borderWidth: 1,
+					borderRadius: 5,
+					barPercentage: 0.7,
+					fill: false
+			},
+			]
+		};
+		var FleetRetrofitOptions = {
+            maintainAspectRatio: false,
+            animation: {
+              duration : 2500,
+            },
+			scales: {
+				x: {
+				stacked: false,
+				position: 'bottom',
+				display: true,
+
+				ticks: {
+					display: true, //this will remove only the label
+					stepSize: 300,
+				},
+					grid: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4]
+					},
+				},
+
+				y: {
+					stacked: false,
+					display: true,
+					grid: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4]
+					},
+
+				}
+			},
+
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+
+			plugins: {
+                	ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+			  	    legend: {
+				        display: false
+			         },
+			  	    tooltips: {
+				        backgroundColor: 'rgba(0, 0, 0, 1)',
+			        },
+				datalabels: {
+				    font: {
+                        size: 12,
+                        weight: "normal"
+                           },
+					color: "#444444",
+					display: true,
+					align: 'center',
+					anchor: 'center'
+				},
+			}
+		};
+		if ($("#FleetRetrofit").length) {
+			var barChartCanvas = $("#FleetRetrofit").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				plugins: [ChartDataLabels],
+				data: FleetRetrofitData,
+				options: FleetRetrofitOptions
+			});
+			document.getElementById('support-tracker-legend').innerHTML = barChart.generateLegend();
+		}
+
+
+
+
+		// Remove pro banner on close
+    document.querySelector('#bannerClose').addEventListener('click',function() {
+			$('#pro-banner').slideUp();
+    });
+	});
+})(jQuery);
+
+
+  </script>
+    <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+		var IosSubSystemData = {
+			labels: ["Brake", "RST", "Alstom", "HVAC", "PAPIS", "Bogie", "Traction", "EVR", "CVS"],
+			datasets: [{
+				label: 'Major',
+				data: [9,4,9,5,4,6,4,3,6],
+				backgroundColor: "rgba(102,102,102,0.5)",
+				borderColor: "rgba(255,102,0,0.3)",
+<!--				backgroundColor: ['#FF9900', '#FF9900', '#FF9900', '#FF9900'],-->
+<!--				borderColor: ['#FF9900', '#FF9900', '#FF9900', '#FF9900'],-->
+				borderWidth: 1.5,
+				borderRadius: 8,
+				barPercentage: 0.8,
+				fill: false
+			},
+						{
+					label: 'Minor',
+					data: [8,3,6,4,3,5,4,2,8],
+
+					backgroundColor: "rgba(204,204,204,0.5)",
+				    borderColor: "rgba(0,153,204,0.3)",
+<!--					backgroundColor: ['#0099CC', '#0099CC', '#0099CC', '#0099CC'],-->
+<!--					borderColor: ['#0099CC', '#0099CC', '#0099CC', '#0099CC'],-->
+					borderWidth: 1.5,
+					borderRadius: 8,
+					barPercentage: 0.8,
+					fill: false
+			},
+<!--
+			]
+		};
+		var IosSubSystemOptions = {
+            maintainAspectRatio: false,
+            animation: {
+              duration : 2500,
+            },
+			scales: {
+				x: {
+				stacked: false,
+				position: 'bottom',
+				display: true,
+
+					grid: {
+						drawBorder: false,
+						display: true,
+						//color: "#f0f3f6",
+						color: "rgba(187,187,187,0.2)",
+						//borderDash: [10, 6]
+					},
+				ticks: {
+					display: true, //this will remove only the label
+					stepSize: 300,
+				}
+				},
+				y: {
+					stacked: false,
+					display: true,
+					grid: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+				    	},
+                    }
+                },
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+					//text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+
+			plugins: {
+					ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+		        	},
+		        	legend: {
+			        	display: false
+			        },
+			        tooltips: {
+			        	backgroundColor: 'rgba(0, 0, 0, 1)',
+		        	},
+				datalabels: {
+				    font: {
+                        size: 10,
+                        weight: "normal"
+                           },
+					color: "#444444",
+					display: true,
+					align: 'center',
+					anchor: 'center'
+				},
+			}
+		};
+		if ($("#IosSubSystem").length) {
+			var barChartCanvas = $("#IosSubSystem").get(0).getContext("2d");
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				plugins: [ChartDataLabels],
+				data: IosSubSystemData,
+				options: IosSubSystemOptions
+			});
+			document.getElementById('support-tracker-legend2').innerHTML = barChart.generateLegend();
+		}
+
+
+
+
+		// Remove pro banner on close
+    document.querySelector('#bannerClose').addEventListener('click',function() {
+			$('#pro-banner').slideUp();
+    });
+	});
+})(jQuery);
+
+
+
+    </script>
+    <script>
+    $('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+</script>
+
+
+
+
+
+
+  </body>
+</html>

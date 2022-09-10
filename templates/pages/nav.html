@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+{% block siripye %}{% endblock %}
+    </head>
+    <body>
+        <div class="horizontal-menu">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FBFDFD;">
+             <a class="navbar-brand d-lg-none" href="#"></a>
+            <img src="../static/img/alstom.jpg" width="80" height="16"/>
+             <div class="collapse navbar-collapse">
+                 <ul class="navbar-nav mx-auto">
+
+                     <object data=''>
+                         <img src='../static/img/rst_img/logo_a.png'>
+                         <img src='../static/img/rst_img/logo_b.png' width="160" height="35">
+                     </object>
+
+                 </ul>
+             </div>
+          <img src="../static/img/rst_img/riyadhmetro.png" width="91" height="50"/>
+         </nav>
+
+      <nav class="bottom-navbar">
+        <div class="container">
+            <ul class="nav page-navigation">
+<!--              <li class="nav-item">-->
+<!--                  <a href="/availability" class="nav-link">-->
+<!--                    <i class="mdi mdi-train menu-icon"></i>-->
+<!--                    <span class="menu-title">Availability</span>-->
+<!--                    <i class="menu-arrow"></i>-->
+<!--                  </a>-->
+<!--              </li>-->
+
+              <li class="nav-item">
+                <a href="/availability" class="nav-link">
+                  <i class="mdi mdi-chart-bar menu-icon"></i>
+                  <span class="menu-title">Availability</span>
+                     <i class="menu-arrow"></i>
+                </a>
+                   <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="/availabilityl46">Line 4&6 Status</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/availabilityl5">Line 5 Status</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/availabilitykpil46">Line 4&6 KPI</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/availabilitykpil5">Line 5 KPI</a></li>
+                      </ul>
+                  </div>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="mdi mdi-chart-bar menu-icon"></i>
+                  <span class="menu-title">Reliability</span>
+                     <i class="menu-arrow"></i>
+                </a>
+                   <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="/reliability">IOS Line 4&6</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/EquipmentReliability">Equipment Reliability Line 4&6</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#">IOS Line 5</a></li>
+                          <li class="nav-item"><a class="nav-link" href="#">Equipment Reliability Line 5</a></li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-codepen menu-icon"></i>
+                    <span class="menu-title">Configuration</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="/configuration_line4">Line 4</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/configuration_line5">Line 5</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/configuration_line6">Line 6</a></li>
+<!--                          <li class="nav-item"><a class="nav-link" href="/retrofit">Fleet Retrofit Status</a></li>-->
+                          <li class="nav-item"><a class="nav-link" href="/software_history">Software Upgrade History</a></li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a href="/preventive_maintenance" class="nav-link">
+                    <i class="mdi mdi-wrench menu-icon"></i>
+                    <span class="menu-title">Preventive Maintenance</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="/preventive_maintenance_L46">PM Records Line 4&6</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/preventive_maintenance_L5">PM Records Line 5</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/pmentryflow">PM Records Entry (FLOW)</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/pm_planning">PM Planning Depot4/6</a></li>
+                      </ul>
+                  </div>
+              </li>
+<!--              <li class="nav-item">-->
+<!--                  <a href="#" class="nav-link">-->
+<!--                    <i class="mdi mdi-settings menu-icon"></i>-->
+<!--                    <span class="menu-title text-danger">Troubleshooting</span>-->
+<!--                    <i class="menu-arrow"></i>-->
+<!--                  </a>-->
+<!--                  <div class="submenu">-->
+<!--                      <ul>-->
+<!--                          <li class="nav-item"><a class="nav-link" href="#">Train Issue Reports</a></li>-->
+<!--                          <li class="nav-item"><a class="nav-link" href="#">Train Retrofit List</a></li>-->
+<!--                          <li class="nav-item"><a class="nav-link" href="#">Train Software Update</a></li>-->
+<!--                      </ul>-->
+<!--                  </div>-->
+
+<!--              </li>-->
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-engine-outline menu-icon"></i>
+                    <span class="menu-title">Corrective Maintenance</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul>
+                          <li class="nav-item"><a class="nav-link" href="/train_status_line46">Train Status Line 4&6</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/train_status_line5">Train Status Line 5</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/TIR_L46">Train Incident Report Line 4&6</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/TIR_L5">Train Incident Report Line 5</a></li>
+<!--                          <li class="nav-item"><a class="nav-link" href="/NCR">Non Conformance Report</a></li>-->
+<!--                          <li class="nav-item"><a class="nav-link" href="#">Corrective Maintenance Report</a></li>-->
+                      </ul>
+                  </div>
+
+              </li>
+              <li class="nav-item">
+                  <a href="/repair" class="nav-link">
+                    <i class="mdi mdi-magnet-on menu-icon"></i>
+                    <span class="menu-title">Equipment Repair</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="mdi mdi-marker-check menu-icon"></i>
+                    <span class="menu-title">Quality</span>
+                    <i class="menu-arrow"></i>
+                  </a>
+                  <div class="submenu">
+                      <ul class="submenu-item">
+<!--                          <li class="nav-item"><a class="nav-link" href="/NCR">NCR</a></li>-->
+                          <li class="nav-item"><a class="nav-link" href="/REX">REX</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/8D">8D</a></li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a href="/documents" class="nav-link">
+<!--                    <i class="mdi mdi-file-document-box-outline menu-icon"></i>-->
+                      <i class="mdi mdi-file-outline menu-icon"></i>
+
+                    <span class="menu-title">Documents</span></a>
+              </li>
+            </ul>
+        </div>
+      </nav>
+    </div>
+        {% block content %}{% endblock %}
+    </body>
+</html>

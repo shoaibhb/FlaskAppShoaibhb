@@ -1,0 +1,1325 @@
+{% extends 'pages/navl5.html' %}
+  {% block siripye %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+      <style>
+          .grey {
+  background-color: #848484;  // Changes background color
+  color: #333;                  // Changes text color
+}
+          .green {
+  background-color: #1EC281;  // Changes background color
+  color: #333;                  // Changes text color
+}
+          .red {
+  background-color: #FC3659;  // Changes background color
+  color: #333;                  // Changes text color
+}
+          .orange {
+  background-color: #FFD34F;  // Changes background color
+  color: #333;                  // Changes text color
+}
+
+      </style>
+
+      <style>
+
+          .crd {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    margin-bottom: 30px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+}
+.l-bg-cherry {
+    background: linear-gradient(to right, #493240, #f09) !important;
+    color: #fff;
+}
+
+.l-bg-red {
+    background: linear-gradient(to right, #F33C20, #FF7560 ) !important;
+    color: #fff;
+}
+
+
+.l-bg-blue-dark {
+    background: linear-gradient(to right, #373b44, #4286f4) !important;
+    color: #fff;
+}
+
+
+.l-bg-grey-dark {
+    background: linear-gradient(to right, #17181c, #737373) !important;
+    color: #fff;
+}
+
+
+.l-bg-green-dark {
+    background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+    color: #fff;
+}
+
+.l-bg-orange-dark {
+    background: linear-gradient(to right, #a86008, #ffba56) !important;
+    color: #fff;
+}
+
+.crd .crd-statistic-3 .crd-icon-large .fas, .crd .crd-statistic-3 .crd-icon-large .far, .crd .crd-statistic-3 .crd-icon-large .fab, .crd .crd-statistic-3 .crd-icon-large .fal {
+    font-size: 70px;
+}
+
+.crd .crd-statistic-3 .crd-icon {
+    text-align: center;
+    line-height: 50px;
+    margin-left: 15px;
+    color: #000;
+    position: absolute;
+    right: -15px;
+    top: 40px;
+    opacity: 0.1;
+}
+
+.crd .crd-statistic1 .crd-icon1-large .fas, .crd .crd-statistic1 .crd-icon1-large .far, .crd .crd-statistic1 .crd-icon1-large .fab, .crd .crd-statistic1 .crd-icon1-large .fal {
+    font-size: 25px;
+}
+
+.crd .crd-statistic1 .crd-icon1 {
+    text-align: center;
+    line-height: 50px;
+    margin-left: 15px;
+    color: #E5F706;
+    position: absolute;
+    right: 17px;
+    top: 7px;
+    opacity: 0.4;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+.l-bg-green {
+    background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+    color: #fff;
+}
+
+.l-bg-orange {
+    background: linear-gradient(to right, #f9900e, #ffba56) !important;
+    color: #fff;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+      </style>
+
+      <style>
+
+      .btn-xs{
+        margin:0 0px 2px 0;
+        width: 59px;
+        display: inline-block;
+      }
+
+      </style>
+
+      <style>
+          .bg-light.pink {
+        	    background-color: #F764EC !important;
+	            border-color: #F764EC;
+      </style>
+
+      <style>
+         .custom-btnblue {
+        	    //background-color: #F764EC !important;
+	            //border-color: #F764EC;
+	            //background-image: linear-gradient(to right, rgba(80, 134, 239 , 1), rgba(239, 80, 87 , 0.5));
+	            background-image: linear-gradient(to right, rgba(0,0,255 , 1), rgba(0,0,255, 1));
+	            //background-image: url('../static/img/rst_img/subway2.png');
+	            //background-position: 2px 5px;
+	            background-repeat: no-repeat;
+	            background-size: 8px 26px;
+	            //padding-left: 41px;
+                //color: #000;
+	        }
+      </style>
+      <style>
+         .custom-btnblack {
+        	    //background-color: #F764EC !important;
+	            //border-color: #F764EC;
+	            //background-image: linear-gradient(to right, rgba(80, 134, 239 , 1), rgba(239, 80, 87 , 0.5));
+	            background-image: linear-gradient(to right, rgba(0,0,0 , 1), rgba(0,0,0, 1));
+	            //background-image: url('../static/img/rst_img/subway2.png');
+	            //background-position: 2px 5px;
+	            background-repeat: no-repeat;
+	            background-size: 8px 26px;
+	            //padding-left: 41px;
+                //color: #000;
+	        }
+      </style>
+      <style>
+         .custom-btnpink {
+        	    //background-color: #F764EC !important;
+	            //border-color: #F764EC;
+	            //background-image: linear-gradient(to right, rgba(80, 134, 239 , 1), rgba(239, 80, 87 , 0.5));
+	            //background-image: linear-gradient(to right, rgba(37, 40, 226 , 1), rgba(37, 40, 226, 1));
+	            background-image: linear-gradient(to right, rgba(255,51,255, 0.92), rgba(255,51,255, 0.92));
+	            //background-image: url('../static/img/rst_img/subway2.png');
+	            //background-position: 2px 5px;
+	            background-repeat: no-repeat;
+	            background-size: 8px 26px;
+	            //padding-left: 41px;
+                //color: #000;
+	        }
+      </style>
+      <style>
+         .custom-btnwhite {
+        	    //background-color: #F764EC !important;
+	            //border-color: #F764EC;
+	            //background-image: linear-gradient(to right, rgba(80, 134, 239 , 1), rgba(239, 80, 87 , 0.5));
+	            //background-image: linear-gradient(to right, rgba(37, 40, 226 , 1), rgba(37, 40, 226, 1));
+	            background-image: linear-gradient(to right, rgba(238,238,238, 0.92), rgba(248,248,248, 0.92));
+	            //background-image: url('../static/img/rst_img/subway2.png');
+	            //background-position: 2px 5px;
+	            background-repeat: no-repeat;
+	            background-size: 8px 26px;
+	            //padding-left: 41px;
+                //color: #000;
+	        }
+      </style>
+
+<style>
+    #boxed {
+  width: 129px;
+  padding: 1px;
+  border: 2px solid gray;
+  margin: 0;
+  //background-image: url('http://placehold.it/200x200');
+}
+
+</style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Dashboard</title>
+
+    <!-- Loader animation -->
+    <link rel="stylesheet" href="../static/css/templatemo-style.css">
+
+    <!-- base:css -->
+    <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+<!--    <link rel="stylesheet" href="../rst_vendors/base/vendor.bundle.base.css">-->
+    <!-- endinject -->
+    <!-- plugin Bootstap 5 css & Java Plugin for this page -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/rst_img/favicon.png"/>
+
+      <!-- plugin Datatable css for this page -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.jqueryui.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+<!--      Google Font  -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+      <style>
+body {
+  font-family: "Poppins", sans-serif;
+  //font-size: 48px;
+}
+</style>
+
+<!--  </head>-->
+<!--  <body>-->
+  {% endblock %}
+
+{% block content %}
+
+    <div class="container-scroller">
+    <!-- partial:partials/_horizontal-navbar.html -->
+
+
+
+    <!-- partial --></div>
+
+        <!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+{% for i in range(0, tslistok4|length) %}
+<div class="offcanvas offcanvas-top" tabindex="-1" id="{{tslistok4[i][0]}}" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h3><kbd>{{tslistok4[i][0]}}</kbd> <kbd class="green">Healthy</kbd></h3>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="container">
+  <div class="row">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Current Train Mileage</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistok4[i][3]}} km</div>
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 offset-md-1 small text-black">Power On Time</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistok4[i][4]}} Hr</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Configuration Status</div>
+    {%if tslistok4[i][8]=="UPDATED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-success bg-gradient">{{tslistok4[i][8]}}</div>
+    {%elif tslistok4[i][8]=="RESTRICTED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-warning bg-gradient">{{tslistok4[i][8]}}</div>
+    {% else %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-danger bg-gradient">{{tslistok4[i][8]}}</div>
+    {% endif %}
+    <div class="rounded-1 bg-light border border-dark border-2 offset-md-1 col-sm-2 small text-black">Last Preventive Maint.</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary text-white bg-gradient">{{tslistok4[i][6]}}</div>
+<!--    {# <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary text-white bg-gradient">{{tslistok4[i][6].strftime('%d-%b-%Y')}}</div> #}-->
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">CM Activity</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-7 text-center bg-success bg-gradient text-black">{{tslistok4[i][7]}}</div>
+  </div>
+
+        </div>
+
+  </div>
+</div>
+{%endfor%}
+{% for i in range(0, tslistpok4|length) %}
+<div class="offcanvas offcanvas-top" tabindex="-1" id="{{tslistpok4[i][0]}}" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h3><kbd>{{tslistpok4[i][0]}}</kbd> <kbd class="orange">Restricted</kbd></h3>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="container">
+  <div class="row">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Current Train Mileage</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistpok4[i][3]}} km</div>
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 offset-md-1 small text-black">Power On Time</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistpok4[i][4]}} Hr</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Configuration Status</div>
+    {%if tslistpok4[i][8]=="UPDATED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-success bg-gradient">{{tslistpok4[i][8]}}</div>
+    {%elif tslistpok4[i][8]=="RESTRICTED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-warning bg-gradient">{{tslistpok4[i][8]}}</div>
+    {% else %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-danger bg-gradient">{{tslistpok4[i][8]}}</div>
+    {% endif %}
+    <div class="rounded-1 bg-light border border-dark border-2 offset-md-1 col-sm-2 small text-black">Last Preventive Maint.</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary bg-gradient text-white">{{tslistpok4[i][6]}}</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">CM Activity</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-7 text-center bg-warning bg-gradient text-black">{{tslistpok4[i][7]}}</div>
+  </div>
+
+        </div>
+
+  </div>
+</div>
+{%endfor%}
+{% for i in range(0, tslistnok4|length) %}
+<div class="offcanvas offcanvas-top" tabindex="-1" id="{{tslistnok4[i][0]}}" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h3><kbd>{{tslistnok4[i][0]}}</kbd> <kbd class="red">Unfit</kbd></h3>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="container">
+  <div class="row">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Current Train Mileage</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistnok4[i][3]}} km</div>
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 offset-md-1 small text-black">Power On Time</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistnok4[i][4]}} Hr</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Configuration Status</div>
+    {%if tslistnok4[i][8]=="UPDATED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-success bg-gradient">{{tslistnok4[i][8]}}</div>
+    {%elif tslistnok4[i][8]=="RESTRICTED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-warning bg-gradient">{{tslistnok4[i][8]}}</div>
+    {% else %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-danger bg-gradient">{{tslistnok4[i][8]}}</div>
+    {% endif %}
+    <div class="rounded-1 bg-light border border-dark border-2 offset-md-1 col-sm-2 small text-black">Last Preventive Maint.</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary bg-gradient text-white">{{tslistnok4[i][6]}}</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">CM Activity</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-7 text-center bg-danger bg-gradient text-white">{{tslistnok4[i][7]}}</div>
+  </div>
+
+        </div>
+
+  </div>
+</div>
+{%endfor%}
+<!--    ************** Line 5 Off-Canvas **************                   -->
+{% for i in range(0, tslistok5|length) %}
+<div class="offcanvas offcanvas-top" tabindex="-1" id="{{tslistok5[i][0]}}" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h3><kbd>{{tslistok5[i][0]}}</kbd> <kbd class="green">Healthy</kbd></h3>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="container">
+  <div class="row">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Current Train Mileage</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistok5[i][3]}} km</div>
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 offset-md-1 small text-black">Power On Time</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistok5[i][4]}} Hr</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Configuration Status</div>
+    {%if tslistok5[i][8]=="UPDATED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-success bg-gradient">{{tslistok5[i][8]}}</div>
+    {%elif tslistok5[i][8]=="RESTRICTED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-warning bg-gradient">{{tslistok5[i][8]}}</div>
+    {% else %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-danger bg-gradient">{{tslistok5[i][8]}}</div>
+    {% endif %}
+    <div class="rounded-1 bg-light border border-dark border-2 offset-md-1 col-sm-2 small text-black">Last Preventive Maint.</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary bg-gradient text-white">{{tslistok5[i][6]}}</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">CM Activity</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-7 text-center bg-success bg-gradient text-black">{{tslistok5[i][7]}}</div>
+  </div>
+
+        </div>
+
+  </div>
+</div>
+{%endfor%}
+{% for i in range(0, tslistpok5|length) %}
+<div class="offcanvas offcanvas-top" tabindex="-1" id="{{tslistpok5[i][0]}}" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h3><kbd>{{tslistpok5[i][0]}}</kbd> <kbd class="orange">Restricted</kbd></h3>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="container">
+  <div class="row">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Current Train Mileage</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistpok5[i][3]}} km</div>
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 offset-md-1 small text-black">Power On Time</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistpok5[i][4]}} Hr</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Configuration Status</div>
+    {%if tslistpok5[i][8]=="UPDATED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-success bg-gradient">{{tslistpok5[i][8]}}</div>
+    {%elif tslistpok5[i][8]=="RESTRICTED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-warning bg-gradient">{{tslistpok5[i][8]}}</div>
+    {% else %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-danger bg-gradient">{{tslistpok5[i][8]}}</div>
+    {% endif %}
+    <div class="rounded-1 bg-light border border-dark border-2 offset-md-1 col-sm-2 small text-black">Last Preventive Maint.</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary bg-gradient text-white">{{tslistpok5[i][6]}}</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">CM Activity</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-7 text-center bg-warning bg-gradient text-black">{{tslistpok5[i][7]}}</div>
+  </div>
+
+        </div>
+
+  </div>
+</div>
+{%endfor%}
+{% for i in range(0, tslistnok5|length) %}
+<div class="offcanvas offcanvas-top" tabindex="-1" id="{{tslistnok5[i][0]}}" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h3><kbd>{{tslistnok5[i][0]}}</kbd> <kbd class="red">Unfit</kbd></h3>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="container">
+  <div class="row">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Current Train Mileage</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistnok5[i][3]}} km</div>
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 offset-md-1 small text-black">Power On Time</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistnok5[i][4]}} Hr</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Configuration Status</div>
+    {%if tslistnok5[i][8]=="UPDATED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-success bg-gradient">{{tslistnok5[i][8]}}</div>
+    {%elif tslistnok5[i][8]=="RESTRICTED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-warning bg-gradient">{{tslistnok5[i][8]}}</div>
+    {% else %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-danger bg-gradient">{{tslistnok5[i][8]}}</div>
+    {% endif %}
+    <div class="rounded-1 bg-light border border-dark border-2 offset-md-1 col-sm-2 small text-black">Last Preventive Maint.</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary bg-gradient text-white">{{tslistnok5[i][6]}}</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">CM Activity</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-7 text-center bg-danger bg-gradient text-white">{{tslistnok5[i][7]}}</div>
+  </div>
+
+        </div>
+
+  </div>
+</div>
+{%endfor%}
+
+<!--    ************** Line 6 Off-Canvas **************                   -->
+{% for i in range(0, tslistok6|length) %}
+<div class="offcanvas offcanvas-top" tabindex="-1" id="{{tslistok6[i][0]}}" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h3><kbd>{{tslistok6[i][0]}}</kbd> <kbd class="green">Healthy</kbd></h3>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="container">
+  <div class="row">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Current Train Mileage</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info text-black">{{tslistok6[i][3]}} km</div>
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 offset-md-1 small text-black">Power On Time</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistok6[i][4]}} Hr</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Configuration Status</div>
+    {%if tslistok6[i][8]=="UPDATED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-success bg-gradient">{{tslistok6[i][8]}}</div>
+    {%elif tslistok6[i][8]=="RESTRICTED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-warning bg-gradient">{{tslistok6[i][8]}}</div>
+    {% else %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-danger bg-gradient">{{tslistok6[i][8]}}</div>
+    {% endif %}
+    <div class="rounded-1 bg-light border border-dark border-2 offset-md-1 col-sm-2 small text-black">Last Preventive Maint.</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary bg-gradient text-white">{{tslistok6[i][6]}}</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">CM Activity</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-7 text-center bg-success bg-gradient text-white">{{tslistok6[i][7]}}</div>
+  </div>
+
+        </div>
+
+  </div>
+</div>
+{%endfor%}
+{% for i in range(0, tslistpok6|length) %}
+<div class="offcanvas offcanvas-top" tabindex="-1" id="{{tslistpok6[i][0]}}" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h3><kbd>{{tslistpok6[i][0]}}</kbd> <kbd class="orange">Restricted</kbd></h3>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="container">
+  <div class="row">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Current Train Mileage</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistpok6[i][3]}} km</div>
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 offset-md-1 small text-black">Power On Time</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistpok6[i][4]}} Hr</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Configuration Status</div>
+    {%if tslistpok6[i][8]=="UPDATED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-success bg-gradient">{{tslistpok6[i][8]}}</div>
+    {%elif tslistnok5[i][8]=="RESTRICTED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-warning bg-gradient">{{tslistpok6[i][8]}}</div>
+    {% else %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-danger bg-gradient">{{tslistpok6[i][8]}}</div>
+    {% endif %}
+    <div class="rounded-1 bg-light border border-dark border-2 offset-md-1 col-sm-2 small text-black">Last Preventive Maint.</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary bg-gradient text-white">{{tslistpok6[i][6]}}</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">CM Activity</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-7 text-center bg-warning bg-gradient text-black">{{tslistpok6[i][7]}}</div>
+  </div>
+
+        </div>
+
+  </div>
+</div>
+{%endfor%}
+{% for i in range(0, tslistnok6|length) %}
+<div class="offcanvas offcanvas-top" tabindex="-1" id="{{tslistnok6[i][0]}}" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h3><kbd>{{tslistnok6[i][0]}}</kbd> <kbd class="red">Unfit</kbd></h3>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="container">
+  <div class="row">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Current Train Mileage</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistnok6[i][3]}} km</div>
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 offset-md-1 small text-black">Power On Time</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-info bg-gradient text-black">{{tslistnok6[i][4]}} Hr</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">Configuration Status</div>
+    {%if tslistnok6[i][8]=="UPDATED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-success bg-gradient">{{tslistnok6[i][8]}}</div>
+    {%elif tslistnok6[i][8]=="RESTRICTED" %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-warning bg-gradient">{{tslistnok6[i][8]}}</div>
+    {% else %}
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center text-black bg-danger bg-gradient">{{tslistnok6[i][8]}}</div>
+    {% endif %}
+    <div class="rounded-1 bg-light border border-dark border-2 offset-md-1 col-sm-2 small text-black">Last Preventive Maint.</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-2 text-center bg-primary bg-gradient text-white">{{tslistnok6[i][6]}}</div>
+  </div>
+
+  <div class="row mt-1">
+    <div class="rounded-1 bg-light border border-dark border-2 col-sm-2 small text-black">CM Activity</div>
+    <div class="rounded-1 border border-dark border-2 col-sm-7 text-center bg-danger bg-gradient text-white">{{tslistnok6[i][7]}}</div>
+  </div>
+
+        </div>
+
+  </div>
+</div>
+{%endfor%}
+
+
+    <!-- Page Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+
+
+                    <div class="row mt-1">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card shadow card-gradlightblue1">
+                                <div class="card-header bg-light text-black px-2 p-1 d-flex justify-content-between align-items-center">
+                                    <h4 class="mt-2"> Train Availability Status Line 5</h4>
+                                    <h6 class="mt-2 small"><kbd class="mt-1 small">Updated On: {{udate[0]}}</kbd></h6>
+                                    <h6 class="mt-1 small">Download <i class="fas fa-file-excel"></i></h6>
+                                    <!--                                    <h6 class="mt-1 small"><kbd class="mt-1 small">Download <i class="fas fa-file-excel"></i></kbd></h6>-->
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h5 class="font-weight-bold text-black p-1 my-auto">Line 5</h5>
+                                    </div>
+
+                                    <div class="chart-container mb-2" style="position:relative; flex-wrap:wrap;">
+
+                                        {% for i in range(0, tslistok5|length) %}
+                                        {% if (tslistok5[i][1] == "OK") and (tslistok5[i][5] != "PREVENTIVE" and tslistok5[i][5] != "CORRECTIVE" and tslistok5[i][5] != "TEST" and tslistok5[i][5] != "VISIT" and tslistok5[i][2] != "MU") %}
+                                        <button type="button" class="btn btn-xs btn-success" data-bs-toggle="offcanvas"
+                                                data-bs-target="#{{tslistok5[i][0]}}" aria-controls="offcanvasTop">
+                                            {{tslistok5[i][0]}}
+                                        </button>
+                                        {% else %}
+
+                                        {% endif %}
+                                        {%endfor%}
+
+                                        <!--    MU train display Start   Line 5 OK         -->
+                                        {% for i in range(0, mtustatus2|length) %}
+                                        {% if mtustatus2[i][0] == "Line 5" and mtustatus2[i][5] == "Healthy" and mtustatus2[i][6] == 0 %}
+                                                {% set mu = namespace(loc=0) %}
+                                                {% for j in range(0, tslistok5|length) %}
+                                                    {% if tslistok5[j][2] == "MU" and tslistok5[j][0]== mtustatus2[i][3] %}
+                                                    {% set mu.loc = j %}
+                                                    {% endif %}
+                                                {%endfor%}
+                                        <!--<span >{{ mu.loc }}</span>-->
+                                        <div id="boxed" style="display:inline-block;">
+                                            <div style="font-size:11px; font-weight: bold; position: absolute; margin-top:32px; width:200px; margin-left:45px;">{{mtustatus2[i][1]}}</div>
+                                         <button type="button" class="btn btn-xs btn-success" data-bs-toggle="offcanvas"
+                                                data-bs-target="#{{tslistok5[mu.loc][0]}}" aria-controls="offcanvasTop">{{mtustatus2[i][3]}}</button>
+                                                {% set mu = namespace(loc=0) %}
+                                                {% for j in range(0, tslistok5|length) %}
+                                                    {% if tslistok5[j][2] == "MU" and tslistok5[j][0]== mtustatus2[i][4] %}
+                                                    {% set mu.loc = j %}
+                                                    {% endif %}
+                                                {%endfor%}
+                                        <button type="button" class="btn btn-xs btn-success" data-bs-toggle="offcanvas"
+                                                data-bs-target="#{{tslistok5[mu.loc][0]}}" aria-controls="offcanvasTop">{{mtustatus2[i][4]}}
+                                        </button>
+                                        </div>
+                                        {% endif %}
+                                        {%endfor%}
+                                        <!--    MU train display End           -->
+
+                                        {% for i in range(0, tslistpok5|length) %}
+                                        {% if (tslistpok5[i][1] == "POK") and (tslistpok5[i][5] != "PREVENTIVE" and tslistpok5[i][5] != "CORRECTIVE" and tslistpok5[i][5] != "TEST" and tslistpok5[i][5] != "VISIT" and tslistpok5[i][2] != "MU") %}
+                                        <button type="button" class="btn btn-xs btn-warning" data-bs-toggle="offcanvas"
+                                                data-bs-target="#{{tslistpok5[i][0]}}" aria-controls="offcanvasTop">
+                                            {{tslistpok5[i][0]}}
+                                        </button>
+                                        {% endif %}
+                                        {%endfor%}
+
+                                        <!--    MU train display Start      Line 5 POK     -->
+                                        {% for i in range(0, mtustatus2|length) %}
+                                        {% if mtustatus2[i][0] == "Line 5" and mtustatus2[i][5] == "Restricted" and mtustatus2[i][6] == 0 %}
+                                                {% set mu = namespace(loc=0) %}
+                                                {% for j in range(0, tslistpok5|length) %}
+<!--                                        <span >{{ "TS"~mtustatus2[i][3] }}</span>-->
+                                                    {% if tslistpok5[j][2] == "MU" and tslistpok5[j][0]== mtustatus2[i][3] %}
+                                                    {% set mu.loc = j %}
+                                                    {% endif %}
+                                                {%endfor%}
+                                        <!--<span >{{ mu.loc }}</span>-->
+                                        <div id="boxed" style="display:inline-block;">
+                                            <span style="font-size:11px; font-weight: bold; position: absolute; margin-top:32px; margin-left:45px;">{{mtustatus2[i][1]}}</span>
+                                         <button type="button" class="btn btn-xs btn-warning" data-bs-toggle="offcanvas"
+                                                data-bs-target="#{{tslistpok5[mu.loc][0]}}" aria-controls="offcanvasTop">{{mtustatus2[i][3]}}</button>
+                                                {% set mu = namespace(loc=0) %}
+                                                {% for j in range(0, tslistpok5|length) %}
+                                                    {% if tslistpok5[j][2] == "MU" and tslistpok5[j][0]== mtustatus2[i][4] %}
+                                                    {% set mu.loc = j %}
+                                                    {% endif %}
+                                                {%endfor%}
+                                        <button type="button" class="btn btn-xs btn-warning" data-bs-toggle="offcanvas"
+                                                data-bs-target="#{{tslistpok5[mu.loc][0]}}" aria-controls="offcanvasTop">{{mtustatus2[i][4]}}
+                                        </button>
+                                        </div>
+                                        {% endif %}
+                                        {%endfor%}
+                                        <!--    MU train display End           -->
+
+
+                                        {% for i in range(0, tslistnok5|length) %}
+                                        {% if (tslistnok5[i][1] == "NOK") and (tslistnok5[i][5] != "PREVENTIVE" and tslistnok5[i][5] != "CORRECTIVE" and tslistnok5[i][5] != "TEST" and tslistnok5[i][5] != "VISIT" and tslistnok5[i][2] != "MU") %}
+                                        <button type="button" class="btn btn-xs btn-danger" data-bs-toggle="offcanvas"
+                                                data-bs-target="#{{tslistnok5[i][0]}}" aria-controls="offcanvasTop">
+                                            {{tslistnok5[i][0]}}
+                                        </button>
+                                        {% else %}
+                                        {% endif %}
+                                        {%endfor%}
+
+                                        <!--    MU train display Start      Line 5 NOK     -->
+                                        {% for i in range(0, mtustatus2|length) %}
+                                        {% if mtustatus2[i][0] == "Line 5" and mtustatus2[i][5] == "Unfit" and mtustatus2[i][6] == 0 %}
+                                                {% set mu = namespace(loc=0) %}
+                                                {% for j in range(0, tslistnok5|length) %}
+<!--                                        <span >{{ "TS"~mtustatus2[i][3] }}</span>-->
+                                                    {% if tslistnok5[j][2] == "MU" and tslistnok5[j][0]== mtustatus2[i][3] %}
+                                                    {% set mu.loc = j %}
+                                                    {% endif %}
+                                                {%endfor%}
+                                        <!--<span >{{ mu.loc }}</span>-->
+                                        <div id="boxed" style="display:inline-block;">
+                                            <span style="font-size:11px; font-weight: bold; position: absolute; margin-top:32px; margin-left:45px;">{{mtustatus2[i][1]}}</span>
+                                         <button type="button" class="btn btn-xs btn-danger" data-bs-toggle="offcanvas"
+                                                data-bs-target="#{{tslistnok5[mu.loc][0]}}" aria-controls="offcanvasTop">{{mtustatus2[i][3]}}</button>
+                                                {% set mu = namespace(loc=0) %}
+                                                {% for j in range(0, tslistnok5|length) %}
+                                                    {% if tslistnok5[j][2] == "MU" and tslistnok5[j][0]== mtustatus2[i][4] %}
+                                                    {% set mu.loc = j %}
+                                                    {% endif %}
+                                                {%endfor%}
+                                        <button type="button" class="btn btn-xs btn-danger" data-bs-toggle="offcanvas"
+                                                data-bs-target="#{{tslistnok5[mu.loc][0]}}" aria-controls="offcanvasTop">{{mtustatus2[i][4]}}
+                                        </button>
+                                        </div>
+                                        {% endif %}
+                                        {%endfor%}
+                                        <!--    MU train display End           -->
+
+                                    </div>
+
+<!--                                 **** Reserved ****               -->
+
+                                    <h6 class="font-weight-bold text-black py-2 my-auto">Reserved
+                                        ( <div class="d-inline p-0 bg-primary text-primary">-</div> Preventive /
+                                        <div class="d-inline p-0 bg-light text-light">-</div> Corrective /
+                                        <div class="d-inline p-0 bg-dark text-dark">-</div> Testing /
+<!--                                        <div class="d-inline p-0 bg-light pink" style="">-</div> Visit)</h5>-->
+                                        <div class="d-inline p-0 bg-light pink" style="color:#F764EC;">-</div> Visit
+                                         )
+                                    </h6>
+                                    <div class="chart-container mb-2" style="position:relative; flex-wrap:wrap;">
+
+                                        {% for i in range(0, tslistok5|length) %}
+                                        {% if tslistok5[i][5] == "PREVENTIVE" %}
+                                        <button type="button" class="btn btn-xs btn-success custom-btnblue"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistok5[i][0]}}
+                                        </button>
+                                        {% elif tslistok5[i][5] == "VISIT" %}
+                                                <button type="button" class="btn btn-xs btn-success custom-btnpink"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistok5[i][0]}}
+                                        </button>
+                                        {% elif tslistok5[i][5] == "CORRECTIVE" %}
+                                                <button type="button" class="btn btn-xs btn-success custom-btnwhite"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistok5[i][0]}}
+                                        </button>
+                                        {% elif tslistok5[i][5] == "TEST" %}
+                                                <button type="button" class="btn btn-xs btn-success custom-btnblack"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistok5[i][0]}}
+                                        </button>
+                                        {% endif %}
+                                        {%endfor%}
+
+
+                                        {% for i in range(0, tslistpok5|length) %}
+                                        {% if tslistpok5[i][5] == "PREVENTIVE" %}
+                                        <button type="button" class="btn btn-xs btn-warning custom-btnblue"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistpok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistpok5[i][0]}}
+                                        </button>
+                                        {% elif tslistpok5[i][5] == "VISIT" %}
+                                                <button type="button" class="btn btn-xs btn-warning custom-btnpink"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistpok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistpok5[i][0]}}
+                                        </button>
+                                        {% elif tslistpok5[i][5] == "CORRECTIVE" %}
+                                                <button type="button" class="btn btn-xs btn-warning custom-btnwhite"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistpok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistpok5[i][0]}}
+                                        </button>
+                                        {% elif tslistpok5[i][5] == "TEST" %}
+                                                <button type="button" class="btn btn-xs btn-warning custom-btnblack"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistpok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistpok5[i][0]}}
+                                        </button>
+                                        {% endif %}
+                                        {%endfor%}
+
+
+                                        {% for i in range(0, tslistnok5|length) %}
+                                        {% if tslistnok5[i][5] == "PREVENTIVE" %}
+                                        <button type="button" class="btn btn-xs btn-danger custom-btnblue"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistnok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistnok5[i][0]}}
+                                        </button>
+                                        {% elif tslistnok5[i][5] == "VISIT" %}
+                                                <button type="button" class="btn btn-xs btn-danger custom-btnpink"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistnok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistnok5[i][0]}}
+                                        </button>
+                                        {% elif tslistnok5[i][5] == "CORRECTIVE" %}
+                                                <button type="button" class="btn btn-xs btn-danger custom-btnwhite"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistnok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistnok5[i][0]}}
+                                        </button>
+                                        {% elif tslistnok5[i][5] == "TEST" %}
+                                                <button type="button" class="btn btn-xs btn-danger custom-btnblack"
+                                                data-bs-toggle="offcanvas" data-bs-target="#{{tslistnok5[i][0]}}"
+                                                aria-controls="offcanvasTop">{{tslistnok5[i][0]}}
+                                        </button>
+                                        {% endif %}
+                                        {%endfor%}
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                        .top-buffer { margin-top:-20px; }
+                    </style>
+                    <div class="row top-buffer">
+
+                        <div class="col-md-2 grid-margin stretch-card">
+                            <div class="crd col-md-10 l-bg-green">
+                                <div class="crd-statistic-3 p-3">
+                                    <div class="crd-icon crd-icon-large"><i class="fas fa-subway"></i></div>
+                                    <div class="mb-4">
+                                       <h4 class="crd-title mb-0"><u>Healthy</u> <!--  <img src="../static/img/rst_img/train.png" width="20" height="19"> --></h4>
+                                        <span class="font-weight-bold">{{availtsl[1]}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h5 class="d-flex align-items-center" style="color:#FBFBFB; font-size:14px;">
+                                                Line 5: {{availtsl[1]}}
+                                            </h5>
+                                        </div>
+                                        <!--                        <div class="col-4 text-right">-->
+                                        <!--                            <span>0</span>-->
+                                        <!--                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 grid-margin stretch-card">
+                            <div class="crd col-md-10 l-bg-orange-dark">
+                                <div class="crd-statistic-3 p-3">
+                                    <div class="crd-icon crd-icon-large"><i class="fas fa-subway"></i></div>
+                                    <div class="mb-4">
+                                        <h4 class="crd-title mb-0"><u>Restricted</u> </h4><!--  <img src="../static/img/rst_img/train.png" width="20" height="19">-->
+                                        <span class="font-weight-bold">{{availtsl[4]}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h5 class="d-flex align-items-center" style="color:#FBFBFB; font-size:14px;">
+                                                Line 5: {{availtsl[4]}}
+                                            </h5>
+                                        </div>
+                                        <!--                        <div class="col-4 text-right">-->
+                                        <!--                            <span>0</span>-->
+                                        <!--                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 grid-margin stretch-card">
+                            <div class="crd col-md-10 l-bg-red">
+                                <div class="crd-statistic-3 p-3">
+                                    <div class="crd-icon crd-icon-large"><i class="fas fa-subway"></i></div>
+                                    <div class="mb-4">
+                                        <h4 class="crd-title mb-0"><u>Unfit</u> </h4><!--  <img src="../static/img/rst_img/train.png" width="20" height="19">-->
+                                        <span class="font-weight-bold">{{availtsl[7]}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h5 class="d-flex align-items-center" style="color:#FBFBFB; font-size:14px;">
+                                                Line 5: {{availtsl[7]}}
+                                            </h5>
+                                        </div>
+                                        <!--                        <div class="col-4 text-right">-->
+                                        <!--                            <span>0</span>-->
+                                        <!--                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 grid-margin stretch-card">
+                            <div class="crd col-md-10 l-bg-blue-dark">
+                                <div class="crd-statistic-3 p-3">
+                                    <div class="crd-icon crd-icon-large"><i class="fas fa-subway"></i></div>
+                                    <div class="mb-4">
+                                        <h4 class="crd-title mb-0"><u>Reserved</u> </h4><!--  <img src="../static/img/rst_img/train.png" width="20" height="19">-->
+                                        <span class="font-weight-bold">{{availtsl[13]}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h5 class="d-flex align-items-center" style="color:#FBFBFB; font-size:14px;">
+                                                Line 5: {{availtsl[13]}}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 grid-margin stretch-card">
+                            <div class="crd col-md-12 l-bg-grey-dark">
+                                <div class="crd-statistic1 p-3">
+                                    <div class="crd-icon1 crd-icon1-large"><i class="fas fa-tachometer-alt"></i></div>
+                                    <div class="mb-4">
+                                        <h4 class="crd-title mb-0"><u>Total Mileage</u></h4>
+<!--                                        <span class="font-weight-bold text-info">{{"{:,.0f}".format (availts[3])}} km</span>-->
+                                        <span class="font-weight-bold text-info">{{"{:,.0f}".format (availtsl[10])}} km</span>
+                                    </div>
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-12">-->
+<!--                                            <h5 class="d-flex align-items-center" style="color:#FBFBFB; font-size:14px;">-->
+<!--                                                Line 4: &nbsp; <span class="count"> {{availtsl[9]}} </span>&nbsp; km-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash;                        <div class="col-4 text-right">&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                            <span>24</span>&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                                    </div>-->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5 class="d-flex align-items-center" style="color:#FBFBFB; font-size:14px;">
+                                                Line 5: &nbsp; <span class="count"> {{availtsl[10]}} </span>&nbsp; km
+                                            </h5>
+                                        </div>
+                                        <!--                        <div class="col-4 text-right">-->
+                                        <!--                            <span>0</span>-->
+                                        <!--                        </div>-->
+                                    </div>
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-12">-->
+<!--                                            <h5 class="d-flex align-items-center" style="color:#FBFBFB; font-size:14px;">-->
+<!--                                                Line 6: &nbsp; <span class="count"> {{availtsl[11]}} </span>&nbsp; km-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash;                        <div class="col-4 text-right">&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                            <span>24</span>&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 grid-margin stretch-card">
+                            <div class="crd col-md-10 l-bg-green-dark">
+                                <div class="crd-statistic-3 p-3">
+                                    <div class="crd-icon crd-icon-large"><i class="fas fa-subway"></i></div>
+                                    <div class="mb-4">
+                                       <h4 class="crd-title mb-0"><u>Operational</u> <!--  <img src="../static/img/rst_img/train.png" width="20" height="19"> --></h4>
+                                        <span class="font-weight-bold">{{availtsl[16]}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h5 class="d-flex align-items-center" style="color:#FBFBFB; font-size:14px;">
+                                                Line 5: {{availtsl[16]}}
+                                            </h5>
+                                        </div>
+                                        <!--                        <div class="col-4 text-right">-->
+                                        <!--                            <span>0</span>-->
+                                        <!--                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+                    <footer class="footer">
+                        <div class="footer-wrap">
+                            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+                                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+                            </div>
+                        </div>
+                    </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+    </div>
+		<!-- container-scroller -->
+
+
+        <!-- base:js -->
+    <script src="../static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+
+        <!-- plugin js for this page -->
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+
+        <!-- Datatable js for this page -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.jqueryui.min.js"></script>
+
+
+    <script>
+    $('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 2000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now).toLocaleString('en'));
+        }
+    });
+});
+</script>
+
+    <script>
+    var dataTables = $('#datatable').DataTable({"info": false,"lengthChange": false, dom: 'lrt',
+
+    "columnDefs": [
+       {"className": "dt-center", "targets": [0, 1, 2, 4]},
+      ],
+
+});
+
+$('#401').on('click', function () {
+    dataTables.columns(0).search("401").draw();
+});
+
+$('#402').on('click', function () {
+    dataTables.columns(0).search("402" ).draw();
+});
+
+$('#403').on('click', function () {
+    dataTables.columns(0).search("403" ).draw();
+});
+$('#404').on('click', function () {
+    dataTables.columns(0).search("404" ).draw();
+});
+$('#405').on('click', function () {
+    dataTables.columns(0).search("405" ).draw();
+});
+$('#406').on('click', function () {
+    dataTables.columns(0).search("406" ).draw();
+});
+$('#407').on('click', function () {
+    dataTables.columns(0).search("407" ).draw();
+});
+$('#408').on('click', function () {
+    dataTables.columns(0).search("408" ).draw();
+});
+$('#409').on('click', function () {
+    dataTables.columns(0).search("409" ).draw();
+});
+$('#410').on('click', function () {
+    dataTables.columns(0).search("410" ).draw();
+});
+$('#411').on('click', function () {
+    dataTables.columns(0).search("411" ).draw();
+});
+$('#412').on('click', function () {
+    dataTables.columns(0).search("412" ).draw();
+});
+$('#413').on('click', function () {
+    dataTables.columns(0).search("413" ).draw();
+});
+$('#414').on('click', function () {
+    dataTables.columns(0).search("414" ).draw();
+});
+$('#415').on('click', function () {
+    dataTables.columns(0).search("415" ).draw();
+});
+$('#416').on('click', function () {
+    dataTables.columns(0).search("416" ).draw();
+});
+$('#417').on('click', function () {
+    dataTables.columns(0).search("417" ).draw();
+});
+$('#418').on('click', function () {
+    dataTables.columns(0).search("418" ).draw();
+});
+$('#419').on('click', function () {
+    dataTables.columns(0).search("419" ).draw();
+});
+$('#420').on('click', function () {
+    dataTables.columns(0).search("420" ).draw();
+});$('#421').on('click', function () {
+    dataTables.columns(0).search("421" ).draw();
+});$('#422').on('click', function () {
+    dataTables.columns(0).search("422" ).draw();
+});$('#423').on('click', function () {
+    dataTables.columns(0).search("423" ).draw();
+});$('#424').on('click', function () {
+    dataTables.columns(0).search("424" ).draw();
+});
+</script>
+
+    <script>
+
+
+$('#501').on('click', function () {
+    dataTables.columns(0).search("501" ).draw();
+});
+
+$('#502').on('click', function () {
+    dataTables.columns(0).search("502" ).draw();
+});
+
+$('#503').on('click', function () {
+    dataTables.columns(0).search("503" ).draw();
+});
+$('#504').on('click', function () {
+    dataTables.columns(0).search("504" ).draw();
+});
+$('#505').on('click', function () {
+    dataTables.columns(0).search("505" ).draw();
+});
+$('#506').on('click', function () {
+    dataTables.columns(0).search("506" ).draw();
+});
+$('#507').on('click', function () {
+    dataTables.columns(0).search("507" ).draw();
+});
+$('#508').on('click', function () {
+    dataTables.columns(0).search("508" ).draw();
+});
+$('#509').on('click', function () {
+    dataTables.columns(0).search("509" ).draw();
+});
+$('#510').on('click', function () {
+    dataTables.columns(0).search("510" ).draw();
+});
+$('#511').on('click', function () {
+    dataTables.columns(0).search("511" ).draw();
+});
+$('#512').on('click', function () {
+    dataTables.columns(0).search("512" ).draw();
+});
+$('#513').on('click', function () {
+    dataTables.columns(0).search("513" ).draw();
+});
+$('#514').on('click', function () {
+    dataTables.columns(0).search("514" ).draw();
+});
+$('#515').on('click', function () {
+    dataTables.columns(0).search("515" ).draw();
+});
+$('#516').on('click', function () {
+    dataTables.columns(0).search("516" ).draw();
+});
+$('#517').on('click', function () {
+    dataTables.columns(0).search("517" ).draw();
+});
+$('#518').on('click', function () {
+    dataTables.columns(0).search("518" ).draw();
+});
+$('#519').on('click', function () {
+    dataTables.columns(0).search("519" ).draw();
+});
+
+
+    </script>
+
+    <script>
+
+$('#601').on('click', function () {
+    dataTables.columns(0).search("601" ).draw();
+});
+
+$('#602').on('click', function () {
+    dataTables.columns(0).search("602" ).draw();
+});
+
+$('#603').on('click', function () {
+    dataTables.columns(0).search("603" ).draw();
+});
+$('#604').on('click', function () {
+    dataTables.columns(0).search("604" ).draw();
+});
+$('#605').on('click', function () {
+    dataTables.columns(0).search("605" ).draw();
+});
+$('#606').on('click', function () {
+    dataTables.columns(0).search("606" ).draw();
+});
+$('#607').on('click', function () {
+    dataTables.columns(0).search("607" ).draw();
+});
+$('#608').on('click', function () {
+    dataTables.columns(0).search("608" ).draw();
+});
+$('#609').on('click', function () {
+    dataTables.columns(0).search("609" ).draw();
+});
+$('#610').on('click', function () {
+    dataTables.columns(0).search("610" ).draw();
+});
+$('#611').on('click', function () {
+    dataTables.columns(0).search("611" ).draw();
+});
+$('#612').on('click', function () {
+    dataTables.columns(0).search("612" ).draw();
+});
+$('#613').on('click', function () {
+    dataTables.columns(0).search("613" ).draw();
+});
+$('#614').on('click', function () {
+    dataTables.columns(0).search("614" ).draw();
+});
+$('#615').on('click', function () {
+    dataTables.columns(0).search("615" ).draw();
+});
+$('#616').on('click', function () {
+    dataTables.columns(0).search("616" ).draw();
+});
+$('#617').on('click', function () {
+    dataTables.columns(0).search("617" ).draw();
+});
+$('#618').on('click', function () {
+    dataTables.columns(0).search("618" ).draw();
+});
+$('#619').on('click', function () {
+    dataTables.columns(0).search("619" ).draw();
+});
+$('#620').on('click', function () {
+    dataTables.columns(0).search("620" ).draw();
+});
+
+$('#621').on('click', function () {
+    dataTables.columns(0).search("621" ).draw();
+});
+
+$('#622').on('click', function () {
+    dataTables.columns(0).search("622" ).draw();
+});
+
+$('#623').on('click', function () {
+    dataTables.columns(0).search("623" ).draw();
+});
+
+$('#624').on('click', function () {
+    dataTables.columns(0).search("624" ).draw();
+});
+
+$('#625').on('click', function () {
+    dataTables.columns(0).search("625" ).draw();
+});
+
+$('#626').on('click', function () {
+    dataTables.columns(0).search("626" ).draw();
+});
+    </script>
+
+    <script src="../static/js/plugins.js"></script>
+    <script>
+        $(window).on("load", function() {
+            $('body').addClass('loaded');
+        });
+    </script>
+<!--  </body>-->
+<!--</html>-->
+{% endblock %}

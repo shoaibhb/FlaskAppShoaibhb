@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Upload Page</title>
+
+  <link rel="stylesheet" href="../static/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../static/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+  <link rel="stylesheet" href="../static/css/demo.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+      <form action = "http://10.228.146.92:5000//uploader" method = "POST"
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" multiple/>
+          <br>
+            <label for="path">Directory Location:</label>
+            <input type="text" id="path" name="path"><br>
+          <p> data/rst_files_repo/ </p>
+          <p> data/rst_files_repo/pm/ </p>
+          <p> static/img/rst_img/ </p>
+          <p> templates/pages/ </p>
+         <input type = "submit"/>
+      </form>
+   </body>
+
+
+</html>

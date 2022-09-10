@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Alstom T&C Dashboard &mdash;</title>
+<link rel="stylesheet" href="../static/css/new-gcard.css">
+
+  <link rel="stylesheet" href="../static/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../static/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+
+<!--  <link rel="stylesheet" href="../static/modules/summernote/summernote-lite.css">-->
+<!--  <link rel="stylesheet" href="../static/modules/flag-icon-css/css/flag-icon.min.css">-->
+  <link rel="stylesheet" href="../static/css/demo.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/atlantis.min.css">
+
+
+<script src="../static/js/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+</head>
+
+<body>
+
+<div id="app">
+    <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+
+        <nav class="navbar navbar-expand-lg main-navbar">
+
+                <ul class="navbar-nav mr-3">
+                    <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i><h3 class="m-b-20">TSY SYS T&C Activity Status (Line 6) </h3></a></li>
+
+                </ul>
+
+        </nav>
+
+        <div class="main-sidebar">
+            <aside id="sidebar-wrapper">
+                <div class="sidebar-brand">
+                    <a href="#"><img src="../static/img/alstom.jpg" width="134" height="27" alt=""/></a>
+                </div>
+                <div class="sidebar-user">
+                    <div class="sidebar-user-picture">
+                        <img alt="image" src="../static/img/avatar/avatar-1.jpg">
+                    </div>
+                    <div class="sidebar-user-details">
+                        <div class="user-name">{{name}}</div>
+                        <div class="user-role">{{email}}</div>
+                    </div>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="menu-header">Dashboards</li>
+                    <li><a href="/dashboard01"><i class="ion ion-stats-bars"></i><span>System TR & TP</span></a></li>
+                    <li><a href="/dashboard02"><i class="ion ion-speedometer"></i><span>TSY Anomaly Status</span></a>
+                    <li class="active"><a href="/dashboardLines"><i class="fas fa-chart-line"></i></i><span>T&C Activity Progress</span></a>
+                        <ul class="menu-dropdown">
+                            <li style="margin=30px;"><a href="/dashboardLine4"><i class="fas fa-subway"></i>Line 4</a></li>
+                            <li><a href="/dashboardLine5"><i class="fas fa-subway"></i></i>Line 5</a></li>
+                            <li class="active"><a href="/dashboardLine6"><i class="fas fa-subway"></i></i>Line 6</a></li>
+                        </ul>
+
+                    <li class="menu-header">Data</li>
+                    <li>
+                        <a href="/reports"><i class="ion ion-ios-copy-outline"></i><span>T&C Reports</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ion ion-ios-information-outline"></i><span>Notification</span></a>
+                    </li>
+                    <li class="text-danger">
+                        <a href="/logout"><i class="ion ion-log-out"></i><span>Logout</span></a>
+                    </li>
+                </ul>
+
+            </aside>
+        </div>
+
+        <div class="main-content">
+            <section class="section">
+
+                <div class="card bg-g-black order-card">
+                      <div class="panel-header panel-header-lg">
+                         <canvas id="bigDashboardChart" height="200"></canvas>
+                     </div>
+                 </div>
+
+
+                <!-- Start of Content-->
+<h5 class="m-b-20 fw-bold">System Demonstration / PTR Scope </h5>
+                <p></p>
+
+    <div class="row mt--1">
+                    <!-- Start 1st Chart -->
+                        <div class="col-sm-7">
+                            <div class="card bg-g-lightpurple">
+                                <div class="card-body">
+                                    <h6 class="m-b-20 fw-bold">Overall Progress Status (PTR)</h6>
+
+                                    <div class="row py-1">
+
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-1">
+                                            <div class="px-0 pb-1 pb-sm text-center">
+
+                                                 <div id="arc_PTR6" style="margin:0px; height:100px; width:150px; position:relative; top: 16px; left: 12px;"></div>
+
+                                                <h6 class="fw-bold mt-4 mb-0 text-body">Completion</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-lg-5 offset-lg-0">
+                                            <canvas id="OA-PTR6Bar" width="525" height="160"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Start 2nd Chart Station PTR-->
+                        <div class="col-sm-5">
+                            <div class="card bg-g-lightgrey">
+                                <div class="card-body">
+                                    <h6 class="m-b-20 fw-bold">Stations Progress (PTR)</h6>
+
+                                    <div class="row py-1">
+
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-1">
+                                            <div class="px-0 pb-1 pb-sm text-center">
+
+                                                 <div id="arc_stationPTR6" style="margin:0px; height:100px; width:150px; position:relative; top: 16px; left: 12px;"></div>
+                                                <h6 class="fw-bold mt-4 mb-0 text-body">Completion</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-lg-4 offset-lg-0">
+                                            <canvas id="station-PTR6Bar" width="260" height="160"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+    <div class="row mt--2">
+
+             <div class="col-md-8">
+							<div class="card bg-g-lightgrey">
+								<div class="card-body">
+<!--									<div class="card-title">Test Procedure Statistics</div>-->
+                                    <h6 class="m-b-20 fw-bold">System Functional / Interface / Operational Test Progress</h6>
+									<div class="row py-2">
+									</div>
+
+
+                 <p style="font-size:85%; font-weight: normal; margin-bottom: 1.5px; font-family: Lucida Grande, sans-serif">Interface Integration LEVEL 1: FAST - 3rd party</p>
+                <div class="progress" style="height: 15px; background-color: #dcdcdc;">
+                    <div class="progress-bar progressbar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{PTR_lev6[0]}}%; background-color:purple !important;">{{PTR_lev6[0]}}%</div>
+
+                </div>
+
+                <p style="font-size:85%; font-weight: normal; margin-bottom: 1.5px; font-family: Lucida Grande, sans-serif">Interface Integration LEVEL 2: TSY - CJV/TJV</p>
+                <div class="progress" style="height: 15px; background-color: #dcdcdc;">
+                    <div class="progress-bar progressbar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{PTR_lev6[1]}}%; background-color:purple !important;">{{PTR_lev6[1]}}%</div>
+
+
+                </div>
+
+
+                <p style="font-size:85%; font-weight: normal; margin-top:9px; margin-bottom: 1px; font-family: Lucida Grande, sans-serif">Interface Integration LEVEL 3: within TSY subsystems</p>
+                <div class="progress" style="height: 15px; background-color: #dcdcdc;">
+                  <div class="progress-bar progressbar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{PTR_lev6[2]}}%; background-color:purple !important;">{{PTR_lev6[2]}}%</div>
+
+                </div>
+
+                <p style="font-size:85%; font-weight: normal; margin-top:9px; margin-bottom: 1px; font-family: Lucida Grande, sans-serif">SYSTEM Functional and Operational Test</p>
+                <div class="progress" style="height: 15px; background-color: #dcdcdc;">
+                    <div class="progress-bar progressbar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{PTR_lev6[3]}}%; background-color:purple !important;">{{PTR_lev6[3]}}%</div>
+
+                </div>
+
+
+								</div>
+							</div>
+						</div>
+
+     </div>
+
+
+
+                <h5 class="m-b-20 fw-bold">System Demonstration / Non-PTR Scope </h5>
+                <p></p>
+
+     <div class="row mt--2">
+
+<!-- Start Non-PTR Progress -->
+
+             <div class="col-sm-7">
+                            <div class="card bg-g-lightpurple">
+                                <div class="card-body">
+                                    <h6 class="m-b-20 fw-bold">Overall Progress Status (Non-PTR)</h6>
+
+
+                                    <div class="row py-1">
+
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-1">
+                                            <div class="px-0 pb-1 pb-sm text-center">
+
+                                                 <div id="arc_nPTR6" style="margin:1px; height:100px; width:140px; position:relative; top: 16px; left: 8px;"></div>
+
+                                                <h6 class="fw-bold mt-4 mb-0 text-body">Completion</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-lg-5 offset-lg-0">
+                                            <canvas id="OAnPTR6_Bar" width="530" height="160"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+             <div class="col-md-5">
+							<div class="card bg-g-lightgrey">
+								<div class="card-body">
+<!--									<div class="card-title">Test Procedure Statistics</div>-->
+                                    <h6 class="m-b-20 fw-bold">Stations Progress (Non-PTR)</h6>
+									<div class="row py-1">
+
+                                        <div class="d-flex flex-wrap justify-content-around pb-2 pt-1 py-1">
+                                            <div class="px-0 pb-1 pb-sm text-center">
+
+                                                 <div id="arc_Station_nPTR6" style="margin:1px; height:100px; width:140px; position:relative; top: 16px; left: 8px;"></div>
+
+                                                <h6 class="fw-bold mt-4 mb-0 text-body">Completion</h6>
+                                            </div>
+                                        </div>
+
+                                      <div class="col-md-5 col-lg-5 offset-lg-0">
+												<canvas id="nPTR6_Bar" width="290" height="160"></canvas>
+                                      </div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+     </div>
+
+     <div class="row mt--2">
+
+            <div class="col-md-8">
+							<div class="card bg-g-lightgrey">
+								<div class="card-body">
+<!--									<div class="card-title">Test Procedure Statistics</div>-->
+                                    <h6 class="m-b-20 fw-bold">System Functional / Interface / Operational Test Progress</h6>
+									<div class="row py-2">
+									</div>
+
+
+                 <p style="font-size:85%; font-weight: normal; margin-bottom: 1.5px; font-family: Lucida Grande, sans-serif">Interface Integration LEVEL 1: FAST - 3rd party</p>
+                <div class="progress" style="height: 15px; background-color: #dcdcdc;">
+                    <div class="progress-bar progressbar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{nPTR_lev6[0]}}%; background-color:purple !important;">{{nPTR_lev6[0]}}%</div>
+
+                </div>
+
+                <p style="font-size:85%; font-weight: normal; margin-bottom: 1.5px; font-family: Lucida Grande, sans-serif">Interface Integration LEVEL 2: TSY - CJV/TJV</p>
+                <div class="progress" style="height: 15px; background-color: #dcdcdc;">
+                    <div class="progress-bar progressbar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{nPTR_lev6[1]}}%; background-color:purple !important;">{{nPTR_lev6[1]}}%</div>
+
+
+                </div>
+
+
+                <p style="font-size:85%; font-weight: normal; margin-top:9px; margin-bottom: 1px; font-family: Lucida Grande, sans-serif">Interface Integration LEVEL 3: within TSY subsystems</p>
+                <div class="progress" style="height: 15px; background-color: #dcdcdc;">
+                  <div class="progress-bar progressbar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{nPTR_lev6[2]}}%; background-color:purple !important;">{{nPTR_lev6[2]}}%</div>
+
+                </div>
+
+                <p style="font-size:85%; font-weight: normal; margin-top:9px; margin-bottom: 1px; font-family: Lucida Grande, sans-serif">SYSTEM Functional and Operational Test</p>
+                <div class="progress" style="height: 15px; background-color: #dcdcdc;">
+                    <div class="progress-bar progressbar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:{{nPTR_lev6[3]}}%; background-color:purple !important;">{{nPTR_lev6[3]}}%</div>
+
+                </div>
+
+
+								</div>
+							</div>
+						</div>
+
+     </div>
+
+            </section>
+        </div>
+
+        <footer class="main-footer">
+            <div class="footer-left">
+                <div class="bullet"></div>Developed By RAO Kamran (Riyadh Metro System T&amp;C)</a>
+            </div>
+            <div class="footer-right"></div>
+        </footer>
+
+    </div>
+</div>
+
+<script src="../static/modules/jquery.min.js"></script>
+<script src="../static/modules/popper.js"></script>
+<script src="../static/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/modules/chart.min.js"></script>
+
+
+<script src="../static/modules/tooltip.js"></script>
+
+<script src="../static/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="../static/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+
+<script src="../static/modules/chartjs-plugin-datalabels.min.js"></script>
+
+<script src="../static/modules/summernote/summernote-lite.js"></script>
+
+<!--  <script src="../static/js/circles.min.js"></script>-->
+<script src="../static/js/progressbar.js"></script>
+<script src="../static/js/scripts.js"></script>
+<script src="../static/js/custom.js"></script>
+<script src="../static/js/demo.js"></script>
+<script src="../static/js/chartjs-plugin-deferred.min.js"></script>
+
+
+<script>
+
+<!--********PTR ARC*************-->
+<!--************************************-->
+
+var bar = new ProgressBar.SemiCircle(arc_PTR6, {
+  strokeWidth: 4,
+  color: '#FFEA82',
+  trailColor: '#c0c0c0',
+  trailWidth: 3,
+  easing: 'easeInOut',
+  duration: 1400,
+  svgStyle: null,
+  text: {
+    value: '',
+    alignToBottom: true
+  },
+  from: {color: '#000099'},
+  to: {color: '##008000'},
+  // Set default step function for all animate calls
+  step: (state, bar) => {
+    bar.path.setAttribute('stroke', state.color);
+    var value = Math.round(bar.value() * 100) + '%';
+    if (value === 0) {
+      bar.setText('');
+    } else {
+      bar.setText(value);
+    }
+
+    bar.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.8rem';
+//x=({{PTR6_data[0]}} + {{PTR6_data[1]}} + {{PTR6_data[2]}} + {{PTR6_data[3]}} + {{PTR6_data[4]}} + {{PTR6_data[5]}})/6
+
+bar.animate({{PTR6_OA}});  // Number from 0.0 to 1.0
+
+
+<!--********station PTR ARC*************-->
+<!--************************************-->
+
+var bar = new ProgressBar.SemiCircle(arc_stationPTR6, {
+  strokeWidth: 4,
+  color: '#FFEA82',
+  trailColor: '#c0c0c0',
+  trailWidth: 2,
+  easing: 'easeInOut',
+  duration: 1400,
+  svgStyle: null,
+  text: {
+    value: '',
+    alignToBottom: true
+  },
+  from: {color: '#003300'},
+  to: {color: '#009900'},
+  to: {color: '#009900'},
+  // Set default step function for all animate calls
+  step: (state, bar) => {
+    bar.path.setAttribute('stroke', state.color);
+    var value = Math.round(bar.value() * 100) + '%';
+    if (value === 0) {
+      bar.setText('');
+    } else {
+      bar.setText(value);
+    }
+
+    bar.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.8rem';
+
+x=({{PTR6_data[3]}} + {{PTR6_data[4]}} + {{PTR6_data[5]}})/3
+bar.animate((x/100));  // Number from 0.0 to 1.0
+
+</script>
+
+<script>
+<!--********Non-PTR ARC*************-->
+<!--************************************-->
+
+var bar = new ProgressBar.SemiCircle(arc_nPTR6, {
+  strokeWidth: 4,
+  color: '#FFEA82',
+  trailColor: '#c0c0c0',
+  trailWidth: 3,
+  easing: 'easeInOut',
+  duration: 1400,
+  svgStyle: null,
+  text: {
+    value: '',
+    alignToBottom: true
+  },
+  from: {color: '#000099'},
+  to: {color: '##008000'},
+  // Set default step function for all animate calls
+  step: (state, bar) => {
+    bar.path.setAttribute('stroke', state.color);
+    var value = Math.round(bar.value() * 100) + '%';
+    if (value === 0) {
+      bar.setText('');
+    } else {
+      bar.setText(value);
+    }
+
+    bar.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.8rem';
+//x=({{nPTR6_data[0]}} + {{nPTR6_data[1]}} + {{nPTR6_data[2]}} + {{nPTR6_data[3]}} + {{nPTR6_data[4]}})/5
+bar.animate({{nPTR6_OA}});  // Number from 0.0 to 1.0
+
+
+
+<!--********Non-PTR ARC Stations*************-->
+<!--************************************-->
+
+var bar = new ProgressBar.SemiCircle(arc_Station_nPTR6, {
+  strokeWidth: 4,
+  color: '#FFEA82',
+  trailColor: '#c0c0c0',
+  trailWidth: 3,
+  easing: 'easeInOut',
+  duration: 1400,
+  svgStyle: null,
+  text: {
+    value: '',
+    alignToBottom: true
+  },
+  from: {color: '#000099'},
+  to: {color: '##008000'},
+  // Set default step function for all animate calls
+  step: (state, bar) => {
+    bar.path.setAttribute('stroke', state.color);
+    var value = Math.round(bar.value() * 100) + '%';
+    if (value === 0) {
+      bar.setText('');
+    } else {
+      bar.setText(value);
+    }
+
+    bar.text.style.color = state.color;
+  }
+});
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '1.8rem';
+x=({{nPTR6_data[0]}} + {{nPTR6_data[1]}} + {{nPTR6_data[2]}} + {{nPTR6_data[4]}})/4
+bar.animate((x/100));  // Number from 0.0 to 1.0
+
+
+
+</script>
+
+
+<script>
+
+  <!-- Charts -->
+
+Chart.defaults.global.plugins.datalabels.anchor = 'end';
+Chart.defaults.global.plugins.datalabels.align = 'bottom';
+
+
+
+    var ctx = document.getElementById("OA-PTR6Bar").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["6101", "iTPS6.1", "P&R6.2","6D2", "6E1", "6F1"],
+        datasets: [{
+          label: '',
+          data: [{{PTR6_data[0]}}, {{PTR6_data[1]}}, {{PTR6_data[2]}},
+                 {{PTR6_data[3]}}, {{PTR6_data[4]}},{{PTR6_data[5]}}],
+          backgroundColor: [
+            'rgba(204,102,255,0.5)',
+            'rgba(204,102,255,0.5)',
+            'rgba(204,102,255,0.5)',
+            'rgba(204,102,255,0.5)',
+            'rgba(204,102,255,0.5)',
+            'rgba(204,102,255,0.5)',
+          ],
+          borderColor: [
+            'rgba(119,119,119,0.3)',
+            'rgba(119,119,119,0.3)',
+            'rgba(119,119,119,0.3)',
+            'rgba(119,119,119,0.3)',
+            'rgba(119,119,119,0.3)',
+            'rgba(119,119,119,0.3)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+
+         plugins: {
+         datalabels: {
+             formatter: function (value, ctx) {
+                 let percentage = value + "%";
+                 return percentage;
+             },
+             display: function(context) {
+				 return context.dataset.data[context.dataIndex] > 5;
+			 },
+             font: {
+                 size: 12,
+                 weight: "normal"
+             },
+             color: "#2f4f4f"
+         }
+     },
+
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+
+
+ // ******Station PTR Chart********
+
+    var ctx = document.getElementById("station-PTR6Bar").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["6D2", "6E1", "6F1"],
+        datasets: [{
+          label: '',
+          data: [{{PTR6_data[3]}}, {{PTR6_data[5]}}, {{PTR6_data[5]}}],
+          backgroundColor: [
+            'rgba(204,204,204,0.7)',
+            'rgba(204,204,204,0.7)',
+            'rgba(204,204,204,0.7)',
+//            'rgba(54, 162, 235, 0.6)',
+          ],
+          borderColor: [
+            'rgba(204,204,204,1)',
+            'rgba(204,204,204,1)',
+            'rgba(204,204,204,1)',
+//            'rgba(54, 162, 235, 1)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+
+
+         plugins: {
+         datalabels: {
+             formatter: function (value, ctx) {
+                 let percentage = value + "%";
+                 return percentage;
+             },
+             display: function(context) {
+				 return context.dataset.data[context.dataIndex] > 3;
+			 },
+             font: {
+                 size: 12,
+                 weight: "normal"
+             },
+             color: "#2f4f4f"
+         }
+     },
+
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+  </script>
+
+<script>
+
+    // ****** OverAll Non-PTR ********
+
+    var ctx = document.getElementById("OAnPTR6_Bar").getContext('2d');
+
+    var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+//rgba(255,204,0,0.5)
+    gradientStroke.addColorStop(1, 'rgba(204,102,255,0.5)');
+    gradientStroke.addColorStop(0.6, 'rgba(204,102,255,0.0)');
+    gradientStroke.addColorStop(0, 'rgba(204,102,255,2)'); //purple color
+
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["6G1", "6G2", "6H1", "PnR6.4", "6H2"],
+        datasets: [{
+          label: '',
+          data: [{{nPTR6_data[0]}}, {{nPTR6_data[1]}}, {{nPTR6_data[2]}} , {{nPTR6_data[3]}} , {{nPTR6_data[4]}},
+                  {{nPTR6_data[5]}}],
+          fill: true,
+          backgroundColor: gradientStroke,
+          hoverBackgroundColor: gradientStroke,
+          borderColor: 'rgba(204,102,255,0.8)',
+          borderWidth: 1.5,
+          borderDash: [],
+          borderDashOffset: 0.0,
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+
+        plugins: {
+
+         deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+        },
+
+         datalabels: {
+             formatter: function (value, ctx) {
+                 let percentage = value + "%";
+                 return percentage;
+             },
+             display: function(context) {
+							return context.dataset.data[context.dataIndex] > 3;
+						},
+             font: {
+                 size: 12,
+                 weight: "normal"
+             },
+             color: "#2f4f4f"
+         }
+     },
+
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+
+// ******Stations (Non-PTR)********
+
+
+ var ctx = document.getElementById("nPTR6_Bar").getContext('2d');
+
+    var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+//rgba(255,204,0,0.5)
+//'rgba(204,204,204,1)',
+    gradientStroke.addColorStop(1, 'rgba(102,102,102,0.3)');
+    gradientStroke.addColorStop(0.6, 'rgba(102,102,102,0.0)');
+    gradientStroke.addColorStop(0, 'rgba(102,102,102,0)'); //blue colors
+
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["6G1", "6G2", "6H1", "6H2"],
+        datasets: [{
+          label: '',
+          data: [{{nPTR6_data[0]}}, {{nPTR6_data[1]}}, {{nPTR6_data[2]}}, {{nPTR6_data[4]}}],
+
+          fill: true,
+          backgroundColor: gradientStroke,
+          hoverBackgroundColor: gradientStroke,
+          borderColor: '#AAAAAA',
+          borderWidth: 1.5,
+          borderDash: [],
+          borderDashOffset: 0.0,
+        }]
+      },
+      options: {
+      			responsive: false,
+				maintainAspectRatio: false,
+
+      legend: {
+          display: false
+        },
+
+        plugins: {
+
+         deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+        },
+
+         datalabels: {
+             formatter: function (value, ctx) {
+                 let percentage = value + "%";
+                 return percentage;
+             },
+             font: {
+                 size: 12,
+                 weight: "normal"
+             },
+             color: "#2f4f4f"
+         }
+     },
+
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              display: false,
+//            stepSize: 140
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              display: true
+            },
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+                animation: {
+                duration : 3000,
+            }
+
+      }
+    });
+
+</script>
+
+
+<script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+
+<script>
+
+  demo = {
+
+  initDashboardPageCharts: function() {
+
+    chartColor = "#9900CC";
+
+    var ctx = document.getElementById('bigDashboardChart').getContext("2d");
+
+    var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+
+    gradientStroke.addColorStop(1, 'rgba(204,102,255,0.5)');
+    gradientStroke.addColorStop(0.3, 'rgba(204,102,255,0.0)');
+    gradientStroke.addColorStop(0, 'rgba(204,102,255,2)'); //purple color
+
+    var months= {{l6Month|safe}}
+    var progress_data ={{l6Month_data|safe}}
+
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: months,
+        //labels: ["FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG"],
+        datasets: [{
+          label: "Data",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#1e3d60",
+          pointHoverBackgroundColor: "#1e3d60",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderWidth: 3,
+          //data: [0, 8, 10.3, 15, 18.6, 12.4,13.3]
+          data: progress_data
+        }]
+      },
+      options: {
+        layout: {
+          padding: {
+            left: 20,
+            right: 20,
+            top: 20,
+            bottom: 0
+          }
+        },
+        maintainAspectRatio: false,
+        tooltips: {
+            backgroundColor: '#f5f5f5',
+            titleFontColor: '#333',
+             bodyFontColor: '#666',
+          bodySpacing: 4,
+          xPadding: 12,
+          mode: "nearest",
+          intersect: 0,
+          position: "nearest"
+        },
+        legend: {
+          position: "bottom",
+          fillStyle: "#FFF",
+          display: false
+        },
+
+                plugins: {
+         datalabels: {
+             formatter: function (value, ctx) {
+                 let percentage = value + "%";
+                 return percentage;
+             },
+             font: {
+                 size: 11,
+                 weight: "normal"
+             },
+             color: "#FFFFFF"
+         }
+     },
+
+
+        scales: {
+          yAxes: [{
+            ticks: {
+              suggestedMin: 0,
+              suggestedMax: 100,
+              fontColor: "rgba(255,255,255,0.4)",
+              fontStyle: "normal",
+              beginAtZero: true,
+              maxTicksLimit: 5,
+              padding: 20
+            },
+            gridLines: {
+            drawBorder: false,
+            color: 'rgba(29,140,248,0.0)',
+            zeroLineColor: "transparent",
+            }
+
+          }],
+          xAxes: [{
+            barPercentage: 1.6,
+          gridLines: {
+            drawBorder: false,
+            color: 'rgba(225,78,202,0.1)',
+            zeroLineColor: "transparent",
+          },
+            ticks: {
+              padding: 10,
+              fontColor: "#9a9a9a",
+              fontStyle: "normal"
+            }
+          }]
+        }
+      }
+    });
+  },
+
+
+};
+
+</script>
+
+
+
+
+</body>
+
+
+
+</html>

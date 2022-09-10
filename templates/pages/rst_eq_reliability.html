@@ -1,0 +1,474 @@
+{% extends 'pages/navl46.html' %}
+  {% block siripye %}
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--  <head>-->
+
+
+      <style>
+      table{
+        margin: 0 auto;
+        width: 100%;
+        clear: both;
+        border-collapse: collapse;
+        table-layout: fixed; // ***********add this
+        word-wrap:break-word; // ***********and this
+            }
+
+
+          td { font-size: 13px; }
+          tr { font-size: 15px; }
+          td { color: black; }
+
+          table.dataTable thead th.ui-state-default {
+          background: #52969E;
+          color: white;
+            }
+          table.dataTable tfoot th.ui-state-default {
+          background: #52969E;
+          color: white;
+            }
+      </style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RST Dashboard</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="../static/modules/rst_vendors/mdi/css/materialdesignicons.min.css">
+<!--    <link rel="stylesheet" href="../static/modules/rst_vendors/base/vendor.bundle.base.css">-->
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../static/css/rst_css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../static/img/rst_img/favicon.png"/>
+
+            <!-- plugin Datatable css for this page -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.jqueryui.min.css">
+
+
+<!--      Google Font  -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+      <style>
+body {
+  font-family: "Poppins", sans-serif;
+  //font-size: 48px;
+}
+</style>
+
+<!--  </head>-->
+<!--  <body>-->
+  {% endblock %}
+
+{% block content %}
+    <div class="container-scroller">
+
+    <!-- partial:partials/_horizontal-navbar.html -->
+
+    <!-- partial -->
+
+
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+                    <div class="row mt-0">
+
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card shadow">
+                                <div class="card-header bg-light text-black px-2 p-1 d-flex justify-content-between align-items-center">
+                                    <h4 class="mt-2 fw-bold">Equipment Reliability (ER)</h4>
+                                    <h6 class="mt-2 small"><kbd class="mt-1 small">Updated On: {{udate[0]}}</kbd></h6>
+<!--                                    <h6 class="mt-1 small">Download <i class="fas fa-file-excel"></i></h6>-->
+                                    <!--                                    <h6 class="mt-1 small"><kbd class="mt-1 small">Download <i class="fas fa-file-excel"></i></kbd></h6>-->
+                                </div>
+                            </div>
+                        </div>
+
+					</div>
+
+<!--					<div class="row">-->
+<!--						<div class="col-sm-12 grid-margin grid-margin-md-0 stretch-card">-->
+<!--							<div class="card shadow card-gradlightgrey2">-->
+<!--								<div class="card-body">-->
+<!--									<div class="d-flex align-items-center justify-content-between">-->
+<!--										<h4 class="card-title">MKBF (Mean Km Before Failure)</h4>-->
+<!--&lt;!&ndash;										<h4 class="text-primary font-weight-bold">Grand Total<span class="text-dark ml-3"></span></h4>&ndash;&gt;-->
+<!--									</div>-->
+<!--									<div id="support-tracker-legend2" class="support-tracker-legend"></div>-->
+<!--                                    <div class="chart-container" style="position: relative; height:30vh">-->
+<!--									<canvas id="mkbf"></canvas>-->
+<!--                                    </div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+
+
+                    <style>
+                        .top-buffer { margin-top:-28px; }
+                    </style>
+
+                    <div class="row mt-0">
+						<div class="col-sm-12 top-buffer grid-margin grid-margin-md-0 stretch-card">
+							<div class="card shadow card-gradlightgrey2">
+								<div class="card-body">
+									<div class="d-flex align-items-center justify-content-between">
+										<h4 class="card-title">MTBF (Mean Time Before Failure)</h4>
+<!--										<h4 class="text-primary font-weight-bold">Grand Total<span class="text-dark ml-3"></span></h4>-->
+									</div>
+
+									<div id="support-tracker-legend" class="support-tracker-legend"></div>
+                                     <div class="chart-container" style="position: relative; height:35vh">
+									<canvas id="mtbf"></canvas>
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+          <div class="footer-wrap">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Alstom</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Developed by RAO Kamran (Riyadh Metro Project) </span>
+            </div>
+          </div>
+        </footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+    </div>
+		<!-- container-scroller -->
+    <!-- base:js -->
+    <script src="../static/modules/rst_vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="../static/modules/rst_vendors/js/template.js"></script>
+    <!-- endinject -->
+
+    <!-- plugin js for this page -->
+        <script src="../static/modules/rst_vendors/chart.js/Chart.min.js"></script>
+        <script src="../static/modules/rst_vendors/progressbar.js/progressbar.min.js"></script>
+		<script src="../static/modules/rst_vendors/chartjs-plugin-datalabels/chartjs-plugin-datalabels.js"></script>
+        <script src="../static/modules/rst_vendors/deferred/chartjs-plugin-deferred.min.js"></script>
+
+
+            <!-- Datatable js for this page -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.jqueryui.min.js"></script>
+
+
+ <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbl_mkbf= {{mkbf_eq|safe}};
+		var IosHisData = {
+			//labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CJB)", "TCMS (VPF)", "DOORS (KN)", "PAPIS (VBN/STEE)", "NETWORK (VBN)", "RST (Riyadh)", "SLV (Riyadh)"],
+			labels: lbl_mkbf,
+			datasets: [{
+				label: 'Last 12 Months',
+				//data: [5, 1, 0, 0, 8, 0, 1, 0, 14, 1],
+				data: [{% for i in mkbf_l12m %} {{ i }}, {% endfor %}],
+				backgroundColor: 'RGBA(251, 156, 67,0.9)',
+				borderColor: ['#FB9C43', '#FB9C43', '#FB9C43'],
+				borderWidth: 1,
+				fill: false
+			},
+						{
+					label: 'Last 3 Months',
+					//data: [2, 0, 0, 6, 0, 2, 1, 1],
+					data: [{% for i in mkbf_l3m %} {{ i }}, {% endfor %}],
+					backgroundColor: 'RGBA(188, 187, 184,0.9)',
+					borderColor: ['#BCBBB8', '#BCBBB8', '#BCBBB8'],
+					borderWidth: 0.5,
+					fill: false
+			},
+									{
+					label: 'Last Month',
+					//data: [2, 0, 0, 3, 0, 2, 1, 1],
+					data: [{% for i in mkbf_lm %} {{ i }}, {% endfor %}],
+					backgroundColor: 'RGBA(243, 229, 13, 0.9)',
+					borderColor: ['#F3E50D', '#F3E50D', '#F3E50D'],
+					borderWidth: 1,
+					fill: false
+			},
+
+			]
+		};
+		var IosHisOptions = {
+				   // responsive:false,
+            maintainAspectRatio: false,
+			scales: {
+				xAxes: [{
+				stacked: false,
+				barPercentage: 0.9,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: true,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					fontSize: 12,
+					stepSize: 300,
+					beginAtZero: true
+				}
+				}],
+				yAxes: [{
+					stacked: false,
+					display: true,
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						callback: function(value, index, values) {
+						return '' + value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+<!--					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');-->
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].borderColor[i] + ';"></span><span class="legend-label text-dark small">');
+
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+			    deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+					    font: {
+                            size: 9,
+                            weight: "normal"
+                              },
+                    color: "#444444",
+					display: true,
+					align: 'center',
+					anchor: 'center'
+				}
+			}
+		};
+		if ($("#mkbf").length) {
+			var barChartCanvas = $("#mkbf").get(0).getContext("2d");
+			    //barChartCanvas.canvas.width = 1100;
+                //barChartCanvas.canvas.height = 60;
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'bar',
+				data: IosHisData,
+				options: IosHisOptions
+			});
+			document.getElementById('support-tracker-legend2').innerHTML = barChart.generateLegend();
+		}
+
+	});
+})(jQuery);
+
+  </script>
+
+ <script>
+
+      (function($) {
+	'use strict';
+	$(function() {
+	var lbl_mtbf= {{mtbf_eq|safe}};
+		var IosHisData = {
+			//labels: ["Brake (FT)", "HVAC (FT)", "CVS (CRL)", "Traction (CJB)", "TCMS (VPF)", "DOORS (KN)", "PAPIS (VBN/STEE)", "NETWORK (VBN)", "RST (Riyadh)", "SLV (Riyadh)"],
+			labels: lbl_mtbf,
+			datasets: [
+
+									{
+					label: 'Yearly Percentage',
+					//data: [2, 0, 0, 3, 0, 2, 1, 1],
+					data: [{% for i in mtbf_lm %} {{ i }}, {% endfor %}],
+					//backgroundColor: 'RGBA(243, 229, 13, 0.9)',
+					//backgroundColor: ['green','red','green','red','green','red','green','red','green','red','green','red',],
+					backgroundColor: {{mtbf_color|safe}},
+					borderColor: {{mtbf_color|safe}},
+					//borderColor: ['#F3E50D', '#F3E50D', '#F3E50D'],
+					borderWidth: 1,
+					fill: false
+			},
+
+			]
+		};
+		var IosHisOptions = {
+				   // responsive:false,
+            maintainAspectRatio: false,
+			scales: {
+				xAxes: [{
+				stacked: false,
+				barPercentage: 0.9,
+				position: 'bottom',
+				display: true,
+				gridLines: {
+					display: true,
+					drawBorder: false,
+				},
+				ticks: {
+					display: true, //this will remove only the label
+					fontSize: 12,
+					//fontStyle: "bold",
+					stepSize: 300,
+					beginAtZero: true
+				}
+				}],
+				yAxes: [{
+					stacked: false,
+					display: true,
+					align: 'left',
+					gridLines: {
+						drawBorder: false,
+						display: true,
+						color: "#f0f3f6",
+						borderDash: [8, 4],
+					},
+					ticks: {
+						beginAtZero: true,
+						fontSize: 12,
+						fontStyle: "bold",
+
+						padding: 8,
+						callback: function(value, index, values) {
+						//return '' + value;
+						value = value.toString();
+                        value= value.replace(',', '');
+                        return value;
+						}
+					},
+				}]
+			},
+			legend: {
+				display: false
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<ul class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets.length; i++) {
+<!--					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].backgroundColor[i] + ';"></span><span class="legend-label text-dark">');-->
+					text.push('<li><span class="legend-box" style="background:' + chart.data.datasets[i].borderColor[i] + ';"></span><span class="legend-label text-dark small">');
+
+					if (chart.data.datasets[i].label) {
+							text.push(chart.data.datasets[i].label);
+					}
+					text.push('</span></li>');
+				}
+				text.push('</ul>');
+				return text.join("");
+			},
+			tooltips: {
+				backgroundColor: 'rgba(0, 0, 0, 1)',
+			},
+			plugins: {
+
+			    deferred: {
+                //xOffset: 150,   // defer until 150px of the canvas width are inside the viewport
+                yOffset: '100%', // defer until 50% of the canvas height are inside the viewport
+                delay: 1000      // delay of 500 ms after the canvas is considered inside the viewport
+                },
+
+				datalabels: {
+
+
+formatter: (value, ctx) => {
+
+                //let percentage = (value*100 / sum).toFixed(2)+"%";
+                let percentage = value+"%";
+                return percentage;
+            },
+
+					    font: {
+                            size: 10,
+                            weight: "normal"
+                              },
+                    color: "#ffffff",
+					display: true,
+					align: 'center',
+					anchor: 'center'
+				}
+			}
+		};
+		if ($("#mtbf").length) {
+			var barChartCanvas = $("#mtbf").get(0).getContext("2d");
+			    //barChartCanvas.canvas.width = 1100;
+                //barChartCanvas.canvas.height = 60;
+			// This will get the first returned node in the jQuery collection.
+			var barChart = new Chart(barChartCanvas, {
+				type: 'horizontalBar',
+				data: IosHisData,
+				options: IosHisOptions
+			});
+			document.getElementById('support-tracker-legend').innerHTML = barChart.generateLegend();
+		}
+
+	});
+})(jQuery);
+
+  </script>
+
+
+
+  <script>
+    $('.count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+</script>
+
+
+
+{% endblock %}
+<!--  </body>-->
+<!--</html>-->
